@@ -1,2 +1,0 @@
-# NameBattler
-aaaaaaaaaaaaaaaaaaa
