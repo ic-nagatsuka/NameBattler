@@ -7,7 +7,7 @@
     tools:context=".CharacterList">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/character_list_title"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:text="キャラ一覧"
@@ -21,11 +21,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/character_list_back"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/blue_26c"
         android:text="戻る"
@@ -33,15 +33,29 @@
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
+        android:id="@+id/listView_characterList"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/character_list_title" />
+
+    <TextView
+        android:id="@+id/character_list_MakeButton"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:text="新しく作成する"
+        android:textSize="30dp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:background="@color/blue_26c"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
