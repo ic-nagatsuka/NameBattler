@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="blue_26c">#26c</color>
+    <color name="orange_c60">#c60</color>
+    <color name="orange_fda">#fda</color>
+    <color name="orange_f73">#f73</color>
 </resources>
