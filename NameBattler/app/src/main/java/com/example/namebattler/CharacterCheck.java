@@ -9,6 +9,6 @@ public class CharacterCheck extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_check);
+        setContentView(R.layout.activity_character_make);
     }
 }
