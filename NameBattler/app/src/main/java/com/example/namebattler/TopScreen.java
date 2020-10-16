@@ -14,9 +14,9 @@ public class TopScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_screen);
 
-        Button characterDetails = findViewById(R.id.top_characterList);
+        Button characterList = findViewById(R.id.top_characterList);
 
-        characterDetails.setOnClickListener(new View.OnClickListener(){
+        characterList.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v){
                Intent intent = new Intent(
