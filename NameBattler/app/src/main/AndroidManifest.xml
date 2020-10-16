@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CharacterMake"></activity>
+        <activity android:name=".CharacterMakeSuccesScreen"></activity>
+        <activity android:name=".CharacterMake" />
         <activity android:name=".CharacterCheck" />
         <activity android:name=".CharacterList" />
         <activity android:name=".TopScreen">
