@@ -6,4 +6,114 @@
     android:layout_height="match_parent"
     tools:context=".CharacterMakeSuccesScreen">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="キャラ作成"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/characterMakeSucces_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="続けて作成する"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="473dp" />
+
+    <Button
+        android:id="@+id/characterMakeSucces_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="作成を終了する"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="557dp" />
+
+    <TextView
+        android:id="@+id/characterMakeSucces_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="職業"
+        android:textSize="30dp"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/characterMakeSucces_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="名前"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="@+id/characterMakeSucces_job"
+        tools:layout_editor_absoluteY="89dp" />
+
+    <TextView
+        android:id="@+id/characterMakeSucces_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ステータス"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="@+id/characterMakeSucces_job"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <TextView
+        android:id="@+id/characterMakeSucces_hp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HP"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toLeftOf="@id/characterMakeSucces_status"
+        app:layout_constraintStart_toStartOf="@id/characterMakeSucces_status"
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeSucces_status" />
+
+    <TextView
+        android:id="@+id/characterMakeSucces_mp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MP"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="@+id/characterMakeSucces_status"
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeSucces_hp" />
+
+    <TextView
+        android:id="@+id/characterMakeSucces_str"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STR"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="@+id/characterMakeSucces_status"
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeSucces_mp" />
+
+    <TextView
+        android:id="@+id/characterMakeSucces_def"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEF"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="@+id/characterMakeSucces_status"
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeSucces_str" />
+
+    <TextView
+        android:id="@+id/characterMakeSucces_agi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AGI"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="@+id/characterMakeSucces_status"
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeSucces_def" />
+
+    <TextView
+        android:id="@+id/characterMakeSucces_luck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LUCK"
+        app:layout_constraintStart_toStartOf="@+id/characterMakeSucces_status"
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeSucces_agi"
+        android:textSize="30dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
