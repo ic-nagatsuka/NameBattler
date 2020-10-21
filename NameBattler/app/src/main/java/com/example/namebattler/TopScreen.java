@@ -7,18 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.namebattler.program__9_7.P_Fighter;
-import com.example.namebattler.program__9_7.Party;
-import com.example.namebattler.program__9_7.Player;
+
+import com.name.battler.Player.P_Fighter;
+import com.name.battler.Player.Party;
+import com.name.battler.Player.Player;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class TopScreen extends AppCompatActivity {
 
     //
     static Party party = new Party("");
     //
-    ArrayList<Player> battlePlayer = new ArrayList<>();
+//    ArrayList<Player> battlePlayer = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,6 @@ public class TopScreen extends AppCompatActivity {
         Button characterList = findViewById(R.id.top_characterList);
 
         party.AppendPlayer(new P_Fighter("aaaaaaaaa"));
-
 
         characterList.setOnClickListener(new View.OnClickListener(){
            @Override

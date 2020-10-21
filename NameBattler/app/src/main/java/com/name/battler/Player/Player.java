@@ -504,7 +504,6 @@ public abstract class Player{
 	 */
 	/**
 	 * 行動選択
-	 * @param attacker	攻撃するプレイヤー
 	 * @param target	攻撃されるプレイヤー
 	 */
 	public void Action(Player target){
@@ -584,8 +583,17 @@ public abstract class Player{
 	{
 		System.out.printf("%s: %s (HP %3d : MP=%3d : STR=%3d : DEF=%3d : LUCK=%3d : AGI=%3d)\n",
 				job.GetName(), GetName(), GetHP(), GetMP(), GetSTR(), GetDEF(), GetLUCK(), GetAGI());
-	}	
-	
+	}
+
+	public String getStatus()	{
+		return "HP:" + GetHP() +
+				" MP:" + GetMP() +
+				" STR:" + GetSTR() +
+				" DEF:" + GetDEF() +
+				" LUCK:" + GetLUCK() +
+				" AGI:" + GetAGI();
+	}
+
 	/**
 	 * バトル中のステータス表示
 	 */
