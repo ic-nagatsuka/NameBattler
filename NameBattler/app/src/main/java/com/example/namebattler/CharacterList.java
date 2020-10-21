@@ -88,7 +88,14 @@ public class CharacterList extends AppCompatActivity {
 
 
 
-        
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent = new Intent(getApplication(), CharacterDetails.class);
+                startActivity(intent);
+            }
+        });
 
 
 
