@@ -1,10 +1,10 @@
 package com.example.namebattler;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class CharacterMakeSuccesScreen extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class CharacterDetails extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
