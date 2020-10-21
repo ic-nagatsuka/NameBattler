@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.example.namebattler.program__9_7.Party;
-import com.example.namebattler.program__9_7.Player;
+
+import com.name.battler.Player.Party;
+import com.name.battler.Player.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +34,7 @@ public class CharacterList extends AppCompatActivity {
 //                Integer.toString()
                 hash.put("name", player.GetName());
                 hash.put("job", "job");
-                hash.put("status", player.textPrintStatus());
+                hash.put("status", player.getStatus());
 
                 playerData.add(hash);
 
