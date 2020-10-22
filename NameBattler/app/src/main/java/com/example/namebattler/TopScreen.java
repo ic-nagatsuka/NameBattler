@@ -18,10 +18,7 @@ import java.util.List;
 
 public class TopScreen extends AppCompatActivity {
 
-    //
     static Party party = new Party("");
-    //
-//    ArrayList<Player> battlePlayer = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +26,6 @@ public class TopScreen extends AppCompatActivity {
         setContentView(R.layout.activity_top_screen);
 
         Button characterList = findViewById(R.id.top_characterList);
-
-        party.AppendPlayer(new P_Fighter("aaaaaaaaa"));
-
         characterList.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v){
