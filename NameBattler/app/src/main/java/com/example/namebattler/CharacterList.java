@@ -84,10 +84,6 @@ public class CharacterList extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView_characterList);
         listView.setAdapter(simpleAdapter);
 
-
-
-
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -97,7 +93,12 @@ public class CharacterList extends AppCompatActivity {
             }
         });
 
-
+        findViewById(R.id.character_list_back).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
 
