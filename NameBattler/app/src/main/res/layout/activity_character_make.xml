@@ -39,6 +39,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
+        android:maxLength="20"
         app:layout_constraintStart_toStartOf="@+id/character_make_nameString"
         app:layout_constraintTop_toBottomOf="@+id/character_make_nameString" />
 
