@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -15,12 +17,15 @@ import com.name.battler.Player.P_Wizard;
 import com.name.battler.Player.Player;
 
 
-public class CharacterMake extends AppCompatActivity {
+public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make);
+
+        EditText editText= findViewById(R.id.character_make_editText_name);
+        editText.addTextChangedListener(this);
 
 
         findViewById(R.id.character_make_makeButton).setOnClickListener(new View.OnClickListener(){
@@ -63,4 +68,18 @@ public class CharacterMake extends AppCompatActivity {
         return player;
     }
 
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+    }
 }
