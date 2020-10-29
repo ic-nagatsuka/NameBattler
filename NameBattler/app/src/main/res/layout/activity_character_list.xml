@@ -38,24 +38,30 @@
 
     <ListView
         android:id="@+id/listView_characterList"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/border_around"
+        app:layout_constraintBottom_toTopOf="@+id/character_list_MakeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_list_title" />
+        app:layout_constraintTop_toBottomOf="@+id/character_list_title"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+    <Button
         android:id="@+id/character_list_MakeButton"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:text="新しく作成する"
-        android:textSize="30dp"
-        android:textColor="#fff"
-        android:gravity="center"
         android:background="@color/blue_26c"
+        android:gravity="center"
+        android:text="新しく作成する"
+        android:textColor="#fff"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
