@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class CharacterInformation extends SQLiteOpenHelper {
 
-    static final String DB_NAME = "";
-    static final String TABLE_NAME = "";
+    static final String DB_NAME = "nameBattler.character";
+    static final String TABLE_NAME = "CHARACTERS";
     static final int DB_VERSION = 1;
 
     public CharacterInformation(Context context){
@@ -18,8 +18,16 @@ public class CharacterInformation extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + "(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "" +
+                "NAME TEXT PRIMARY KEY AUTOINCREMENT DEFAULT '' NOT NULL, " +
+                "NAME TEXT   DEFAULT '' NOT NULL," +
+                "JOB INTEGER DEFAULT 0 NOT NULL," +
+                "HP  INTEGER DEFAULT 0 NOT NULL," +
+                "MP  INTEGER DEFAULT 0 NOT NULL," +
+                "STR INTEGER DEFAULT 0 NOT NULL," +
+                "DEF INTEGER DEFAULT 0 NOT NULL, " +
+                "LUCK INTEGER DEFAULT 0 NOT NULL," +
+                "AGI INTEGER DEFAULT 0 NOT NULL," +
+                "CREATE_AT TEXT DEFAULT NULL" +
                 ");"
         );
     }
