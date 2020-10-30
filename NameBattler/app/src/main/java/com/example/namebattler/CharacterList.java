@@ -18,6 +18,7 @@ import java.util.List;
 
 
 import com.example.namebattler.database.CharacterInformation;
+import com.name.battler.Player.AllJob;
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
 
@@ -55,20 +56,18 @@ public class CharacterList extends AppCompatActivity {
                 null,
                 null
                 );
+        cursor.moveToFirst();
 
         List<HashMap<String, String>> list = new ArrayList<>();
         for(int i = 0; i < cursor.getCount(); i++){
             HashMap<String, String> hash = new HashMap<>();
             hash.put("name", cursor.getString(cursor.getColumnIndex("NAME")));
-            hash.put("job", cursor.getString(cursor.getColumnIndex("JOB")));
-            hash.put("status", cursor.getString(cursor.getColumnIndex("hp"))
-//                    cursor.getString(cursor.getColumnIndex("")) +
-//                    cursor.getString(cursor.getColumnIndex("")) +
-//                    cursor.getString(cursor.getColumnIndex("")) +
-//                    cursor.getString(cursor.getColumnIndex("")) +
-//                    cursor.getString(cursor.getColumnIndex(""))
-            );
+//            hash.put("job", AllJob.allJob[1]. );
+//            hash.put("status", cursor.getString(cursor.getColumnIndex("hp"))
+////                    cursor.getString(cursor.getColumnIndex(""))
+//            );
             list.add(hash);
+            cursor.moveToNext();
         }
 
         if(cursor.getCount() < listNum){
@@ -77,11 +76,6 @@ public class CharacterList extends AppCompatActivity {
                 hash.put("name", "");
                 hash.put("job", "");
                 hash.put("status", "");
-    //                    cursor.getString(cursor.getColumnIndex("")) +
-    //                    cursor.getString(cursor.getColumnIndex("")) +
-    //                    cursor.getString(cursor.getColumnIndex("")) +
-    //                    cursor.getString(cursor.getColumnIndex("")) +
-    //                    cursor.getString(cursor.getColumnIndex(""))
                 list.add(hash);
             }
 
