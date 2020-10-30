@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class CharacterInformation extends SQLiteOpenHelper {
 
     static final String DB_NAME = "nameBattler.character";
-    static final String TABLE_NAME = "CHARACTERS";
+    public static final String TABLE_NAME = "CHARACTERS";
     static final int DB_VERSION = 1;
 
     public CharacterInformation(Context context){
