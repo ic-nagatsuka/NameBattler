@@ -18,8 +18,7 @@ public class CharacterInformation extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + "(" +
-                "NAME TEXT PRIMARY KEY AUTOINCREMENT DEFAULT '' NOT NULL, " +
-                "NAME TEXT   DEFAULT '' NOT NULL," +
+                "NAME TEXT PRIMARY KEY DEFAULT '' NOT NULL, " +
                 "JOB INTEGER DEFAULT 0 NOT NULL," +
                 "HP  INTEGER DEFAULT 0 NOT NULL," +
                 "MP  INTEGER DEFAULT 0 NOT NULL," +
@@ -34,7 +33,7 @@ public class CharacterInformation extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE " + TABLE_NAME + "   ;");
+        db.execSQL("DROP TABLE " + TABLE_NAME + ";");
         onCreate(db);
     }
 }
