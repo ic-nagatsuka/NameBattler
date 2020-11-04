@@ -60,31 +60,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_make_jobString">
-
-        <RadioButton
-            android:id="@+id/character_make_radio_fighter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="戦士"
-            android:textSize="30dp" />
-
-        <RadioButton
-            android:id="@+id/character_make_radio_wizard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="魔法使い"
-            android:layout_marginTop="8dp"
-            android:textSize="30dp" />
-
-        <RadioButton
-            android:id="@+id/character_make_radio_priest"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="僧侶"
-            android:textSize="30dp"
-            android:layout_marginTop="8dp"/>
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@+id/character_make_jobString"/>
 
     <Button
         android:id="@+id/character_make_makeButton"

@@ -15,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.namebattler.database.CharacterInformation;
+import com.name.battler.Player.AllJob;
 import com.name.battler.Player.P_Fighter;
 import com.name.battler.Player.P_Priest;
 import com.name.battler.Player.P_Wizard;
@@ -37,6 +38,23 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         editText.addTextChangedListener(this);
 
 
+        RadioGroup radioGroup = findViewById(R.id.character_make_job_RadioGroup) ;
+
+        for(int i = 0; i < AllJob.allJob.length; i++){
+            RadioButton radioBtn = new RadioButton(this);
+            radioBtn.setText(AllJob.allJob[i]);
+            radioBtn.setTextSize(30);
+            radioGroup.addView(radioBtn);
+        }
+
+
+
+
+
+
+
+
+
         findViewById(R.id.character_make_makeButton).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -44,9 +62,10 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                 EditText editName = findViewById(R.id.character_make_editText_name);
 
                 String name = editName.getText().toString();
-
+                RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
+                System.out.println(radio.getText());
                 if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
-                    Player player = makePlayer(name, radioGroup.getCheckedRadioButtonId());
+                    Player player = makePlayer(name, radio.getText());
 
                     SQLiteDatabase db = helper.getWritableDatabase();
 
@@ -89,12 +108,14 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     }
 
 
-    public Player makePlayer(String name, int job){
+    public Player makePlayer(String name, CharSequence job){
         Player player = null;
-        switch(job){
-            case R.id.character_make_radio_fighter: player = new P_Fighter(name);   break;
-            case R.id.character_make_radio_wizard: player = new P_Wizard(name);    break;
-            case R.id.character_make_radio_priest: player = new P_Priest(name);    break;
+        if ("戦士".equals(job)) {
+            player = new P_Fighter(name);
+        } else if ("魔法使い".equals(job)) {
+            player = new P_Wizard(name);
+        } else if ("僧侶".equals(job)) {
+            player = new P_Priest(name);
         }
         return player;
     }

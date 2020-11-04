@@ -17,14 +17,18 @@ public class AllJob{
 		static final Job Priest=new Job("Priest");
 		static final Job Bouncer=new Job("Bouncer");
 		
-		public static Job[]allJob={
-			Fighter,
-			Wizard, 
-			Priest, 
-			Bouncer,
-			};
+//		public static Job[]allJob={
+//			Fighter,
+//			Wizard,
+//			Priest,
+//			Bouncer,
+//			};
 	
-		
+		public static String[]allJob = {
+				"戦士",
+				"魔法使い",
+				"僧侶",
+		};
 		
 }
 
