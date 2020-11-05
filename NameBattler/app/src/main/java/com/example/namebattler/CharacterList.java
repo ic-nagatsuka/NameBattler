@@ -125,7 +125,7 @@ public class CharacterList extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
 
-                TextView text = findViewById( R.id.character_list_name);
+                TextView text = view.findViewById( R.id.character_list_name);
                 String name = text.getText().toString();
                 intent.putExtra("name", name);
 
