@@ -42,7 +42,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
         android:text="名前"
-        android:textSize="20dp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/characterDetails_title" />
 
@@ -50,9 +50,8 @@
         android:id="@+id/characterDetails_job"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="職業"
-        android:textSize="20dp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="@+id/characterDetails_name"
         app:layout_constraintTop_toBottomOf="@+id/characterDetails_name" />
 
