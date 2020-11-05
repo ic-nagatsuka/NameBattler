@@ -37,6 +37,14 @@ public class TopScreen extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.top_Start_Battle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), CharacterOrganization.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
