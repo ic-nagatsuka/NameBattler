@@ -15,6 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.Party;
@@ -88,12 +89,14 @@ public class CharacterOrganization extends AppCompatActivity {
     }
 
     public void onClickCheckBox(View v){
-
         CheckBox checkBox = v.findViewById(R.id.character_organization_listView_checkBox);
 
-        if(checkBox.isChecked()){
-           charaCount++;
-        }else{
+        if(checkBox.isChecked() && charaCount == 3){
+            checkBox.setChecked(false);
+            Toast.makeText(this, "最大選択数に達しました", Toast.LENGTH_SHORT).show();
+        }else if(checkBox.isChecked()){
+            charaCount++;
+        }else if(checkBox.isChecked() == false){
             charaCount--;
         }
 
