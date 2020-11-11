@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,15 +22,14 @@ public class CharacterDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_details);
 
-        SQLiteDatabase db = helper.getReadableDatabase();
+        final SQLiteDatabase db = helper.getWritableDatabase();
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
 
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
-
 
         for(int i = 0; i < cursor.getCount(); i++){
 
@@ -61,12 +62,28 @@ public class CharacterDetails extends AppCompatActivity {
 
                 text = findViewById(R.id.characterDetails_MakeDay);
                 text.setText("作成日:" + cursor.getString(8));
-                System.out.println(cursor.getString(8));
             }
-            
             cursor.moveToNext();
         }
 
+        findViewById(R.id.characterDetails_DeleteButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.delete(
+                        CharacterInformation.TABLE_NAME,
+                        "name = ?",
+                        new String[] {intent.getStringExtra("name")});
+                Intent intent = new Intent(getApplication(), CharacterList.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
+
+        public void onClickBack(View v){
+            finish();
+        }
+
 }

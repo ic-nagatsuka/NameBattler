@@ -46,7 +46,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_organization_title" />
+        app:layout_constraintTop_toBottomOf="@+id/character_organization_title"
+        />
 
     <Button
         android:id="@+id/character_list_MakeButton2"
@@ -60,6 +61,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
