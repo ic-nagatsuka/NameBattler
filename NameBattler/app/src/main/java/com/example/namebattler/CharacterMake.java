@@ -63,11 +63,10 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
                 String name = editName.getText().toString();
                 RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
-                System.out.println(radio.getText());
-                if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
-                    Player player = makePlayer(name, radio.getText());
 
+                if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
                     SQLiteDatabase db = helper.getWritableDatabase();
+                    Player player = makePlayer(name, radio.getText());
 
                     ContentValues values = new ContentValues();
                     values.put("NAME",  player.GetName());
