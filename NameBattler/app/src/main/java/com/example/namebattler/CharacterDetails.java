@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +30,6 @@ public class CharacterDetails extends AppCompatActivity {
 
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
-
 
         for(int i = 0; i < cursor.getCount(); i++){
 
@@ -63,10 +64,15 @@ public class CharacterDetails extends AppCompatActivity {
                 text.setText("作成日:" + cursor.getString(8));
                 System.out.println(cursor.getString(8));
             }
-            
+
             cursor.moveToNext();
         }
 
 
     }
+
+        public void onClickBack(View v){
+            finish();
+        }
+
 }

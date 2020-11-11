@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CharacterMake">
+    tools:context=".CharacterDetails"
+    >
 
     <TextView
         android:id="@+id/characterDetails_title"
@@ -29,6 +30,7 @@
         android:text="戻る"
         android:textColor="#fff"
         android:textSize="24dp"
+        android:onClick="onClickBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
