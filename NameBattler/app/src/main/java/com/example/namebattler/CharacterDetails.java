@@ -22,9 +22,9 @@ public class CharacterDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_details);
 
-        SQLiteDatabase db = helper.getReadableDatabase();
+        final SQLiteDatabase db = helper.getWritableDatabase();
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
 
@@ -62,11 +62,22 @@ public class CharacterDetails extends AppCompatActivity {
 
                 text = findViewById(R.id.characterDetails_MakeDay);
                 text.setText("作成日:" + cursor.getString(8));
-                System.out.println(cursor.getString(8));
             }
-
             cursor.moveToNext();
         }
+
+        findViewById(R.id.characterDetails_DeleteButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.delete(
+                        CharacterInformation.TABLE_NAME,
+                        "name = ?",
+                        new String[] {intent.getStringExtra("name")});
+                Intent intent = new Intent(getApplication(), CharacterList.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
