@@ -12,7 +12,7 @@
         <activity android:name=".BattleStart"></activity>
         <activity android:name=".CharacterOrganization" />
         <activity android:name=".CharacterDetails" />
-        <activity android:name=".CharacterMakeSuccesScreen" />
+        <activity android:name=".CharacterMakeConpletion" />
         <activity android:name=".CharacterMake" />
         <activity android:name=".CharacterCheck" />
         <activity android:name=".CharacterList" />
