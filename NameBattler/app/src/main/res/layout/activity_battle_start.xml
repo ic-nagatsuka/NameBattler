@@ -59,32 +59,39 @@
         android:text="VS"
         android:textSize="40dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/battle_start_battleStar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/battle_start_title" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/battle_start_battleStar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
-        android:text="Button"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="76dp"
+        android:drawableRight="@drawable/blue_background_radius"
+        android:text="この相手と戦う"
+        android:textSize="25dp"
+        android:textColor="#fff"
+        android:background="@drawable/blue_background_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/battle_start_reselect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Button"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:text="相手を選びなおす"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:background="@drawable/blue_background_radius"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/battle_start_battle"
         tools:layout_editor_absoluteX="172dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
