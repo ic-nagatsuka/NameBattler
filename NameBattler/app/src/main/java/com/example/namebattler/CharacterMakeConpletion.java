@@ -22,7 +22,13 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             }
         });
 
-
+        findViewById(R.id.characterMakeConpletion_end).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), CharacterList.class);
+                startActivity(intent);
+            }
+        });
 
 
 
