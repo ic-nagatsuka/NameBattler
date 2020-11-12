@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.wifi.aware.Characteristics;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -82,7 +81,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     db.insert(CharacterInformation.TABLE_NAME,null, values);
 
 
-                    Intent intent = new Intent(getApplication(), CharacterMakeSuccesScreen.class);
+                    Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
                     startActivity(intent);
                 }
             }
