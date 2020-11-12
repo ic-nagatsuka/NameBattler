@@ -6,19 +6,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.transition.ChangeImageTransform;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.namebattler.database.CharacterInformation;
-import com.name.battler.Player.Party;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +35,7 @@ public class CharacterOrganization extends AppCompatActivity {
 
         SQLiteDatabase db = helper.getReadableDatabase();
 
-        startButton = findViewById(R.id.character_list_MakeButton2);
+        startButton = findViewById(R.id.character_organization_start);
 
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(sql, null);
@@ -74,6 +69,15 @@ public class CharacterOrganization extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.character_organization_ListView);
         listView.setAdapter(adapter);
+
+
+        findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), BattleStart.class);
+                startActivity(intent);
+            }
+        });
 
 
         findViewById(R.id.character_organization_back).setOnClickListener(new View.OnClickListener() {
