@@ -43,6 +43,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             RadioButton radioBtn = new RadioButton(this);
             radioBtn.setText(AllJob.allJob[i]);
             radioBtn.setTextSize(30);
+            radioBtn.setId(i);
             radioGroup.addView(radioBtn);
         }
 
