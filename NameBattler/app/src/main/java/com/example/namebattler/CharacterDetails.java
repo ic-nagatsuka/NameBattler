@@ -61,7 +61,7 @@ public class CharacterDetails extends AppCompatActivity {
                 text.setText(cursor.getString(7));
 
                 text = findViewById(R.id.characterDetails_MakeDay);
-                text.setText("作成日:" + cursor.getString(8));
+                text.setText("作成日 : " + cursor.getString(8));
             }
             cursor.moveToNext();
         }
