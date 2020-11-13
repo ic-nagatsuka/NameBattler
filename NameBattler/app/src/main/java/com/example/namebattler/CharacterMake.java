@@ -43,6 +43,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             RadioButton radioBtn = new RadioButton(this);
             radioBtn.setText(AllJob.allJob[i]);
             radioBtn.setTextSize(30);
+            radioBtn.setId(i);
             radioGroup.addView(radioBtn);
         }
 
@@ -101,7 +102,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     }
 
     public String getDate(){
-        SimpleDateFormat format = new SimpleDateFormat() ;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/M/dd hh:mm") ;
         return format.format(new Date());
     }
 
