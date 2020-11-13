@@ -102,7 +102,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     }
 
     public String getDate(){
-        SimpleDateFormat format = new SimpleDateFormat() ;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/M/dd hh:mm") ;
         return format.format(new Date());
     }
 
