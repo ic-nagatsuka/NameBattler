@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
@@ -25,17 +26,16 @@ public class CharacterOrganization extends AppCompatActivity {
 
 
     int charaCount = 0;
+    int layout = R.layout.activity_character_organization;
 
-    Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_organization);
+        setContentView(layout);
+        View v = findViewById(R.id.character_organization_start);
 
         SQLiteDatabase db = helper.getReadableDatabase();
-
-        startButton = findViewById(R.id.character_organization_start);
 
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(sql, null);
@@ -55,16 +55,10 @@ public class CharacterOrganization extends AppCompatActivity {
         }
 
 
-        SimpleAdapter adapter = new SimpleAdapter(
+        BaseAdapter adapter = new BaseAdapter_CharacterOrganization(
                 this,
-                list,
-                R.layout.listview_character_organization,
-                new String[]{"name", "job", "status"},
-                new int[]{
-                        R.id.character_organization_listView_status_name,
-                        R.id.character_organization_listView_status_job,
-                        R.id.character_organization_listView_status
-                }
+                v
+
         );
 
         ListView listView = findViewById(R.id.character_organization_ListView);
@@ -89,24 +83,8 @@ public class CharacterOrganization extends AppCompatActivity {
 
         });
 
-
     }
 
-    public void onClickCheckBox(View v){
-        CheckBox checkBox = v.findViewById(R.id.character_organization_listView_checkBox);
-
-        if(checkBox.isChecked() && charaCount == 3){
-            checkBox.setChecked(false);
-            Toast.makeText(this, "最大選択数に達しました", Toast.LENGTH_SHORT).show();
-        }else if(checkBox.isChecked()){
-            charaCount++;
-        }else if(checkBox.isChecked() == false){
-            charaCount--;
-        }
-
-        startButton.setText("このパーティーで開始(" + charaCount + "/3)");
-
-    }
 
     public String makeStatusText(Cursor cursor){
 
@@ -120,6 +98,11 @@ public class CharacterOrganization extends AppCompatActivity {
     }
 
 
+/*
+テキストを変更してもレイアウトが変わらない
+onCreateの外はレイアウト変更にViewが必要
 
+
+ */
 
 }
