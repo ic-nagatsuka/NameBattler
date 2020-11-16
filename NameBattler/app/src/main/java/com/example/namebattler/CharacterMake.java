@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.wifi.aware.Characteristics;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -44,6 +43,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             RadioButton radioBtn = new RadioButton(this);
             radioBtn.setText(AllJob.allJob[i]);
             radioBtn.setTextSize(30);
+            radioBtn.setId(i);
             radioGroup.addView(radioBtn);
         }
 
@@ -82,7 +82,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     db.insert(CharacterInformation.TABLE_NAME,null, values);
 
 
-                    Intent intent = new Intent(getApplication(), CharacterMakeSuccesScreen.class);
+                    Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
                     startActivity(intent);
                 }
             }
@@ -102,7 +102,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     }
 
     public String getDate(){
-        SimpleDateFormat format = new SimpleDateFormat() ;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/M/dd hh:mm") ;
         return format.format(new Date());
     }
 
