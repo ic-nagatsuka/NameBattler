@@ -68,36 +68,30 @@ public class CharacterList extends AppCompatActivity {
                 null
                 );
 
-        if(cursor.moveToFirst()){
-
-        }
-
         List<HashMap<String, String>> list = new ArrayList<>();
-        for(int i = 0; i < cursor.getCount(); i++){
-            HashMap<String, String> hash = new HashMap<>();
-            hash.put("name", cursor.getString(cursor.getColumnIndex("NAME")));
-            hash.put("job", cursor.getString(cursor.getColumnIndex("JOB")));
-            hash.put("status",
-                    "HP:" + cursor.getString(cursor.getColumnIndex("HP")) +
-                    " MP:" + cursor.getString(cursor.getColumnIndex("MP")) +
-                    " STR:" + cursor.getString(cursor.getColumnIndex("STR")) +
-                    " DEF:" + cursor.getString(cursor.getColumnIndex("DEF")) +
-                    " LUCK:" + cursor.getString(cursor.getColumnIndex("LUCK")) +
-                    " AGI:" + cursor.getString(cursor.getColumnIndex("AGI"))
-            );
-            list.add(hash);
-            cursor.moveToNext();
+        if(cursor.moveToFirst()){
+            for(int i = 0; i < cursor.getCount(); i++){
+                HashMap<String, String> hash = new HashMap<>();
+                hash.put("name", cursor.getString(cursor.getColumnIndex("NAME")));
+                hash.put("job", cursor.getString(cursor.getColumnIndex("JOB")));
+                hash.put("status",
+                        "HP:" + cursor.getString(cursor.getColumnIndex("HP")) +
+                                " MP:" + cursor.getString(cursor.getColumnIndex("MP")) +
+                                " STR:" + cursor.getString(cursor.getColumnIndex("STR")) +
+                                " DEF:" + cursor.getString(cursor.getColumnIndex("DEF")) +
+                                " LUCK:" + cursor.getString(cursor.getColumnIndex("LUCK")) +
+                                " AGI:" + cursor.getString(cursor.getColumnIndex("AGI"))
+                );
+                list.add(hash);
+                cursor.moveToNext();
+            }
         }
 
         if(cursor.getCount() < listNum){
             for(int i = 0; i < listNum - cursor.getCount(); i++){
                 HashMap<String, String> hash = new HashMap<>();
-                hash.put("name", "");
-                hash.put("job", "");
-                hash.put("status", "");
                 list.add(hash);
             }
-
         }
 
         SimpleAdapter adapter = new SimpleAdapter(
@@ -129,7 +123,9 @@ public class CharacterList extends AppCompatActivity {
                 String name = text.getText().toString();
                 intent.putExtra("name", name);
 
-                startActivity(intent);
+                if(!name.equals("")){
+                    startActivity(intent);
+                }
             }
         });
 
