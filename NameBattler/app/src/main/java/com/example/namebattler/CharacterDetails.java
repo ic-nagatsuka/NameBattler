@@ -79,6 +79,13 @@ public class CharacterDetails extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.characterDetails_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                finish();
+            }
+        });
+
 
     }
 
