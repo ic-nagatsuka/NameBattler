@@ -19,8 +19,8 @@ public class StrategyOfDamagePriority extends Strategy{
 	}
 	
 	@Override
-	public void Action(Player attacker, Party defenceParty){
-		Player defender = RandomDefender(defenceParty.Getmenbers());
+	public void action(Player attacker, Party defenceParty){
+		Player defender = randomDefender(defenceParty.getmenbers());
 		int highDamage = 0;	//スキルの最大ダメージ計算値
 		Skill useSkill;		//使用スキル
 		int damage = 0;			//スキルのダメージ計算値
@@ -29,20 +29,20 @@ public class StrategyOfDamagePriority extends Strategy{
 		
 		//攻撃を一番与えそうな攻撃方法を選ぶ
 		//スキルが使える場合
-		if(attacker.CheckUseSkill()){
+		if(attacker.checkUseSkill()){
 			//スキルがないプレイヤーだとエラーが出るのでここで初期化
-			useSkill = attacker.GetUseSkill().get(0);
+			useSkill = attacker.getUseSkill().get(0);
 			//攻撃できるスキルを探す
-			for(Skill skill : attacker.GetUseSkill()){
+			for(Skill skill : attacker.getUseSkill()){
 				
 				//スキルの計算ダメージ
-				damage = this.CheckSkillDamage(skill);
+				damage = this.checkSkillDamage(skill);
 				try{
 					//状態異常スキルの場合
 					AllSkill.effectTurn = (SkillOfEffectTurn)skill;
 					
 					//同じ状態異常にかかっている場合
-					if(defender.CheckSameAbnormal(AllSkill.effectTurn)){
+					if(defender.checkSameAbnormal(AllSkill.effectTurn)){
 						damage = 0;
 					}
 				}catch(Exception e){}
@@ -59,20 +59,20 @@ public class StrategyOfDamagePriority extends Strategy{
 			}
 			
 			//通常攻撃のダメージがスキルダメージより多ければ使う
-			if(attacker.CalcDamage(defender)*2 > highDamage || highDamage == 0)
+			if(attacker.calcDamage(defender)*2 > highDamage || highDamage == 0)
 			{
-				attacker.NormalAttack(defender);
+				attacker.normalAttack(defender);
 			}else if(skillAttack){
 				//選ばれたスキルを使う
-				attacker.UseSkill(useSkill, defender);
+				attacker.useSkill(useSkill, defender);
 			}else{
 				//選ばれるスキルがなければ通常の流れ
-				attacker.Action(defender);
+				attacker.action(defender);
 			}
 			
 		}else{
 			//使えるスキルがなければ通常攻撃
-			attacker.NormalAttack(defender);	
+			attacker.normalAttack(defender);
 		}
 		
 	}
@@ -82,7 +82,7 @@ public class StrategyOfDamagePriority extends Strategy{
 	 * @param useSkill プレイヤーが使用できるスキル
 	 * @return スキルダメージ計算値
 	 */
-	public int CheckSkillDamage(Skill useSkill){
+	public int checkSkillDamage(Skill useSkill){
 		int i = 0;
 		int damage = 0;//ダメージ値
 		
@@ -92,12 +92,12 @@ public class StrategyOfDamagePriority extends Strategy{
 				switch(i){
 				case 0 :
 					SkillOfAttackMagic skill1 = (SkillOfAttackMagic)useSkill;
-					damage = skill1.GetCalcDamage();
+					damage = skill1.getCalcDamage();
 					break;
 					
 				case 1 :
 					SkillOfDamageAbnormalState skill2 = (SkillOfDamageAbnormalState)useSkill;
-					damage = skill2.GetCalcDamage();
+					damage = skill2.getCalcDamage();
 					break;
 					
 				default:

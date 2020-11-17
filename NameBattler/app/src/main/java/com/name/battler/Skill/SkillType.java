@@ -16,7 +16,7 @@ public class SkillType{
 	/*============
 	 * Getメソッド
 	 ============*/
-	public int GetType(){
+	public int getType(){
 		return this.type;
 	}
 }

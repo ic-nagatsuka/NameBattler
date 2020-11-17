@@ -16,11 +16,11 @@ public class StrategyOfLeastHP extends Strategy{
 	}
 	
 	@Override
-	public void Action(Player attacker, Party defenderParty){
+	public void action(Player attacker, Party defenderParty){
 		Player defender ;
-		defender = SelectDefender(defenderParty);
+		defender = selectDefender(defenderParty);
 		//通常の作戦に戻る
-		attacker.Action(defender);
+		attacker.action(defender);
 	}
 
 	/**
@@ -29,12 +29,12 @@ public class StrategyOfLeastHP extends Strategy{
 	 * @param defenderParty
 	 * @return　探したステータス項目が一番低いプレイヤー
 	 */
-	protected Player SelectDefender(Party defenderParty) {
-		Player defender = defenderParty.Getmenbers().get(0);
+	protected Player selectDefender(Party defenderParty) {
+		Player defender = defenderParty.getmenbers().get(0);
 		//目的のステータスが一番低いプレイヤーを選ぶ
-		for(Player player : defenderParty.Getmenbers()){
+		for(Player player : defenderParty.getmenbers()){
 			
-			if(defender.GetHP() > player.GetHP()){
+			if(defender.getHP() > player.getHP()){
 				defender = player;
 			}
 		}

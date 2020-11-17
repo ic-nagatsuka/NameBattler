@@ -27,16 +27,16 @@ public class SkillOfStateUp extends SkillOfEffectTurn{
 	/*============
 	 * Getメソッド
 	 ============*/
-	public int GetUpDamage(){
+	public int getUpDamage(){
 		return this.upDamage;
 	}
 	
 	@Override
-	public void Use(Player attacker, Player target){
-		System.out.println(attacker.GetName() + "はきあいをためた！");
-		UsePlayerMp(attacker);
+	public void use(Player attacker, Player target){
+		System.out.println(attacker.getName() + "はきあいをためた！");
+		usePlayerMp(attacker);
 		
-		target.SetStr(target.GetSTR() * upDamage);
+		target.setStr(target.getSTR() * upDamage);
 		target.turnAbnormalState.add(upDamage, new StateEffect(AllSkill.power, this.effectTurn));
 	}
 	
@@ -45,10 +45,10 @@ public class SkillOfStateUp extends SkillOfEffectTurn{
 	 * 状態異常効果
 	 * @param target 行動プレイヤー
 	 */
-	public void Effect(Player target, int turn){
+	public void effect(Player target, int turn){
 		
 		if(turn == 0){
-			target.SetStr(target.GetSTR() / upDamage);
+			target.setStr(target.getSTR() / upDamage);
 		}
 		
 	}

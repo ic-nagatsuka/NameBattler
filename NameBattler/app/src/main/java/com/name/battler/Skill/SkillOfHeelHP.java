@@ -13,12 +13,12 @@ public class SkillOfHeelHP extends SkillOfHeel{
 	}
 	
 	@Override
-	public void Use(Player attacker, Player target){
-		System.out.println(attacker.GetName() + "は" + this.GetName() + "を唱えた！");
-		UsePlayerMp(attacker);//mpを消費する
+	public void use(Player attacker, Player target){
+		System.out.println(attacker.getName() + "は" + this.getName() + "を唱えた！");
+		usePlayerMp(attacker);//mpを消費する
 		
-		System.out.println(target.GetName() + "は" + this.heelPoint + "回復した！");
+		System.out.println(target.getName() + "は" + this.heelPoint + "回復した！");
 		//スキル効果
-		target.SetHP(Math.min(target.GetHP() + this.heelPoint, target.GetMaxHp()));
+		target.setHP(Math.min(target.getHP() + this.heelPoint, target.getMaxHp()));
 	}
 }

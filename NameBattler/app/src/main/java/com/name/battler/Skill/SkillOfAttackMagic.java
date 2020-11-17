@@ -23,30 +23,30 @@ public class SkillOfAttackMagic extends Skill
 	/*============
 	 * Getメソッド
 	 ============*/
-	public int GetMinDama(){
+	public int getMinDama(){
 		return this.minDama;
 	}
-	public int GetMaxDama(){
+	public int getMaxDama(){
 		return this.maxDama;
 	}
 	
-	public int GetCalcDamage(){
+	public int getCalcDamage(){
 		return this.minDama+this.maxDama;
 	}
 	/*
 	 * メソッド
 	 */
 	@Override
-	public void Use(Player attacker, Player target)
+	public void use(Player attacker, Player target)
 	{
 		int damage;
-		System.out.println(attacker.GetName() + "は" + this.name + "を唱えた！");
-		UsePlayerMp(attacker);
+		System.out.println(attacker.getName() + "は" + this.name + "を唱えた！");
+		usePlayerMp(attacker);
 		
-		for(Player defender : target.GetParty().Getmenbers()){
-			damage=RandomDamage(this.minDama, this.maxDama);
-			System.out.println(defender.GetName() + "に" + damage + "のダメージ！");
-			defender.Damage(damage);
+		for(Player defender : target.getParty().getmenbers()){
+			damage= randomDamage(this.minDama, this.maxDama);
+			System.out.println(defender.getName() + "に" + damage + "のダメージ！");
+			defender.damage(damage);
 			
 		}
 		
@@ -58,7 +58,7 @@ public class SkillOfAttackMagic extends Skill
 	 * @param max 最大値
 	 * @return 範囲内の数値
 	 */
-	public int RandomDamage(int min, int max){
+	public int randomDamage(int min, int max){
 		int randNum = rand.nextInt(max - min) + min;
 		return randNum;
 	}

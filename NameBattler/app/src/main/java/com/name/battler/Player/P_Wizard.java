@@ -9,20 +9,20 @@ public class P_Wizard extends Player{
 	 =============*/
 	public P_Wizard(String name) {
 		super(name);
-		this.SetJob(AllJob.Wizard);
+		this.setJob(AllJob.Wizard);
 
 	}
 	
-	protected void MakeCharacter(){
-		this.hp = GetNumber(0, 100) + 50;
-		this.mp = GetNumber(1, 50) + 30;
-		this.str = GetNumber(2, 49) + 1;
-		this.def = GetNumber(3, 49) + 1;
-		this.luck = GetNumber(4, 99) + 1;
-		this.agi = GetNumber(5, 40) + 20;
+	protected void makeCharacter(){
+		this.hp = getNumber(0, 100) + 50;
+		this.mp = getNumber(1, 50) + 30;
+		this.str = getNumber(2, 49) + 1;
+		this.def = getNumber(3, 49) + 1;
+		this.luck = getNumber(4, 99) + 1;
+		this.agi = getNumber(5, 40) + 20;
 	}
 	//this.useSkill.add(AllSkill.);
-	protected void MakeSkill(){
+	protected void makeSkill(){
 		this.useSkill.add(AllSkill.fire);
 		this.useSkill.add(AllSkill.thunder);
 //		this.useSkill.add(AllSkill.);
@@ -30,12 +30,12 @@ public class P_Wizard extends Player{
 	}
 		
 	@Override
-	public void NormalAttack(Player target){
+	public void normalAttack(Player target){
 		System.out.println(this.name + "魔法を唱えた");
 		if(rand.nextInt(2) == 0){
 			System.out.println("が何も起こらなかった");
 		}else{
-			super.NormalAttack(target);
+			super.normalAttack(target);
 		}
 	}
 	

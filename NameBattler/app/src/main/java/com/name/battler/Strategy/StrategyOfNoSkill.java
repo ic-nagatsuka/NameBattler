@@ -20,12 +20,12 @@ public class StrategyOfNoSkill extends Strategy{
 	
 	
 	@Override
-	public void Action(Player attacker, Party defenderParty){
+	public void action(Player attacker, Party defenderParty){
 		Player defender;
 		//ランダムで選ぶ
-		defender = this.RandomDefender(defenderParty.Getmenbers());
+		defender = this.randomDefender(defenderParty.getmenbers());
 		
-		attacker.NormalAttack(defender);
+		attacker.normalAttack(defender);
 	}
 	
 	

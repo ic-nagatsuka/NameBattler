@@ -58,142 +58,132 @@ public abstract class Player{
 		this.name = name;
 
 		// キャラクターのパラメータ生成
-		MakeCharacter();
+		makeCharacter();
 		//職業のスキル作成
-		MakeSkill();
+		makeSkill();
 		//アイテムを渡す
-		MakeItem();
+		makeItem();
 		
-		this.maxHp = this.GetHP();
-		this.beforeHp = this.GetHP();
+		this.maxHp = this.getHP();
+		this.beforeHp = this.getHP();
 	}
 	
 	/**
 	 * パラメーター生成
 	 */
-	abstract void MakeCharacter();
+	abstract void makeCharacter();
 	
 	/**
 	 * スキル設定
 	 * List<Skill>.add(AllSkill.name)
 	 */
-	abstract void MakeSkill();
-	
-	/**
-	 * レベルアップ効果
-	 */
-	protected void UpLevelEffect(){
-		
-	}
-	
-	
-	
+	abstract void makeSkill();
 	
 	/*============
 	 * Getメソッド 
 	 ============*/
-	public int GetLevel() {
+	public int getLevel() {
 		return this.level;
 	}
-	public Party GetParty(){
+	public Party getParty(){
 		return this.party;
 	}
-	public String GetPartyName(){
+	public String getPartyName(){
 		return this.partyName;
 	}
-	public Job GetJob(){
+	public Job getJob(){
 		return this.job;
 	}
-	public String GetName(){
+	public String getName(){
 		return this.name;
 	}
-	public int GetHP(){ 
+	public int getHP(){
 		return this.hp;
 	}
-	public int GetMP(){
+	public int getMP(){
 		return this.mp;
 	}
-	public int GetSTR(){
+	public int getSTR(){
 		return this.str;
 	}
-	public int GetDEF(){
+	public int getDEF(){
 		return this.def;
 	}
-	public int GetLUCK(){
+	public int getLUCK(){
 		return this.luck;
 	}
-	public int GetAGI() {
+	public int getAGI() {
 		return this.agi;
 	}
 	
-	public int GetMaxHp(){
+	public int getMaxHp(){
 		return this.maxHp;
 	}
-	public int GetMaxMp(){
+	public int getMaxMp(){
 		return this.maxMp;
 	}
-	public int GetBeforeHP(){
+	public int getBeforeHP(){
 		return this.beforeHp;
 	}
-	public Strategy GetStrategy(){
+	public Strategy getStrategy(){
 		return this.strategy;
 	}
 	
-	public List<Item> GetUseItem(){
+	public List<Item> getUseItem(){
 		return this.useItem;
 	}
 	
-	public boolean GetInaction(){
+	public boolean getInaction(){
 		return this.inaction;
 	}
-	public boolean GetCounter(){
+	public boolean getCounter(){
 		return this.counter;
 	}
-	public List<Skill>GetUseSkill(){
+	public List<Skill> getUseSkill(){
 		return this.useSkill;
 	}
 	
 	/*============
 	 *Setメソッド 
 	 ============*/
-	public void SetLevel (int level){
+	public void setLevel(int level){
 		this.level = level;
 	}
-	public void SetParty(Party party){
+	public void setParty(Party party){
 		this.party = party;
 	}
-	public void SetPartyName(String partyName){
+	public void setPartyName(String partyName){
 		this.partyName = partyName;
 	}
-	public void SetStrategy(Strategy strategy){
+	public void setStrategy(Strategy strategy){
 		this.strategy = strategy;
 	}
-	public void SetJob(Job job){
+	public void setJob(Job job){
 		this.job = job;
 	}
-	public void SetHP(int hp){ 
+	public void setHP(int hp){
 		this.hp = hp;
 	}
-	public void SetMP(int mp){
+	public void setMP(int mp){
 		this.mp = mp;
 	}
-	public void SetStr(int str){
+	public void setStr(int str){
 		this.str = str;
 	}
 	
-	public void SetInaction(boolean inaction){
+	public void setInaction(boolean inaction){
 		this.inaction = inaction;
 	}
 	
-	public void SetAbnormalState(StateEffect skill){
+	public void setAbnormalState(StateEffect skill){
 		this.turnAbnormalState.add(skill);
 	}
 	
-	public void SetCounter(boolean counter){
+	public void setCounter(boolean counter){
 		this.counter = counter;
 	}
 	
-	public void SetBeforHP(int beforeHp){
+	public void setBeforHP(int beforeHp){
 		this.beforeHp = beforeHp;
 	}
 	
@@ -205,17 +195,17 @@ public abstract class Player{
 	 * @param attacker 行動プレイヤー
 	 * @param target 対象プレイヤー
 	 */
-	public void NormalAttack(Player target){
+	public void normalAttack(Player target){
 		
-		this.ReadyCounter(target);
+		this.readyCounter(target);
 //		System.out.println(attacker.GetName() + "の攻撃！");
 		
 		//通常のダメージ計算
-		NormalDamage(target);
+		normalDamage(target);
 		//戦闘不能判定
-		DeathJudge(target.GetParty().Getmenbers());
+		deathJudge(target.getParty().getmenbers());
 		//カウンター攻撃確認
-		target.CheckCounter(this);
+		target.checkCounter(this);
 	}
 	
 	/**
@@ -223,17 +213,17 @@ public abstract class Player{
 	 * @param attacker 攻撃するプレイヤー
 	 * @param target 攻撃されるプレイヤー
 	 */
-	protected void NormalDamage(Player target){
-		int damage = CalcDamage(target);
-		if(CheckLuckyHit(target)){
-			damage = this.GetSTR();
+	protected void normalDamage(Player target){
+		int damage = calcDamage(target);
+		if(checkLuckyHit(target)){
+			damage = this.getSTR();
 		}
 		
 		if(damage == 0){
-			System.out.println(this.GetName() + "はダメージを与えられなかった！\n");
+			System.out.println(this.getName() + "はダメージを与えられなかった！\n");
 		}else{
-			System.out.println(target.GetName() + "に" + damage + "のダメージ！\n");
-			target.Damage(damage);
+			System.out.println(target.getName() + "に" + damage + "のダメージ！\n");
+			target.damage(damage);
 		}
 	}
 	
@@ -245,10 +235,10 @@ public abstract class Player{
 	 * true:	会心の一撃
 	 * false: 	通常ダメージ
 	 */
-	protected boolean CheckLuckyHit(Player target){
+	protected boolean checkLuckyHit(Player target){
 		int luckyHit = rand.nextInt(1000);
 		//会心の一撃が出た場合
-		if(this.GetLUCK() > luckyHit){
+		if(this.getLUCK() > luckyHit){
 			System.out.println("会心の一撃！！");
 			return true;
 		}else{
@@ -261,7 +251,7 @@ public abstract class Player{
 	 * @param attacker	使用するプレイヤー 
 	 * @param target 	対象プレイヤー
 	 */
-	private void UseItem(Player target){
+	private void useItem(Player target){
 		Item randItem = useItem.get(rand.nextInt(useItem.size()));
 		randItem.Use(this, target);
 		useItem.remove(randItem);
@@ -273,17 +263,17 @@ public abstract class Player{
 	 * @param attacker 攻撃するプレイヤー
 	 * @param target 攻撃されるプレイヤー
 	 */
-	public void UseSkill(Skill skill, Player target){
+	public void useSkill(Skill skill, Player target){
 		//回復スキルだった場合回復するプレイヤーを選択する
-		if(skill.GetType() == AllSkill.HEEL){
-			target = this.HeelTargetHP(this.GetParty().Getmenbers());
+		if(skill.getType() == AllSkill.HEEL){
+			target = this.heelTargetHP(this.getParty().getmenbers());
 		}
 		//スキルを使用する
-		skill.Use(this, target);
+		skill.use(this, target);
 		//戦闘不能判定
-		DeathJudge(target.GetParty().Getmenbers());
+		deathJudge(target.getParty().getmenbers());
 		//カウンター攻撃
-		target.CheckCounter(this);
+		target.checkCounter(this);
 		
 		System.out.println();
 	}
@@ -293,15 +283,15 @@ public abstract class Player{
 	 * @param attacker 攻撃するプレイヤー
 	 * @return　使用するスキル
 	 */
-	private Skill RandomSelectSkill(){
+	private Skill randomSelectSkill(){
 		Skill skill;
 		while(true){
 			//スキルをランダムで選ぶ
 			skill = useSkill.get( rand.nextInt( useSkill.size()));
 			//MPの確認
-			if(skill.GetUseMP() <= this.GetMP()){
+			if(skill.getUseMP() <= this.getMP()){
 				//回復スキルが使えるか確認
-				if(skill.GetType() == AllSkill.HEEL && !CheckDicreasePlayerHp(this.GetParty())){
+				if(skill.getType() == AllSkill.HEEL && !checkDicreasePlayerHp(this.getParty())){
 					continue;
 				}
 				return skill;
@@ -316,14 +306,14 @@ public abstract class Player{
 	 * true:	使える
 	 * false:	使えない
 	 */
-	public boolean CheckUseSkill(){
+	public boolean checkUseSkill(){
 		while(true){
 			if(useSkill.size() == 0 ||//使うスキルがない
-					SkillMinUseMp() > this.GetMP() ||//スキルを使うMPがない 
+					skillMinUseMp() > this.getMP() ||//スキルを使うMPがない
 					//回復スキルはあるが使えない
 						useSkill.size() == 1 && 
-						useSkill.get(0).GetType() == AllSkill.HEEL &&
-						!CheckDicreasePlayerHp(this.GetParty()))
+						useSkill.get(0).getType() == AllSkill.HEEL &&
+						!checkDicreasePlayerHp(this.getParty()))
 			{
 				return false;
 			}else{
@@ -340,11 +330,11 @@ public abstract class Player{
 	 * true:	減少している
 	 * false: 	減少していない
 	 */
-	protected boolean CheckDicreasePlayerHp(Party party){
+	protected boolean checkDicreasePlayerHp(Party party){
 		heelSkill = false;
-		for(Player player : party.Getmenbers()){
+		for(Player player : party.getmenbers()){
 			//HPが減っている場合
-			if(player.GetMaxHp() - player.GetHP() > 0){
+			if(player.getMaxHp() - player.getHP() > 0){
 				return true;
 			}
 		}
@@ -358,11 +348,11 @@ public abstract class Player{
 	 * true:	減少している
 	 * false: 	減少していない
 	 */
-	protected boolean CheckDicreasePlayerMP(Party party){
-		for(Player player : party.Getmenbers())
+	protected boolean checkDicreasePlayerMP(Party party){
+		for(Player player : party.getmenbers())
 		{
 			//MPが減っている場合
-			if((player.GetMaxMp() - player.GetMP()) > 0){
+			if((player.getMaxMp() - player.getMP()) > 0){
 				return true;
 			}
 		}
@@ -374,15 +364,15 @@ public abstract class Player{
 	 * @param party 攻撃側パーティー
 	 * @return 回復されるプレイヤー
 	 */
-	protected Player HeelTargetHP(List<Player> party){
+	protected Player heelTargetHP(List<Player> party){
 		double percent;
-		double minPercent = party.get(0).GetHP() * party.get(0).GetMaxHp();//HPの割合
+		double minPercent = party.get(0).getHP() * party.get(0).getMaxHp();//HPの割合
 		
 		Player target = party.get(0);
 		
 		//HPの割合が一番少ないプレイヤーにする
 		for(Player player : party){
-			percent=(double)player.GetHP() / (double)player.GetMaxHp() * 100;
+			percent=(double)player.getHP() / (double)player.getMaxHp() * 100;
 			if(percent < minPercent){
 				target = player;
 				minPercent=percent;
@@ -397,15 +387,15 @@ public abstract class Player{
 	 * @param party 攻撃側パーティー
 	 * @return 回復されるプレイヤー
 	 */
-	private Player HeelTargetMP(List<Player> party){
+	private Player heelTargetMP(List<Player> party){
 		double percent;	//MPの割合
-		double minPercent = party.get(0).GetMP() * party.get(0).GetMaxMp();
+		double minPercent = party.get(0).getMP() * party.get(0).getMaxMp();
 		
 		Player target = party.get(0);
 		
 		//MPの割合が一番少ないプレイヤーにする
 		for(Player player : party){
-			percent=(double)player.GetMP() / (double)player.GetMaxHp() * 100;
+			percent=(double)player.getMP() / (double)player.getMaxHp() * 100;
 			if(percent < minPercent){
 				target = player;
 				minPercent=percent;
@@ -419,13 +409,13 @@ public abstract class Player{
 	 * @param attacker 攻撃されたプレイヤー
 	 * @param target 攻撃したプレイヤー
 	 */
-	protected void CheckCounter(Player target){
+	protected void checkCounter(Player target){
 		//HPが減っていて、カウンターができる状態で、戦闘不能ではなく、相手が同じパーティーではない場合
-		if(this.GetBeforeHP() != this.GetHP() && 
-				this.GetCounter() && 
-				this.GetHP() != 0 && this.GetParty() != target.GetParty()){
+		if(this.getBeforeHP() != this.getHP() &&
+				this.getCounter() &&
+				this.getHP() != 0 && this.getParty() != target.getParty()){
 			//カウンター攻撃
-			this.CounterAttack(target);
+			this.counterAttack(target);
 		}
 	}
 	
@@ -434,10 +424,10 @@ public abstract class Player{
 	 * @param attacker 攻撃するプレイヤー
 	 * @param defender 攻撃されるプレイヤー
 	 */
-	protected void CounterAttack(Player target){
-		System.out.println(this.GetName() + "は反撃した！！");
+	protected void counterAttack(Player target){
+		System.out.println(this.getName() + "は反撃した！！");
 		
-		NormalDamage(target);
+		normalDamage(target);
 	}
 	
 	/**
@@ -445,9 +435,9 @@ public abstract class Player{
 	 * @param target 攻撃されるプレイヤー
 	 * @return 与えるダメージ
 	 */
-	public int CalcDamage(Player target)
+	public int calcDamage(Player target)
 	{
-        int damage = GetSTR() - target.GetDEF();
+        int damage = getSTR() - target.getDEF();
         if (damage < 0)
         {
             damage = 0;
@@ -459,25 +449,25 @@ public abstract class Player{
 	 * ダメージを与える
 	 * @param damage 与えるダメージ
 	 */
-	public void Damage(int damage){
+	public void damage(int damage){
         // ダメージ値分、HPを減少させる
-        this.hp = Math.max(this.GetHP() - damage, 0);
+        this.hp = Math.max(this.getHP() - damage, 0);
     }
 	
 	 /**
 	  * 死亡判定
 	  * @param party 攻撃を受けたパーティー
 	  */
-	protected void DeathJudge(List<Player> party){
+	protected void deathJudge(List<Player> party){
 		for(int i = party.size() -1 ; 0 <= i; i--){
 			Player player = party.get(i);
 			//HPが０以下
-			if(player.GetHP() <= 0){
-				System.out.println(player.GetName() + "は力尽きた...\n");
+			if(player.getHP() <= 0){
+				System.out.println(player.getName() + "は力尽きた...\n");
 				//パーティーから除く
-				player.GetParty().RemovePlayer(player);
+				player.getParty().removePlayer(player);
 				
-				this.SetLevel(this.GetLevel() + 1 );
+				this.setLevel(this.getLevel() + 1 );
 				//レベルアップの処理==================================
 			}
 		}
@@ -487,14 +477,14 @@ public abstract class Player{
 	 * 状態異常での戦闘不能
 	 * @param party
 	 */
-	public void DeathJudgeAbnormal(List<Player> party){
+	public void deathJudgeAbnormal(List<Player> party){
 		for(int i = party.size() -1 ; 0 <= i; i--){
 			Player player = party.get(i);
 			//HPが０以下
-			if(player.GetHP() <= 0){
-				System.out.println(player.GetName() + "は力尽きた...\n");
+			if(player.getHP() <= 0){
+				System.out.println(player.getName() + "は力尽きた...\n");
 				//パーティーから除く
-				player.GetParty().RemovePlayer(player);
+				player.getParty().removePlayer(player);
 			}
 		}
 	}
@@ -506,40 +496,40 @@ public abstract class Player{
 	 * 行動選択
 	 * @param target	攻撃されるプレイヤー
 	 */
-	public void Action(Player target){
-		this.ReadyCounter(target);
+	public void action(Player target){
+		this.readyCounter(target);
 		
-		if( (CheckDicreasePlayerHp(this.GetParty()) || CheckDicreasePlayerMP(this.GetParty()))
-				&& this.GetUseItem().size() != 0){
+		if( (checkDicreasePlayerHp(this.getParty()) || checkDicreasePlayerMP(this.getParty()))
+				&& this.getUseItem().size() != 0){
 			//アイテムを使う
 			Item item;
-			if(CheckDicreasePlayerHp(this.GetParty())){
+			if(checkDicreasePlayerHp(this.getParty())){
 				//HPが減っている場合
 				while(true){
 					item = useItem.get(rand.nextInt(useItem.size()));
 					//アイテムを使用する
 					if(item instanceof ItemHeel){
-						this.UseItem(HeelTargetHP(this.GetParty().Getmenbers()));
+						this.useItem(heelTargetHP(this.getParty().getmenbers()));
 						break;
 					}
 				}
-			}else if(CheckDicreasePlayerMP(this.GetParty())){
+			}else if(checkDicreasePlayerMP(this.getParty())){
 				//MPが減っている場合
 				while(true){
 					item = useItem.get(rand.nextInt(useItem.size()));
 					//アイテムを使用する
 					if(item instanceof ItemHeel){
-						this.UseItem(HeelTargetMP(this.GetParty().Getmenbers()));
+						this.useItem(heelTargetMP(this.getParty().getmenbers()));
 						break;
 					}
 				}
 			}
-		}else if(CheckUseSkill()){
+		}else if(checkUseSkill()){
 			//ランダムでスキルを使用する
-			UseSkill(RandomSelectSkill(), target);
+			useSkill(randomSelectSkill(), target);
 		}else{
 			//通常攻撃
-			NormalAttack(target);
+			normalAttack(target);
 		}	
 	}
 	
@@ -547,16 +537,16 @@ public abstract class Player{
 	 * 状態異常の効果
 	 * @param attacker 攻撃するプレイヤー
 	 */
-	public void AbnormalEffect(Player attacker){
+	public void abnormalEffect(Player attacker){
 		//すべての状態異常を動かす
 		for(int i = turnAbnormalState.size() -1; 0 <= i; i--){
 			StateEffect abnormal = turnAbnormalState.get(i);
 			//効果ターン経過
-			abnormal.SetTurn(abnormal.GetTurn() - 1);
+			abnormal.setTurn(abnormal.getTurn() - 1);
 			//状態異常の効果
-			abnormal.GetSkill().Effect(attacker, abnormal.GetTurn());
+			abnormal.getSkill().effect(attacker, abnormal.getTurn());
 			//効果ターン経過すれば削除する
-			if(abnormal.GetTurn() < 0){
+			if(abnormal.getTurn() < 0){
 				turnAbnormalState.remove(i);
 			}
 		}
@@ -567,9 +557,9 @@ public abstract class Player{
 	 * @param skill 使用するスキル
 	 * @return true : あり	false : なし
 	 */
-	public boolean CheckSameAbnormal(Skill skill){
+	public boolean checkSameAbnormal(Skill skill){
 		for(StateEffect abnormal : turnAbnormalState){
-			if(abnormal.GetSkill().equals(skill)){
+			if(abnormal.getSkill().equals(skill)){
 				return true;
 			}
 		}
@@ -579,29 +569,29 @@ public abstract class Player{
 	/**
 	 * ステータス表示
 	 */
-	public void PrintStatus()
+	public void printStatus()
 	{
 		System.out.printf("%s: %s (HP %3d : MP=%3d : STR=%3d : DEF=%3d : LUCK=%3d : AGI=%3d)\n",
-				job.GetName(), GetName(), GetHP(), GetMP(), GetSTR(), GetDEF(), GetLUCK(), GetAGI());
+				job.getName(), getName(), getHP(), getMP(), getSTR(), getDEF(), getLUCK(), getAGI());
 	}
 
-	public String getStatus()	{
-		return "HP:" + GetHP() +
-				" MP:" + GetMP() +
-				" STR:" + GetSTR() +
-				" DEF:" + GetDEF() +
-				" LUCK:" + GetLUCK() +
-				" AGI:" + GetAGI();
+	public String getstatus()	{
+		return "HP:" + getHP() +
+				" MP:" + getMP() +
+				" STR:" + getSTR() +
+				" DEF:" + getDEF() +
+				" LUCK:" + getLUCK() +
+				" AGI:" + getAGI();
 	}
 
 	/**
 	 * バトル中のステータス表示
 	 */
-	public void PrintBattleStatus(){
+	public void printBattleStatus(){
 		System.out.printf("%s %s HP %3d : MP %3d アイテム ",
-				this.GetJob().GetName(), this.GetName(), this.GetHP(), this.GetMP(),
+				this.getJob().getName(), this.getName(), this.getHP(), this.getMP(),
 				this.useItem.size());
-		PrintItem();
+		printItem();
 	}
 	
 	
@@ -612,7 +602,7 @@ public abstract class Player{
 	 * @param max 最大値
 	 * @return 参照場所の数値
 	 */
-	protected int GetNumber(int index, int max) {
+	protected int getNumber(int index, int max) {
 		try {
 			// 名前からハッシュ値を生成する
 			byte[] result = MessageDigest.getInstance("SHA-1").digest(this.name.getBytes());
@@ -637,9 +627,9 @@ public abstract class Player{
 	 * HPを上書きする
 	 * @param target
 	 */
-	private void ReadyCounter(Player target){
-		for(Player player : target.GetParty().Getmenbers()){
-			player.SetBeforHP(player.GetHP());
+	private void readyCounter(Player target){
+		for(Player player : target.getParty().getmenbers()){
+			player.setBeforHP(player.getHP());
 		}
 	}
 	
@@ -647,11 +637,11 @@ public abstract class Player{
 	 * スキルの最小消費MPの数値を返す
 	 * @return スキルの最小消費MP
 	 */
-	private int SkillMinUseMp(){
-		int minMp = useSkill.get(0).GetUseMP();
+	private int skillMinUseMp(){
+		int minMp = useSkill.get(0).getUseMP();
 		for(Skill skill : useSkill){
-			if(skill.GetUseMP() < minMp){
-				minMp = skill.GetUseMP();
+			if(skill.getUseMP() < minMp){
+				minMp = skill.getUseMP();
 			}
 		}
 		return minMp;
@@ -660,7 +650,7 @@ public abstract class Player{
 	/**
 	 * 所持アイテムを表示
 	 */
-	private void PrintItem(){
+	private void printItem(){
 		System.out.print("[");
 		if(this.useItem.size() == 0){
 			System.out.print("なし");
@@ -680,7 +670,7 @@ public abstract class Player{
 	/**
 	 * アイテムをセットする
 	 */
-	private void MakeItem(){
+	private void makeItem(){
 		for(int i = 0; i < itemNum; i++){
 			this.useItem.add(
 					allItem.GetItemList().get(rand.nextInt(allItem.GetItemList().size())));

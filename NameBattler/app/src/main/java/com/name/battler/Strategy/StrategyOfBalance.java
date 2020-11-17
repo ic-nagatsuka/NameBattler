@@ -13,12 +13,12 @@ public class StrategyOfBalance extends Strategy{
 	}
 	
 	@Override
-	public void Action(Player attacker, Party defenceParty){
-		Player target = RandomDefender(defenceParty.Getmenbers());
+	public void action(Player attacker, Party defenceParty){
+		Player target = randomDefender(defenceParty.getmenbers());
 		
 		
 		
-		attacker.Action(target);
+		attacker.action(target);
 	}
 	
 }
