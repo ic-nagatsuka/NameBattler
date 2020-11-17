@@ -94,7 +94,8 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         findViewById(R.id.character_make_backButton).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(getApplication(), CharacterList.class);
+                startActivity(intent);
             }
         });
 

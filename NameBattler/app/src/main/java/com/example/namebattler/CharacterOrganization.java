@@ -76,7 +76,8 @@ public class CharacterOrganization extends AppCompatActivity {
         findViewById(R.id.character_organization_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                finish();
+                Intent intent = new Intent(getApplication(), TopScreen.class);
+                startActivity(intent);
             }
 
 

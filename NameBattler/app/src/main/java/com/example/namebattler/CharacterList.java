@@ -136,7 +136,8 @@ public class CharacterList extends AppCompatActivity {
         findViewById(R.id.character_list_back).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(getApplication(), TopScreen.class);
+                startActivity(intent);
             }
         });
 
