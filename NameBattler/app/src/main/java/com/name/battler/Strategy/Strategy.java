@@ -25,7 +25,7 @@ public abstract class Strategy {
 	/*============
 	 * Getメソッド
 	 ============*/
-	public String GetName(){
+	public String getName(){
 		return this.name;
 	}
 	
@@ -34,14 +34,14 @@ public abstract class Strategy {
 	 * @param attacker 攻撃するプレイヤー
 	 * @param defnderParty 攻撃されるパーティー
 	 */
-	public abstract void Action(Player attacker, Party defnderParty );
+	public abstract void action(Player attacker, Party defnderParty );
 	
 	/**
 	 *ランダムにプレイヤーを選ぶ
 	 * @param defenceParty 攻撃されるパーティー
 	 * @return 攻撃されるプレイヤー
 	 */
-	protected Player RandomDefender(List<Player> defenceParty){
+	protected Player randomDefender(List<Player> defenceParty){
 		return defenceParty.get(rand.nextInt(defenceParty.size()));
 	}
 	

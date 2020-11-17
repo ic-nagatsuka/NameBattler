@@ -25,8 +25,8 @@ public class ItemHeel extends Item{
 	 ==========*/
 	@Override
 	public void Use(Player attacker, Player target){
-		System.out.println(attacker.GetName() + "は" + this.name + "を使った！");
-		System.out.println(target.GetName() + "のHPが" + this.heelPoint + "回復した！");
-		target.SetHP(Math.min(target.GetMaxHp(), target.GetHP() + this.heelPoint));
+		System.out.println(attacker.getName() + "は" + this.name + "を使った！");
+		System.out.println(target.getName() + "のHPが" + this.heelPoint + "回復した！");
+		target.setHP(Math.min(target.getMaxHp(), target.getHP() + this.heelPoint));
 	}
 }

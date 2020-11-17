@@ -47,7 +47,7 @@ class Job{
 	/*============
 	 * Getメソッド
 	 ============*/
-	public String GetName(){
+	public String getName(){
 		return this.name;
 	}
 	

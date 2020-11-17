@@ -10,43 +10,43 @@ public class P_Bouncer extends Player{
 	public P_Bouncer(String name)
 	{
 		super(name);
-		this.SetJob(AllJob.Bouncer);
-		this.SetCounter(true);
+		this.setJob(AllJob.Bouncer);
+		this.setCounter(true);
 	}
 	
 	@Override
-	protected void MakeCharacter(){
-		this.hp = GetNumber(0, 50) + 100;
-		this.mp = GetNumber(1, 50) + 60;
-		this.str = GetNumber(2, 29) + 1;
-		this.def = GetNumber(3, 40) + 50;
-		this.luck = GetNumber(4, 50) + 50;
-		this.agi = GetNumber(5, 40) + 20;
+	protected void makeCharacter(){
+		this.hp = getNumber(0, 50) + 100;
+		this.mp = getNumber(1, 50) + 60;
+		this.str = getNumber(2, 29) + 1;
+		this.def = getNumber(3, 40) + 50;
+		this.luck = getNumber(4, 50) + 50;
+		this.agi = getNumber(5, 40) + 20;
 	}
 	@Override
-	protected void MakeSkill(){
+	protected void makeSkill(){
 		useSkill.add(AllSkill.fire);
 		useSkill.add(AllSkill.heel);
 	}
 		
 	@Override
-	public void NormalAttack(Player target)
+	public void normalAttack(Player target)
 	{
 		if(rand.nextInt(2) == 0){
-			System.out.println(this.GetName() + "は飛び跳ねた！");
-			super.NormalAttack(target);
+			System.out.println(this.getName() + "は飛び跳ねた！");
+			super.normalAttack(target);
 		}else{
-			System.out.println(GetName() + "は動かない！");
+			System.out.println(getName() + "は動かない！");
 		}
 	}
 	
 	@Override
-	protected void CounterAttack(Player defender){
-		System.out.println(this.GetName() + "が跳ね返ってきた！");
+	protected void counterAttack(Player defender){
+		System.out.println(this.getName() + "が跳ね返ってきた！");
 		//会心でなければ
-		if( !CheckLuckyHit(defender)){
-			this.NormalDamage(defender);
+		if( !checkLuckyHit(defender)){
+			this.normalDamage(defender);
 		}
-		this.beforeHp = this.GetHP();
+		this.beforeHp = this.getHP();
 	}
 }

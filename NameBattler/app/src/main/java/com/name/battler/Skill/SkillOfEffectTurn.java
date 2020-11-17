@@ -20,17 +20,17 @@ public class SkillOfEffectTurn extends Skill{
 		/*============
 		 * Get
 		 ============*/
-		public SkillOfEffectTurn GetSkill(){
+		public SkillOfEffectTurn getSkill(){
 			return this.skill;
 		}
 		
-		public int GetTurn(){
+		public int getTurn(){
 			return this.turn;
 		}
 		/*============
 		 * Set
 		 ============*/
-		public void SetTurn(int turn){
+		public void setTurn(int turn){
 			this.turn = turn;
 		}
 		
@@ -51,7 +51,7 @@ public class SkillOfEffectTurn extends Skill{
 	/*============
 	 * Getメソッド
 	 ============*/
-	public int GetEffectTurn(){
+	public int getEffectTurn(){
 		return this.effectTurn;
 	}
 	
@@ -59,7 +59,7 @@ public class SkillOfEffectTurn extends Skill{
 	 * 状態異常効果
 	 * @param target 行動プレイヤー
 	 */
-	public void Effect(Player target, int turn){
+	public void effect(Player target, int turn){
 		//オーバーライド
 	}
 	

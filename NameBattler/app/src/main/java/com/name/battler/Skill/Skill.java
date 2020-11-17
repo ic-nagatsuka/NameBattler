@@ -31,13 +31,13 @@ public class Skill
 	/*============
 	 * Getメソッド
 	 ============*/
-	public SkillType GetType(){
+	public SkillType getType(){
 		return this.type;
 	}
-	public String GetName(){
+	public String getName(){
 		return this.name;
 	}
-	public int GetUseMP(){
+	public int getUseMP(){
 		return this.useMp;
 	}
 	
@@ -49,13 +49,13 @@ public class Skill
 	 * @param attacker 攻撃するプレイヤー
 	 * @param defender 攻撃されるプレイヤー
 	 */
-	public void Use(Player attacker, Player defender){
+	public void use(Player attacker, Player defender){
 		
 	}
 	
 	//MPを消費する
-	protected void UsePlayerMp(Player attacker){
-		attacker.SetMP( Math.max(0, attacker.GetMP()-this.useMp));
+	protected void usePlayerMp(Player attacker){
+		attacker.setMP( Math.max(0, attacker.getMP()-this.useMp));
 	}
 	
 }

@@ -21,36 +21,36 @@ public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 	}
 	
 	@Override
-	public void Use(Player attacker, Player defender){
-		System.out.println(attacker.GetName() + "は" + this.name + "を唱えた！");
-		UsePlayerMp(attacker);
+	public void use(Player attacker, Player defender){
+		System.out.println(attacker.getName() + "は" + this.name + "を唱えた！");
+		usePlayerMp(attacker);
 		
 		//成功
 		if(this.probability > rand.nextInt(100)){
 			//同じ状態異常にかかっている
-			if(defender.CheckSameAbnormal(AllSkill.paralysis)){
-				System.out.println(defender.GetName() + "はすでにかかっている!");
+			if(defender.checkSameAbnormal(AllSkill.paralysis)){
+				System.out.println(defender.getName() + "はすでにかかっている!");
 			}else{
-				System.out.println(defender.GetName() + "はしびれた！");
+				System.out.println(defender.getName() + "はしびれた！");
 				//相手に状態異常をつける
-				defender.SetAbnormalState(new StateEffect(AllSkill.paralysis, this.effectTurn));
-				defender.SetInaction(true);
+				defender.setAbnormalState(new StateEffect(AllSkill.paralysis, this.effectTurn));
+				defender.setInaction(true);
 			}
 		}else{
 			//失敗
-			System.out.println(defender.GetName() + "はかからなかった！");
+			System.out.println(defender.getName() + "はかからなかった！");
 		}
 		
 	}
 	
 	@Override
-	public void Effect(Player target, int turn){
+	public void effect(Player target, int turn){
 		
 		if(turn < 0){
-			System.out.println(target.GetName() + "のしびれが治った！");
-			target.SetInaction(false);
+			System.out.println(target.getName() + "のしびれが治った！");
+			target.setInaction(false);
 		}else{
-			System.out.println(target.GetName() + "はしびれていて動けない！\n");
+			System.out.println(target.getName() + "はしびれていて動けない！\n");
 		}
 	}
 	

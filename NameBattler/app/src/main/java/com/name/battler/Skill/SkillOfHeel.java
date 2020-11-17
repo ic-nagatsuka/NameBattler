@@ -18,7 +18,7 @@ public class SkillOfHeel extends Skill{
 	/*============
 	 *Get 
 	 ============*/
-	public int GetHeelPoint(){
+	public int getHeelPoint(){
 		return this.heelPoint;
 	}
 	

@@ -69,14 +69,14 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     Player player = makePlayer(name, radio.getText());
 
                     ContentValues values = new ContentValues();
-                    values.put("NAME",  player.GetName());
+                    values.put("NAME",  player.getName());
                     values.put("JOB",   radioGroup.getCheckedRadioButtonId());
-                    values.put("HP",    player.GetHP());
-                    values.put("MP",    player.GetMP());
-                    values.put("STR",   player.GetSTR());
-                    values.put("DEF",   player.GetDEF());
-                    values.put("LUCK",  player.GetLUCK());
-                    values.put("AGI",   player.GetAGI());
+                    values.put("HP",    player.getHP());
+                    values.put("MP",    player.getMP());
+                    values.put("STR",   player.getSTR());
+                    values.put("DEF",   player.getDEF());
+                    values.put("LUCK",  player.getLUCK());
+                    values.put("AGI",   player.getAGI());
                     values.put("CREATE_AT", getDate());
 
                     db.insert(CharacterInformation.TABLE_NAME,null, values);

@@ -20,11 +20,11 @@ public class Party {
 	/*============
 	 * Getメソッド
 	 ============*/
-	public String GetName(){
+	public String getName(){
 		return name;
 	}
 	
-	public List<Player> Getmenbers(){
+	public List<Player> getmenbers(){
 		return menbers;
 	}
 	
@@ -32,14 +32,14 @@ public class Party {
 	/*
 	 * メソッド
 	 */
-	public void AppendPlayer(Player player)
+	public void appendPlayer(Player player)
 	{
-		System.out.println("パーティー"+GetName() + "に追加されました");
+		System.out.println("パーティー"+ getName() + "に追加されました");
 		this.menbers.add(player);
 		
 	}
 	
-	public void RemovePlayer(Player player)
+	public void removePlayer(Player player)
 	{
 		this.menbers.remove(player);
 	}

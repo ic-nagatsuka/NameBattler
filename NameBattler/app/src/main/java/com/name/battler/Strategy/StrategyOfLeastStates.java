@@ -16,12 +16,12 @@ public class StrategyOfLeastStates extends StrategyOfLeastHP{
 	}
 	
 	@Override
-	protected Player SelectDefender(Party defenderParty) {
-		Player defender = defenderParty.Getmenbers().get(0);
+	protected Player selectDefender(Party defenderParty) {
+		Player defender = defenderParty.getmenbers().get(0);
 		
-		for(Player player : defenderParty.Getmenbers()){
+		for(Player player : defenderParty.getmenbers()){
 			
-			if(defender.GetDEF() > player.GetDEF()){
+			if(defender.getDEF() > player.getDEF()){
 				defender = player;
 			}
 		}
