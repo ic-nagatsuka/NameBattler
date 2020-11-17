@@ -15,6 +15,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.namebattler.database.CharacterInformation;
+import com.name.battler.Player.AllJob;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,24 +41,22 @@ public class CharacterOrganization extends AppCompatActivity {
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(sql, null);
 
-        List<HashMap<String, String>> list = new ArrayList<>();
+        List<Status> list = new ArrayList<>();
 
         cursor.moveToFirst();
         for(int i = 0; i < cursor.getCount(); i++){
-            HashMap<String, String> map = new HashMap<>();
-
-            map.put("name", cursor.getString(0));
-            map.put("job", cursor.getString(1));
-            map.put("status", makeStatusText(cursor));
-
-            list.add(map);
+            String name = cursor.getString(0);
+            String job = AllJob.allJob[cursor.getInt(1)];
+            String status = makeStatusText(cursor);
+            list.add(new Status(name, job, status));
             cursor.moveToNext();
         }
 
 
         BaseAdapter adapter = new BaseAdapter_CharacterOrganization(
                 this,
-                v
+                v,
+                list
 
         );
 
@@ -85,15 +84,14 @@ public class CharacterOrganization extends AppCompatActivity {
 
     }
 
-
     public String makeStatusText(Cursor cursor){
 
         String statusText = "HP" + cursor.getString(2) +
-                "MP" + cursor.getString(3) +
-                "STR" + cursor.getString(4) +
-                "DEF" + cursor.getString(5) +
-                "LUCK" + cursor.getString(6) +
-                "AGI" + cursor.getString(7);
+                " MP" + cursor.getString(3) +
+                " STR" + cursor.getString(4) +
+                " DEF" + cursor.getString(5) +
+                " LUCK" + cursor.getString(6) +
+                " AGI" + cursor.getString(7);
         return statusText;
     }
 
@@ -104,5 +102,34 @@ onCreateの外はレイアウト変更にViewが必要
 
 
  */
+
+}
+
+class Status{
+
+    String name;
+    String job;
+    String status;
+
+    Status(String name, String job, String status){
+        this.name = name;
+        this.job = job;
+        this.status = status;
+
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getJob(){
+        return this.job;
+    }
+
+    public String getStatus(){
+        return this.status;
+    }
+
+
 
 }
