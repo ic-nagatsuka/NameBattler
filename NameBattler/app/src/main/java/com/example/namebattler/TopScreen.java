@@ -18,8 +18,6 @@ import java.util.List;
 
 public class TopScreen extends AppCompatActivity {
 
-    static Party party = new Party("");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
