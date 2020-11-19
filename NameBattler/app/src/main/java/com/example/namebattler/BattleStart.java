@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.name.battler.Player.AllJob;
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
 
@@ -50,11 +51,13 @@ public class BattleStart extends AppCompatActivity {
 //        ListView listview = findViewById(R.id.battle_start_listView_top);
 //        listview.setAdapter(adapter1);
 
+        Random rand = new Random();
+
         Party enemyParty= new Party("敵");
 
         EnemyNameData nameData = new EnemyNameData();
         for(int i = 0; i < 3; i++){
-            enemyParty.appendPlayer(makePlayer(nameData.getEnemyName(),"戦士"));
+            enemyParty.appendPlayer(makePlayer(nameData.getEnemyName(), AllJob.allJob[rand.nextInt(AllJob.allJob.length)]));
         }
 
 
@@ -76,11 +79,11 @@ public class BattleStart extends AppCompatActivity {
 
     public List<Map<String, String>> makeList(int listviewId, Party party){
         List<Map<String, String>> list = new ArrayList<>();
-        for(int i = 0; i < party.getmenbers().size(); i++){
+        for(Player player: party.getmenbers()){
             Map<String, String> map = new HashMap();
-            map.put("name", party.getmenbers().get(i).getName());
-            map.put("job", "??");
-            map.put("status", party.getmenbers().get(i).getstatus());
+            map.put("name", player.getName());
+            map.put("job", player.getJob());
+            map.put("status", player.getstatus());
             list.add(map);
         }
 

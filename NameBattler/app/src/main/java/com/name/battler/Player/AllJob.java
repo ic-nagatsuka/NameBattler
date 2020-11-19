@@ -9,14 +9,20 @@ public class AllJob{
 	 * フィールド変数
 	 =============*/
 	Scanner scan=new Scanner(System.in);
-	
-	
+
+	public static String[]allJob = {
+			"戦士",
+			"魔法使い",
+			"僧侶",
+			"ボール"
+	};
+
 	//すべての職業
-		static Job Fighter=new Job("Fighter");
-		static final Job Wizard=new Job("Wizard");
-		static final Job Priest=new Job("Priest");
-		static final Job Bouncer=new Job("Bouncer");
-		
+		static final String Fighter = allJob[0];
+		static final String Wizard = allJob[1];
+		static final String Priest = allJob[2];
+		static final String Bouncer = allJob[3];
+
 //		public static Job[]allJob={
 //			Fighter,
 //			Wizard,
@@ -24,11 +30,7 @@ public class AllJob{
 //			Bouncer,
 //			};
 	
-		public static String[]allJob = {
-				"戦士",
-				"魔法使い",
-				"僧侶",
-		};
+
 		
 }
 
