@@ -8,23 +8,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.AllJob;
+import com.name.battler.Player.Party;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class CharacterOrganization extends AppCompatActivity {
 
     CharacterInformation helper = new CharacterInformation(this);
 
+    static Party party = new Party("味方");
 
     int charaCount = 0;
     int layout = R.layout.activity_character_organization;
@@ -34,9 +31,13 @@ public class CharacterOrganization extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout);
-        View v = findViewById(R.id.character_organization_start);
-
         SQLiteDatabase db = helper.getReadableDatabase();
+
+        View startButtonView = findViewById(R.id.character_organization_start);
+
+        if(party.getmenbers().size() != 0){
+            party = new Party("味方");
+        }
 
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(sql, null);
@@ -55,7 +56,7 @@ public class CharacterOrganization extends AppCompatActivity {
 
         BaseAdapter adapter = new BaseAdapter_CharacterOrganization(
                 this,
-                v,
+                startButtonView,
                 list
 
         );
@@ -67,8 +68,10 @@ public class CharacterOrganization extends AppCompatActivity {
         findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplication(), BattleStart.class);
-                startActivity(intent);
+                if(party.getmenbers().size() == 3){
+                    Intent intent = new Intent(getApplication(), BattleStart.class);
+                    startActivity(intent);
+                }
             }
         });
 

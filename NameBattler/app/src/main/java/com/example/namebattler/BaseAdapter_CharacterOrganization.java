@@ -14,9 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.namebattler.database.CharacterInformation;
+import com.name.battler.Player.P_Fighter;
+import com.name.battler.Player.P_Priest;
+import com.name.battler.Player.P_Wizard;
+import com.name.battler.Player.Player;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.namebattler.CharacterOrganization.party;
 
 public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
@@ -31,12 +36,12 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     Cursor cursor ;
     static int count = 0;
     int id ;
-    View v;
+    View startButton;
     List<Status> status;
 
     BaseAdapter_CharacterOrganization(Context context, View v, List<Status> status){
         this.context = context;
-        this.v = v;
+        this.startButton = v;
         this.status = status;
         inflater = LayoutInflater.from(context);
 
@@ -44,12 +49,10 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
         db = helper.getReadableDatabase();
         cursor = db.rawQuery(sql,null);
         cursor.moveToFirst();
-        System.out.println(helper + "コンストラクタ");
     }
 
     @Override
     public int getCount() {
-        System.out.println(cursor.getCount());
         return cursor.getCount();
     }
 
@@ -64,50 +67,86 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View convertView, ViewGroup viewGroup) {
 
-
-        System.out.println("getView" + i);
-        if(view == null){
-            view = inflater.inflate(R.layout.listview_character_organization, null);
+        if(convertView == null){
+            convertView = inflater.inflate(R.layout.listview_character_organization, null);
         }
 
-        TextView text = view.findViewById(R.id.character_organization_listView_status_name);
+        TextView text = convertView.findViewById(R.id.character_organization_listView_status_name);
         text.setText(status.get(i).getName());
 
-        text = view.findViewById(R.id.character_organization_listView_status_job);
+        text = convertView.findViewById(R.id.character_organization_listView_status_job);
         text.setText(status.get(i).getJob());
 
-        text = view.findViewById(R.id.character_organization_listView_status);
+        text = convertView.findViewById(R.id.character_organization_listView_status);
         text.setText(status.get(i).getStatus());
 
 
 
 
-        final CheckBox checkBox = view.findViewById(R.id.character_organization_listView_checkBox);
+        final CheckBox checkBox = convertView.findViewById(R.id.character_organization_listView_checkBox);
+        final View finalConvertView = convertView;
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                TextView textView = view.findViewById(R.id.character_organization_listView_status_name);
-
                 boolean isChecked = checkBox.isChecked();
                 checkBox.setChecked(false);
                 if(count <= 2 && isChecked){
                     checkBox.setChecked(true);
                     count++;
+
+                    TextView textView = finalConvertView.findViewById(R.id.character_organization_listView_status_name);
+                    String name = textView.getText().toString();
+                    System.out.println(name);
+
+                    textView = finalConvertView.findViewById(R.id.character_organization_listView_status_job);
+                    String job = textView.getText().toString();
+                    System.out.println(job);
+                    party.appendPlayer(makePlayer(name, job));
+
+                    if(party.getmenbers().size() > 3){
+                        System.exit(0);
+                    }
+
                 }else if(!isChecked){
                     count--;
+
+                    TextView textView = finalConvertView.findViewById(R.id.character_organization_listView_status_name);
+                    String name = textView.getText().toString();
+
+                    for(Player player: party.getmenbers()){
+                        if(player.getName().equals(name)){
+                            party.removePlayer(player);
+                            break;
+                        }
+                    }
+
                 }else{
                     Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                 }
 
-                Button btn = v.findViewById(R.id.character_organization_start);
+                Button btn = startButton.findViewById(R.id.character_organization_start);
 
                 btn.setText("このパーティーで開始(" + count + "/3)");
 
             }
         });
 
-        return view;
+        return convertView;
+    }
+
+    public Player makePlayer(String name, String job){
+        Player player = null;
+
+        switch(job){
+            case "戦士"   : player = new P_Fighter(name); break;
+            case "魔法使い": player = new P_Wizard(name); break;
+            case "僧侶"   : player = new P_Priest(name); break;
+        }
+        if(player == null){
+            System.exit(1);
+        }
+        return player;
     }
 }
