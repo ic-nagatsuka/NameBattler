@@ -3,14 +3,20 @@ package com.example.namebattler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import com.name.battler.Player.Party;
+import com.name.battler.Player.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
+import static com.example.namebattler.CharacterMake.makePlayer;
+import static com.example.namebattler.CharacterOrganization.party;
 
 public class BattleStart extends AppCompatActivity {
 
@@ -18,6 +24,7 @@ public class BattleStart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_start);
+
 
 //        List<Map<String, String>> list1 = makeList();
 //        List<Map<String, String>> list2 = makeList();
@@ -43,20 +50,37 @@ public class BattleStart extends AppCompatActivity {
 //        ListView listview = findViewById(R.id.battle_start_listView_top);
 //        listview.setAdapter(adapter1);
 
-        makeList(R.id.battle_start_listView_top);
-        makeList(R.id.battle_start_listView_bottom);
+        Party enemyParty= new Party("敵");
+
+        EnemyNameData nameData = new EnemyNameData();
+        for(int i = 0; i < 3; i++){
+            enemyParty.appendPlayer(makePlayer(nameData.getEnemyName(),"戦士"));
+        }
+
+
+        makeList(R.id.battle_start_listView_top, party);
+        makeList(R.id.battle_start_listView_bottom, enemyParty );
 
 
 
     }
 
-    public List<Map<String, String>> makeList(int listviewId){
+//    public Player amakePlayer(){
+//
+////        switch(){
+////            case
+////        }
+//
+//
+//    }
+
+    public List<Map<String, String>> makeList(int listviewId, Party party){
         List<Map<String, String>> list = new ArrayList<>();
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < party.getmenbers().size(); i++){
             Map<String, String> map = new HashMap();
-            map.put("name", "");
-            map.put("job", "");
-            map.put("status", "");
+            map.put("name", party.getmenbers().get(i).getName());
+            map.put("job", "??");
+            map.put("status", party.getmenbers().get(i).getstatus());
             list.add(map);
         }
 
@@ -73,6 +97,33 @@ public class BattleStart extends AppCompatActivity {
         );
 
         ListView listview = findViewById(listviewId);
+        listview.setAdapter(adapter);
         return list;
     }
+}
+
+class EnemyNameData{
+
+    static Random rand = new Random();
+    static ArrayList<String> enemyNames = new ArrayList<>();
+
+    EnemyNameData(){
+        resetName();
+    }
+
+    public String getEnemyName(){
+
+        return enemyNames.remove(rand.nextInt(enemyNames.size()));
+    }
+
+    public void resetName(){
+        enemyNames.clear();
+
+        enemyNames.add("a");
+        enemyNames.add("i");
+        enemyNames.add("u");
+        enemyNames.add("e");
+        enemyNames.add("o");
+    }
+
 }

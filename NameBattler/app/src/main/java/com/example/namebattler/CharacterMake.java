@@ -108,7 +108,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     }
 
 
-    public Player makePlayer(String name, CharSequence job){
+    public static Player makePlayer(String name, CharSequence job){
         Player player = null;
         if ("戦士".equals(job)) {
             player = new P_Fighter(name);
