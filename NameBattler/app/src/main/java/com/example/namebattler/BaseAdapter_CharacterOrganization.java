@@ -21,23 +21,24 @@ import com.name.battler.Player.Player;
 
 import java.util.List;
 
+import static com.example.namebattler.CharacterMake.makePlayer;
 import static com.example.namebattler.CharacterOrganization.party;
 
 public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
 
-    LayoutInflater inflater;
 
     Context context;
-
-    SQLiteOpenHelper helper ;
-    SQLiteDatabase db;
-    String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
-    Cursor cursor ;
-    static int count = 0;
-    int id ;
     View startButton;
     List<Status> status;
+
+    LayoutInflater inflater;
+    SQLiteOpenHelper helper ;
+    SQLiteDatabase db;
+    Cursor cursor ;
+    String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
+    int count = 0;
+    int id ;
 
     BaseAdapter_CharacterOrganization(Context context, View v, List<Status> status){
         this.context = context;
@@ -136,17 +137,5 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
         return convertView;
     }
 
-    public Player makePlayer(String name, String job){
-        Player player = null;
 
-        switch(job){
-            case "戦士"   : player = new P_Fighter(name); break;
-            case "魔法使い": player = new P_Wizard(name); break;
-            case "僧侶"   : player = new P_Priest(name); break;
-        }
-        if(player == null){
-            System.exit(1);
-        }
-        return player;
-    }
 }
