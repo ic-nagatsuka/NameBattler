@@ -109,7 +109,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     }
 
 
-    public Player makePlayer(String name, String job){
+    public static Player makePlayer(String name, String job){
         Player player = null;
         switch(job){
             case "戦士"   : player = new P_Fighter(name);break;

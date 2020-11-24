@@ -28,7 +28,7 @@ public abstract class Player{
 	protected String partyName;					//パーティー名
 	protected Strategy strategy;				//作戦
 	protected String name;						//名前
-	protected Job job;							//職業
+	protected String job;							//職業
 	protected int hp, mp, str, def, luck, agi;	//能力
 	protected int maxHp;						//HPの最大値
 	protected int maxMp;						//MPの最大値
@@ -91,7 +91,7 @@ public abstract class Player{
 	public String getPartyName(){
 		return this.partyName;
 	}
-	public Job getJob(){
+	public String getJob(){
 		return this.job;
 	}
 	public String getName(){
@@ -158,7 +158,7 @@ public abstract class Player{
 	public void setStrategy(Strategy strategy){
 		this.strategy = strategy;
 	}
-	public void setJob(Job job){
+	public void setJob(String job){
 		this.job = job;
 	}
 	public void setHP(int hp){
@@ -192,7 +192,6 @@ public abstract class Player{
 	 */
 	/**
 	 *通常攻撃の流れ
-	 * @param attacker 行動プレイヤー
 	 * @param target 対象プレイヤー
 	 */
 	public void normalAttack(Player target){
@@ -210,7 +209,6 @@ public abstract class Player{
 	
 	/**
 	 * 通常攻撃ダメージを与える
-	 * @param attacker 攻撃するプレイヤー
 	 * @param target 攻撃されるプレイヤー
 	 */
 	protected void normalDamage(Player target){
@@ -229,7 +227,6 @@ public abstract class Player{
 	
 	/**
 	 * 会心の一撃の判定
-	 * @param attacker 攻撃するプレイヤー
 	 * @param target 攻撃されるプレイヤー
 	 * @return 
 	 * true:	会心の一撃
@@ -248,7 +245,6 @@ public abstract class Player{
 	
 	/**
 	 * アイテムを使用する
-	 * @param attacker	使用するプレイヤー 
 	 * @param target 	対象プレイヤー
 	 */
 	private void useItem(Player target){
@@ -260,7 +256,6 @@ public abstract class Player{
 	/**
 	 * スキルを使用する
 	 * @param skill 使用スキル
-	 * @param attacker 攻撃するプレイヤー
 	 * @param target 攻撃されるプレイヤー
 	 */
 	public void useSkill(Skill skill, Player target){
@@ -280,7 +275,6 @@ public abstract class Player{
 	
 	/**
 	 * スキルをランダムで選ぶ
-	 * @param attacker 攻撃するプレイヤー
 	 * @return　使用するスキル
 	 */
 	private Skill randomSelectSkill(){
@@ -406,7 +400,6 @@ public abstract class Player{
 	
 	/**
 	 * カウンター攻撃の確認
-	 * @param attacker 攻撃されたプレイヤー
 	 * @param target 攻撃したプレイヤー
 	 */
 	protected void checkCounter(Player target){
@@ -418,11 +411,10 @@ public abstract class Player{
 			this.counterAttack(target);
 		}
 	}
-	
+
 	/**
 	 * カウンター攻撃
-	 * @param attacker 攻撃するプレイヤー
-	 * @param defender 攻撃されるプレイヤー
+	 * @param target
 	 */
 	protected void counterAttack(Player target){
 		System.out.println(this.getName() + "は反撃した！！");
@@ -572,7 +564,7 @@ public abstract class Player{
 	public void printStatus()
 	{
 		System.out.printf("%s: %s (HP %3d : MP=%3d : STR=%3d : DEF=%3d : LUCK=%3d : AGI=%3d)\n",
-				job.getName(), getName(), getHP(), getMP(), getSTR(), getDEF(), getLUCK(), getAGI());
+				job, getName(), getHP(), getMP(), getSTR(), getDEF(), getLUCK(), getAGI());
 	}
 
 	public String getstatus()	{
@@ -589,7 +581,7 @@ public abstract class Player{
 	 */
 	public void printBattleStatus(){
 		System.out.printf("%s %s HP %3d : MP %3d アイテム ",
-				this.getJob().getName(), this.getName(), this.getHP(), this.getMP(),
+				this.getJob(), this.getName(), this.getHP(), this.getMP(),
 				this.useItem.size());
 		printItem();
 	}
