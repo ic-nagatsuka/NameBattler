@@ -62,5 +62,12 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.characterMakeConpletion_back).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplication(), CharacterMake.class);
+                startActivity(intent);
+            }
+        });
     }
 }
