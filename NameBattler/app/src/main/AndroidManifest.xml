@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BattleStart"></activity>
+        <activity android:name=".BattleMain"></activity>
+        <activity android:name=".BattleStart" />
         <activity android:name=".CharacterOrganization" />
         <activity android:name=".CharacterDetails" />
         <activity android:name=".CharacterMakeConpletion" />
