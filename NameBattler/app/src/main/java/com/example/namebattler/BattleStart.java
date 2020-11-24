@@ -2,6 +2,7 @@ package com.example.namebattler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -83,6 +84,13 @@ public class BattleStart extends AppCompatActivity {
 
         }
 
+        findViewById(R.id.battle_start_back).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplication(), CharacterOrganization.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
