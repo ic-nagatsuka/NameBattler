@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 
 import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.AllJob;
+import com.name.battler.Player.P_Bouncer;
 import com.name.battler.Player.P_Fighter;
 import com.name.battler.Player.P_Priest;
 import com.name.battler.Player.P_Wizard;
@@ -66,7 +67,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
                 if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
                     SQLiteDatabase db = helper.getWritableDatabase();
-                    Player player = makePlayer(name, radio.getText());
+                    Player player = makePlayer(name, radio.getText().toString());
 
                     ContentValues values = new ContentValues();
                     values.put("NAME",  player.getName());
@@ -108,14 +109,13 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     }
 
 
-    public static Player makePlayer(String name, CharSequence job){
+    public static Player makePlayer(String name, String job){
         Player player = null;
-        if ("戦士".equals(job)) {
-            player = new P_Fighter(name);
-        } else if ("魔法使い".equals(job)) {
-            player = new P_Wizard(name);
-        } else if ("僧侶".equals(job)) {
-            player = new P_Priest(name);
+        switch(job){
+            case "戦士"   : player = new P_Fighter(name);break;
+            case "魔法使い" :player = new P_Wizard(name); break;
+            case "僧侶"   : player = new P_Priest(name); break;
+            case "ボール"  : player = new P_Bouncer(name); break;
         }
         return player;
     }

@@ -30,8 +30,6 @@ public class AllJob{
 //			Bouncer,
 //			};
 	
-
-		
 }
 
 class Job{
