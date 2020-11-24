@@ -29,6 +29,8 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
     CharacterInformation helper = new CharacterInformation(this);
 
+    static Player player;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
                 if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
                     SQLiteDatabase db = helper.getWritableDatabase();
-                    Player player = makePlayer(name, radio.getText().toString());
+                    player = makePlayer(name, radio.getText().toString());
 
                     ContentValues values = new ContentValues();
                     values.put("NAME",  player.getName());
