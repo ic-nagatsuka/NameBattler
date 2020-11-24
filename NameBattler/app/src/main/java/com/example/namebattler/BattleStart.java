@@ -3,6 +3,7 @@ package com.example.namebattler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -51,31 +52,41 @@ public class BattleStart extends AppCompatActivity {
 //        ListView listview = findViewById(R.id.battle_start_listView_top);
 //        listview.setAdapter(adapter1);
 
-        Random rand = new Random();
+        final Random rand = new Random();
 
-        Party enemyParty= new Party("敵");
+        final Party enemyParty = new Party("敵");
 
         EnemyNameData nameData = new EnemyNameData();
         for(int i = 0; i < 3; i++){
             enemyParty.appendPlayer(makePlayer(nameData.getEnemyName(), AllJob.allJob[rand.nextInt(AllJob.allJob.length)]));
         }
 
-
         makeList(R.id.battle_start_listView_top, party);
         makeList(R.id.battle_start_listView_bottom, enemyParty );
 
 
+        findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                enemyParty.getmenbers().clear();
+
+                EnemyNameData enemyName = new EnemyNameData();
+                for(int i = 0; i < 3; i++){
+                    enemyParty.appendPlayer(
+                            makePlayer(
+                                    enemyName.getEnemyName(),
+                                    AllJob.allJob[rand.nextInt(AllJob.allJob.length)]));
+                }
+                makeList(R.id.battle_start_listView_bottom, enemyParty);
+            }
+        });{
+
+        }
+
 
     }
 
-//    public Player amakePlayer(){
-//
-////        switch(){
-////            case
-////        }
-//
-//
-//    }
+
 
     public List<Map<String, String>> makeList(int listviewId, Party party){
         List<Map<String, String>> list = new ArrayList<>();
