@@ -18,28 +18,28 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/gridview_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="名前"
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/gridview_hp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="HP"
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/gridview_mp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MP"
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/gridview_status_abnormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="状態異常"
