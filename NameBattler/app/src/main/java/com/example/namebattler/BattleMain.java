@@ -7,6 +7,7 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
 import com.name.battler.Player.Party;
+import com.name.battler.Player.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,21 +21,23 @@ public class BattleMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_main);
 
-        Party party = null;
-
+        Party party = CharacterOrganization.party;
+        Party enemyParty = BattleStart.enemyParty;
 
 
         makeGridView(R.id.battle_main_gridView_top, party);
-        makeGridView(R.id.battle_main_gridView_bottom, party);
+        makeGridView(R.id.battle_main_gridView_bottom, enemyParty);
 
     }
 
     public void makeGridView(int layout, Party party){
         List<Map<String, String>> list = new ArrayList<>();
-        for(int i = 0; i < 3; i++){
+        for(Player player: party.getmenbers()){
             Map<String, String> map = new HashMap<>();
 
-//            map.put();
+            map.put("name", player.getName());
+            map.put("hp", "HP" + player.getMaxHp() + "/" + player.getHP());
+            map.put("mp", "MP" + player.getMaxMp() + "/" + player.getMP());
             list.add(map);
         }
 
@@ -42,8 +45,16 @@ public class BattleMain extends AppCompatActivity {
                 this,
                 list,
                 R.layout.gridview_battle_main,
-                new String[]{},
-                new int[]{}
+                new String[]{
+                        "name",
+                        "hp",
+                        "mp"
+                },
+                new int[]{
+                        R.id.gridview_name,
+                        R.id.gridview_hp,
+                        R.id.gridview_mp
+                }
         );
 
 
