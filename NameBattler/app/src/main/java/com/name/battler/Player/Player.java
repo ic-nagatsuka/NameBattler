@@ -65,6 +65,7 @@ public abstract class Player{
 		makeItem();
 		
 		this.maxHp = this.getHP();
+		this.maxMp = this.getMP();
 		this.beforeHp = this.getHP();
 	}
 	
