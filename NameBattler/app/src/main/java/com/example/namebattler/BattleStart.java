@@ -23,48 +23,37 @@ import static com.example.namebattler.CharacterOrganization.party;
 
 public class BattleStart extends AppCompatActivity {
 
+
+    static Party enemyParty = new Party("敵");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_start);
 
-
-//        List<Map<String, String>> list1 = makeList();
-//        List<Map<String, String>> list2 = makeList();
-//        List<Map<String, String>> list = new ArrayList<>();
-//        for(int i = 0; i < 3; i++){
-//            Map<String, String> map = new HashMap();
-//            map.put("name", "");
-//            map.put("job", "");
-//            map.put("status", "");
-//            list.add(map);
-//        }
-//
-//        SimpleAdapter adapter1 = new SimpleAdapter(
-//                this,
-//                list,
-//                R.layout.activity_character_list_listview,
-//                new String[]{},
-//                new int []{}
-//        );
-
-
-
-//        ListView listview = findViewById(R.id.battle_start_listView_top);
-//        listview.setAdapter(adapter1);
-
         final Random rand = new Random();
 
-        final Party enemyParty = new Party("敵");
+
 
         EnemyNameData nameData = new EnemyNameData();
         for(int i = 0; i < 3; i++){
-            enemyParty.appendPlayer(makePlayer(nameData.getEnemyName(), AllJob.allJob[rand.nextInt(AllJob.allJob.length)]));
+            enemyParty.appendPlayer(
+                    makePlayer(
+                            nameData.getEnemyName(),
+                            AllJob.allJob[rand.nextInt(AllJob.allJob.length)]));
         }
 
         makeList(R.id.battle_start_listView_top, party);
-        makeList(R.id.battle_start_listView_bottom, enemyParty );
+        makeList(R.id.battle_start_listView_bottom, enemyParty);
 
+
+        findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), BattleMain.class);
+                startActivity(intent);
+            }
+        });
 
         findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener(){
             @Override
@@ -80,9 +69,7 @@ public class BattleStart extends AppCompatActivity {
                 }
                 makeList(R.id.battle_start_listView_bottom, enemyParty);
             }
-        });{
-
-        }
+        });
 
         findViewById(R.id.battle_start_back).setOnClickListener(new View.OnClickListener(){
             @Override
