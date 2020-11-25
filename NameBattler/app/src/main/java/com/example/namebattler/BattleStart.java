@@ -24,7 +24,7 @@ import static com.example.namebattler.CharacterOrganization.party;
 public class BattleStart extends AppCompatActivity {
 
 
-    static Party enemyParty = new Party("敵");
+    static Party enemyParty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,8 @@ public class BattleStart extends AppCompatActivity {
 
         final Random rand = new Random();
 
-
+        
+        enemyParty = new Party("敵");
 
         EnemyNameData nameData = new EnemyNameData();
         for(int i = 0; i < 3; i++){
