@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +26,6 @@ import static com.example.namebattler.CharacterMake.makePlayer;
 import static com.example.namebattler.CharacterOrganization.party;
 
 public class BaseAdapter_CharacterOrganization extends BaseAdapter {
-
-
 
     Context context;
     View startButton;
@@ -68,62 +67,55 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int i, View convertView, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
 
-        if(convertView == null){
-            convertView = inflater.inflate(R.layout.listview_character_organization, null);
+        if(view == null){
+            view = inflater.inflate(R.layout.listview_character_organization, null);
         }
 
-        TextView text = convertView.findViewById(R.id.character_organization_listView_status_name);
+        TextView text = view.findViewById(R.id.character_organization_listView_status_name);
         text.setText(status.get(i).getName());
 
-        text = convertView.findViewById(R.id.character_organization_listView_status_job);
+        text = view.findViewById(R.id.character_organization_listView_status_job);
         text.setText(status.get(i).getJob());
 
-        text = convertView.findViewById(R.id.character_organization_listView_status);
+        text = view.findViewById(R.id.character_organization_listView_status);
         text.setText(status.get(i).getStatus());
 
 
 
 
-        final CheckBox checkBox = convertView.findViewById(R.id.character_organization_listView_checkBox);
-        final View finalConvertView = convertView;
+        final RadioButton checkBox = view.findViewById(R.id.character_organization_listView_checkBox);
+
+        final View convertView = view;
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean isChecked = checkBox.isChecked();
-                checkBox.setChecked(false);
+                System.out.println("isChecked" + isChecked);
+
+
                 if(count <= 2 && isChecked){
-                    checkBox.setChecked(true);
-                    count++;
 
-                    TextView textView = finalConvertView.findViewById(R.id.character_organization_listView_status_name);
+                    TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
                     String name = textView.getText().toString();
-                    System.out.println(name);
+                    System.out.println("名前" + name);
 
-                    textView = finalConvertView.findViewById(R.id.character_organization_listView_status_job);
-                    String job = textView.getText().toString();
-                    System.out.println(job);
-                    party.appendPlayer(makePlayer(name, job));
+                    if(!hasName(name)){
+                        count++;
 
-                    if(party.getmenbers().size() > 3){
-                        System.exit(0);
-                    }
+                        textView = convertView.findViewById(R.id.character_organization_listView_status_job);
+                        String job = textView.getText().toString();
+                        System.out.println(job);
 
-                }else if(!isChecked){
-                    count--;
+                        party.appendPlayer(makePlayer(name, job));
 
-                    TextView textView = finalConvertView.findViewById(R.id.character_organization_listView_status_name);
-                    String name = textView.getText().toString();
-
-                    for(Player player: party.getmenbers()){
-                        if(player.getName().equals(name)){
-                            party.removePlayer(player);
-                            break;
+                        if(party.getmenbers().size() > 3){
+                            System.exit(0);
                         }
                     }
 
-                }else{
+                }else if(count > 3){
                     Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                 }
 
@@ -134,7 +126,21 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
             }
         });
 
-        return convertView;
+        return view;
+    }
+
+
+
+    public boolean hasName(String name){
+        boolean haveName = false;
+        for(int i = 0; i < party.getmenbers().size() ; i++){
+            Player player = party.getmenbers().get(i);
+            if(player.getName().equals(name)){
+                haveName = true;
+            }
+        }
+
+        return haveName;
     }
 
 
