@@ -2,12 +2,16 @@ package com.example.namebattler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
+import com.name.battler.Strategy.AllStrategy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,10 +27,15 @@ public class BattleMain extends AppCompatActivity {
 
         Party party = CharacterOrganization.party;
         Party enemyParty = BattleStart.enemyParty;
-
-
         makeGridView(R.id.battle_main_gridView_top, party);
         makeGridView(R.id.battle_main_gridView_bottom, enemyParty);
+
+
+        TextView strategy = findViewById(R.id.battle_main_strategy_name);
+//        AllStrategy.Strategies.values()[
+        strategy.setText(
+                party.getmenbers().get(0).getStrategy().getName()) ;
+        
 
     }
 
