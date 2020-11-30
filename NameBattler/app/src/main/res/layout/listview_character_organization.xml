@@ -22,7 +22,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/character_organization_listView_checkBox"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
