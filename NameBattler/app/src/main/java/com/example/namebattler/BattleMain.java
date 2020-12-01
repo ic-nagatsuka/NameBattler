@@ -27,15 +27,19 @@ public class BattleMain extends AppCompatActivity {
 
         Party party = CharacterOrganization.party;
         Party enemyParty = BattleStart.enemyParty;
+
+        party.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+        enemyParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+
         makeGridView(R.id.battle_main_gridView_top, party);
         makeGridView(R.id.battle_main_gridView_bottom, enemyParty);
 
 
         TextView strategy = findViewById(R.id.battle_main_strategy_name);
-//        AllStrategy.Strategies.values()[
-        strategy.setText(
-                party.getmenbers().get(0).getStrategy().getName()) ;
-        
+        strategy.setText("作戦 ： " +
+                party.getStrategy().getName()
+        );
+
 
     }
 
