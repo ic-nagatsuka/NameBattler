@@ -20,6 +20,7 @@ import com.name.battler.Player.P_Fighter;
 import com.name.battler.Player.P_Priest;
 import com.name.battler.Player.P_Wizard;
 import com.name.battler.Player.Player;
+import com.name.battler.Strategy.AllStrategy;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -119,6 +120,9 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             case "僧侶"   : player = new P_Priest(name); break;
             case "ボール"  : player = new P_Bouncer(name); break;
         }
+        player.setParty(CharacterOrganization.party);
+        player.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+
         return player;
     }
 
