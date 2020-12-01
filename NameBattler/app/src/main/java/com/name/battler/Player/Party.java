@@ -1,5 +1,7 @@
 package com.name.battler.Player;
 
+import com.name.battler.Strategy.Strategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,22 +15,35 @@ public class Party {
 	 * コンストラクタ
 	 =============*/
 	private String name;
+	private Strategy strategy;
+
 	public Party(String name){
 		this.name = name;
 	}
 	
 	/*============
-	 * Getメソッド
+	 * getメソッド
 	 ============*/
 	public String getName(){
 		return name;
+	}
+
+	public Strategy getStrategy(){
+		return strategy;
 	}
 	
 	public List<Player> getmenbers(){
 		return menbers;
 	}
-	
-	
+	/*============
+	 * setメソッド
+	 ============*/
+	public void setStrategy(Strategy strategy){
+		this.strategy = strategy;
+	}
+
+
+
 	/*
 	 * メソッド
 	 */

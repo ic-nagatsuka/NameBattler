@@ -20,22 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/battle_main_back"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/blue_26c"
-        android:text="戻る"
-        android:textColor="#fff"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <GridView
         android:id="@+id/battle_main_gridView_bottom"
         android:layout_width="0dp"
@@ -65,26 +49,26 @@
     <TextView
         android:id="@+id/battle_main_strategy_name"
         android:layout_width="305dp"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:gravity="center_vertical"
         android:text="作戦 : "
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintStart_toStartOf="@+id/battle_main_gridView_bottom"
         app:layout_constraintTop_toBottomOf="@+id/battle_main_gridView_bottom" />
 
     <Button
         android:id="@+id/battle_main_stratygy_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="@color/blue_26c"
         android:text="変更"
         android:textColor="#fff"
-        android:textSize="25dp"
-        android:layout_marginTop="5dp"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/battle_main_strategy_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/battle_main_gridView_bottom" />
+        app:layout_constraintTop_toTopOf="@+id/battle_main_strategy_name" />
 
     <Button
         android:id="@+id/battle_main_nextTurn"

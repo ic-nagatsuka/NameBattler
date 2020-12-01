@@ -13,9 +13,16 @@ public class AllStrategy {
         LEAST_HP(new StrategyOfLeastHP()),
         NO_SKILL(new StrategyOfNoSkill());
 
-        Strategies(Strategy strategy){
+        Strategy strategy;
 
+        Strategies(Strategy strategy){
+            this.strategy = strategy;
         }
+
+        public Strategy getStrategy(){
+            return this.strategy;
+        }
+
 
     }
 
