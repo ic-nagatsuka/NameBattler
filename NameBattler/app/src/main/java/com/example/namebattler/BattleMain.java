@@ -20,16 +20,26 @@ import java.util.Map;
 
 public class BattleMain extends AppCompatActivity {
 
+    Party party = CharacterOrganization.party;
+    Party enemyParty = BattleStart.enemyParty;
+    ArrayList<Party>allParty = new ArrayList<>();
+    ArrayList<Player>allPlayer = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_main);
+        System.out.println("パーティー"+party);
 
-        Party party = CharacterOrganization.party;
-        Party enemyParty = BattleStart.enemyParty;
+        allParty.add(party);
+        allParty.add(enemyParty);
 
         party.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
         enemyParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+
+        addAllPlayer();
+        highSpeedSort(allPlayer);
+
 
         makeGridView(R.id.battle_main_gridView_top, party);
         makeGridView(R.id.battle_main_gridView_bottom, enemyParty);
@@ -39,6 +49,39 @@ public class BattleMain extends AppCompatActivity {
         strategy.setText("作戦 ： " +
                 party.getStrategy().getName()
         );
+
+
+        findViewById(R.id.battle_main_nextTurn).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                for(int i = allPlayer.size() -1; i >= 0; i--){
+                    Player attacker = allPlayer.get(i);
+                    Party defenseParty = selectParty(attacker);
+
+                    if(attacker.getHP() != 0){
+
+                        attacker.abnormalEffect(attacker);
+
+                        if(attacker.getHP() != 0){
+                            attacker.getStrategy().action(attacker, defenseParty);
+                        }
+                    }
+
+
+                    removeEmptyParty();
+                    if(allParty.size() == 1){
+                        Intent intent = new Intent(getApplication(), TopScreen.class);
+                        startActivity(intent);
+                    }
+                }
+
+
+
+
+            }
+        });
+
+
 
 
     }
@@ -75,5 +118,48 @@ public class BattleMain extends AppCompatActivity {
         gridView.setAdapter(adapter);
     }
 
+    public void addAllPlayer(){
+        for(Party party: allParty){
+            for(Player player: party.getmenbers()){
+                allPlayer.add(player);
+            }
+        }
+
+    }
+
+    private void highSpeedSort(List<Player> playerList){
+
+        for(int i = 0; i < playerList.size() - 1; i++){
+            for(int j = 0; j < playerList.size() - 1; j++){
+                if(playerList.get(j).getAGI() > playerList.get(j+1).getAGI()){
+                    //場所を入れ替える
+                    Player saveValue = playerList.get(j);
+                    playerList.set(j, playerList.get(j + 1));
+                    playerList.set(j + 1, saveValue);
+                }
+            }
+        }
+    }
+
+        //リストのパーティーからアタッカーにパーティーを除いて乱数で決めたい
+    public Party selectParty(Player attacker){
+
+        if(attacker.getParty() == party){
+            return enemyParty;
+        }else{
+            return party;
+        }
+
+    }
+
+    public void removeEmptyParty(){
+        for(int i = 0; i < allParty.size(); i++){
+            if(party.getmenbers().size() == 0){
+                System.out.println("しゅうりょう");
+
+                allParty.remove(party);
+            }
+        }
+    }
 
 }

@@ -198,8 +198,9 @@ public abstract class Player{
 	public void normalAttack(Player target){
 		
 		this.readyCounter(target);
-//		System.out.println(attacker.GetName() + "の攻撃！");
-		
+		System.out.println(target.getHP() + "    HP " + target.getName());
+		System.out.println("パーティー人数" +  target.getParty().getName() + target.getParty().getmenbers().size());
+
 		//通常のダメージ計算
 		normalDamage(target);
 		//戦闘不能判定
@@ -452,16 +453,21 @@ public abstract class Player{
 	  * @param party 攻撃を受けたパーティー
 	  */
 	protected void deathJudge(List<Player> party){
+		System.out.println("dead　メソッド" + party);
+
 		for(int i = party.size() -1 ; 0 <= i; i--){
+
 			Player player = party.get(i);
+			System.out.println(player.getName() + "の体力　：" + player.getHP());
+
+
 			//HPが０以下
 			if(player.getHP() <= 0){
+
 				System.out.println(player.getName() + "は力尽きた...\n");
 				//パーティーから除く
 				player.getParty().removePlayer(player);
-				
-				this.setLevel(this.getLevel() + 1 );
-				//レベルアップの処理==================================
+
 			}
 		}
 	}
