@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -40,9 +41,8 @@ public class BattleMain extends AppCompatActivity {
         addAllPlayer();
         highSpeedSort(allPlayer);
 
+        displayUpdateStates();
 
-        makeGridView(R.id.battle_main_gridView_top, party);
-        makeGridView(R.id.battle_main_gridView_bottom, enemyParty);
 
 
         TextView strategy = findViewById(R.id.battle_main_strategy_name);
@@ -62,21 +62,32 @@ public class BattleMain extends AppCompatActivity {
 
                         attacker.abnormalEffect(attacker);
 
+                        System.out.println(attacker.getHP());
                         if(attacker.getHP() != 0){
                             attacker.getStrategy().action(attacker, defenseParty);
                         }
+
                     }
 
 
                     removeEmptyParty();
+
+                    System.out.println("パーティー" + allParty.size());
+//                    ゲームバトル終了判定
                     if(allParty.size() == 1){
-                        Intent intent = new Intent(getApplication(), TopScreen.class);
-                        startActivity(intent);
+                        break;
                     }
                 }
 
+                //バトル結果画面に移動
+                if(allParty.size() == 1){
+                    System.out.println("ゲーム終了" + allParty.size());
+//                    Intent intent = new Intent(getApplication(), );
+//                    startActivity(intent);
+                }
 
-
+            //1ターン分終了後ステータス更新
+            displayUpdateStates();
 
             }
         });
@@ -86,37 +97,19 @@ public class BattleMain extends AppCompatActivity {
 
     }
 
-    public void makeGridView(int layout, Party party){
-        List<Map<String, String>> list = new ArrayList<>();
-        for(Player player: party.getmenbers()){
-            Map<String, String> map = new HashMap<>();
+    public void displayUpdateStates(){
+        makeAdapter(R.id.battle_main_gridView_top, party);
+        makeAdapter(R.id.battle_main_gridView_bottom, enemyParty);
+    }
 
-            map.put("name", player.getName());
-            map.put("hp", "HP" + player.getMaxHp() + "/" + player.getHP());
-            map.put("mp", "MP" + player.getMaxMp() + "/" + player.getMP());
-            list.add(map);
-        }
-
-        SimpleAdapter adapter = new SimpleAdapter(
-                this,
-                list,
-                R.layout.gridview_battle_main,
-                new String[]{
-                        "name",
-                        "hp",
-                        "mp"
-                },
-                new int[]{
-                        R.id.gridview_name,
-                        R.id.gridview_hp,
-                        R.id.gridview_mp
-                }
-        );
-
+    public void makeAdapter(int layout, Party party){
+        BaseAdapter adapter = new BaseAdapter_BattleMain(this, party);
 
         GridView gridView = findViewById(layout);
         gridView.setAdapter(adapter);
+
     }
+    
 
     public void addAllPlayer(){
         for(Party party: allParty){
@@ -154,10 +147,13 @@ public class BattleMain extends AppCompatActivity {
 
     public void removeEmptyParty(){
         for(int i = 0; i < allParty.size(); i++){
-            if(party.getmenbers().size() == 0){
-                System.out.println("しゅうりょう");
+            if(allParty.get(i).getmenbers().size() == 0){
+                System.out.println("しゅうりょう" + allParty.size());
 
                 allParty.remove(party);
+                System.out.println("しゅうりょう" + allParty.size());
+
+
             }
         }
     }
