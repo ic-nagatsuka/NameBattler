@@ -33,6 +33,7 @@ public abstract class Player{
 	protected int maxHp;						//HPの最大値
 	protected int maxMp;						//MPの最大値
 	protected int beforeHp;						//行動前のHP
+	protected boolean isDeath;					//戦闘不能
 	protected boolean inaction ;				//行動不能
 	protected boolean heelSkill;				//回復スキルの使用
 	protected boolean counter;					//カウンター使用
@@ -133,7 +134,10 @@ public abstract class Player{
 	public List<Item> getUseItem(){
 		return this.useItem;
 	}
-	
+
+	public boolean getIsDeath(){
+		return this.isDeath;
+	}
 	public boolean getInaction(){
 		return this.inaction;
 	}
@@ -171,7 +175,10 @@ public abstract class Player{
 	public void setStr(int str){
 		this.str = str;
 	}
-	
+
+	public void setIsDeath(boolean isDeath){
+		this.isDeath = isDeath;
+	}
 	public void setInaction(boolean inaction){
 		this.inaction = inaction;
 	}
@@ -452,7 +459,7 @@ public abstract class Player{
 	  * 死亡判定
 	  * @param party 攻撃を受けたパーティー
 	  */
-	protected void deathJudge(List<Player> party){
+	public void deathJudge(List<Player> party){
 		System.out.println("dead　メソッド" + party);
 
 		for(int i = party.size() -1 ; 0 <= i; i--){
@@ -462,11 +469,12 @@ public abstract class Player{
 
 
 			//HPが０以下
-			if(player.getHP() <= 0){
+			if(player.getHP() <= 0 && !player.getIsDeath()){
 
 				System.out.println(player.getName() + "は力尽きた...\n");
-				//パーティーから除く
-				player.getParty().removePlayer(player);
+				player.setIsDeath(true);
+//				//パーティーから除く
+//				player.getParty().removePlayer(player);
 
 			}
 		}

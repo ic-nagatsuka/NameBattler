@@ -61,6 +61,7 @@ public class BattleMain extends AppCompatActivity {
                     if(attacker.getHP() != 0){
 
                         attacker.abnormalEffect(attacker);
+                        attacker.deathJudge(attacker.getParty().getmenbers());
 
                         System.out.println(attacker.getHP());
                         if(attacker.getHP() != 0){
@@ -72,29 +73,42 @@ public class BattleMain extends AppCompatActivity {
 
                     removeEmptyParty();
 
-                    System.out.println("パーティー" + allParty.size());
-//                    ゲームバトル終了判定
-                    if(allParty.size() == 1){
+                    //バトル終了判定
+                    if(isEnd()){
+                        System.out.println("しゅうりょう");
+
+                        Intent intent = new Intent(getApplication(), TopScreen.class);
+                        startActivity(intent);
                         break;
                     }
                 }
 
-                //バトル結果画面に移動
-                if(allParty.size() == 1){
-                    System.out.println("ゲーム終了" + allParty.size());
-//                    Intent intent = new Intent(getApplication(), );
-//                    startActivity(intent);
-                }
 
             //1ターン分終了後ステータス更新
             displayUpdateStates();
-
             }
         });
 
 
 
 
+    }
+
+    public boolean isEnd(){//falseのカウントが１だったらtrueを返す
+        boolean isEnd = true;
+        for(Party party: allParty){
+            isEnd = true;
+            for(Player player: party.getmenbers()){
+                if(player.getHP() != 0){
+                    isEnd = false;
+                }
+            }
+            if(isEnd == true){
+                return isEnd;
+            }
+        }
+
+        return isEnd;
     }
 
     public void displayUpdateStates(){
@@ -109,7 +123,7 @@ public class BattleMain extends AppCompatActivity {
         gridView.setAdapter(adapter);
 
     }
-    
+
 
     public void addAllPlayer(){
         for(Party party: allParty){
@@ -134,7 +148,7 @@ public class BattleMain extends AppCompatActivity {
         }
     }
 
-        //リストのパーティーからアタッカーにパーティーを除いて乱数で決めたい
+
     public Party selectParty(Player attacker){
 
         if(attacker.getParty() == party){
