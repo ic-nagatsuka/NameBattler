@@ -33,7 +33,9 @@ public class BattleStart extends AppCompatActivity {
 
         final Random rand = new Random();
 
-        
+        if(enemyParty.getmenbers().size() != 0){
+            enemyParty = new Party("敵");
+        }
 
         EnemyNameData nameData = new EnemyNameData();
         for(int i = 0; i < 3; i++){
