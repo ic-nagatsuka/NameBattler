@@ -42,7 +42,15 @@ public abstract class Strategy {
 	 * @return 攻撃されるプレイヤー
 	 */
 	protected Player randomDefender(List<Player> defenceParty){
-		return defenceParty.get(rand.nextInt(defenceParty.size()));
+		Player defender;
+		while(true){
+			defender = defenceParty.get( rand.nextInt(defenceParty.size()) );
+			if(defender.getHP() != 0){
+				break;
+			}
+		}
+
+		return defender;
 	}
 	
 }

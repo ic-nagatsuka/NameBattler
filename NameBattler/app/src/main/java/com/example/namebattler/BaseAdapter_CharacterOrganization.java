@@ -108,7 +108,8 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
                         String job = textView.getText().toString();
                         System.out.println(job);
 
-                        party.appendPlayer(makePlayer(name, job));
+                        party.appendPlayer(
+                                makePlayer(name, job, CharacterOrganization.party));
 
                         if(party.getmenbers().size() > 3){
                             System.exit(0);

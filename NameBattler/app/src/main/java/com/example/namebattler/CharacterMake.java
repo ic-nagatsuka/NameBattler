@@ -19,6 +19,7 @@ import com.name.battler.Player.P_Bouncer;
 import com.name.battler.Player.P_Fighter;
 import com.name.battler.Player.P_Priest;
 import com.name.battler.Player.P_Wizard;
+import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
 import com.name.battler.Strategy.AllStrategy;
 
@@ -70,7 +71,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
                 if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
                     SQLiteDatabase db = helper.getWritableDatabase();
-                    player = makePlayer(name, radio.getText().toString());
+                    player = makePlayer(name, radio.getText().toString(), CharacterOrganization.party);
 
                     ContentValues values = new ContentValues();
                     values.put("NAME",  player.getName());
@@ -112,7 +113,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     }
 
 
-    public static Player makePlayer(String name, String job){
+    public static Player makePlayer(String name, String job, Party party){
         Player player = null;
         switch(job){
             case "戦士"   : player = new P_Fighter(name);break;
@@ -120,7 +121,10 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             case "僧侶"   : player = new P_Priest(name); break;
             case "ボール"  : player = new P_Bouncer(name); break;
         }
-        player.setParty(CharacterOrganization.party);
+
+        System.out.println("プレイヤー作成パーティー" + CharacterOrganization.party);
+
+        player.setParty(party);
         player.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
 
         return player;

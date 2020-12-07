@@ -24,7 +24,7 @@ import static com.example.namebattler.CharacterOrganization.party;
 public class BattleStart extends AppCompatActivity {
 
 
-    static Party enemyParty;
+    static Party enemyParty = new Party("敵");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +34,16 @@ public class BattleStart extends AppCompatActivity {
         final Random rand = new Random();
 
         
-        enemyParty = new Party("敵");
 
         EnemyNameData nameData = new EnemyNameData();
         for(int i = 0; i < 3; i++){
             enemyParty.appendPlayer(
                     makePlayer(
                             nameData.getEnemyName(),
-                            AllJob.allJob[rand.nextInt(AllJob.allJob.length)]));
+                            AllJob.allJob[rand.nextInt(AllJob.allJob.length)],
+                            enemyParty
+                    )
+            );
         }
 
         makeList(R.id.battle_start_listView_top, party);
@@ -66,7 +68,10 @@ public class BattleStart extends AppCompatActivity {
                     enemyParty.appendPlayer(
                             makePlayer(
                                     enemyName.getEnemyName(),
-                                    AllJob.allJob[rand.nextInt(AllJob.allJob.length)]));
+                                    AllJob.allJob[rand.nextInt(AllJob.allJob.length)],
+                                    enemyParty
+                            )
+                    );
                 }
                 makeList(R.id.battle_start_listView_bottom, enemyParty);
             }
