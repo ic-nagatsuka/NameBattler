@@ -26,6 +26,8 @@ import com.name.battler.Strategy.AllStrategy;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.name.battler.GameManager.myParty;
+
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
@@ -71,7 +73,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
                 if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
                     SQLiteDatabase db = helper.getWritableDatabase();
-                    player = makePlayer(name, radio.getText().toString(), CharacterOrganization.party);
+                    player = makePlayer(name, radio.getText().toString(), myParty);
 
                     ContentValues values = new ContentValues();
                     values.put("NAME",  player.getName());
@@ -122,7 +124,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             case "ボール"  : player = new P_Bouncer(name); break;
         }
 
-        System.out.println("プレイヤー作成パーティー" + CharacterOrganization.party);
+        System.out.println("プレイヤー作成パーティー" + party);
 
         player.setParty(party);
         player.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());

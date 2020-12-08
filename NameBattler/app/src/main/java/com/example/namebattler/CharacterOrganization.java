@@ -17,11 +17,11 @@ import com.name.battler.Player.Party;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.name.battler.GameManager.myParty;
+
 public class CharacterOrganization extends AppCompatActivity {
 
     CharacterInformation helper = new CharacterInformation(this);
-
-    static Party party = new Party("味方");
 
     int charaCount = 0;
     int layout = R.layout.activity_character_organization;
@@ -35,8 +35,8 @@ public class CharacterOrganization extends AppCompatActivity {
 
         View startButtonView = findViewById(R.id.character_organization_start);
 
-        if(party.getmenbers().size() != 0){
-            party = new Party("味方");
+        if(myParty.getmenbers().size() != 0){
+            myParty = new Party("味方");
         }
 
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
@@ -68,7 +68,7 @@ public class CharacterOrganization extends AppCompatActivity {
         findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                if(party.getmenbers().size() == 3){
+                if(myParty.getmenbers().size() == 3){
                     Intent intent = new Intent(getApplication(), BattleStart.class);
                     startActivity(intent);
                 }

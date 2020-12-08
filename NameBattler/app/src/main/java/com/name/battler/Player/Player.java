@@ -205,8 +205,8 @@ public abstract class Player{
 	public void normalAttack(Player target){
 		
 		this.readyCounter(target);
+
 		System.out.println(target.getHP() + "    HP " + target.getName());
-		System.out.println("パーティー人数" +  target.getParty().getName() + target.getParty().getmenbers().size());
 
 		//通常のダメージ計算
 		normalDamage(target);
