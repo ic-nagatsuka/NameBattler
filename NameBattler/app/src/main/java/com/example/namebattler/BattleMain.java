@@ -39,7 +39,7 @@ public class BattleMain extends AppCompatActivity {
 //        addAllPlayer();
 //        highSpeedSort(allPlayer);
 //
-//        displayUpdateStates();
+        displayUpdateStates();
 
 
 
