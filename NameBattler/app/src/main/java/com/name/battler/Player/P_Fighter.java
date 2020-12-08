@@ -3,6 +3,8 @@ package com.name.battler.Player;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.name.battler.BattleLog.BattleLog.addLog;
+
 
 public class P_Fighter extends Player{
 	
@@ -43,7 +45,7 @@ public class P_Fighter extends Player{
 	
 	@Override
 	public void normalAttack(Player target){
-		System.out.println(this.name +"は" + attText.get( rand.nextInt(attText.size())));
+		addLog(this.name +"は" + attText.get( rand.nextInt(attText.size())));
 		
 		super.normalAttack(target);
 	}

@@ -2,6 +2,8 @@ package com.name.battler.Player;
 
 import com.name.battler.Skill.AllSkill;
 
+import static com.name.battler.BattleLog.BattleLog.addLog;
+
 
 public class P_Wizard extends Player{
 	/*=============
@@ -31,9 +33,9 @@ public class P_Wizard extends Player{
 		
 	@Override
 	public void normalAttack(Player target){
-		System.out.println(this.name + "魔法を唱えた");
+		addLog(this.name + "魔法を唱えた");
 		if(rand.nextInt(2) == 0){
-			System.out.println("が何も起こらなかった");
+			addLog("が何も起こらなかった");
 		}else{
 			super.normalAttack(target);
 		}
