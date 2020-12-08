@@ -32,13 +32,14 @@ public class GameManager{
 	//バトルに参加しているプレイヤー
 	List<Player> battlePlayer = new ArrayList<>();
 
-	//作成したキャラクターを入れる
+	//全てのパーティーを入れる
 	List<Party> allParty = new ArrayList<>();
-	//バトルに参加しているパーティー
-	List<Party> battleParty = new ArrayList<>();
+//	//バトルに参加しているパーティー
+//	List<Party> battleParty = new ArrayList<>();
 
-	//すべての作戦
-	List<Strategy> strategy = new ArrayList<>();
+	public static Party myParty = new Party("味方");
+	public static Party enemyParty = new Party("敵");
+
 
 	int turnCount = 1;	//ターン数
 
@@ -62,11 +63,13 @@ public class GameManager{
 	 */
 	public void Start() throws InterruptedException{
 
+		allParty.add(myParty);
+		allParty.add(enemyParty);
 
-            addAllPlayer();
+		addAllPlayer();
 
-			//素早さが高い順に並べる
-			HighSpeedSort(battlePlayer);
+		//素早さが高い順に並べる
+		HighSpeedSort(allPlayer);
 
 //			Battle();//バトル開始
 
@@ -105,47 +108,43 @@ public class GameManager{
 	 */
 //	private void Battle() throws InterruptedException
 //	{
-//		//残りのパーティーが1つでバトル終了
-//		while(battleParty.size() != 1){
-//			//ターン数の表示
-//			System.out.println("=====ターン"+turnCount+"=====");
-//			Thread.sleep(1000);
+//		//ターン数の表示
+//		System.out.println("=====ターン"+turnCount+"=====");
+//		Thread.sleep(1000);
 //
-//			//バトル途中のステータスを表示
+//		//バトル途中のステータスを表示
 ////			PrintPlayerBattleStatus();
-//			Thread.sleep(900);
-//			System.out.println("");
+//		Thread.sleep(900);
 //
-//			//行動
-//			for(int i = battlePlayer.size() -1; 0 <= i; i--){
-//				Player attacker = battlePlayer.get(i);//攻撃するプレイヤー
-//				Party defenseParty;	//攻撃を受けるパーティー
+//		//行動
+//		for(int i = battlePlayer.size() -1; 0 <= i; i--){
+//			Player attacker = battlePlayer.get(i);//攻撃するプレイヤー
+//			Party defenseParty;	//攻撃を受けるパーティー
 //
-//				if(attacker.getHP() > 0){
-//					//状態異常の確認
-//					attacker.abnormalEffect(attacker);
-//					//戦闘不能判定
-//					attacker.deathJudgeAbnormal(attacker.getParty().Getmenbers());
-//					//状態異常での終了判定
-//					if(CheckEnd()){
-//						break;
-//					}
-//				}
-//
-//				//行動不能ではなく、状態異常で倒れていない
-//				if(!attacker.getInaction() && attacker.GetHP() > 0){
-//					//攻撃されるパーティー
-//					defenseParty = SelectDefenseParty(attacker);
-//					//作戦に沿って行動をする
-//					attacker.GetStrategy().Action(attacker, defenseParty);
-//				}
-//
-//				Thread.sleep(gameTextSpeed);
-//
-//				//行動後の終了判定
+//			if(attacker.getHP() > 0){
+//				//状態異常の確認
+//				attacker.abnormalEffect(attacker);
+//				//戦闘不能判定
+//				attacker.deathJudgeAbnormal(attacker.getParty().Getmenbers());
+//				//状態異常での終了判定
 //				if(CheckEnd()){
 //					break;
 //				}
+//			}
+//
+//			//行動不能ではなく、状態異常で倒れていない
+//			if(!attacker.getInaction() && attacker.GetHP() > 0){
+//				//攻撃されるパーティー
+//				defenseParty = SelectDefenseParty(attacker);
+//				//作戦に沿って行動をする
+//				attacker.GetStrategy().Action(attacker, defenseParty);
+//			}
+//
+//			Thread.sleep(gameTextSpeed);
+//
+//			//行動後の終了判定
+//			if(CheckEnd()){
+//				break;
 //			}
 ////			CheckDead();//HPがあるプレイヤーだけにする
 //

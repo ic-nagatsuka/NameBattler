@@ -23,7 +23,7 @@ import com.name.battler.Player.Player;
 import java.util.List;
 
 import static com.example.namebattler.CharacterMake.makePlayer;
-import static com.example.namebattler.CharacterOrganization.party;
+import static com.name.battler.GameManager.myParty;
 
 public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
@@ -108,10 +108,10 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
                         String job = textView.getText().toString();
                         System.out.println(job);
 
-                        party.appendPlayer(
-                                makePlayer(name, job, CharacterOrganization.party));
+                        myParty.appendPlayer(
+                                makePlayer(name, job, myParty));
 
-                        if(party.getmenbers().size() > 3){
+                        if(myParty.getmenbers().size() > 3){
                             System.exit(0);
                         }
                     }
@@ -134,8 +134,8 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
     public boolean hasName(String name){
         boolean haveName = false;
-        for(int i = 0; i < party.getmenbers().size() ; i++){
-            Player player = party.getmenbers().get(i);
+        for(int i = 0; i < myParty.getmenbers().size() ; i++){
+            Player player = myParty.getmenbers().get(i);
             if(player.getName().equals(name)){
                 haveName = true;
             }

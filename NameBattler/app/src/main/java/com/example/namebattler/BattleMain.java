@@ -19,10 +19,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.name.battler.GameManager.enemyParty;
+import static com.name.battler.GameManager.myParty;
+
 public class BattleMain extends AppCompatActivity {
 
-    Party party = CharacterOrganization.party;
-    Party enemyParty = BattleStart.enemyParty;
     ArrayList<Party>allParty = new ArrayList<>();
     ArrayList<Player>allPlayer = new ArrayList<>();
 
@@ -30,12 +31,12 @@ public class BattleMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_main);
-        System.out.println("パーティー"+party);
+        System.out.println("パーティー"+myParty);
 
-        allParty.add(party);
+        allParty.add(myParty);
         allParty.add(enemyParty);
 
-        party.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+        myParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
         enemyParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
 
         addAllPlayer();
@@ -47,7 +48,7 @@ public class BattleMain extends AppCompatActivity {
 
         TextView strategy = findViewById(R.id.battle_main_strategy_name);
         strategy.setText("作戦 ： " +
-                party.getStrategy().getName()
+                myParty.getStrategy().getName()
         );
 
 
@@ -112,7 +113,7 @@ public class BattleMain extends AppCompatActivity {
     }
 
     public void displayUpdateStates(){
-        makeAdapter(R.id.battle_main_gridView_top, party);
+        makeAdapter(R.id.battle_main_gridView_top, myParty);
         makeAdapter(R.id.battle_main_gridView_bottom, enemyParty);
     }
 
@@ -151,10 +152,10 @@ public class BattleMain extends AppCompatActivity {
 
     public Party selectParty(Player attacker){
 
-        if(attacker.getParty() == party){
+        if(attacker.getParty() == myParty){
             return enemyParty;
         }else{
-            return party;
+            return myParty;
         }
 
     }
@@ -164,7 +165,7 @@ public class BattleMain extends AppCompatActivity {
             if(allParty.get(i).getmenbers().size() == 0){
                 System.out.println("しゅうりょう" + allParty.size());
 
-                allParty.remove(party);
+                allParty.remove(myParty);
                 System.out.println("しゅうりょう" + allParty.size());
 
 

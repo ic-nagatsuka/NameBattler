@@ -19,12 +19,11 @@ import java.util.Map;
 import java.util.Random;
 
 import static com.example.namebattler.CharacterMake.makePlayer;
-import static com.example.namebattler.CharacterOrganization.party;
+import static com.name.battler.GameManager.enemyParty;
+import static com.name.battler.GameManager.myParty;
 
 public class BattleStart extends AppCompatActivity {
 
-
-    static Party enemyParty = new Party("敵");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,7 @@ public class BattleStart extends AppCompatActivity {
             );
         }
 
-        makeList(R.id.battle_start_listView_top, party);
+        makeList(R.id.battle_start_listView_top, myParty);
         makeList(R.id.battle_start_listView_bottom, enemyParty);
 
 
