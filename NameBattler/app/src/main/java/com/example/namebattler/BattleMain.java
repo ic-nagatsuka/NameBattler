@@ -10,6 +10,7 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.name.battler.BattleLog.BattleLog;
 import com.name.battler.GameManager;
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
@@ -20,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.name.battler.BattleLog.BattleLog.logList;
 import static com.name.battler.GameManager.enemyParty;
 import static com.name.battler.GameManager.myParty;
 
@@ -61,6 +63,11 @@ public class BattleMain extends AppCompatActivity {
                 }
                 //1ターン分終了後ステータス更新
                 displayUpdateStates();
+
+                TextView text = findViewById(R.id.textView2);
+                text.setText(BattleLog.getLogText());
+
+                logList = new ArrayList<>();
             }
         });
 

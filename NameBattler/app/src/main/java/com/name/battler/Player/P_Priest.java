@@ -2,6 +2,8 @@ package com.name.battler.Player;
 
 import com.name.battler.Skill.AllSkill;
 
+import static com.name.battler.BattleLog.BattleLog.addLog;
+
 
 public class P_Priest extends Player {
 
@@ -29,7 +31,7 @@ public class P_Priest extends Player {
 	
 	@Override
 	public void normalAttack(Player target){
-		System.out.println(this.name + "は回復を唱えようとした");
+		addLog(this.name + "は回復を唱えようとした");
 	
 //		if(rand.nextInt(2) == 0){
 //			System.out.println("何も起こらなかった");
@@ -41,10 +43,10 @@ public class P_Priest extends Player {
 		
 		switch (rand.nextInt(3)) {
 		case 0:
-			System.out.println("何も起こらなかった");
+			addLog("何も起こらなかった");
 			break;
 		case 1:
-			System.out.println("aaaaaaaa");
+			addLog("aaaaaaaa");
 			break;
 		case 2:
 			super.normalAttack(target);

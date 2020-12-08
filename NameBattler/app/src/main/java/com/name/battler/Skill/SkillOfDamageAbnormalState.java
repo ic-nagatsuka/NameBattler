@@ -2,6 +2,8 @@ package com.name.battler.Skill;
 
 import com.name.battler.Player.Player;
 
+import static com.name.battler.BattleLog.BattleLog.addLog;
+
 
 public class SkillOfDamageAbnormalState extends SkillOfEffectTurn{
 	/*=============
@@ -28,14 +30,14 @@ public class SkillOfDamageAbnormalState extends SkillOfEffectTurn{
 	
 	@Override
 	public void use(Player attacker, Player defender){
-		System.out.println(attacker.getName() + "は" + this.getName() + "を唱えた！");
+		addLog(attacker.getName() + "は" + this.getName() + "を唱えた！");
 		usePlayerMp(attacker);
 		
 		if(defender.checkSameAbnormal(AllSkill.poison)){
-			System.out.println(defender.getName() + "はすでにかかっている！");
+			addLog(defender.getName() + "はすでにかかっている！");
 			
 		}else{
-			System.out.println(defender.getName() + "は毒にかかった！");
+			addLog(defender.getName() + "は毒にかかった！");
 			defender.setAbnormalState(new StateEffect(AllSkill.poison, this.effectTurn));
 		}
 		
@@ -44,10 +46,10 @@ public class SkillOfDamageAbnormalState extends SkillOfEffectTurn{
 	@Override
 	public void effect(Player target, int turn){
 		if(turn < 0){
-			System.out.println(target.getName() + "の毒が治った！");
+			addLog(target.getName() + "の毒が治った！");
 		}else{
-			System.out.println(target.getName() + "は毒にかかっている！");
-			System.out.println(target.getName() + "は" + this.turnDama + "のダメージを受けた！");
+			addLog(target.getName() + "は毒にかかっている！");
+			addLog(target.getName() + "は" + this.turnDama + "のダメージを受けた！");
 			target.damage(turnDama);
 		}
 	}

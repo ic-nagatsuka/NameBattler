@@ -14,6 +14,8 @@ import com.name.battler.Skill.Skill;
 import com.name.battler.Skill.SkillOfEffectTurn.StateEffect;
 import com.name.battler.Strategy.Strategy;
 
+import static com.name.battler.BattleLog.BattleLog.addLog;
+
 public abstract class Player{
 	
 	private int itemNum = 3;
@@ -227,9 +229,9 @@ public abstract class Player{
 		}
 		
 		if(damage == 0){
-			System.out.println(this.getName() + "はダメージを与えられなかった！\n");
+			addLog(this.getName() + "はダメージを与えられなかった！");
 		}else{
-			System.out.println(target.getName() + "に" + damage + "のダメージ！\n");
+			addLog(target.getName() + "に" + damage + "のダメージ！");
 			target.damage(damage);
 		}
 	}
@@ -245,7 +247,7 @@ public abstract class Player{
 		int luckyHit = rand.nextInt(1000);
 		//会心の一撃が出た場合
 		if(this.getLUCK() > luckyHit){
-			System.out.println("会心の一撃！！");
+			addLog("会心の一撃！！");
 			return true;
 		}else{
 			return false;
@@ -426,7 +428,7 @@ public abstract class Player{
 	 * @param target
 	 */
 	protected void counterAttack(Player target){
-		System.out.println(this.getName() + "は反撃した！！");
+		addLog(this.getName() + "は反撃した！！");
 		
 		normalDamage(target);
 	}
@@ -471,7 +473,7 @@ public abstract class Player{
 			//HPが０以下
 			if(player.getHP() <= 0 && !player.getIsDeath()){
 
-				System.out.println(player.getName() + "は力尽きた...\n");
+				addLog(player.getName() + "は力尽きた...\n");
 				player.setIsDeath(true);
 //				//パーティーから除く
 //				player.getParty().removePlayer(player);

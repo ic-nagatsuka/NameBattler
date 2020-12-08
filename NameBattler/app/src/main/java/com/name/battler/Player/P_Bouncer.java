@@ -2,6 +2,8 @@ package com.name.battler.Player;
 
 import com.name.battler.Skill.AllSkill;
 
+import static com.name.battler.BattleLog.BattleLog.addLog;
+
 public class P_Bouncer extends Player{
 
 	/*=============
@@ -33,16 +35,16 @@ public class P_Bouncer extends Player{
 	public void normalAttack(Player target)
 	{
 		if(rand.nextInt(2) == 0){
-			System.out.println(this.getName() + "は飛び跳ねた！");
+			addLog(this.getName() + "は飛び跳ねた！");
 			super.normalAttack(target);
 		}else{
-			System.out.println(getName() + "は動かない！");
+			addLog(getName() + "は動かない！");
 		}
 	}
 	
 	@Override
 	protected void counterAttack(Player defender){
-		System.out.println(this.getName() + "が跳ね返ってきた！");
+		addLog(this.getName() + "が跳ね返ってきた！");
 		//会心でなければ
 		if( !checkLuckyHit(defender)){
 			this.normalDamage(defender);

@@ -2,6 +2,8 @@ package com.name.battler.Skill;
 
 import com.name.battler.Player.Player;
 
+import static com.name.battler.BattleLog.BattleLog.addLog;
+
 public class SkillOfAttackMagic extends Skill
 {
 	/*=============
@@ -40,12 +42,12 @@ public class SkillOfAttackMagic extends Skill
 	public void use(Player attacker, Player target)
 	{
 		int damage;
-		System.out.println(attacker.getName() + "は" + this.name + "を唱えた！");
+		addLog(attacker.getName() + "は" + this.name + "を唱えた！");
 		usePlayerMp(attacker);
 		
 		for(Player defender : target.getParty().getmenbers()){
 			damage= randomDamage(this.minDama, this.maxDama);
-			System.out.println(defender.getName() + "に" + damage + "のダメージ！");
+			addLog(defender.getName() + "に" + damage + "のダメージ！");
 			defender.damage(damage);
 			
 		}
