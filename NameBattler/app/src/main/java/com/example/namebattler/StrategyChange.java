@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.name.battler.Strategy.AllStrategy;
 
+import static com.name.battler.GameManager.myParty;
+
 public class StrategyChange extends AppCompatActivity {
 
     @Override
@@ -37,8 +39,14 @@ public class StrategyChange extends AppCompatActivity {
 
             radioGroup.addView(radioButton);
         }
+        System.out.println(radioGroup);
 
-
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                myParty.setStrategy(AllStrategy.Strategies.values()[i - 1].getStrategy());
+            }
+        });
 
     }
 }
