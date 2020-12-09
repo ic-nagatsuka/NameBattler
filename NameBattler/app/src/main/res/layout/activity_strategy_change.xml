@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StrategyChange">
+
+    <TextView
+        android:id="@+id/strategyChange_title"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="#ccc"
+        android:gravity="center"
+        android:text="作戦"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/strategyChange_dicid"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:background="@color/blue_26c"
+        android:text="決定"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/strategyChange_explanation"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:text="パーティーの作戦を選んでください"
+        android:textSize="20dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strategyChange_title" />
+
+    <RadioGroup
+        android:id="@+id/strategyChange_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strategyChange_explanation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
