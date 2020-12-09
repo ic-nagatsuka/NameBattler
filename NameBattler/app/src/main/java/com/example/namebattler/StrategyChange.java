@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Layout;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -46,6 +47,13 @@ public class StrategyChange extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 myParty.setStrategy(AllStrategy.Strategies.values()[i - 1].getStrategy());
             }
+        });
+
+        findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener(){
+           @Override
+            public void onClick(View v){
+               finish();
+           }
         });
 
     }
