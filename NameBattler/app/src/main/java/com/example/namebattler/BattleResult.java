@@ -40,6 +40,14 @@ public class BattleResult extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.battleResult_battleEnd).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplication(), TopScreen.class);
+                        startActivity(intent);
+                    }
+        });
+
 
 
 
