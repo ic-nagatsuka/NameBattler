@@ -32,6 +32,16 @@ public class BattleResult extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.battleResult_nextBattle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), BattleStart.class);
+                startActivity(intent);
+            }
+        });
+
+
+
 
 
 
