@@ -99,7 +99,7 @@ public class BattleMain extends AppCompatActivity {
 //    }
 
     public void displayUpdateStates(){
-        makeAdapter(R.id.battleResult_gridView_top, myParty);
+        makeAdapter(R.id.battle_main_gridView_top, myParty);
         makeAdapter(R.id.battle_main_gridView_bottom, enemyParty);
     }
 
