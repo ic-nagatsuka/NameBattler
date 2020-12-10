@@ -73,7 +73,7 @@ public class CharacterList extends AppCompatActivity {
             for(int i = 0; i < cursor.getCount(); i++){
                 HashMap<String, String> hash = new HashMap<>();
                 hash.put("name", cursor.getString(cursor.getColumnIndex("NAME")));
-                hash.put("job", cursor.getString(cursor.getColumnIndex("JOB")));
+                hash.put("job", AllJob.allJob[cursor.getInt(cursor.getColumnIndex("JOB"))]);
                 hash.put("status",
                         "HP:" + cursor.getString(cursor.getColumnIndex("HP")) +
                                 " MP:" + cursor.getString(cursor.getColumnIndex("MP")) +
