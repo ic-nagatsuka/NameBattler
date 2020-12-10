@@ -24,9 +24,11 @@ public class StrategyChange extends AppCompatActivity {
 
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
 
-        for(AllStrategy.Strategies str: AllStrategy.Strategies.values()){
+        for(int i = 0; i < AllStrategy.Strategies.values().length; i++){
+            AllStrategy.Strategies strategy = AllStrategy.Strategies.values()[i];
             RadioButton radioButton = new RadioButton(this);
-            radioButton.setText(str.getStrategy().getName());
+            radioButton.setId(i);
+            radioButton.setText(strategy.getStrategy().getName());
             radioButton.setTextSize(30);
 
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -45,7 +47,8 @@ public class StrategyChange extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                myParty.setStrategy(AllStrategy.Strategies.values()[i - 1].getStrategy());
+               //クリックしたラジオボタンのIDから作戦を選択するように変更する
+                myParty.setStrategy(AllStrategy.Strategies.values()[i].getStrategy());
             }
         });
 
