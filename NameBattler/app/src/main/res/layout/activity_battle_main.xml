@@ -88,7 +88,7 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="TextView"
+        android:background="#dfd"
         app:layout_constraintBottom_toTopOf="@+id/battle_main_nextTurn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

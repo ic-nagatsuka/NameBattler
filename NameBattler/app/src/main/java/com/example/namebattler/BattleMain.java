@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -50,7 +51,8 @@ public class BattleMain extends AppCompatActivity {
                 myParty.getStrategy().getName()
         );
 
-
+        final TextView text = findViewById(R.id.textView2);
+        text.setMovementMethod(new ScrollingMovementMethod());
         findViewById(R.id.battle_main_nextTurn).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -64,14 +66,20 @@ public class BattleMain extends AppCompatActivity {
                 //1ターン分終了後ステータス更新
                 displayUpdateStates();
 
-                TextView text = findViewById(R.id.textView2);
+
                 text.setText(BattleLog.getLogText());
 
                 logList = new ArrayList<>();
             }
         });
 
-
+        findViewById(R.id.battle_main_stratygy_button).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), StrategyChange.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
