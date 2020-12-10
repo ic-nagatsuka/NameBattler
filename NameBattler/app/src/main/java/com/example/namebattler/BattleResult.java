@@ -2,7 +2,9 @@ package com.example.namebattler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
@@ -20,6 +22,17 @@ public class BattleResult extends AppCompatActivity {
 
         setAdapter(R.id.battleResult_gridView_top, myParty);
         setAdapter(R.id.battleResult_gridView_bottom, enemyParty);
+
+
+        findViewById(R.id.battleResult_rematch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), BattleMain.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
     }
