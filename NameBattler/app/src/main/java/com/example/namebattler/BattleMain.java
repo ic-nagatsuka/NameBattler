@@ -8,7 +8,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.name.battler.BattleLog.BattleLog;
@@ -18,9 +17,7 @@ import com.name.battler.Player.Player;
 import com.name.battler.Strategy.AllStrategy;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.name.battler.BattleLog.BattleLog.logList;
 import static com.name.battler.GameManager.enemyParty;
@@ -102,7 +99,7 @@ public class BattleMain extends AppCompatActivity {
 //    }
 
     public void displayUpdateStates(){
-        makeAdapter(R.id.battle_main_gridView_top, myParty);
+        makeAdapter(R.id.battleResult_gridView_top, myParty);
         makeAdapter(R.id.battle_main_gridView_bottom, enemyParty);
     }
 
