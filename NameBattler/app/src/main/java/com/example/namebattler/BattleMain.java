@@ -57,7 +57,7 @@ public class BattleMain extends AppCompatActivity {
                 if(!gm.Battle()){
                     System.out.println("しゅうりょう");
 
-                    Intent intent = new Intent(getApplication(), TopScreen.class);
+                    Intent intent = new Intent(getApplication(), BattleResult.class);
                     startActivity(intent);
                 }
                 //1ターン分終了後ステータス更新
