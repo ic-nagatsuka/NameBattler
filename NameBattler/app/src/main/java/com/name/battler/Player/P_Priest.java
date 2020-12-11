@@ -14,8 +14,8 @@ public class P_Priest extends Player {
 		super(name);
 		this.setJob(AllJob.Priest);
 	}
-	
-	protected void makeCharacter(){
+
+	public  void makeCharacter(){
 		this.hp = getNumber(0, 120) + 80;
 		this.mp = getNumber(1, 30) + 20;
 		this.str = getNumber(2, 60) + 10;

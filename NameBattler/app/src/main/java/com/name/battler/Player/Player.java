@@ -75,7 +75,7 @@ public abstract class Player{
 	/**
 	 * パラメーター生成
 	 */
-	abstract void makeCharacter();
+	public abstract void makeCharacter();
 	
 	/**
 	 * スキル設定
@@ -684,8 +684,8 @@ public abstract class Player{
 			this.useItem.add(
 					allItem.GetItemList().get(rand.nextInt(allItem.GetItemList().size())));
 		}
-	}	
-	
-	
+	}
+
+
 }
 

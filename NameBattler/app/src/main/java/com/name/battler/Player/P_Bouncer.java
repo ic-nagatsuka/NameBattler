@@ -17,7 +17,7 @@ public class P_Bouncer extends Player{
 	}
 	
 	@Override
-	protected void makeCharacter(){
+	public  void makeCharacter(){
 		this.hp = getNumber(0, 50) + 100;
 		this.mp = getNumber(1, 50) + 60;
 		this.str = getNumber(2, 29) + 1;

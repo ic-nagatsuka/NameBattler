@@ -58,6 +58,6 @@ public class Party {
 	{
 		this.menbers.remove(player);
 	}
-	
+
 	
 }
