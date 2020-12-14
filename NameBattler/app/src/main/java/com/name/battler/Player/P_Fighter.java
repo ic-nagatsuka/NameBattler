@@ -21,7 +21,7 @@ public class P_Fighter extends Player{
 	}
 	
 	@Override
-	protected void makeCharacter(){
+	public  void makeCharacter(){
 		this.hp = getNumber(0, 200) + 100;
 		this.mp = getNumber(1, 0) + 0;
 		this.str = getNumber(2, 70) + 30;

@@ -14,8 +14,8 @@ public class P_Wizard extends Player{
 		this.setJob(AllJob.Wizard);
 
 	}
-	
-	protected void makeCharacter(){
+
+	public void makeCharacter(){
 		this.hp = getNumber(0, 100) + 50;
 		this.mp = getNumber(1, 50) + 30;
 		this.str = getNumber(2, 49) + 1;
