@@ -6,6 +6,7 @@ import java.util.Random;
 
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
+import com.name.battler.Strategy.AllStrategy;
 
 
 public class GameManager{
@@ -52,11 +53,15 @@ public class GameManager{
 		allParty.add(myParty);
 		allParty.add(enemyParty);
 
+		if(myParty.getStrategy() == null){
+			myParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+			enemyParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+		}
+
 		addAllPlayer();
 
 		//素早さが高い順に並べる
 		highSpeedSort(allPlayer);
-
 
 	}
 
@@ -110,7 +115,7 @@ public class GameManager{
 				//攻撃されるパーティー
 				defenseParty = selectDefenseParty(attacker);
 				//作戦に沿って行動をする
-				attacker.getStrategy().action(attacker, defenseParty);
+				attacker.getParty().getStrategy().action(attacker, defenseParty);
 			}
 
 
