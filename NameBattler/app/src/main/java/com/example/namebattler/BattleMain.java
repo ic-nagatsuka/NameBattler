@@ -54,7 +54,7 @@ public class BattleMain extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                if(!gm.Battle()){
+                if(!gm.battle()){
                     System.out.println("しゅうりょう");
 
                     Intent intent = new Intent(getApplication(), BattleResult.class);
