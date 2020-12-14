@@ -30,18 +30,8 @@ public class BattleMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_main);
-        System.out.println("パーティー"+myParty);
 
-
-        myParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
-        enemyParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
-
-//        addAllPlayer();
-//        highSpeedSort(allPlayer);
-//
         displayUpdateStates();
-
-
 
         TextView strategy = findViewById(R.id.battle_main_strategy_name);
         strategy.setText("作戦 ： " +
@@ -54,7 +44,7 @@ public class BattleMain extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                if(!gm.Battle()){
+                if(!gm.battle()){
                     System.out.println("しゅうりょう");
 
                     Intent intent = new Intent(getApplication(), BattleResult.class);

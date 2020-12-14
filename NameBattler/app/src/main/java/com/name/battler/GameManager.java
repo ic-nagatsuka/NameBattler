@@ -3,24 +3,10 @@ package com.name.battler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
-import com.example.namebattler.BattleMain;
-import com.name.battler.Player.AllJob;
-import com.name.battler.Player.P_Bouncer;
-import com.name.battler.Player.P_Fighter;
-import com.name.battler.Player.P_Priest;
-import com.name.battler.Player.P_Wizard;
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
-import com.name.battler.Skill.AllSkill;
-import com.name.battler.Skill.SkillType;
-import com.name.battler.Strategy.Strategy;
-import com.name.battler.Strategy.StrategyOfAttackMagicPriority;
-import com.name.battler.Strategy.StrategyOfBalance;
-import com.name.battler.Strategy.StrategyOfDamagePriority;
-import com.name.battler.Strategy.StrategyOfLeastHP;
-import com.name.battler.Strategy.StrategyOfNoSkill;
+import com.name.battler.Strategy.AllStrategy;
 
 
 public class GameManager{
@@ -53,7 +39,7 @@ public class GameManager{
 	 * コンストラクタ
 	 =============*/
 	public GameManager() {
-		Start();
+		prepare();
 
 	}
 
@@ -62,16 +48,20 @@ public class GameManager{
 	 * 戦闘準備
 	 * @throws InterruptedException
 	 */
-	public void Start() {
+	public void prepare() {
 
 		allParty.add(myParty);
 		allParty.add(enemyParty);
 
+		if(myParty.getStrategy() == null){
+			myParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+			enemyParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+		}
+
 		addAllPlayer();
 
 		//素早さが高い順に並べる
-		HighSpeedSort(allPlayer);
-
+		highSpeedSort(allPlayer);
 
 	}
 
@@ -89,7 +79,7 @@ public class GameManager{
 	 * 素早さが大きい順に並べる
 	 * @param playerList すべてのプレイヤー情報
 	 */
-	private void HighSpeedSort (List<Player> playerList){
+	private void highSpeedSort(List<Player> playerList){
 
 		for(int i = 0; i < playerList.size() - 1; i++){
 			for(int j = 0; j < playerList.size() - 1; j++){
@@ -105,7 +95,7 @@ public class GameManager{
 	/**
 	 * バトル
 	 */
-	public boolean Battle()
+	public boolean battle()
 	{
 		//ターン数の表示
 		System.out.println("=====ターン"+turnCount+"=====");
@@ -125,7 +115,7 @@ public class GameManager{
 				//攻撃されるパーティー
 				defenseParty = selectDefenseParty(attacker);
 				//作戦に沿って行動をする
-				attacker.getStrategy().action(attacker, defenseParty);
+				attacker.getParty().getStrategy().action(attacker, defenseParty);
 			}
 
 
