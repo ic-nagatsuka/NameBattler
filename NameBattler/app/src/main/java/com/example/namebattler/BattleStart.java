@@ -11,6 +11,7 @@ import android.widget.SimpleAdapter;
 import com.name.battler.Player.AllJob;
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
+import com.name.battler.enemyData.Enemy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class BattleStart extends AppCompatActivity {
             enemyParty = new Party("敵");
         }
 
-        EnemyNameData nameData = new EnemyNameData();
+        Enemy nameData = new Enemy();
         for(int i = 0; i < 3; i++){
             enemyParty.appendPlayer(
                     makePlayer(
@@ -64,7 +65,7 @@ public class BattleStart extends AppCompatActivity {
             public void onClick(View view) {
                 enemyParty.getmenbers().clear();
 
-                EnemyNameData enemyName = new EnemyNameData();
+                Enemy enemyName = new Enemy();
                 for(int i = 0; i < 3; i++){
                     enemyParty.appendPlayer(
                             makePlayer(
@@ -116,30 +117,4 @@ public class BattleStart extends AppCompatActivity {
         listview.setAdapter(adapter);
         return list;
     }
-}
-
-class EnemyNameData{
-
-    static Random rand = new Random();
-    static ArrayList<String> enemyNames = new ArrayList<>();
-
-    EnemyNameData(){
-        resetName();
-    }
-
-    public String getEnemyName(){
-
-        return enemyNames.remove(rand.nextInt(enemyNames.size()));
-    }
-
-    public void resetName(){
-        enemyNames.clear();
-
-        enemyNames.add("a");
-        enemyNames.add("i");
-        enemyNames.add("u");
-        enemyNames.add("e");
-        enemyNames.add("o");
-    }
-
 }
