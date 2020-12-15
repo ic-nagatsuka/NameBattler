@@ -53,7 +53,7 @@ public class GameManager{
 		allParty.add(myParty);
 		allParty.add(enemyParty);
 
-		if(myParty.getStrategy() == null){
+		if(myParty.getStrategy() == null || enemyParty.getStrategy() == null){
 			myParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
 			enemyParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
 		}
