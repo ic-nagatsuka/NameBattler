@@ -11,7 +11,7 @@ public class P_Wizard extends Player{
 	 =============*/
 	public P_Wizard(String name) {
 		super(name);
-		this.setJob(AllJob.Wizard);
+		this.setJob(AllJob.Job.WIZARD.getName());
 
 	}
 

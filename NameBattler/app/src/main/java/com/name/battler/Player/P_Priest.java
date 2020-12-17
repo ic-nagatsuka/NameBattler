@@ -12,7 +12,7 @@ public class P_Priest extends Player {
 	 =============*/
 	public P_Priest(String name) {
 		super(name);
-		this.setJob(AllJob.Priest);
+		this.setJob(AllJob.Job.PRIEST.getName());
 	}
 
 	public  void makeCharacter(){
