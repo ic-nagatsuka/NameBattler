@@ -26,7 +26,7 @@ public class GameManager{
 //	//バトルに参加しているパーティー
 //	List<Party> battleParty = new ArrayList<>();
 
-
+	public static Party win;
 	int turnCount = 1;	//ターン数
 
 	Random rand = new Random();
@@ -133,8 +133,10 @@ public class GameManager{
 		boolean isEnd = true;
 		for(Party party: allParty){
 			isEnd = true;
+
 			for(Player player: party.getmenbers()){
 				if(player.getHP() != 0){
+					win = party;
 					isEnd = false;
 				}
 			}
