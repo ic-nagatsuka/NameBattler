@@ -89,6 +89,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/green_background_green_border"
+        android:layout_margin="10dp"
         app:layout_constraintBottom_toTopOf="@+id/battle_main_nextTurn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
