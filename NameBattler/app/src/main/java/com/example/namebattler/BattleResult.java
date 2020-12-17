@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.name.battler.Player.AllJob;
 import com.name.battler.Player.Party;
@@ -15,6 +16,7 @@ import com.name.battler.Player.Player;
 import static com.example.namebattler.CharacterMake.makePlayer;
 import static com.name.battler.GameManager.enemyParty;
 import static com.name.battler.GameManager.myParty;
+import static com.name.battler.GameManager.win;
 
 public class BattleResult extends AppCompatActivity {
 
@@ -26,7 +28,13 @@ public class BattleResult extends AppCompatActivity {
         setAdapter(R.id.battleResult_gridView_top, myParty);
         setAdapter(R.id.battleResult_gridView_bottom, enemyParty);
 
+        ImageView image = findViewById(R.id.battleResult_Image_result);
 
+        if(win == myParty){
+            image.setImageResource(R.drawable.pose_win_boy);
+        }else{
+            image.setImageResource(R.drawable.pose_lose_boy);
+        }
 
 
         findViewById(R.id.battleResult_rematch).setOnClickListener(new View.OnClickListener() {
