@@ -16,7 +16,7 @@ public class P_Fighter extends Player{
 	 =============*/
 	public P_Fighter(String name) {
 		super(name);
-		setJob(AllJob.Fighter);
+		setJob(AllJob.Job.FIGHTER.getName());
 		makeAttackText();
 	}
 	

@@ -12,7 +12,7 @@ public class P_Bouncer extends Player{
 	public P_Bouncer(String name)
 	{
 		super(name);
-		this.setJob(AllJob.Bouncer);
+		this.setJob(AllJob.Job.BOUNCER.getName());
 		this.setCounter(true);
 	}
 	
