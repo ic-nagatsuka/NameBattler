@@ -37,7 +37,7 @@ public class SkillOfStateUp extends SkillOfEffectTurn{
 		usePlayerMp(attacker);
 		
 		target.setStr(target.getSTR() * upDamage);
-		target.turnAbnormalState.add(upDamage, new StateEffect(AllSkill.power, this.effectTurn));
+//		target.turnAbnormalState.add(upDamage, new StateEffect(AllSkill.power, this.effectTurn));
 	}
 	
 	
