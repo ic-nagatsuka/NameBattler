@@ -99,14 +99,6 @@ public class CharacterOrganization extends AppCompatActivity {
         return statusText;
     }
 
-
-/*
-テキストを変更してもレイアウトが変わらない
-onCreateの外はレイアウト変更にViewが必要
-
-
- */
-
 }
 
 class Status{
