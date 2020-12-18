@@ -59,11 +59,8 @@ public class BaseAdapter_BattleMain extends BaseAdapter {
         textView = view.findViewById(R.id.gridview_mp);
         textView.setText("MP" + player.getMP() + "/" + player.getMaxMp());
 
-//        textView = view.findViewById(R.id.gridview_status_abnormal);
-//        textView.setText(player.getName());
-
-
-
+        textView = view.findViewById(R.id.gridview_status_abnormal);
+        textView.setText(player.getAllAbnormalStateChar());
 
 
 

@@ -11,6 +11,7 @@ import com.name.battler.Item.Item;
 import com.name.battler.Item.ItemHeel;
 import com.name.battler.Skill.AllSkill;
 import com.name.battler.Skill.Skill;
+import com.name.battler.Skill.SkillOfEffectTurn;
 import com.name.battler.Skill.SkillOfEffectTurn.StateEffect;
 import com.name.battler.Strategy.Strategy;
 
@@ -149,7 +150,15 @@ public abstract class Player{
 	public List<Skill> getUseSkill(){
 		return this.useSkill;
 	}
-	
+
+	public String getAllAbnormalStateChar(){
+		String str = "";
+		for(StateEffect abnormalState: turnAbnormalState){
+			str += abnormalState.getStateChar();
+		}
+		return str;
+	}
+
 	/*============
 	 *Setメソッド 
 	 ============*/
@@ -196,7 +205,8 @@ public abstract class Player{
 	public void setBeforHP(int beforeHp){
 		this.beforeHp = beforeHp;
 	}
-	
+
+
 	/*
 	 * protected
 	 */

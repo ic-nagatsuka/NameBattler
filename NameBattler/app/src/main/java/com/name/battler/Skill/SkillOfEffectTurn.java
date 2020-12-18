@@ -10,12 +10,14 @@ public class SkillOfEffectTurn extends Skill{
 		 =============*/
 		SkillOfEffectTurn skill;
 		int turn;
+		String stateChar;
 		/*=============
 		 * コンストラクタ
 		 =============*/	
-		StateEffect(SkillOfEffectTurn skill, int turn){
+		StateEffect(SkillOfEffectTurn skill, int turn, String stateChar){
 			this.skill = skill;
 			this.turn = turn;
+			this.stateChar = stateChar;
 		}
 		/*============
 		 * Get
@@ -26,6 +28,10 @@ public class SkillOfEffectTurn extends Skill{
 		
 		public int getTurn(){
 			return this.turn;
+		}
+
+		public String getStateChar(){
+			return this.stateChar;
 		}
 		/*============
 		 * Set

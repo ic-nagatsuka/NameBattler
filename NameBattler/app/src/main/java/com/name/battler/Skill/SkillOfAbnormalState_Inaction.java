@@ -11,7 +11,8 @@ public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 	Random rand = new Random();
 	
 	int probability;//効果を与える確率
-	
+	String stateChar = "痺";
+
 	/*=============
 	 * コンストラクタ
 	 =============*/
@@ -24,7 +25,7 @@ public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 	public void use(Player attacker, Player defender){
 		System.out.println(attacker.getName() + "は" + this.name + "を唱えた！");
 		usePlayerMp(attacker);
-		
+
 		//成功
 		if(this.probability > rand.nextInt(100)){
 			//同じ状態異常にかかっている
@@ -33,7 +34,7 @@ public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 			}else{
 				System.out.println(defender.getName() + "はしびれた！");
 				//相手に状態異常をつける
-				defender.setAbnormalState(new StateEffect(AllSkill.paralysis, this.effectTurn));
+				defender.setAbnormalState(new StateEffect(AllSkill.paralysis, this.effectTurn, stateChar));
 				defender.setInaction(true);
 			}
 		}else{
@@ -42,7 +43,7 @@ public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 		}
 		
 	}
-	
+
 	@Override
 	public void effect(Player target, int turn){
 		
@@ -53,6 +54,6 @@ public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 			System.out.println(target.getName() + "はしびれていて動けない！\n");
 		}
 	}
-	
+
 	
 }
