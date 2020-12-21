@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.name.battler.Item.AllItem;
-import com.name.battler.Item.Item;
-import com.name.battler.Item.ItemHeel;
 import com.name.battler.Skill.AllSkill;
 import com.name.battler.Skill.Skill;
 import com.name.battler.Skill.SkillOfEffectTurn.StateEffect;
@@ -39,12 +36,9 @@ public abstract class Player{
 	protected boolean heelSkill;				//回復スキルの使用
 	protected boolean counter;					//カウンター使用
 	
-	AllItem allItem = new AllItem();;
-	
+
 	//使用スキル
 	protected List <Skill> useSkill = new ArrayList <>();
-	//消費アイテム
-	protected List<Item> useItem = new ArrayList<>();
 	//かかっている状態異常
 	public List <StateEffect> turnAbnormalState = new ArrayList <>();
 
@@ -62,9 +56,7 @@ public abstract class Player{
 		makeCharacter();
 		//職業のスキル作成
 		makeSkill();
-		//アイテムを渡す
-		makeItem();
-		
+
 		this.maxHp = this.getHP();
 		this.maxMp = this.getMP();
 		this.beforeHp = this.getHP();
@@ -128,9 +120,6 @@ public abstract class Player{
 		return this.strategy;
 	}
 	
-	public List<Item> getUseItem(){
-		return this.useItem;
-	}
 
 	public boolean getIsDeath(){
 		return this.isDeath;
@@ -253,16 +242,6 @@ public abstract class Player{
 		}else{
 			return false;
 		}
-	}
-	
-	/**
-	 * アイテムを使用する
-	 * @param target 	対象プレイヤー
-	 */
-	private void useItem(Player target){
-		Item randItem = useItem.get(rand.nextInt(useItem.size()));
-		randItem.Use(this, target);
-		useItem.remove(randItem);
 	}
 	
 	/**
@@ -509,38 +488,15 @@ public abstract class Player{
 	public void action(Player target){
 		this.readyCounter(target);
 		
-		if( (checkDicreasePlayerHp(this.getParty()) || checkDicreasePlayerMP(this.getParty()))
-				&& this.getUseItem().size() != 0){
-			//アイテムを使う
-			Item item;
-			if(checkDicreasePlayerHp(this.getParty())){
-				//HPが減っている場合
-				while(true){
-					item = useItem.get(rand.nextInt(useItem.size()));
-					//アイテムを使用する
-					if(item instanceof ItemHeel){
-						this.useItem(heelTargetHP(this.getParty().getmenbers()));
-						break;
-					}
-				}
-			}else if(checkDicreasePlayerMP(this.getParty())){
-				//MPが減っている場合
-				while(true){
-					item = useItem.get(rand.nextInt(useItem.size()));
-					//アイテムを使用する
-					if(item instanceof ItemHeel){
-						this.useItem(heelTargetMP(this.getParty().getmenbers()));
-						break;
-					}
-				}
+		if( (checkDicreasePlayerHp(this.getParty())) ){
+			if (checkUseSkill()) {
+				//ランダムでスキルを使用する
+				useSkill(randomSelectSkill(), target);
+			} else {
+				//通常攻撃
+				normalAttack(target);
 			}
-		}else if(checkUseSkill()){
-			//ランダムでスキルを使用する
-			useSkill(randomSelectSkill(), target);
-		}else{
-			//通常攻撃
-			normalAttack(target);
-		}	
+		}
 	}
 	
 	/**
@@ -599,9 +555,8 @@ public abstract class Player{
 	 */
 	public void printBattleStatus(){
 		System.out.printf("%s %s HP %3d : MP %3d アイテム ",
-				this.getJob(), this.getName(), this.getHP(), this.getMP(),
-				this.useItem.size());
-		printItem();
+				this.getJob(), this.getName(), this.getHP(), this.getMP()
+				);
 	}
 	
 	
@@ -656,36 +611,5 @@ public abstract class Player{
 		}
 		return minMp;
 	}
-	
-	/**
-	 * 所持アイテムを表示
-	 */
-	private void printItem(){
-		System.out.print("[");
-		if(this.useItem.size() == 0){
-			System.out.print("なし");
-		}
-		
-		for(int i = 0; i < useItem.size(); i++){
-			String name = useItem.get(i).GetName();
-			if(i != useItem.size() -1){
-				System.out.print(name + ", ");
-			}else{
-				System.out.print(name);
-			}
-		}
-		System.out.print("]\n");
-	}
-	
-	/**
-	 * アイテムをセットする
-	 */
-	private void makeItem(){
-		for(int i = 0; i < itemNum; i++){
-			this.useItem.add(
-					allItem.GetItemList().get(rand.nextInt(allItem.GetItemList().size())));
-		}
-	}
-
 
 }
