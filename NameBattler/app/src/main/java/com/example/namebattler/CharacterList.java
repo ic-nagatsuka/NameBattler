@@ -20,14 +20,10 @@ import java.util.List;
 
 import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.AllJob;
-import com.name.battler.Player.Party;
-import com.name.battler.Player.Player;
 
 public class CharacterList extends AppCompatActivity {
 
     int listNum = 7;
-
-//    SQLiteDatabase db = new CharacterInformation(this).getReadableDatabase();
 
     CharacterInformation helper = new CharacterInformation(this);
 

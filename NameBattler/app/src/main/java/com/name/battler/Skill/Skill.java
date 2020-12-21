@@ -13,10 +13,6 @@ public class Skill
 	protected String name;			//名前
 	protected int useMp;			//消費MP
 	  	
-	protected boolean 
-	  	noAction,		//行動不能
-	  	possible = true;	//使用可能
-		
 	Random rand = new Random();
 	
 	/*=============

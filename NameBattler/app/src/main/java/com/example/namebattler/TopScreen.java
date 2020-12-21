@@ -8,14 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 
-import com.name.battler.Player.P_Fighter;
-import com.name.battler.Player.Party;
-import com.name.battler.Player.Player;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 public class TopScreen extends AppCompatActivity {
 
     @Override

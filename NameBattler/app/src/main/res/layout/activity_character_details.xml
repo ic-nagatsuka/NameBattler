@@ -30,7 +30,6 @@
         android:text="戻る"
         android:textColor="#fff"
         android:textSize="24dp"
-        android:onClick="onClickBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

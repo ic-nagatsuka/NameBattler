@@ -13,11 +13,8 @@ import android.widget.TextView;
 import com.name.battler.BattleLog.BattleLog;
 import com.name.battler.GameManager;
 import com.name.battler.Player.Party;
-import com.name.battler.Player.Player;
-import com.name.battler.Strategy.AllStrategy;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.name.battler.BattleLog.BattleLog.logList;
 import static com.name.battler.GameManager.enemyParty;
@@ -68,25 +65,7 @@ public class BattleMain extends AppCompatActivity {
             }
         });
 
-
     }
-
-//    public boolean isEnd(){//falseのカウントが１だったらtrueを返す
-//        boolean isEnd = true;
-//        for(Party party: allParty){
-//            isEnd = true;
-//            for(Player player: party.getmenbers()){
-//                if(player.getHP() != 0){
-//                    isEnd = false;
-//                }
-//            }
-//            if(isEnd == true){
-//                return isEnd;
-//            }
-//        }
-//
-//        return isEnd;
-//    }
 
     public void displayUpdateStates(){
         makeAdapter(R.id.battle_main_gridView_top, myParty);
@@ -100,45 +79,5 @@ public class BattleMain extends AppCompatActivity {
         gridView.setAdapter(adapter);
 
     }
-
-
-
-    private void highSpeedSort(List<Player> playerList){
-
-        for(int i = 0; i < playerList.size() - 1; i++){
-            for(int j = 0; j < playerList.size() - 1; j++){
-                if(playerList.get(j).getAGI() > playerList.get(j+1).getAGI()){
-                    //場所を入れ替える
-                    Player saveValue = playerList.get(j);
-                    playerList.set(j, playerList.get(j + 1));
-                    playerList.set(j + 1, saveValue);
-                }
-            }
-        }
-    }
-
-
-    public Party selectParty(Player attacker){
-
-        if(attacker.getParty() == myParty){
-            return enemyParty;
-        }else{
-            return myParty;
-        }
-
-    }
-
-//    public void removeEmptyParty(){
-//        for(int i = 0; i < allParty.size(); i++){
-//            if(allParty.get(i).getmenbers().size() == 0){
-//                System.out.println("しゅうりょう" + allParty.size());
-//
-//                allParty.remove(myParty);
-//                System.out.println("しゅうりょう" + allParty.size());
-//
-//
-//            }
-//        }
-//    }
 
 }
