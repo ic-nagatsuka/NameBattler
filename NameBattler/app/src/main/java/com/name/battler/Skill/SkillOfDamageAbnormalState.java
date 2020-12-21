@@ -28,9 +28,6 @@ public class SkillOfDamageAbnormalState extends SkillOfEffectTurn{
 		return this.turnDama;
 	}
 
-	public String getstateChara(){
-		return this.stateChar;
-	}
 	
 	@Override
 	public void use(Player attacker, Player defender){
