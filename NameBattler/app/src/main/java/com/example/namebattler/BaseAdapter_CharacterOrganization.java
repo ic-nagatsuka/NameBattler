@@ -9,15 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.namebattler.database.CharacterInformation;
-import com.name.battler.Player.P_Fighter;
-import com.name.battler.Player.P_Priest;
-import com.name.battler.Player.P_Wizard;
 import com.name.battler.Player.Player;
 
 import java.util.List;
@@ -37,7 +33,6 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     Cursor cursor ;
     String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
     int count = 0;
-    int id ;
 
     BaseAdapter_CharacterOrganization(Context context, View v, List<Status> status){
         this.context = context;
