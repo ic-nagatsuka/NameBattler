@@ -49,9 +49,7 @@ public class AllSkill {
 			(ABNORMALSTATE, "ポイズン", 10, 3, 30);
 	public static SkillOfHeelHP heel = new SkillOfHeelHP
 			(HEEL, "ヒール", 20, 50);
-	public static SkillOfStateUp power = new SkillOfStateUp
-			(ABNORMALSTATE, "きあいため", 5, 1, 2);
-	
+
 	
 //	//スキル作成
 //	private void MakeSkill(){
