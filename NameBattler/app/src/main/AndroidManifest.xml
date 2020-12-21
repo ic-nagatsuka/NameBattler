@@ -17,7 +17,6 @@
         <activity android:name=".CharacterDetails" />
         <activity android:name=".CharacterMakeConpletion" />
         <activity android:name=".CharacterMake" />
-        <activity android:name=".CharacterCheck" />
         <activity android:name=".CharacterList" />
         <activity android:name=".TopScreen">
             <intent-filter>
