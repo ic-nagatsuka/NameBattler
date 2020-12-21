@@ -1,19 +1,15 @@
 package com.name.battler.Skill;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class AllSkill {
 	/*=============
 	 * フィールド変数
 	 =============*/
-	static List<Skill>allSkill=new ArrayList<>();
-	
+
 	/*=============
 	 * コンストラクタ
 	 =============*/
 	public AllSkill(){
-//		MakeSkill();
+
 	}
 	
 	/*
@@ -50,16 +46,5 @@ public class AllSkill {
 	public static SkillOfHeelHP heel = new SkillOfHeelHP
 			(HEEL, "ヒール", 20, 50);
 
-	
-//	//スキル作成
-//	private void MakeSkill(){
-//		allSkill.add(fire);
-//		allSkill.add(thunder);
-//		allSkill.add(paralysis);
-//		allSkill.add(poison);
-//		allSkill.add(heel);
-//	}
-	
-	
 }
 
