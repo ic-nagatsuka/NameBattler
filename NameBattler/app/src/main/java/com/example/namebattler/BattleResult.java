@@ -9,11 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.name.battler.Player.AllJob;
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
 
-import static com.example.namebattler.CharacterMake.makePlayer;
 import static com.name.battler.GameManager.enemyParty;
 import static com.name.battler.GameManager.myParty;
 import static com.name.battler.GameManager.win;
