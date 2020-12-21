@@ -80,13 +80,13 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
 
 
-        final RadioButton checkBox = view.findViewById(R.id.character_organization_listView_checkBox);
+        final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_checkBox);
 
         final View convertView = view;
-        checkBox.setOnClickListener(new View.OnClickListener() {
+        radioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean isChecked = checkBox.isChecked();
+                boolean isChecked = radioButton.isChecked();
                 System.out.println("isChecked" + isChecked);
 
 
@@ -113,7 +113,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
                 }else if(count >= 3){
                     if(!hasName(name)){
-                        checkBox.setChecked(false);
+                        radioButton.setChecked(false);
                         Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                     }
                 }
