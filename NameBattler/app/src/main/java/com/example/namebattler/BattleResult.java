@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
 
+import static com.example.namebattler.CharacterMake.makePlayer;
 import static com.name.battler.GameManager.enemyParty;
 import static com.name.battler.GameManager.myParty;
 import static com.name.battler.GameManager.win;
@@ -75,10 +76,16 @@ public class BattleResult extends AppCompatActivity {
     }
 
     public void remakePlayer(Party party){
+        int partyNum = party.getmenbers().size();
+        for(int i = 0; i < partyNum; i++){
+            Player player = party.getmenbers().get(0);
 
-        for(int i = 0; i < party.getmenbers().size(); i++){
-            Player player = party.getmenbers().get(i);
-            player.makeCharacter();
+            party.appendPlayer(
+                makePlayer(player.getName(), player.getJob(), party)
+            );
+
+            party.removePlayer(player);
+
         }
     }
 
