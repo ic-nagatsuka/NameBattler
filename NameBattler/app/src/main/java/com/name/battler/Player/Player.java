@@ -11,7 +11,6 @@ import com.name.battler.Item.Item;
 import com.name.battler.Item.ItemHeel;
 import com.name.battler.Skill.AllSkill;
 import com.name.battler.Skill.Skill;
-import com.name.battler.Skill.SkillOfEffectTurn;
 import com.name.battler.Skill.SkillOfEffectTurn.StateEffect;
 import com.name.battler.Strategy.Strategy;
 
@@ -24,8 +23,7 @@ public abstract class Player{
 	// =====================
 	// フィールド変数
 	// =====================
-	protected int level = 1;					//レベル
-	
+
 
 	protected Party party;						//パーティー
 	protected String partyName;					//パーティー名
@@ -49,7 +47,6 @@ public abstract class Player{
 	protected List<Item> useItem = new ArrayList<>();
 	//かかっている状態異常
 	public List <StateEffect> turnAbnormalState = new ArrayList <>();
-	protected List <StateEffect> upState = new ArrayList <>();
 
 	
 	
@@ -87,9 +84,6 @@ public abstract class Player{
 	/*============
 	 * Getメソッド 
 	 ============*/
-	public int getLevel() {
-		return this.level;
-	}
 	public Party getParty(){
 		return this.party;
 	}
@@ -162,9 +156,6 @@ public abstract class Player{
 	/*============
 	 *Setメソッド 
 	 ============*/
-	public void setLevel(int level){
-		this.level = level;
-	}
 	public void setParty(Party party){
 		this.party = party;
 	}
@@ -698,4 +689,3 @@ public abstract class Player{
 
 
 }
-
