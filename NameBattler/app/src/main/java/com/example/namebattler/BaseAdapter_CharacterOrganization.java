@@ -90,10 +90,10 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
                 System.out.println("isChecked" + isChecked);
 
 
+                TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
+                String name = textView.getText().toString();
                 if(count <= 2 && isChecked){
 
-                    TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
-                    String name = textView.getText().toString();
                     System.out.println("名前" + name);
 
                     if(!hasName(name)){
@@ -111,8 +111,11 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
                         }
                     }
 
-                }else if(count > 3){
-                    Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
+                }else if(count >= 3){
+                    if(!hasName(name)){
+                        checkBox.setChecked(false);
+                        Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 Button btn = startButton.findViewById(R.id.character_organization_start);
