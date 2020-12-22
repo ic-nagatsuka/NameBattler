@@ -4,6 +4,8 @@ import java.util.Random;
 
 import com.name.battler.Player.Player;
 
+import static com.name.battler.BattleLog.BattleLog.addLog;
+
 public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 	/*=============
 	 * フィールド変数
@@ -23,23 +25,23 @@ public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 	
 	@Override
 	public void use(Player attacker, Player defender){
-		System.out.println(attacker.getName() + "は" + this.name + "を唱えた！");
+		addLog(attacker.getName() + "は" + this.name + "を唱えた！");
 		usePlayerMp(attacker);
 
 		//成功
 		if(this.probability > rand.nextInt(100)){
 			//同じ状態異常にかかっている
 			if(defender.checkSameAbnormal(AllSkill.paralysis)){
-				System.out.println(defender.getName() + "はすでにかかっている!");
+				addLog(defender.getName() + "はすでにかかっている!");
 			}else{
-				System.out.println(defender.getName() + "はしびれた！");
+				addLog(defender.getName() + "はしびれた！");
 				//相手に状態異常をつける
 				defender.setAbnormalState(new StateEffect(AllSkill.paralysis, this.effectTurn, stateChar));
 				defender.setInaction(true);
 			}
 		}else{
 			//失敗
-			System.out.println(defender.getName() + "はかからなかった！");
+			addLog(defender.getName() + "はかからなかった！");
 		}
 		
 	}
@@ -48,10 +50,10 @@ public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 	public void effect(Player target, int turn){
 		
 		if(turn < 0){
-			System.out.println(target.getName() + "のしびれが治った！");
+			addLog(target.getName() + "のしびれが治った！");
 			target.setInaction(false);
 		}else{
-			System.out.println(target.getName() + "はしびれていて動けない！\n");
+			addLog(target.getName() + "はしびれていて動けない！\n");
 		}
 	}
 
