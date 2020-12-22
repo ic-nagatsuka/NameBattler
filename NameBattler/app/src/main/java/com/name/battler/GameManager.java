@@ -105,11 +105,8 @@ public class GameManager{
 			Player attacker = allPlayer.get(i);//攻撃するプレイヤー
 			Party defenseParty;	//攻撃を受けるパーティー
 
-			if(attacker.getHP() > 0){
-				//状態異常の確認
-				attacker.abnormalEffect(attacker);
-				attacker.deathJudge(attacker.getParty().getmenbers());
-			}
+			//状態異常の確認
+			attacker.abnormalEffect(attacker);
 			//行動不能ではなく、状態異常で倒れていない
 			if(!attacker.getInaction() && attacker.getHP() > 0){
 				//攻撃されるパーティー

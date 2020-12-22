@@ -487,7 +487,7 @@ public abstract class Player{
 	 */
 	public void action(Player target){
 		this.readyCounter(target);
-		
+
 		if( (checkDicreasePlayerHp(this.getParty())) ){
 			if (checkUseSkill()) {
 				//ランダムでスキルを使用する
@@ -514,6 +514,11 @@ public abstract class Player{
 			//効果ターン経過すれば削除する
 			if(abnormal.getTurn() < 0){
 				turnAbnormalState.remove(i);
+			}
+
+			attacker.deathJudge(attacker.getParty().getmenbers());
+			if(attacker.getHP() == 0){
+				break;
 			}
 		}
 	}
