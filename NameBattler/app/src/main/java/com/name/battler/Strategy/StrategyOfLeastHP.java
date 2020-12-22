@@ -34,7 +34,8 @@ public class StrategyOfLeastHP extends Strategy{
 		//目的のステータスが一番低いプレイヤーを選ぶ
 		for(Player player : defenderParty.getmenbers()){
 			
-			if(defender.getHP() > player.getHP()){
+			if(defender.getHP() > player.getHP() && !player.getIsDeath()
+			|| defender.getIsDeath()){
 				defender = player;
 			}
 		}
