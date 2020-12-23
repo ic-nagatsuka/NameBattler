@@ -24,6 +24,7 @@ import com.name.battler.Player.AllJob;
 public class CharacterList extends AppCompatActivity {
 
     int listNum = 7;
+    public static int nowPlayerNum;
 
     CharacterInformation helper = new CharacterInformation(this);
 
@@ -63,6 +64,8 @@ public class CharacterList extends AppCompatActivity {
                 null,
                 null
                 );
+
+        nowPlayerNum = cursor.getCount();
 
         List<HashMap<String, String>> list = new ArrayList<>();
         if(cursor.moveToFirst()){

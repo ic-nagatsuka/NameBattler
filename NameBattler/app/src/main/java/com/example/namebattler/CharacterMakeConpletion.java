@@ -6,8 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.name.battler.Player.Player;
+
+import static com.example.namebattler.CharacterList.nowPlayerNum;
+import static com.name.battler.Option.Option.makePlayerNum;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
 
@@ -49,8 +53,12 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         findViewById(R.id.characterMakeConpletion_continue).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplication(), CharacterMake.class);
-                startActivity(intent);
+                if(nowPlayerNum < makePlayerNum) {
+                    Intent intent = new Intent(getApplication(), CharacterMake.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(CharacterMakeConpletion.this, "プレイヤー最大数に達しました", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
