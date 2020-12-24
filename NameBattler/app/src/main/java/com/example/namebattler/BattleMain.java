@@ -16,6 +16,7 @@ import com.name.battler.Player.Party;
 
 import java.util.ArrayList;
 
+import static com.name.battler.BattleLog.BattleLog.getLogText;
 import static com.name.battler.BattleLog.BattleLog.logList;
 import static com.name.battler.GameManager.enemyParty;
 import static com.name.battler.GameManager.myParty;
@@ -23,6 +24,8 @@ import static com.name.battler.GameManager.myParty;
 public class BattleMain extends AppCompatActivity {
 
     GameManager gm = new GameManager();
+    String logText = BattleLog.logText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +38,17 @@ public class BattleMain extends AppCompatActivity {
                 myParty.getStrategy().getName()
         );
 
-        final TextView text = findViewById(R.id.textView2);
-        text.setMovementMethod(new ScrollingMovementMethod());
+        final TextView battleLog = findViewById(R.id.battle_main_battleLog);
+        battleLog.setText(logText);
+
+        battleLog.setMovementMethod(new ScrollingMovementMethod());
+
         findViewById(R.id.battle_main_nextTurn).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
 
                 if(!gm.battle()){
-                    System.out.println("しゅうりょう");
-
+                    BattleLog.logText = "";
                     Intent intent = new Intent(getApplication(), BattleResult.class);
                     startActivity(intent);
                 }
@@ -51,8 +56,9 @@ public class BattleMain extends AppCompatActivity {
                 displayUpdateStates();
 
 
-                text.setText(BattleLog.getLogText());
 
+                logText = BattleLog.getLogText();
+                battleLog.setText(logText);
                 logList = new ArrayList<>();
             }
         });
