@@ -99,7 +99,7 @@ public class GameManager{
 	/**
 	 * バトル
 	 */
-	public boolean battle()
+	public void battle()
 	{
 		//ターン数の表示
 		System.out.println("=====ターン"+turnCount+"=====");
@@ -119,18 +119,12 @@ public class GameManager{
 				attacker.getParty().getStrategy().action(attacker, defenseParty);
 			}
 
-
-			if(isEnd()){
-				return false;
-			}
-
 		}
 		turnCount++;	//ターン経過
 
-		return true;
 	}
 
-	public boolean isEnd(){
+	public boolean battleEnd(){
 		boolean isEnd = true;
 		for(Party party: allParty){
 			isEnd = true;

@@ -41,19 +41,19 @@ public class BattleMain extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                if(!gm.battle()){
-                    System.out.println("しゅうりょう");
-
-                    Intent intent = new Intent(getApplication(), BattleResult.class);
-                    startActivity(intent);
-                }
+                gm.battle();
                 //1ターン分終了後ステータス更新
                 displayUpdateStates();
-
 
                 text.setText(BattleLog.getLogText());
 
                 logList = new ArrayList<>();
+
+                if(gm.battleEnd()){
+                    Intent intent = new Intent(getApplication(), BattleResult.class);
+                    startActivity(intent);
+                }
+
             }
         });
 
