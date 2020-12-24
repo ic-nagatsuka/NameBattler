@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,8 @@ import java.util.List;
 
 import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.AllJob;
+
+import static com.name.battler.Option.Option.makePlayerNum;
 
 public class CharacterList extends AppCompatActivity {
 
@@ -37,9 +40,13 @@ public class CharacterList extends AppCompatActivity {
         charaMake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CharacterList.this, CharacterMake.class);
 
-                startActivity(intent);
+                if(nowPlayerNum < makePlayerNum){
+                    Intent intent = new Intent(CharacterList.this, CharacterMake.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(CharacterList.this, "プレイヤーが最大数に達しました", Toast.LENGTH_SHORT).show();;
+                }
             }
         });
 

@@ -27,6 +27,7 @@ import com.name.battler.Strategy.AllStrategy;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.example.namebattler.CharacterList.nowPlayerNum;
 import static com.name.battler.GameManager.myParty;
 
 
@@ -88,6 +89,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     values.put("CREATE_AT", getDate());
 
                     if(db.insert(CharacterInformation.TABLE_NAME,null, values) != -1){
+                        nowPlayerNum++;
                         Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
                         startActivity(intent);
                     }else{
