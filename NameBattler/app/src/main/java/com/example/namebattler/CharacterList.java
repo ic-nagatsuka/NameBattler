@@ -23,10 +23,10 @@ import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.AllJob;
 
 import static com.name.battler.Option.Option.makePlayerNum;
+import static com.name.battler.Option.Option.partyPlayerNum;
 
 public class CharacterList extends AppCompatActivity {
 
-    int listNum = 7;
     public static int nowPlayerNum;
 
     CharacterInformation helper = new CharacterInformation(this);
@@ -93,8 +93,8 @@ public class CharacterList extends AppCompatActivity {
             }
         }
 
-        if(cursor.getCount() < listNum){
-            for(int i = 0; i < listNum - cursor.getCount(); i++){
+        if(cursor.getCount() < partyPlayerNum){
+            for(int i = 0; i < partyPlayerNum - cursor.getCount(); i++){
                 HashMap<String, String> hash = new HashMap<>();
                 list.add(hash);
             }
