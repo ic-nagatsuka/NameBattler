@@ -27,7 +27,9 @@ import com.name.battler.Strategy.AllStrategy;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.example.namebattler.CharacterList.nowPlayerNum;
 import static com.name.battler.GameManager.myParty;
+import static com.name.battler.Option.Option.makePlayerNum;
 
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {
@@ -71,8 +73,9 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
                 String name = editName.getText().toString();
                 RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
-
-                if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
+                if(nowPlayerNum >= makePlayerNum ){
+                    Toast.makeText(CharacterMake.this, "プレイヤーが最大数に達しました", Toast.LENGTH_SHORT).show();
+                }else if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
                     SQLiteDatabase db = helper.getWritableDatabase();
                     player = makePlayer(name, radio.getText().toString(), myParty);
 
@@ -88,6 +91,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     values.put("CREATE_AT", getDate());
 
                     if(db.insert(CharacterInformation.TABLE_NAME,null, values) != -1){
+                        nowPlayerNum++;
                         Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
                         startActivity(intent);
                     }else{
