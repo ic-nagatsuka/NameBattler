@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.AllJob;
@@ -86,11 +87,13 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     values.put("AGI",   player.getAGI());
                     values.put("CREATE_AT", getDate());
 
-                    db.insert(CharacterInformation.TABLE_NAME,null, values);
+                    if(db.insert(CharacterInformation.TABLE_NAME,null, values) != -1){
+                        Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(CharacterMake.this, "この名前はすでに存在しています", Toast.LENGTH_SHORT).show();
+                    }
 
-
-                    Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
-                    startActivity(intent);
                 }
             }
 
