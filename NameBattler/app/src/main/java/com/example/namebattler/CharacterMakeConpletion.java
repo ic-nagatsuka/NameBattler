@@ -57,7 +57,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
                     Intent intent = new Intent(getApplication(), CharacterMake.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(CharacterMakeConpletion.this, "プレイヤー最大数に達しました", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CharacterMakeConpletion.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 }
             }
         });
