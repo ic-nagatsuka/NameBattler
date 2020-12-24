@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.AllJob;
 
+import static com.example.namebattler.CharacterList.nowPlayerNum;
+
 public class CharacterDetails extends AppCompatActivity {
 
     CharacterInformation helper = new CharacterInformation(this);
@@ -73,6 +75,9 @@ public class CharacterDetails extends AppCompatActivity {
                         CharacterInformation.TABLE_NAME,
                         "name = ?",
                         new String[] {intent.getStringExtra("name")});
+
+                nowPlayerNum--;
+
                 Intent intent = new Intent(getApplication(), CharacterList.class);
                 startActivity(intent);
             }
