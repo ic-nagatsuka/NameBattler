@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.name.battler.Player.P_Bouncer;
+import com.name.battler.Player.P_Fighter;
+import com.name.battler.Player.P_Priest;
+import com.name.battler.Player.P_Wizard;
 import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
 import com.name.battler.Strategy.AllStrategy;
@@ -159,6 +163,23 @@ public class GameManager{
 				return defenseParty;
 			}
 		}
+	}
+
+	public static Player makePlayer(String name, String job, Party party){
+		Player player = null;
+		switch(job){
+			case "戦士"   : player = new P_Fighter(name);break;
+			case "魔法使い" :player = new P_Wizard(name); break;
+			case "僧侶"   : player = new P_Priest(name); break;
+			case "ボール"  : player = new P_Bouncer(name); break;
+		}
+
+		System.out.println("プレイヤー作成パーティー" + party);
+
+		player.setParty(party);
+		player.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+
+		return player;
 	}
 
 }

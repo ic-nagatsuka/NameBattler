@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import static com.example.namebattler.CharacterMake.makePlayer;
 import static com.name.battler.GameManager.enemyParty;
+import static com.name.battler.GameManager.makePlayer;
 import static com.name.battler.GameManager.myParty;
 
 public class BattleStart extends AppCompatActivity {

@@ -16,18 +16,13 @@ import android.widget.Toast;
 
 import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.AllJob;
-import com.name.battler.Player.P_Bouncer;
-import com.name.battler.Player.P_Fighter;
-import com.name.battler.Player.P_Priest;
-import com.name.battler.Player.P_Wizard;
-import com.name.battler.Player.Party;
 import com.name.battler.Player.Player;
-import com.name.battler.Strategy.AllStrategy;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.example.namebattler.CharacterList.nowPlayerNum;
+import static com.name.battler.GameManager.makePlayer;
 import static com.name.battler.GameManager.myParty;
 import static com.name.battler.Option.Option.makePlayerNum;
 
@@ -56,13 +51,6 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             radioBtn.setId(i);
             radioGroup.addView(radioBtn);
         }
-
-
-
-
-
-
-
 
 
         findViewById(R.id.character_make_makeButton).setOnClickListener(new View.OnClickListener(){
@@ -119,24 +107,6 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     public String getDate(){
         SimpleDateFormat format = new SimpleDateFormat("yyyy/M/dd hh:mm") ;
         return format.format(new Date());
-    }
-
-
-    public static Player makePlayer(String name, String job, Party party){
-        Player player = null;
-        switch(job){
-            case "戦士"   : player = new P_Fighter(name);break;
-            case "魔法使い" :player = new P_Wizard(name); break;
-            case "僧侶"   : player = new P_Priest(name); break;
-            case "ボール"  : player = new P_Bouncer(name); break;
-        }
-
-        System.out.println("プレイヤー作成パーティー" + party);
-
-        player.setParty(party);
-        player.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
-
-        return player;
     }
 
     @Override
