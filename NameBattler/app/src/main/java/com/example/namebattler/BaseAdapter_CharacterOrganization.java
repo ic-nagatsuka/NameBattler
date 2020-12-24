@@ -18,7 +18,7 @@ import com.name.battler.Player.Player;
 
 import java.util.List;
 
-import static com.example.namebattler.CharacterMake.makePlayer;
+import static com.name.battler.GameManager.makePlayer;
 import static com.name.battler.GameManager.myParty;
 
 public class BaseAdapter_CharacterOrganization extends BaseAdapter {
