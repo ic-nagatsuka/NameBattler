@@ -6,24 +6,25 @@ public class BattleLog {
 
     public static ArrayList<String> logList = new ArrayList<>();
 
-
-
     public BattleLog(){
 
     }
 
+    public static void clear(){
+        logList = new ArrayList<>();
+    }
     public static void addLog(String log){
         logList.add(log + "\n");
     }
 
     public static String getLogText(){
-        String str = "";
+        String logText = "";
         for(String s: logList){
-            str += s;
+            logText += s;
         }
 
 
-        return str;
+        return logText;
     }
 
 }

@@ -16,6 +16,7 @@ import com.name.battler.Player.Party;
 
 import java.util.ArrayList;
 
+import static com.name.battler.BattleLog.BattleLog.getLogText;
 import static com.name.battler.BattleLog.BattleLog.logList;
 import static com.name.battler.GameManager.enemyParty;
 import static com.name.battler.GameManager.myParty;
@@ -23,6 +24,7 @@ import static com.name.battler.GameManager.myParty;
 public class BattleMain extends AppCompatActivity {
 
     GameManager gm = new GameManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,21 +37,23 @@ public class BattleMain extends AppCompatActivity {
                 myParty.getStrategy().getName()
         );
 
-        final TextView text = findViewById(R.id.textView2);
-        text.setMovementMethod(new ScrollingMovementMethod());
+        final TextView battleLog = findViewById(R.id.battle_main_battleLog);
+        battleLog.setText(getLogText());
+        battleLog.setMovementMethod(new ScrollingMovementMethod());
+
         findViewById(R.id.battle_main_nextTurn).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                BattleLog.clear();
 
                 gm.battle();
                 //1ターン分終了後ステータス更新
                 displayUpdateStates();
 
-                text.setText(BattleLog.getLogText());
-
-                logList = new ArrayList<>();
+                battleLog.setText(BattleLog.getLogText());
 
                 if(gm.battleEnd()){
+                    BattleLog.clear();
                     Intent intent = new Intent(getApplication(), BattleResult.class);
                     startActivity(intent);
                 }
