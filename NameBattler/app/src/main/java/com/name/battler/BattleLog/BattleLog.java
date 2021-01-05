@@ -6,9 +6,6 @@ public class BattleLog {
 
     public static ArrayList<String> logList = new ArrayList<>();
 
-    public static String logText;
-
-
     public BattleLog(){
 
     }
@@ -18,7 +15,7 @@ public class BattleLog {
     }
 
     public static String getLogText(){
-        logText = "";
+        String logText = "";
         for(String s: logList){
             logText += s;
         }

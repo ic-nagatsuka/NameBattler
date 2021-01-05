@@ -24,7 +24,6 @@ import static com.name.battler.GameManager.myParty;
 public class BattleMain extends AppCompatActivity {
 
     GameManager gm = new GameManager();
-    String logText = BattleLog.logText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,27 +38,25 @@ public class BattleMain extends AppCompatActivity {
         );
 
         final TextView battleLog = findViewById(R.id.battle_main_battleLog);
-        battleLog.setText(logText);
-
+        battleLog.setText(getLogText());
         battleLog.setMovementMethod(new ScrollingMovementMethod());
 
         findViewById(R.id.battle_main_nextTurn).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                logList = new ArrayList<>();
 
-                if(!gm.battle()){
-                    BattleLog.logText = "";
-                    Intent intent = new Intent(getApplication(), BattleResult.class);
-                    startActivity(intent);
-                }
+                gm.battle();
                 //1ターン分終了後ステータス更新
                 displayUpdateStates();
 
+                battleLog.setText(BattleLog.getLogText());
 
+                if(gm.battleEnd()){
+                    Intent intent = new Intent(getApplication(), BattleResult.class);
+                    startActivity(intent);
+                }
 
-                logText = BattleLog.getLogText();
-                battleLog.setText(logText);
-                logList = new ArrayList<>();
             }
         });
 
