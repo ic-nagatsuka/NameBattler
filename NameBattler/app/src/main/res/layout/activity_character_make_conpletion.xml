@@ -62,31 +62,33 @@
         android:id="@+id/characterMakeConpletion_job"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:text="職業"
         android:textSize="30dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginLeft="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_title" />
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_name" />
 
     <TextView
         android:id="@+id/characterMakeConpletion_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="18dp"
         android:text="名前"
         android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="@+id/characterMakeConpletion_job"
-        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_job" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_title" />
 
     <TextView
         android:id="@+id/characterMakeConpletion_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="ステータス"
+        android:layout_marginTop="28dp"
+
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="@+id/characterMakeConpletion_job"
-        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_name" />
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_job" />
 
     <TextView
         android:id="@+id/characterMakeConpletion_text_hp"
