@@ -36,11 +36,9 @@ public class CharacterList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_list);
 
-        Button charaMake = findViewById(R.id.character_list_MakeButton);
-        charaMake.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.character_list_MakeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if(nowPlayerNum < makePlayerNum){
                     Intent intent = new Intent(CharacterList.this, CharacterMake.class);
                     startActivity(intent);
