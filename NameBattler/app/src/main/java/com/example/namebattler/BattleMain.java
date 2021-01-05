@@ -44,7 +44,7 @@ public class BattleMain extends AppCompatActivity {
         findViewById(R.id.battle_main_nextTurn).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                logList = new ArrayList<>();
+                BattleLog.clear();
 
                 gm.battle();
                 //1ターン分終了後ステータス更新
@@ -53,6 +53,7 @@ public class BattleMain extends AppCompatActivity {
                 battleLog.setText(BattleLog.getLogText());
 
                 if(gm.battleEnd()){
+                    BattleLog.clear();
                     Intent intent = new Intent(getApplication(), BattleResult.class);
                     startActivity(intent);
                 }
