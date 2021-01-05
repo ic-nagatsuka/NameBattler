@@ -10,6 +10,9 @@ public class BattleLog {
 
     }
 
+    public static void clear(){
+        logList = new ArrayList<>();
+    }
     public static void addLog(String log){
         logList.add(log + "\n");
     }
