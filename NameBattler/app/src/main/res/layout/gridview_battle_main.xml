@@ -20,9 +20,12 @@
         <TextView
             android:id="@+id/gridview_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="23dp"
             android:text="名前"
-            android:textSize="15dp" />
+            android:maxLines="2"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="10dp"
+            />
 
         <TextView
             android:id="@+id/gridview_hp"
