@@ -119,6 +119,9 @@ public class GameManager{
 				attacker.getParty().getStrategy().action(attacker, defenseParty);
 			}
 
+			if(battleEnd()){
+				break;
+			}
 		}
 		turnCount++;	//ターン経過
 
