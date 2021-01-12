@@ -23,7 +23,6 @@ public class CharacterOrganization extends AppCompatActivity {
 
     CharacterInformation helper = new CharacterInformation(this);
 
-    int charaCount = 0;
     int layout = R.layout.activity_character_organization;
 
 
