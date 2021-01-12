@@ -198,7 +198,6 @@ public abstract class Player{
 		
 		this.readyCounter(target);
 
-		System.out.println(target.getHP() + "    HP " + target.getName());
 
 		//通常のダメージ計算
 		normalDamage(target);
@@ -261,7 +260,6 @@ public abstract class Player{
 		//カウンター攻撃
 		target.checkCounter(this);
 		
-		System.out.println();
 	}
 	
 	/**
@@ -442,13 +440,10 @@ public abstract class Player{
 	  * @param party 攻撃を受けたパーティー
 	  */
 	public void deathJudge(List<Player> party){
-		System.out.println("dead　メソッド" + party);
 
 		for(int i = party.size() -1 ; 0 <= i; i--){
 
 			Player player = party.get(i);
-			System.out.println(player.getName() + "の体力　：" + player.getHP());
-
 
 			//HPが０以下
 			if(player.getHP() <= 0 && !player.getIsDeath()){
