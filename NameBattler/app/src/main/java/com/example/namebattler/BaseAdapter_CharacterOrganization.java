@@ -87,21 +87,16 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 boolean isChecked = radioButton.isChecked();
-                System.out.println("isChecked" + isChecked);
-
-
                 TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
                 String name = textView.getText().toString();
-                if(count <= 2 && isChecked){
 
-                    System.out.println("名前" + name);
+                if(count <= 2 && isChecked){
 
                     if(!hasName(name)){
                         count++;
 
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
-                        System.out.println(job);
 
                         myParty.appendPlayer(
                                 makePlayer(name, job, myParty));
