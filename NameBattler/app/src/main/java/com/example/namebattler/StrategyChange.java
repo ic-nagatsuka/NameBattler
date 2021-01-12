@@ -40,7 +40,6 @@ public class StrategyChange extends AppCompatActivity {
 
             radioGroup.addView(radioButton);
         }
-        System.out.println(radioGroup);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
