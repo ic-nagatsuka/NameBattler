@@ -171,8 +171,6 @@ public class GameManager{
 			case "ボール"  : player = new P_Bouncer(name); break;
 		}
 
-		System.out.println("プレイヤー作成パーティー" + party);
-
 		player.setParty(party);
 		player.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
 
