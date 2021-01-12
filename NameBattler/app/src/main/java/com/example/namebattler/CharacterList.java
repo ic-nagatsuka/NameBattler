@@ -69,6 +69,10 @@ public class CharacterList extends AppCompatActivity {
                 null
                 );
 
+        TextView text = findViewById(R.id.character_list_title);
+        text.setText("キャラ一覧("+ cursor.getCount() + "人)");
+
+
         nowPlayerNum = cursor.getCount();
 
         List<HashMap<String, String>> list = new ArrayList<>();
