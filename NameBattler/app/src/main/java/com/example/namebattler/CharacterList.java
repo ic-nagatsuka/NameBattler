@@ -123,14 +123,12 @@ public class CharacterList extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
-
                 TextView text = view.findViewById( R.id.character_list_name);
                 String name = text.getText().toString();
-                intent.putExtra("name", name);
 
                 if(!name.equals("")){
+                    Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
+                    intent.putExtra("name", name);
                     startActivity(intent);
                 }
             }
