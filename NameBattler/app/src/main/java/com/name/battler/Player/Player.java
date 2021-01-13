@@ -15,13 +15,9 @@ import static com.name.battler.BattleLog.BattleLog.addLog;
 
 public abstract class Player{
 	
-	private int itemNum = 3;
-	
 	// =====================
 	// フィールド変数
 	// =====================
-
-
 	protected Party party;						//パーティー
 	protected String partyName;					//パーティー名
 	protected Strategy strategy;				//作戦
@@ -36,14 +32,12 @@ public abstract class Player{
 	protected boolean heelSkill;				//回復スキルの使用
 	protected boolean counter;					//カウンター使用
 	
-
 	//使用スキル
 	protected List <Skill> useSkill = new ArrayList <>();
 	//かかっている状態異常
 	public List <StateEffect> turnAbnormalState = new ArrayList <>();
 
-	
-	
+
 	Random rand = new Random();
 	
 	/*=============
@@ -186,7 +180,6 @@ public abstract class Player{
 		this.beforeHp = beforeHp;
 	}
 
-
 	/*
 	 * protected
 	 */
@@ -324,23 +317,6 @@ public abstract class Player{
 		return false;
 	}
 	
-	/**
-	 * MPが減少しているパーティーメンバーを探す
-	 * @param party　攻撃側パーティー
-	 * @return
-	 * true:	減少している
-	 * false: 	減少していない
-	 */
-	protected boolean checkDicreasePlayerMP(Party party){
-		for(Player player : party.getmenbers())
-		{
-			//MPが減っている場合
-			if((player.getMaxMp() - player.getMP()) > 0){
-				return true;
-			}
-		}
-		return false;
-	}
 	
 	/**
 	 * HPの割合が一番少ないプレイヤーを選ぶ
@@ -457,22 +433,6 @@ public abstract class Player{
 		}
 	}
 	
-	/**
-	 * 状態異常での戦闘不能
-	 * @param party
-	 */
-	public void deathJudgeAbnormal(List<Player> party){
-		for(int i = party.size() -1 ; 0 <= i; i--){
-			Player player = party.get(i);
-			//HPが０以下
-			if(player.getHP() <= 0){
-				System.out.println(player.getName() + "は力尽きた...\n");
-				//パーティーから除く
-				player.getParty().removePlayer(player);
-			}
-		}
-	}
-	
 	/*
 	 * public
 	 */
@@ -532,15 +492,6 @@ public abstract class Player{
 		return false;
 	}
 	
-	/**
-	 * ステータス表示
-	 */
-	public void printStatus()
-	{
-		System.out.printf("%s: %s (HP %3d : MP=%3d : STR=%3d : DEF=%3d : LUCK=%3d : AGI=%3d)\n",
-				job, getName(), getHP(), getMP(), getSTR(), getDEF(), getLUCK(), getAGI());
-	}
-
 	public String getstatus()	{
 		return "HP:" + getHP() +
 				" MP:" + getMP() +
@@ -550,17 +501,7 @@ public abstract class Player{
 				" AGI:" + getAGI();
 	}
 
-	/**
-	 * バトル中のステータス表示
-	 */
-	public void printBattleStatus(){
-		System.out.printf("%s %s HP %3d : MP %3d アイテム ",
-				this.getJob(), this.getName(), this.getHP(), this.getMP()
-				);
-	}
-	
-	
-	
+
 	/**
 	 * 
 	 * @param index 参照する場所
