@@ -48,8 +48,8 @@ public class BattleStart extends AppCompatActivity {
             );
         }
 
-        makeList(R.id.battle_start_listView_top, myParty);
-        makeList(R.id.battle_start_listView_bottom, enemyParty);
+        makeList(R.id.battle_start_listView_bottom, myParty);
+        makeList(R.id.battle_start_listView_top, enemyParty);
 
 
         findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener(){
@@ -75,7 +75,7 @@ public class BattleStart extends AppCompatActivity {
                             )
                     );
                 }
-                makeList(R.id.battle_start_listView_bottom, enemyParty);
+                makeList(R.id.battle_start_listView_top, enemyParty);
             }
         });
 

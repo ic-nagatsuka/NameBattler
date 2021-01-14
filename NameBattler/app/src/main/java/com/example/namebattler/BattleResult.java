@@ -24,8 +24,8 @@ public class BattleResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_result);
 
-        setAdapter(R.id.battleResult_gridView_top, myParty);
-        setAdapter(R.id.battleResult_gridView_bottom, enemyParty);
+        setAdapter(R.id.battleResult_gridView_bottom, myParty);
+        setAdapter(R.id.battleResult_gridView_top, enemyParty);
 
         ImageView image = findViewById(R.id.battleResult_Image_result);
 
