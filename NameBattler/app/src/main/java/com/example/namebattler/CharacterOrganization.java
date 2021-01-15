@@ -23,14 +23,10 @@ public class CharacterOrganization extends AppCompatActivity {
 
     CharacterInformation helper = new CharacterInformation(this);
 
-    int charaCount = 0;
-    int layout = R.layout.activity_character_organization;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout);
+        setContentView(R.layout.activity_character_organization);
         SQLiteDatabase db = helper.getReadableDatabase();
 
         View startButtonView = findViewById(R.id.character_organization_start);
