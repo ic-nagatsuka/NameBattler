@@ -38,8 +38,6 @@ public abstract class Player{
 	//かかっている状態異常
 	public List <StateEffect> turnAbnormalState = new ArrayList <>();
 
-	
-	
 	Random rand = new Random();
 	
 	/*=============
@@ -58,16 +56,16 @@ public abstract class Player{
 		this.beforeHp = this.getHP();
 	}
 	
-	/**
-	 * パラメーター生成
-	 */
-	public abstract void makeCharacter();
+	/**====================================================================================
+	 * abstract
+	 ====================================================================================*/
+	protected abstract void makeCharacter();
 	
 	/**
 	 * スキル設定
 	 * List<Skill>.add(AllSkill.name)
 	 */
-	abstract void makeSkill();
+	protected abstract void makeSkill();
 	
 	/*============
 	 * Getメソッド 
