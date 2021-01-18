@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="67dp"
         android:orientation="vertical"
         android:paddingHorizontal="8dp"
         android:paddingBottom="5dp"
@@ -50,7 +50,7 @@
                 android:gravity="right"
                 android:maxLines="1"
                 android:text="職業"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 app:autoSizeMinTextSize="10dp"
                 app:autoSizeTextType="uniform" />
 
