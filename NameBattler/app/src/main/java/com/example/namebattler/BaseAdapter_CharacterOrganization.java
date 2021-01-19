@@ -84,7 +84,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
 
 
-        final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_checkBox);
+        final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
         radioButton.setVisibility(View.VISIBLE);
 
         final View convertView = view;
