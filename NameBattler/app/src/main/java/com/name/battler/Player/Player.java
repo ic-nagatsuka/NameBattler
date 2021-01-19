@@ -15,13 +15,9 @@ import static com.name.battler.BattleLog.BattleLog.addLog;
 
 public abstract class Player{
 	
-	private int itemNum = 3;
-	
 	// =====================
 	// フィールド変数
 	// =====================
-
-
 	protected Party party;						//パーティー
 	protected String partyName;					//パーティー名
 	protected Strategy strategy;				//作戦
@@ -42,8 +38,6 @@ public abstract class Player{
 	//かかっている状態異常
 	public List <StateEffect> turnAbnormalState = new ArrayList <>();
 
-	
-	
 	Random rand = new Random();
 	
 	/*=============
@@ -62,16 +56,16 @@ public abstract class Player{
 		this.beforeHp = this.getHP();
 	}
 	
-	/**
-	 * パラメーター生成
-	 */
-	public abstract void makeCharacter();
+	/**====================================================================================
+	 * abstract
+	 ====================================================================================*/
+	protected abstract void makeCharacter();
 	
 	/**
 	 * スキル設定
 	 * List<Skill>.add(AllSkill.name)
 	 */
-	abstract void makeSkill();
+	protected abstract void makeSkill();
 	
 	/*============
 	 * Getメソッド 
@@ -106,7 +100,6 @@ public abstract class Player{
 	public int getAGI() {
 		return this.agi;
 	}
-	
 	public int getMaxHp(){
 		return this.maxHp;
 	}
@@ -119,8 +112,6 @@ public abstract class Player{
 	public Strategy getStrategy(){
 		return this.strategy;
 	}
-	
-
 	public boolean getIsDeath(){
 		return this.isDeath;
 	}
@@ -147,9 +138,6 @@ public abstract class Player{
 	 ============*/
 	public void setParty(Party party){
 		this.party = party;
-	}
-	public void setPartyName(String partyName){
-		this.partyName = partyName;
 	}
 	public void setStrategy(Strategy strategy){
 		this.strategy = strategy;
@@ -185,7 +173,6 @@ public abstract class Player{
 	public void setBeforHP(int beforeHp){
 		this.beforeHp = beforeHp;
 	}
-
 
 	/*
 	 * protected
@@ -462,22 +449,6 @@ public abstract class Player{
 		}
 	}
 	
-	/**
-	 * 状態異常での戦闘不能
-	 * @param party
-	 */
-	public void deathJudgeAbnormal(List<Player> party){
-		for(int i = party.size() -1 ; 0 <= i; i--){
-			Player player = party.get(i);
-			//HPが０以下
-			if(player.getHP() <= 0){
-				System.out.println(player.getName() + "は力尽きた...\n");
-				//パーティーから除く
-				player.getParty().removePlayer(player);
-			}
-		}
-	}
-	
 	/*
 	 * public
 	 */
@@ -537,15 +508,6 @@ public abstract class Player{
 		return false;
 	}
 	
-	/**
-	 * ステータス表示
-	 */
-	public void printStatus()
-	{
-		System.out.printf("%s: %s (HP %3d : MP=%3d : STR=%3d : DEF=%3d : LUCK=%3d : AGI=%3d)\n",
-				job, getName(), getHP(), getMP(), getSTR(), getDEF(), getLUCK(), getAGI());
-	}
-
 	public String getstatus()	{
 		return "HP:" + getHP() +
 				" MP:" + getMP() +
@@ -555,17 +517,7 @@ public abstract class Player{
 				" AGI:" + getAGI();
 	}
 
-	/**
-	 * バトル中のステータス表示
-	 */
-	public void printBattleStatus(){
-		System.out.printf("%s %s HP %3d : MP %3d アイテム ",
-				this.getJob(), this.getName(), this.getHP(), this.getMP()
-				);
-	}
-	
-	
-	
+
 	/**
 	 * 
 	 * @param index 参照する場所
