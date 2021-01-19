@@ -26,9 +26,9 @@
                 android:id="@+id/character_organization_listView_checkBox"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:text=""
                 android:onClick="onClickCheckBox"
-                />
+                android:text=""
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/character_organization_listView_status_name"
@@ -39,7 +39,6 @@
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
 
-                android:text="名前"
                 android:textSize="20dp" />
 
             <TextView
@@ -49,7 +48,6 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:maxLines="1"
-                android:text="職業"
                 android:textSize="20dp"
                 app:autoSizeMinTextSize="10dp"
                 app:autoSizeTextType="uniform" />
@@ -60,7 +58,6 @@
             android:id="@+id/character_organization_listView_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ステータス"
             android:textSize="16dp" />
 
     </LinearLayout>
