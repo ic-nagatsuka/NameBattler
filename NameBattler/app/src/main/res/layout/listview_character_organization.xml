@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/character_organization_listView_radioButton"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:onClick="onClickCheckBox"
+                android:text=""
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/character_organization_listView_status_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autoSizeMinTextSize="14dp"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/character_organization_listView_status_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:maxLines="1"
+                android:textSize="20dp"
+                app:autoSizeMinTextSize="10dp"
+                app:autoSizeTextType="uniform" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/character_organization_listView_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="13dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

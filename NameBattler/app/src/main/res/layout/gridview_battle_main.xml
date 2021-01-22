@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:paddingVertical="4dp"
+        android:paddingLeft="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/gridview_name"
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:text="名前"
+            android:maxLines="2"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="10dp"
+            />
+
+        <TextView
+            android:id="@+id/gridview_hp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HP"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/gridview_mp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MP"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/gridview_status_abnormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="状態異常"
+            android:textSize="15dp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="#000"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
