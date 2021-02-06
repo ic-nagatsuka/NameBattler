@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.namebattler.database.CharacterInformation;
 import com.name.battler.Player.Player;
 
+import java.nio.MappedByteBuffer;
 import java.util.List;
 
 import static com.name.battler.GameManager.makePlayer;
@@ -97,29 +98,27 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
                 TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
                 String name = textView.getText().toString();
-                if(count <= 2 && isChecked){
 
-                    System.out.println("名前" + name);
-
-                    if(!hasName(name)){
+                if(!hasName(name)){
+                    if(count < 3){
                         count++;
-
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
-                        System.out.println(job);
-
                         myParty.appendPlayer(
                                 makePlayer(name, job, myParty));
-
-                        if(myParty.getmenbers().size() > 3){
-                            System.exit(0);
-                        }
-                    }
-
-                }else if(count >= 3){
-                    if(!hasName(name)){
+                    }else{
+                        Toast.makeText(context, "最大数", Toast.LENGTH_SHORT).show();
                         radioButton.setChecked(false);
-                        Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    count--;
+                    radioButton.setChecked(false);
+
+                    for(int i = 0; i < myParty.getmenbers().size(); i++){
+                        Player player = myParty.getmenbers().get(i);
+                        if(player.getName().equals(name)){
+                            myParty.removePlayer(player);
+                        }
                     }
                 }
 
