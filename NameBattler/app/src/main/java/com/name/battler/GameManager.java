@@ -22,22 +22,14 @@ public class GameManager{
 
 	//すべてのプレイヤーを入れる
 	List<Player> allPlayer = new ArrayList<>();
-	//バトルに参加しているプレイヤー
-	List<Player> battlePlayer = new ArrayList<>();
 
 	//全てのパーティーを入れる
 	List<Party> allParty = new ArrayList<>();
-//	//バトルに参加しているパーティー
-//	List<Party> battleParty = new ArrayList<>();
 
 	public static Party win;
 	int turnCount = 1;	//ターン数
 
 	Random rand = new Random();
-	/*============
-	 * 設定
-	 ============*/
-	private int gameTextSpeed = 500;	//ゲームスピード
 
 	/*=============
 	 * コンストラクタ
@@ -47,10 +39,8 @@ public class GameManager{
 
 	}
 
-
 	/**
 	 * 戦闘準備
-	 * @throws InterruptedException
 	 */
 	public void prepare() {
 

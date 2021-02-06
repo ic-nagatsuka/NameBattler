@@ -39,7 +39,7 @@ public abstract class Player{
 
 
 	Random rand = new Random();
-	
+
 	/*=============
 	 * コンストラクタ
 	 =============*/
@@ -55,20 +55,20 @@ public abstract class Player{
 		this.maxMp = this.getMP();
 		this.beforeHp = this.getHP();
 	}
-	
-	/**
-	 * パラメーター生成
-	 */
-	public abstract void makeCharacter();
-	
+
+	/**====================================================================================
+	 * abstract
+	 ====================================================================================*/
+	protected abstract void makeCharacter();
+
 	/**
 	 * スキル設定
 	 * List<Skill>.add(AllSkill.name)
 	 */
-	abstract void makeSkill();
-	
+	protected abstract void makeSkill();
+
 	/*============
-	 * Getメソッド 
+	 * Getメソッド
 	 ============*/
 	public Party getParty(){
 		return this.party;
@@ -100,7 +100,6 @@ public abstract class Player{
 	public int getAGI() {
 		return this.agi;
 	}
-	
 	public int getMaxHp(){
 		return this.maxHp;
 	}
@@ -113,8 +112,6 @@ public abstract class Player{
 	public Strategy getStrategy(){
 		return this.strategy;
 	}
-	
-
 	public boolean getIsDeath(){
 		return this.isDeath;
 	}
@@ -137,13 +134,10 @@ public abstract class Player{
 	}
 
 	/*============
-	 *Setメソッド 
+	 *Setメソッド
 	 ============*/
 	public void setParty(Party party){
 		this.party = party;
-	}
-	public void setPartyName(String partyName){
-		this.partyName = partyName;
 	}
 	public void setStrategy(Strategy strategy){
 		this.strategy = strategy;

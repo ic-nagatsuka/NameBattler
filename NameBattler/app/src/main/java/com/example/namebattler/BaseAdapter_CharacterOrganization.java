@@ -20,6 +20,7 @@ import java.util.List;
 
 import static com.name.battler.GameManager.makePlayer;
 import static com.name.battler.GameManager.myParty;
+import static com.name.battler.Option.Option.makePlayerNum;
 
 public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
@@ -48,7 +49,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return cursor.getCount();
+        return makePlayerNum;
     }
 
     @Override
@@ -67,6 +68,9 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
         if(view == null){
             view = inflater.inflate(R.layout.listview_character_organization, null);
         }
+        if(status.size() -1 < i){
+            return view;
+        }
 
         TextView text = view.findViewById(R.id.character_organization_listView_status_name);
         text.setText(status.get(i).getName());
@@ -80,7 +84,8 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
 
 
-        final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_checkBox);
+        final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
+        radioButton.setVisibility(View.VISIBLE);
 
         final View convertView = view;
         radioButton.setOnClickListener(new View.OnClickListener() {
