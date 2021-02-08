@@ -31,22 +31,11 @@ public class BattleStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_start);
 
-        final Random rand = new Random();
-
         if(enemyParty.getmenbers().size() != 0){
             enemyParty = new Party("敵");
         }
-
-        Enemy nameData = new Enemy();
-        for(int i = 0; i < 3; i++){
-            enemyParty.appendPlayer(
-                    makePlayer(
-                            nameData.getEnemyName(),
-                            AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
-                            enemyParty
-                    )
-            );
-        }
+        //敵パーティー作成
+        makeEnemyParty();
 
         makeList(R.id.battle_start_listView_bottom, myParty);
         makeList(R.id.battle_start_listView_top, enemyParty);
@@ -65,16 +54,7 @@ public class BattleStart extends AppCompatActivity {
             public void onClick(View view) {
                 enemyParty.getmenbers().clear();
 
-                Enemy enemyName = new Enemy();
-                for(int i = 0; i < 3; i++){
-                    enemyParty.appendPlayer(
-                            makePlayer(
-                                    enemyName.getEnemyName(),
-                                    AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
-                                    enemyParty
-                            )
-                    );
-                }
+                makeEnemyParty();
                 makeList(R.id.battle_start_listView_top, enemyParty);
             }
         });
@@ -89,6 +69,20 @@ public class BattleStart extends AppCompatActivity {
 
     }
 
+    //敵パーティー作成
+    private void makeEnemyParty() {
+        Random rand = new Random();
+        Enemy nameData = new Enemy();
+        for (int i = 0; i < 3; i++) {
+            enemyParty.appendPlayer(
+                    makePlayer(
+                            nameData.getEnemyName(),
+                            AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
+                            enemyParty
+                    )
+            );
+        }
+    }
 
 
     public List<Map<String, String>> makeList(int listviewId, Party party){
