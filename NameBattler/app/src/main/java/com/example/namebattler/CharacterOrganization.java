@@ -29,12 +29,13 @@ public class CharacterOrganization extends AppCompatActivity {
         setContentView(R.layout.activity_character_organization);
         SQLiteDatabase db = helper.getReadableDatabase();
 
+        //動的に変更するボタン
         View startButtonView = findViewById(R.id.character_organization_start);
-
+        //自パーティーを初期化する
         if(myParty.getmenbers().size() != 0){
             myParty = new Party("味方");
         }
-
+        //キャラクターデータを表示する
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(sql, null);
 
@@ -60,21 +61,23 @@ public class CharacterOrganization extends AppCompatActivity {
         ListView listView = findViewById(R.id.character_organization_ListView);
         listView.setAdapter(adapter);
 
-
+        //このパーティーで開始(0/3)ボタン
         findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 if(myParty.getmenbers().size() == 3){
+                    //バトル開始画面に遷移
                     Intent intent = new Intent(getApplication(), BattleStart.class);
                     startActivity(intent);
                 }
             }
         });
 
-
+        //戻るボタン
         findViewById(R.id.character_organization_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                //トップ画面に遷移
                 Intent intent = new Intent(getApplication(), TopScreen.class);
                 startActivity(intent);
             }
@@ -84,6 +87,7 @@ public class CharacterOrganization extends AppCompatActivity {
 
     }
 
+    //ステータスを文字列にしてつなげる
     public String makeStatusText(Cursor cursor){
 
         String statusText = "HP" + cursor.getString(2) +
@@ -97,11 +101,12 @@ public class CharacterOrganization extends AppCompatActivity {
 
 }
 
+
 class Status{
 
-    String name;
-    String job;
-    String status;
+    String name;    //名前
+    String job;     //職業
+    String status;  //ステータス
 
     Status(String name, String job, String status){
         this.name = name;

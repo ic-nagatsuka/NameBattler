@@ -33,10 +33,12 @@ public class BattleStart extends AppCompatActivity {
 
         final Random rand = new Random();
 
+        //敵パーティーの初期化
         if(enemyParty.getmenbers().size() != 0){
             enemyParty = new Party("敵");
         }
 
+        //敵パーティーにキャラクターを追加
         Enemy nameData = new Enemy();
         for(int i = 0; i < 3; i++){
             enemyParty.appendPlayer(
@@ -48,21 +50,26 @@ public class BattleStart extends AppCompatActivity {
             );
         }
 
+        //自パーティー情報を表示
         makeList(R.id.battle_start_listView_bottom, myParty);
+        //敵パーティー情報を表示
         makeList(R.id.battle_start_listView_top, enemyParty);
 
 
         findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //バトルメイン画面に遷移
                 Intent intent = new Intent(getApplication(), BattleMain.class);
                 startActivity(intent);
             }
         });
 
+        //敵パーティーの再作成
         findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //敵パーティーを初期化
                 enemyParty.getmenbers().clear();
 
                 Enemy enemyName = new Enemy();
@@ -75,13 +82,16 @@ public class BattleStart extends AppCompatActivity {
                             )
                     );
                 }
+                //敵パーティーの表示を更新
                 makeList(R.id.battle_start_listView_top, enemyParty);
             }
         });
 
+        //戻るボタン
         findViewById(R.id.battle_start_back).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //パーティー編成画面に遷移
                 Intent intent = new Intent(getApplication(), CharacterOrganization.class);
                 startActivity(intent);
             }
@@ -89,8 +99,7 @@ public class BattleStart extends AppCompatActivity {
 
     }
 
-
-
+    //パーティー情報を表示する
     public List<Map<String, String>> makeList(int listviewId, Party party){
         List<Map<String, String>> list = new ArrayList<>();
         for(Player player: party.getmenbers()){

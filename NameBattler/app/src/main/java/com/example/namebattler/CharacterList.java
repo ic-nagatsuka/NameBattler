@@ -26,7 +26,7 @@ import static com.name.battler.Option.Option.makePlayerNum;
 
 public class CharacterList extends AppCompatActivity {
 
-    public static int nowPlayerNum;
+    public static int nowPlayerNum; //作成したキャラクター数
 
     CharacterInformation helper = new CharacterInformation(this);
 
@@ -34,14 +34,16 @@ public class CharacterList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_list);
-
+        //新しく作成するボタン
         findViewById(R.id.character_list_MakeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(nowPlayerNum < makePlayerNum){
+                    //キャラクター作成画面に遷移
                     Intent intent = new Intent(CharacterList.this, CharacterMake.class);
                     startActivity(intent);
                 }else{
+                    //キャラクター最大数エラー表示
                     Toast.makeText(CharacterList.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();;
                 }
             }
@@ -69,12 +71,14 @@ public class CharacterList extends AppCompatActivity {
                 null
                 );
 
+        //キャラクター人数表示
         TextView text = findViewById(R.id.character_list_title);
         text.setText("キャラ一覧("+ cursor.getCount() + "人)");
 
-
+        //キャラクター人数更新
         nowPlayerNum = cursor.getCount();
 
+        //表示するデータ
         List<HashMap<String, String>> list = new ArrayList<>();
         if(cursor.moveToFirst()){
             for(int i = 0; i < cursor.getCount(); i++){
@@ -94,13 +98,15 @@ public class CharacterList extends AppCompatActivity {
             }
         }
 
+        //空欄データ追加
         if(cursor.getCount() < makePlayerNum){
             for(int i = 0; i < makePlayerNum - cursor.getCount(); i++){
                 HashMap<String, String> hash = new HashMap<>();
                 list.add(hash);
             }
         }
-        
+
+        //アダプター作成
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
                 list,
@@ -118,15 +124,19 @@ public class CharacterList extends AppCompatActivity {
         );
 
         ListView listview = findViewById(R.id.listView_characterList);
+        //キャラクターデータ表示
         listview.setAdapter(adapter);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                //選択したキャラクターデータの確認
                 TextView text = view.findViewById( R.id.character_list_name);
                 String name = text.getText().toString();
 
                 if(!name.equals("")){
+                    //キャラクター詳細画面に遷移
                     Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
                     intent.putExtra("name", name);
                     startActivity(intent);
@@ -134,9 +144,11 @@ public class CharacterList extends AppCompatActivity {
             }
         });
 
+        //戻るボタン
         findViewById(R.id.character_list_back).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //トップ画面に遷移
                 Intent intent = new Intent(getApplication(), TopScreen.class);
                 startActivity(intent);
             }

@@ -17,8 +17,8 @@ public class GameManager{
 	/*============
 	 *フィールド変数
 	 ============*/
-	public static Party myParty = new Party("味方");
-	public static Party enemyParty = new Party("敵");
+	public static Party myParty = new Party("味方");	//自パーティー
+	public static Party enemyParty = new Party("敵");	//敵パーティー
 
 	//すべてのプレイヤーを入れる
 	List<Player> allPlayer = new ArrayList<>();
@@ -26,7 +26,7 @@ public class GameManager{
 	//全てのパーティーを入れる
 	List<Party> allParty = new ArrayList<>();
 
-	public static Party win;
+	public static Party win;	//勝利パーティー
 	int turnCount = 1;	//ターン数
 
 	Random rand = new Random();
@@ -59,6 +59,8 @@ public class GameManager{
 
 	}
 
+	/**全てのパーティーのキャラクターをまとめる
+	 */
 	public void addAllPlayer(){
 	    for(Party party: allParty){
 	        for(Player player: party.getmenbers()){
@@ -117,6 +119,12 @@ public class GameManager{
 
 	}
 
+	/**
+	 * バトル終了判定
+	 * @return
+	 * true 終了
+	 * false　継続
+	 */
 	public boolean battleEnd(){
 		boolean isEnd = true;
 		for(Party party: allParty){
@@ -135,11 +143,11 @@ public class GameManager{
 
 		return isEnd;
 	}
-//	/**
-//	 防衛側パーティーを返す
-//	  @param attacker 攻撃プレイヤー
-//	  @return 防衛側パーティー
-//	 */
+	/**
+	 防衛側パーティーを返す
+	  @param attacker 攻撃プレイヤー
+	  @return 防衛側パーティー
+	 */
 	private Party selectDefenseParty(Player attacker){
 		Party defenseParty;
 		while(true){
@@ -152,6 +160,13 @@ public class GameManager{
 		}
 	}
 
+	/**
+	 * プレイヤーを作成する
+	 * @param name	名前
+	 * @param job	職業
+	 * @param party	追加するパーティー
+	 * @return	作成したプレイヤー
+	 */
 	public static Player makePlayer(String name, String job, Party party){
 		Player player = null;
 		switch(job){

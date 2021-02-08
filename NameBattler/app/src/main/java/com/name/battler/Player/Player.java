@@ -485,7 +485,10 @@ public abstract class Player{
 		}
 		return false;
 	}
-	
+
+	/**
+	 *ステータス文字列をまとめて返す
+	 */
 	public String getstatus()	{
 		return "HP:" + getHP() +
 				" MP:" + getMP() +
@@ -497,7 +500,7 @@ public abstract class Player{
 
 
 	/**
-	 * 
+	 * 能力値を返す
 	 * @param index 参照する場所
 	 * @param max 最大値
 	 * @return 参照場所の数値
