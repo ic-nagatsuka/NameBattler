@@ -48,8 +48,8 @@ public class BattleStart extends AppCompatActivity {
             );
         }
 
-        makeList(R.id.battle_start_listView_bottom, myParty);
-        makeList(R.id.battle_start_listView_top, enemyParty);
+        displayParty(R.id.battle_start_listView_bottom, myParty);
+        displayParty(R.id.battle_start_listView_top, enemyParty);
 
 
         findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener(){
@@ -75,7 +75,7 @@ public class BattleStart extends AppCompatActivity {
                             )
                     );
                 }
-                makeList(R.id.battle_start_listView_top, enemyParty);
+                displayParty(R.id.battle_start_listView_top, enemyParty);
             }
         });
 
@@ -91,7 +91,7 @@ public class BattleStart extends AppCompatActivity {
 
 
 
-    public List<Map<String, String>> makeList(int listviewId, Party party){
+    public void displayParty(int listviewId, Party party){
         List<Map<String, String>> list = new ArrayList<>();
         for(Player player: party.getmenbers()){
             Map<String, String> map = new HashMap();
@@ -115,6 +115,5 @@ public class BattleStart extends AppCompatActivity {
 
         ListView listview = findViewById(listviewId);
         listview.setAdapter(adapter);
-        return list;
     }
 }
