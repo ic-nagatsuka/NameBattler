@@ -33,7 +33,8 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     SQLiteDatabase db;
     Cursor cursor ;
     String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
-    int count = 0;
+
+    int count = 0;  //キャラクター選択数
 
     BaseAdapter_CharacterOrganization(Context context, View v, List<Status> status){
         this.context = context;
@@ -68,20 +69,19 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
         if(view == null){
             view = inflater.inflate(R.layout.listview_character_organization, null);
         }
+        //キャラクター数より表示するリスト数が多ければ空白のリストを返す
         if(status.size() -1 < i){
             return view;
         }
-
+        //名前
         TextView text = view.findViewById(R.id.character_organization_listView_status_name);
         text.setText(status.get(i).getName());
-
+        //職業
         text = view.findViewById(R.id.character_organization_listView_status_job);
         text.setText(status.get(i).getJob());
-
+        //ステータス
         text = view.findViewById(R.id.character_organization_listView_status);
         text.setText(status.get(i).getStatus());
-
-
 
 
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
@@ -92,21 +92,15 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 boolean isChecked = radioButton.isChecked();
-                System.out.println("isChecked" + isChecked);
-
-
                 TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
                 String name = textView.getText().toString();
+
                 if(count <= 2 && isChecked){
-
-                    System.out.println("名前" + name);
-
                     if(!hasName(name)){
                         count++;
 
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
-                        System.out.println(job);
 
                         myParty.appendPlayer(
                                 makePlayer(name, job, myParty));
@@ -115,16 +109,15 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
                             System.exit(0);
                         }
                     }
-
+                //選択最大数エラー表示
                 }else if(count >= 3){
                     if(!hasName(name)){
                         radioButton.setChecked(false);
                         Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                     }
                 }
-
+                //ボタンのテキストを更新
                 Button btn = startButton.findViewById(R.id.character_organization_start);
-
                 btn.setText("このパーティーで開始(" + count + "/3)");
 
             }
@@ -134,7 +127,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     }
 
 
-
+    //同じ名前を探す
     public boolean hasName(String name){
         boolean haveName = false;
         for(int i = 0; i < myParty.getmenbers().size() ; i++){

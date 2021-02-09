@@ -21,7 +21,7 @@ public class StrategyChange extends AppCompatActivity {
         setContentView(R.layout.activity_strategy_change);
 
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
-
+        //職業一覧を表示
         for(int i = 0; i < AllStrategy.Strategies.values().length; i++){
             AllStrategy.Strategies strategy = AllStrategy.Strategies.values()[i];
             RadioButton radioButton = new RadioButton(this);
@@ -40,8 +40,8 @@ public class StrategyChange extends AppCompatActivity {
 
             radioGroup.addView(radioButton);
         }
-        System.out.println(radioGroup);
 
+        //ラジオボタン
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -50,9 +50,11 @@ public class StrategyChange extends AppCompatActivity {
             }
         });
 
+        //決定ボタン
         findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener(){
            @Override
             public void onClick(View v){
+               //バトルメイン画面に遷移
                Intent intent = new Intent(getApplication(), BattleMain.class);
                startActivity(intent);
            }
