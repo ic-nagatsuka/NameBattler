@@ -32,6 +32,7 @@ public class BattleStart extends AppCompatActivity {
         setContentView(R.layout.activity_battle_start);
 
         if(enemyParty.getmenbers().size() != 0){
+            //敵パーティーの初期化
             enemyParty = new Party("敵");
         }
         //敵パーティー作成
@@ -42,7 +43,7 @@ public class BattleStart extends AppCompatActivity {
         //敵パーティー情報を表示
         displayParty(R.id.battle_start_listView_top, enemyParty);
 
-
+        //この相手と戦うボタン
         findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -52,7 +53,7 @@ public class BattleStart extends AppCompatActivity {
             }
         });
 
-        //敵パーティーの再作成
+        //相手を選びなおすボタン
         findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -93,6 +94,7 @@ public class BattleStart extends AppCompatActivity {
         }
     }
 
+    //パーティー情報を画面表示
     public void displayParty(int listviewId, Party party){
         List<Map<String, String>> list = new ArrayList<>();
         for(Player player: party.getmenbers()){
