@@ -43,20 +43,21 @@ public class GameManager{
 	 * 戦闘準備
 	 */
 	public void prepare() {
-
+		//全てのパーティーを追加
 		allParty.add(myParty);
 		allParty.add(enemyParty);
 
+		//作戦の初期化
 		if(myParty.getStrategy() == null || enemyParty.getStrategy() == null){
 			myParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
 			enemyParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
 		}
 
+		//全てのプレイヤーを追加
 		addAllPlayer();
 
 		//素早さが高い順に並べる
 		highSpeedSort(allPlayer);
-
 	}
 
 	/**全てのパーティーのキャラクターをまとめる
@@ -69,7 +70,6 @@ public class GameManager{
         }
 
     }
-
 
 	/**
 	 * 素早さが大きい順に並べる
@@ -88,6 +88,7 @@ public class GameManager{
 			}
 		}
 	}
+
 	/**
 	 * バトル
 	 */
