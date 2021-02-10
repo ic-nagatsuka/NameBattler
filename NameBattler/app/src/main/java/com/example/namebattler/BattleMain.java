@@ -30,23 +30,24 @@ public class BattleMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_main);
 
+        //ステータス表示
         displayUpdateStates();
-
+        //作戦を表示
         TextView strategy = findViewById(R.id.battle_main_strategy_name);
         strategy.setText("作戦 ： " +
                 myParty.getStrategy().getName()
         );
-
+        //ログテキストを表示
         final TextView battleLog = findViewById(R.id.battle_main_battleLog);
         battleLog.setText(getLogText());
         battleLog.setMovementMethod(new ScrollingMovementMethod());
 
-        //次のターン
+        //次のターンボタン
         findViewById(R.id.battle_main_nextTurn).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 BattleLog.clear();
-
+                //戦闘
                 gm.battle();
                 //ステータス更新
                 displayUpdateStates();
@@ -63,7 +64,7 @@ public class BattleMain extends AppCompatActivity {
 
             }
         });
-
+        //変更ボタン
         findViewById(R.id.battle_main_stratygy_button).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
