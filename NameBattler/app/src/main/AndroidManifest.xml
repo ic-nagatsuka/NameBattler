@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.namebattlera.namebattler">
+    package="com.namebattler">
 
     <application
         android:allowBackup="true"
@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.namebattlera..namebattler.BattleResult"></activity>
-        <activity android:name="com.namebattlera..namebattler.StrategyChange" />
-        <activity android:name="com.namebattlera..namebattler.BattleMain" />
-        <activity android:name="com.namebattlera..namebattler.BattleStart" />
-        <activity android:name="com.namebattlera..namebattler.CharacterOrganization" />
-        <activity android:name="com.namebattlera..namebattler.CharacterDetails" />
-        <activity android:name="com.namebattlera..namebattler.CharacterMakeConpletion" />
-        <activity android:name="com.namebattlera..namebattler.CharacterMake" />
-        <activity android:name="com.namebattlera..namebattler.CharacterList" />
-        <activity android:name="com.namebattlera..namebattler.TopScreen">
+        <activity android:name="com.namebattler.BattleResult"></activity>
+        <activity android:name="com.namebattler.StrategyChange" />
+        <activity android:name="com.namebattler.BattleMain" />
+        <activity android:name="com.namebattler.BattleStart" />
+        <activity android:name="com.namebattler.CharacterOrganization" />
+        <activity android:name="com.namebattler.CharacterDetails" />
+        <activity android:name="com.namebattler.CharacterMakeConpletion" />
+        <activity android:name="com.namebattler.CharacterMake" />
+        <activity android:name="com.namebattler.CharacterList" />
+        <activity android:name="com.namebattler.TopScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
