@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.namebattler.BaseAdapter_BattleMain;
+import com.namebattler.adapter.BaseAdapter_BattleMain;
 import com.namebattler.R;
 import com.namebattler.battle.BattleLog.BattleLog;
 import com.namebattler.battle.GameManager;

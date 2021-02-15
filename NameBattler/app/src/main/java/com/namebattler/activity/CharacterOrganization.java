@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.namebattler.BaseAdapter_CharacterOrganization;
+import com.namebattler.adapter.BaseAdapter_CharacterOrganization;
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;

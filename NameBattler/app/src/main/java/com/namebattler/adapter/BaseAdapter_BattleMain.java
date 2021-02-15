@@ -1,4 +1,4 @@
-package com.namebattler;
+package com.namebattler.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.namebattler.R;
 import com.namebattler.battle.Player.Party;
 import com.namebattler.battle.Player.Player;
 
