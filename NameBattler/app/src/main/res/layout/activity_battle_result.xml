@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BattleResult">
+    tools:context="com.namebattlera.namebattler.com.name.namebattler.BattleResult">
 
     <GridView
         android:id="@+id/battleResult_gridView_bottom"
