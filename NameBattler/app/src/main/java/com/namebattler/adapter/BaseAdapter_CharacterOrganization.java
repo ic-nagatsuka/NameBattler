@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.namebattler.R;
-import com.namebattler.activity.Status;
+import com.namebattler.activity.CharacterOrganization;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.Player;
 
@@ -28,7 +28,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
     Context context;
     View startButton;
-    List<Status> status;
+    List<CharacterOrganization.Status> status;
 
     LayoutInflater inflater;
     SQLiteOpenHelper helper ;
@@ -37,7 +37,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
     int count = 0;
 
-    BaseAdapter_CharacterOrganization(Context context, View v, List<Status> status){
+    public BaseAdapter_CharacterOrganization(Context context, View v, List<CharacterOrganization.Status> status){
         this.context = context;
         this.startButton = v;
         this.status = status;

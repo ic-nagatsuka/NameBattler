@@ -96,6 +96,7 @@ public class CharacterOrganization extends AppCompatActivity {
                 " AGI" + cursor.getString(7);
         return statusText;
     }
+
     public class Status{
 
         String name;
