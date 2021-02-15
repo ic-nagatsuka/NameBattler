@@ -1,4 +1,4 @@
-package com.namebattler;
+package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.namebattler.BaseAdapter_BattleMain;
+import com.namebattler.R;
 import com.namebattler.battle.Player.Party;
 import com.namebattler.battle.Player.Player;
 

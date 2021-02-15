@@ -1,4 +1,4 @@
-package com.namebattler;
+package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.namebattler.R;
 import com.namebattler.battle.Strategy.AllStrategy;
 
 import com.namebattler.battle.GameManager;

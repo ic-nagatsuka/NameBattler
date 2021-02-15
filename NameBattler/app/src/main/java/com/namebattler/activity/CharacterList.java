@@ -1,4 +1,4 @@
-package com.namebattler;
+package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
+import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
 

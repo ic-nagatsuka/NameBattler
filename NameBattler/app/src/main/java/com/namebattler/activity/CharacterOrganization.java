@@ -1,4 +1,4 @@
-package com.namebattler;
+package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import com.namebattler.BaseAdapter_CharacterOrganization;
+import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
 import com.namebattler.battle.Player.Party;
@@ -94,34 +96,33 @@ public class CharacterOrganization extends AppCompatActivity {
                 " AGI" + cursor.getString(7);
         return statusText;
     }
+    public class Status{
 
+        String name;
+        String job;
+        String status;
+
+        Status(String name, String job, String status){
+            this.name = name;
+            this.job = job;
+            this.status = status;
+
+        }
+
+        public String getName(){
+            return this.name;
+        }
+
+        public String getJob(){
+            return this.job;
+        }
+
+        public String getStatus(){
+            return this.status;
+        }
+
+
+
+    }
 }
 
-class Status{
-
-    String name;
-    String job;
-    String status;
-
-    Status(String name, String job, String status){
-        this.name = name;
-        this.job = job;
-        this.status = status;
-
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public String getJob(){
-        return this.job;
-    }
-
-    public String getStatus(){
-        return this.status;
-    }
-
-
-
-}

@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.namebattler.activity.Status;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.Player;
 

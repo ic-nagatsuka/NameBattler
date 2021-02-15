@@ -1,4 +1,4 @@
-package com.namebattler;
+package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
 import com.namebattler.battle.Player.Player;
@@ -23,7 +24,7 @@ import java.util.Date;
 
 import com.namebattler.battle.GameManager;
 
-import static com.namebattler.CharacterList.nowPlayerNum;
+import static com.namebattler.activity.CharacterList.nowPlayerNum;
 import static com.namebattler.battle.Option.Option.makePlayerNum;
 
 

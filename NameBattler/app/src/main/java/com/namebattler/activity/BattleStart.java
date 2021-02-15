@@ -1,4 +1,4 @@
-package com.namebattler;
+package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.namebattler.R;
 import com.namebattler.battle.Player.AllJob;
 import com.namebattler.battle.Player.Party;
 import com.namebattler.battle.Player.Player;

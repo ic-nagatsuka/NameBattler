@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.namebattler.BattleResult"></activity>
-        <activity android:name="com.namebattler.StrategyChange" />
-        <activity android:name="com.namebattler.BattleMain" />
-        <activity android:name="com.namebattler.BattleStart" />
-        <activity android:name="com.namebattler.CharacterOrganization" />
-        <activity android:name="com.namebattler.CharacterDetails" />
-        <activity android:name="com.namebattler.CharacterMakeConpletion" />
-        <activity android:name="com.namebattler.CharacterMake" />
-        <activity android:name="com.namebattler.CharacterList" />
-        <activity android:name="com.namebattler.TopScreen">
+        <activity android:name="com.namebattler.activity.BattleResult"></activity>
+        <activity android:name="com.namebattler.activity.StrategyChange" />
+        <activity android:name="com.namebattler.activity.BattleMain" />
+        <activity android:name="com.namebattler.activity.BattleStart" />
+        <activity android:name="com.namebattler.activity.CharacterOrganization" />
+        <activity android:name="com.namebattler.activity.CharacterDetails" />
+        <activity android:name="com.namebattler.activity.CharacterMakeConpletion" />
+        <activity android:name="com.namebattler.activity.CharacterMake" />
+        <activity android:name="com.namebattler.activity.CharacterList" />
+        <activity android:name="com.namebattler.activity.TopScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

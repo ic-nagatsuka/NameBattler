@@ -1,4 +1,4 @@
-package com.namebattler;
+package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.namebattler.R;
 import com.namebattler.battle.Player.Player;
 
-import static com.namebattler.CharacterList.nowPlayerNum;
+import static com.namebattler.activity.CharacterList.nowPlayerNum;
 import static com.namebattler.battle.Option.Option.makePlayerNum;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
