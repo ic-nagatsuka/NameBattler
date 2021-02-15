@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.namebattlera.namebattler.R;
 import com.namebattler.battle.Player.Player;
 
 import static com.namebattler.CharacterList.nowPlayerNum;

@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.namebattlera.namebattler.R;
 import com.namebattler.battle.Player.AllJob;
 import com.namebattler.battle.Player.Party;
 import com.namebattler.battle.Player.Player;

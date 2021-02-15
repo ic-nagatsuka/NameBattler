@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.namebattlera.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
 

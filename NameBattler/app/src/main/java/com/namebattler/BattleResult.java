@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.namebattlera.namebattler.R;
 import com.namebattler.battle.Player.Party;
 import com.namebattler.battle.Player.Player;
 

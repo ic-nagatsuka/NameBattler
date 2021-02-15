@@ -14,7 +14,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.namebattlera.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
 import com.namebattler.battle.Player.Player;

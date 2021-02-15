@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 
 
-import com.namebattlera.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
 

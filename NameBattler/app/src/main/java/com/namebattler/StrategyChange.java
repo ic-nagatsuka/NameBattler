@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.namebattlera.namebattler.R;
 import com.namebattler.battle.Strategy.AllStrategy;
 
 import com.namebattler.battle.GameManager;
