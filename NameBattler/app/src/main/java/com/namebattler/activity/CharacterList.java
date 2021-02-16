@@ -1,6 +1,9 @@
 package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,6 +24,7 @@ import java.util.List;
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
+import com.namebattler.fragment.TitleFragment;
 
 import static com.namebattler.battle.Option.Option.makePlayerNum;
 
@@ -69,11 +73,12 @@ public class CharacterList extends AppCompatActivity {
                 null
                 );
 
-        TextView text = findViewById(R.id.character_list_title);
-        text.setText("キャラ一覧("+ cursor.getCount() + "人)");
-
-
         nowPlayerNum = cursor.getCount();
+        //タイトル表示
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment2, TitleFragment.newInstans("キャラ一覧(" + nowPlayerNum + "人)" ));
+        fragmentTransaction.commit();
 
         List<HashMap<String, String>> list = new ArrayList<>();
         if(cursor.moveToFirst()){

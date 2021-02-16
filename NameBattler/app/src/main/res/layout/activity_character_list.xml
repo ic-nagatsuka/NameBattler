@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.namebattler.activity.CharacterList">
 
-    <TextView
-        android:id="@+id/character_list_title"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="キャラ一覧"
-        android:textColor="#000"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/character_list_back"
         android:layout_width="80dp"
@@ -31,24 +16,24 @@
         android:text="戻る"
         android:textColor="#fff"
         android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/fragment2" />
 
     <ListView
         android:id="@+id/listView_characterList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginHorizontal="8dp"
         android:background="@drawable/border_around"
         app:layout_constraintBottom_toTopOf="@+id/character_list_MakeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_list_title" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment2" />
 
     <Button
         android:id="@+id/character_list_MakeButton"
@@ -68,8 +53,7 @@
         android:id="@+id/fragment2"
         android:name="com.namebattler.fragment.Title"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
