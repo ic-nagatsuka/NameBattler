@@ -12,12 +12,12 @@ import androidx.fragment.app.Fragment;
 
 import com.namebattler.R;
 
-public class Title extends Fragment {
+public class TitleFragment extends Fragment {
 
     static String titleKey = "title";
 
     public static Fragment newInstans(String title){
-        Title fragment = new Title();
+        TitleFragment fragment = new TitleFragment();
 
         Bundle bundle = new Bundle();
         bundle.putString(titleKey, title);
