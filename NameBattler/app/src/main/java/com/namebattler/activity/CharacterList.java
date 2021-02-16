@@ -1,7 +1,6 @@
 package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -26,7 +25,7 @@ import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
 import com.namebattler.fragment.TitleFragment;
 
-import static com.namebattler.battle.Option.Option.makePlayerNum;
+import static com.namebattler.Option.Option.makePlayerNum;
 
 public class CharacterList extends AppCompatActivity {
 

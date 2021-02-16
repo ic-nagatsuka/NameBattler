@@ -22,7 +22,7 @@ import java.util.List;
 
 import com.namebattler.battle.GameManager;
 
-import static com.namebattler.battle.Option.Option.makePlayerNum;
+import static com.namebattler.Option.Option.makePlayerNum;
 
 public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
