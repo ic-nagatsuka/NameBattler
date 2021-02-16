@@ -6,22 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.namebattler.activity.CharacterList">
 
-    <Button
-        android:id="@+id/character_list_back"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:background="@color/blue_26c"
-        android:text="戻る"
-        android:textColor="#fff"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/fragment2" />
-
     <ListView
         android:id="@+id/listView_characterList"
         android:layout_width="match_parent"
