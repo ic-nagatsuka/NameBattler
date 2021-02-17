@@ -78,7 +78,7 @@ public class CharacterList extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment2,
-                TitleFragment.newInstans("キャラ一覧(" + nowPlayerNum + "人)", true , TopScreen.class));
+                TitleFragment.newInstance("キャラ一覧(" + nowPlayerNum + "人)", true , TopScreen.class));
         fragmentTransaction.commit();
 
         List<HashMap<String, String>> list = new ArrayList<>();

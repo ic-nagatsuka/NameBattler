@@ -23,7 +23,7 @@ public class TitleFragment extends Fragment {
     static String clsKey = "class";
 
 
-    public static Fragment newInstans(String title, boolean showButton, Class cls){
+    public static Fragment newInstance(String title, boolean showButton, Class cls){
         TitleFragment fragment = new TitleFragment();
 
         Bundle bundle = new Bundle();
