@@ -20,12 +20,12 @@ public class TitleFragment extends Fragment {
 
     static String titleKey = "title";
 
-    public static Fragment newInstans(String title, boolean visi, Class cls){
+    public static Fragment newInstans(String title, boolean showButton, Class cls){
         TitleFragment fragment = new TitleFragment();
 
         Bundle bundle = new Bundle();
         bundle.putString(titleKey, title);
-        bundle.putBoolean("visi", visi);
+        bundle.putBoolean("showButton", showButton);
         bundle.putSerializable("class", cls);
 
         fragment.setArguments(bundle);
