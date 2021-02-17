@@ -19,14 +19,17 @@ import com.namebattler.activity.TopScreen;
 public class TitleFragment extends Fragment {
 
     static String titleKey = "title";
+    static String showButtonKey = "showButton";
+    static String clsKey = "class";
+
 
     public static Fragment newInstans(String title, boolean showButton, Class cls){
         TitleFragment fragment = new TitleFragment();
 
         Bundle bundle = new Bundle();
         bundle.putString(titleKey, title);
-        bundle.putBoolean("showButton", showButton);
-        bundle.putSerializable("class", cls);
+        bundle.putBoolean(showButtonKey, showButton);
+        bundle.putSerializable(clsKey, cls);
 
         fragment.setArguments(bundle);
         return fragment;
@@ -49,7 +52,7 @@ public class TitleFragment extends Fragment {
 
         Button btn = view.findViewById(R.id.fragment_title_back);
 
-        if(getArguments().getBoolean("visi")){
+        if(getArguments().getBoolean(showButtonKey)){
             btn.setVisibility(View.VISIBLE);
         }else{
             btn.setVisibility(View.INVISIBLE);
@@ -58,7 +61,7 @@ public class TitleFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Class cls = (Class)getArguments().getSerializable("class");
+                Class cls = (Class)getArguments().getSerializable(clsKey);
                 Intent intent = new Intent(getActivity(), cls);
                 startActivity(intent);
             }
