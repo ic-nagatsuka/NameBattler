@@ -77,7 +77,8 @@ public class CharacterList extends AppCompatActivity {
         //タイトル表示
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment2, TitleFragment.newInstans("キャラ一覧(" + nowPlayerNum + "人)", false ));
+        fragmentTransaction.add(R.id.fragment2,
+                TitleFragment.newInstans("キャラ一覧(" + nowPlayerNum + "人)", true , TopScreen.class));
         fragmentTransaction.commit();
 
         List<HashMap<String, String>> list = new ArrayList<>();
@@ -140,15 +141,6 @@ public class CharacterList extends AppCompatActivity {
                 }
             }
         });
-
-//        findViewById(R.id.character_list_back).setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplication(), TopScreen.class);
-//                startActivity(intent);
-//            }
-//        });
-
 
     }
 }

@@ -1,5 +1,6 @@
 package com.namebattler.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +13,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.namebattler.R;
+import com.namebattler.activity.CharacterList;
+import com.namebattler.activity.TopScreen;
 
 public class TitleFragment extends Fragment {
 
     static String titleKey = "title";
 
-    public static Fragment newInstans(String title, boolean visi){
+    public static Fragment newInstans(String title, boolean visi, Class cls){
         TitleFragment fragment = new TitleFragment();
 
         Bundle bundle = new Bundle();
         bundle.putString(titleKey, title);
         bundle.putBoolean("visi", visi);
+        bundle.putSerializable("class", cls);
 
         fragment.setArguments(bundle);
         return fragment;
@@ -51,6 +55,14 @@ public class TitleFragment extends Fragment {
             btn.setVisibility(View.INVISIBLE);
         }
 
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Class cls = (Class)getArguments().getSerializable("class");
+                Intent intent = new Intent(getActivity(), cls);
+                startActivity(intent);
+            }
+        });
 
     }
 }
