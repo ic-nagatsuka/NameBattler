@@ -2,6 +2,7 @@ package com.namebattler.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,27 +46,34 @@ public class TitleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle bnd = getArguments();
-        String title = bnd.getString(titleKey);
+        String title = bnd.getString(titleKey);                 //タイトル
+        boolean showButton = bnd.getBoolean(showButtonKey);     //ボタンの表示
+        final Class cls = (Class)bnd.getSerializable(clsKey);   //遷移先のアクティビティ
 
         TextView textview = view.findViewById(R.id.fragment_title);
         textview.setText(title);
 
         Button btn = view.findViewById(R.id.fragment_title_back);
 
-        if(getArguments().getBoolean(showButtonKey)){
+        if(showButton){
+            //ボタンの表示をする
             btn.setVisibility(View.VISIBLE);
+            if(cls != null) {
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), cls);
+                        startActivity(intent);
+                    }
+                });
+            }else{
+                Log.e(getClass().toString(), "ボタンの機能がありません");
+            }
         }else{
+            //ボタンを隠す
             btn.setVisibility(View.INVISIBLE);
         }
 
-        btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Class cls = (Class)getArguments().getSerializable(clsKey);
-                Intent intent = new Intent(getActivity(), cls);
-                startActivity(intent);
-            }
-        });
 
     }
 
