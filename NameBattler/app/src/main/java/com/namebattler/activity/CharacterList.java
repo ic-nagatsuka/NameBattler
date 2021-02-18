@@ -1,9 +1,6 @@
 package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -75,11 +72,8 @@ public class CharacterList extends AppCompatActivity {
 
         nowPlayerNum = cursor.getCount();
         //タイトル表示
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment2,
-                TitleFragment.newInstance("キャラ一覧(" + nowPlayerNum + "人)", true , TopScreen.class));
-        fragmentTransaction.commit();
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "キャラ一覧(" + nowPlayerNum + ")", true, TopScreen.class);
 
         List<HashMap<String, String>> list = new ArrayList<>();
         if(cursor.moveToFirst()){

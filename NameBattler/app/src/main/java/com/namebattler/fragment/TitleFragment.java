@@ -11,10 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.namebattler.R;
-import com.namebattler.activity.CharacterList;
-import com.namebattler.activity.TopScreen;
 
 public class TitleFragment extends Fragment {
 
@@ -68,4 +68,14 @@ public class TitleFragment extends Fragment {
         });
 
     }
+
+    //タイトル表示
+    public static void displayTitleFragment(FragmentManager fragmentManager, String text, boolean showButton, Class moveClass){
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment2,
+                TitleFragment.newInstance(
+                        text, showButton , moveClass));
+        fragmentTransaction.commit();
+    }
+
 }
