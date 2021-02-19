@@ -18,10 +18,13 @@ import com.namebattler.activity.CharacterOrganization;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.Player;
 
+import java.nio.MappedByteBuffer;
 import java.util.List;
 
 import com.namebattler.battle.GameManager;
 
+import static com.namebattler.battle.GameManager.makePlayer;
+import static com.namebattler.battle.GameManager.myParty;
 import static com.namebattler.battle.Option.Option.makePlayerNum;
 
 public class BaseAdapter_CharacterOrganization extends BaseAdapter {
@@ -99,29 +102,27 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
                 TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
                 String name = textView.getText().toString();
-                if(count <= 2 && isChecked){
 
-                    System.out.println("名前" + name);
-
-                    if(!hasName(name)){
+                if(!hasName(name)){
+                    if(count < 3){
                         count++;
-
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
-                        System.out.println(job);
-
-                        GameManager.myParty.appendPlayer(
-                                GameManager.makePlayer(name, job, GameManager.myParty));
-
-                        if(GameManager.myParty.getmenbers().size() > 3){
-                            System.exit(0);
-                        }
-                    }
-
-                }else if(count >= 3){
-                    if(!hasName(name)){
-                        radioButton.setChecked(false);
+                        myParty.appendPlayer(
+                                makePlayer(name, job, myParty));
+                    }else{
                         Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
+                        radioButton.setChecked(false);
+                    }
+                }else{
+                    count--;
+                    radioButton.setChecked(false);
+
+                    for(int i = 0; i < myParty.getmenbers().size(); i++){
+                        Player player = myParty.getmenbers().get(i);
+                        if(player.getName().equals(name)){
+                            myParty.removePlayer(player);
+                        }
                     }
                 }
 
@@ -139,8 +140,8 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
     public boolean hasName(String name){
         boolean haveName = false;
-        for(int i = 0; i < GameManager.myParty.getmenbers().size() ; i++){
-            Player player = GameManager.myParty.getmenbers().get(i);
+        for(int i = 0; i < myParty.getmenbers().size() ; i++){
+            Player player = myParty.getmenbers().get(i);
             if(player.getName().equals(name)){
                 haveName = true;
             }
