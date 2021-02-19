@@ -111,7 +111,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
                         myParty.appendPlayer(
                                 makePlayer(name, job, myParty));
                     }else{
-                        Toast.makeText(context, "最大数", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                         radioButton.setChecked(false);
                     }
                 }else{
