@@ -30,6 +30,8 @@ import static com.namebattler.Option.Option.makePlayerNum;
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
+    private final int radioButtonSize = 30;
+
     CharacterInformation helper = new CharacterInformation(this);
 
     static Player player; //作成したプレイヤー
@@ -48,7 +50,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         for(int i = 0; i < AllJob.Job.values().length; i++){
             RadioButton radioBtn = new RadioButton(this);
             radioBtn.setText(AllJob.Job.values()[i].getName());
-            radioBtn.setTextSize(30);
+            radioBtn.setTextSize(radioButtonSize);
             radioBtn.setId(i);
             radioGroup.addView(radioBtn);
         }
