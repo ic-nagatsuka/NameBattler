@@ -7,10 +7,7 @@ public class AllJob{
 	 * フィールド変数
 	 =============*/
 
-
-
-
-
+	//職業一覧
 	public enum Job {
 		FIGHTER("戦士"),
 		WIZARD("魔法使い"),

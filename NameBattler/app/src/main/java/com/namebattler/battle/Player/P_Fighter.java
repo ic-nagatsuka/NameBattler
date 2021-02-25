@@ -9,7 +9,7 @@ import com.namebattler.battle.BattleLog.BattleLog;
 public class P_Fighter extends Player{
 	
 	
-	List<String> attText = new ArrayList<>();
+	List<String> attText = new ArrayList<>();	//攻撃テキスト
 	
 	/*=============
 	 * コンストラクタ
@@ -35,7 +35,7 @@ public class P_Fighter extends Player{
 	//	this.useSkill.add();
 	}
 
-	
+	//攻撃テキスト
 	protected void makeAttackText(){
 		attText.add("パンチをした！");
 		attText.add("キックをした！");

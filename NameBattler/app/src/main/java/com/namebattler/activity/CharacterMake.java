@@ -32,7 +32,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
     CharacterInformation helper = new CharacterInformation(this);
 
-    static Player player;
+    static Player player; //作成したプレイヤー
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,8 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         editText.addTextChangedListener(this);
 
 
+        //選択する職業を表示
         RadioGroup radioGroup = findViewById(R.id.character_make_job_RadioGroup) ;
-
         for(int i = 0; i < AllJob.Job.values().length; i++){
             RadioButton radioBtn = new RadioButton(this);
             radioBtn.setText(AllJob.Job.values()[i].getName());
@@ -53,7 +53,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             radioGroup.addView(radioBtn);
         }
 
-
+        //作成するボタン
         findViewById(R.id.character_make_makeButton).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -63,6 +63,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                 String name = editName.getText().toString();
                 RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
                 if(nowPlayerNum >= makePlayerNum ){
+                    //キャラクター最大数エラー表示
                     Toast.makeText(CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 }else if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
                     SQLiteDatabase db = helper.getWritableDatabase();
@@ -80,10 +81,12 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     values.put("CREATE_AT", getDate());
 
                     if(db.insert(CharacterInformation.TABLE_NAME,null, values) != -1){
+                        //キャラクターデータ追加
                         nowPlayerNum++;
                         Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
                         startActivity(intent);
                     }else{
+                        //名前エラー表示
                         Toast.makeText(CharacterMake.this, "この名前はすでに存在しています", Toast.LENGTH_SHORT).show();
                     }
 
@@ -93,7 +96,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
         });
 
-
+        //戻るボタン
         findViewById(R.id.character_make_backButton).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -102,14 +105,17 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             }
         });
 
-
     }
 
+    //現在時刻を取得する
     public String getDate(){
         SimpleDateFormat format = new SimpleDateFormat("yyyy/M/dd hh:mm") ;
         return format.format(new Date());
     }
 
+    /*=================
+        TextWatcher
+     =================*/
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 

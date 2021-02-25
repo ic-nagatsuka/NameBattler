@@ -2,12 +2,13 @@ package com.namebattler.battle.Strategy;
 
 public class AllStrategy {
 
+    //コンストラクタ
     AllStrategy(){
 
     }
 
 
-
+    //作戦一覧
     public enum Strategies{
         DAMAGE_PRIORITY(new StrategyOfDamagePriority()),
         LEAST_HP(new StrategyOfLeastHP()),

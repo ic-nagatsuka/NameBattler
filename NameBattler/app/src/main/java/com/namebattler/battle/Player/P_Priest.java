@@ -15,6 +15,7 @@ public class P_Priest extends Player {
 		this.setJob(AllJob.Job.PRIEST.getName());
 	}
 
+	@Override
 	public  void makeCharacter(){
 		this.hp = getNumber(0, 120) + 80;
 		this.mp = getNumber(1, 30) + 20;
@@ -23,6 +24,8 @@ public class P_Priest extends Player {
 		this.luck = getNumber(4, 99) + 1;
 		this.agi = getNumber(5, 40) + 20;
 	}
+
+	@Override
 	protected void makeSkill(){
 		useSkill.add(AllSkill.paralysis);
 		useSkill.add(AllSkill.poison);

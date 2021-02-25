@@ -15,6 +15,7 @@ public class P_Wizard extends Player{
 
 	}
 
+	@Override
 	public void makeCharacter(){
 		this.hp = getNumber(0, 100) + 50;
 		this.mp = getNumber(1, 50) + 30;
@@ -24,6 +25,7 @@ public class P_Wizard extends Player{
 		this.agi = getNumber(5, 40) + 20;
 	}
 	//this.useSkill.add(AllSkill.);
+	@Override
 	protected void makeSkill(){
 		this.useSkill.add(AllSkill.fire);
 		this.useSkill.add(AllSkill.thunder);
