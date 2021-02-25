@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.namebattler.battle.Skill.AllSkill;
-import com.namebattler.battle.Skill.Skill;
-import com.namebattler.battle.Skill.SkillOfEffectTurn.StateEffect;
+import com.namebattler.battle.skill.AllSkill;
+import com.namebattler.battle.skill.Skill;
+import com.namebattler.battle.skill.SkillOfEffectTurn.StateEffect;
 import com.namebattler.battle.Strategy.Strategy;
 
 import com.namebattler.battle.battlelog.BattleLog;

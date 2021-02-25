@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;
-import com.namebattler.battle.Skill.Skill;
-import com.namebattler.battle.Skill.SkillType;
+import com.namebattler.battle.skill.Skill;
+import com.namebattler.battle.skill.SkillType;
 
 public class StrategyOfAttackMagicPriority extends Strategy {
 	/*=============

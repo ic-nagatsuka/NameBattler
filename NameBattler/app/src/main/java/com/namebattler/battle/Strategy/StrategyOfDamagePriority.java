@@ -2,11 +2,11 @@ package com.namebattler.battle.Strategy;
 
 import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;
-import com.namebattler.battle.Skill.AllSkill;
-import com.namebattler.battle.Skill.Skill;
-import com.namebattler.battle.Skill.SkillOfAttackMagic;
-import com.namebattler.battle.Skill.SkillOfDamageAbnormalState;
-import com.namebattler.battle.Skill.SkillOfEffectTurn;
+import com.namebattler.battle.skill.AllSkill;
+import com.namebattler.battle.skill.Skill;
+import com.namebattler.battle.skill.SkillOfAttackMagic;
+import com.namebattler.battle.skill.SkillOfDamageAbnormalState;
+import com.namebattler.battle.skill.SkillOfEffectTurn;
 
 
 public class StrategyOfDamagePriority extends Strategy{

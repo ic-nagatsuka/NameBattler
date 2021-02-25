@@ -1,4 +1,4 @@
-package com.namebattler.battle.Skill;
+package com.namebattler.battle.skill;
 
 public class AllSkill {
 	/*=============
