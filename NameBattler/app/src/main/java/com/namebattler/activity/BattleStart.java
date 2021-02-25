@@ -20,7 +20,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import com.namebattler.battle.GameManager;
+
+import static com.namebattler.battle.GameManager.enemyParty;
+import static com.namebattler.battle.GameManager.makePlayer;
+import static com.namebattler.battle.GameManager.myParty;
 
 public class BattleStart extends AppCompatActivity {
 
@@ -30,25 +33,15 @@ public class BattleStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_start);
 
-        final Random rand = new Random();
 
-        if(GameManager.enemyParty.getmenbers().size() != 0){
-            GameManager.enemyParty = new Party("敵");
+        if(enemyParty.getmenbers().size() != 0){
+            enemyParty = new Party("敵");
         }
+        //敵パーティー作成
+        makeEnemyParty();
 
-        Enemy nameData = new Enemy();
-        for(int i = 0; i < 3; i++){
-            GameManager.enemyParty.appendPlayer(
-                    GameManager.makePlayer(
-                            nameData.getEnemyName(),
-                            AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
-                            GameManager.enemyParty
-                    )
-            );
-        }
-
-        makeList(R.id.battle_start_listView_bottom, GameManager.myParty);
-        makeList(R.id.battle_start_listView_top, GameManager.enemyParty);
+        makeList(R.id.battle_start_listView_bottom, myParty);
+        makeList(R.id.battle_start_listView_top, enemyParty);
 
 
         findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener(){
@@ -62,19 +55,10 @@ public class BattleStart extends AppCompatActivity {
         findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                GameManager.enemyParty.getmenbers().clear();
+                enemyParty.getmenbers().clear();
 
-                Enemy enemyName = new Enemy();
-                for(int i = 0; i < 3; i++){
-                    GameManager.enemyParty.appendPlayer(
-                            GameManager.makePlayer(
-                                    enemyName.getEnemyName(),
-                                    AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
-                                    GameManager.enemyParty
-                            )
-                    );
-                }
-                makeList(R.id.battle_start_listView_top, GameManager.enemyParty);
+                makeEnemyParty();
+                makeList(R.id.battle_start_listView_top, enemyParty);
             }
         });
 
@@ -88,6 +72,20 @@ public class BattleStart extends AppCompatActivity {
 
     }
 
+    //敵パーティー作成
+    private void makeEnemyParty() {
+        Random rand = new Random();
+        Enemy nameData = new Enemy();
+        for (int i = 0; i < 3; i++) {
+            enemyParty.appendPlayer(
+                    makePlayer(
+                            nameData.getEnemyName(),
+                            AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
+                            enemyParty
+                    )
+            );
+        }
+    }
 
 
     public List<Map<String, String>> makeList(int listviewId, Party party){
