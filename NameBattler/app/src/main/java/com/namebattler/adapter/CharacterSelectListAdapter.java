@@ -26,7 +26,7 @@ import static com.namebattler.Option.Option.partyPlayerNum;
 import static com.namebattler.battle.GameManager.makePlayer;
 import static com.namebattler.battle.GameManager.myParty;
 
-public class BaseAdapter_CharacterOrganization extends BaseAdapter {
+public class CharacterSelectListAdapter extends BaseAdapter {
 
     Context context;
     View startButton;
@@ -39,7 +39,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
     int count = 0;
 
-    public BaseAdapter_CharacterOrganization(Context context, View v, List<CharacterOrganization.Status> status){
+    public CharacterSelectListAdapter(Context context, View v, List<CharacterOrganization.Status> status){
         this.context = context;
         this.startButton = v;
         this.status = status;

@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.namebattler.adapter.BaseAdapter_CharacterOrganization;
+import com.namebattler.adapter.CharacterSelectListAdapter;
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
@@ -52,7 +52,7 @@ public class CharacterOrganization extends AppCompatActivity {
         }
 
 
-        BaseAdapter adapter = new BaseAdapter_CharacterOrganization(
+        BaseAdapter adapter = new CharacterSelectListAdapter(
                 this,
                 startButtonView,
                 list
