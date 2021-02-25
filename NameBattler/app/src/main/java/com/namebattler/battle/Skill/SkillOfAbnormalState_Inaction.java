@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.namebattler.battle.Player.Player;
 
-import com.namebattler.battle.BattleLog.BattleLog;
+import com.namebattler.battle.battlelog.BattleLog;
 
 public class SkillOfAbnormalState_Inaction extends SkillOfEffectTurn{
 	/*=============

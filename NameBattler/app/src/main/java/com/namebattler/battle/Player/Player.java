@@ -11,7 +11,7 @@ import com.namebattler.battle.Skill.Skill;
 import com.namebattler.battle.Skill.SkillOfEffectTurn.StateEffect;
 import com.namebattler.battle.Strategy.Strategy;
 
-import com.namebattler.battle.BattleLog.BattleLog;
+import com.namebattler.battle.battlelog.BattleLog;
 
 public abstract class Player{
 	

@@ -3,7 +3,7 @@ package com.namebattler.battle.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.namebattler.battle.BattleLog.BattleLog;
+import com.namebattler.battle.battlelog.BattleLog;
 
 
 public class P_Fighter extends Player{

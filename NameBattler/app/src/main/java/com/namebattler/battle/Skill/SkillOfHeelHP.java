@@ -2,7 +2,7 @@ package com.namebattler.battle.Skill;
 
 import com.namebattler.battle.Player.Player;
 
-import com.namebattler.battle.BattleLog.BattleLog;
+import com.namebattler.battle.battlelog.BattleLog;
 
 public class SkillOfHeelHP extends SkillOfHeel{
 

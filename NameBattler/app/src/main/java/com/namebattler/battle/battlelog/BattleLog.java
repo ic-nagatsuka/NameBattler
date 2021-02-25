@@ -1,4 +1,4 @@
-package com.namebattler.battle.BattleLog;
+package com.namebattler.battle.battlelog;
 
 import java.util.ArrayList;
 

@@ -2,7 +2,7 @@ package com.namebattler.battle.Player;
 
 import com.namebattler.battle.Skill.AllSkill;
 
-import com.namebattler.battle.BattleLog.BattleLog;
+import com.namebattler.battle.battlelog.BattleLog;
 
 
 public class P_Wizard extends Player{
