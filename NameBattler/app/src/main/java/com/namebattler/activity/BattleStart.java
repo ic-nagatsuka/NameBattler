@@ -13,7 +13,7 @@ import com.namebattler.R;
 import com.namebattler.battle.Player.AllJob;
 import com.namebattler.battle.Player.Party;
 import com.namebattler.battle.Player.Player;
-import com.namebattler.battle.enemyData.Enemy;
+import com.namebattler.battle.enemydata.Enemy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

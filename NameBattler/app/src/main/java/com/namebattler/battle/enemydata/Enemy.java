@@ -1,4 +1,4 @@
-package com.namebattler.battle.enemyData;
+package com.namebattler.battle.enemydata;
 
 import java.util.ArrayList;
 import java.util.Random;
