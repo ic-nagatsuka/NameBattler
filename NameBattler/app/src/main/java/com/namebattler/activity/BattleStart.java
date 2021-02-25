@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.namebattler.Option.Option;
 import com.namebattler.R;
 import com.namebattler.battle.Player.AllJob;
 import com.namebattler.battle.Player.Party;
@@ -85,7 +86,7 @@ public class BattleStart extends AppCompatActivity {
     private void makeEnemyParty() {
         Random rand = new Random();
         Enemy nameData = new Enemy();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Option.partyPlayerNum; i++) {
             enemyParty.appendPlayer(
                     makePlayer(
                             nameData.getEnemyName(),
