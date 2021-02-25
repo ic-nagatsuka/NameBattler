@@ -22,6 +22,7 @@ import java.util.List;
 
 
 import static com.namebattler.Option.Option.makePlayerNum;
+import static com.namebattler.Option.Option.partyPlayerNum;
 import static com.namebattler.battle.GameManager.makePlayer;
 import static com.namebattler.battle.GameManager.myParty;
 
@@ -102,7 +103,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
                 String name = textView.getText().toString();
 
                 if(!hasName(name)){
-                    if(count < 3){
+                    if(count < partyPlayerNum){
                         count++;
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
