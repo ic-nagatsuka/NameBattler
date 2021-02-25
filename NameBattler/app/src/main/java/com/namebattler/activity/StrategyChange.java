@@ -16,6 +16,8 @@ import com.namebattler.battle.GameManager;
 
 public class StrategyChange extends AppCompatActivity {
 
+    private final int radioSize = 30;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,7 @@ public class StrategyChange extends AppCompatActivity {
             RadioButton radioButton = new RadioButton(this);
             radioButton.setId(i);
             radioButton.setText(strategy.getStrategy().getName());
-            radioButton.setTextSize(30);
+            radioButton.setTextSize(radioSize);
 
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
