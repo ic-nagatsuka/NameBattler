@@ -22,7 +22,7 @@ import java.util.List;
 
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
-import com.namebattler.battle.Player.AllJob;
+import com.namebattler.battle.player.AllJob;
 import com.namebattler.fragment.TitleFragment;
 
 import static com.namebattler.Option.Option.makePlayerNum;

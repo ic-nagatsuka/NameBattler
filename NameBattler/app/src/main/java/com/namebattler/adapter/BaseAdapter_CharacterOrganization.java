@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.namebattler.R;
 import com.namebattler.activity.CharacterOrganization;
 import com.namebattler.database.CharacterInformation;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Player;
 
 import java.util.List;
 

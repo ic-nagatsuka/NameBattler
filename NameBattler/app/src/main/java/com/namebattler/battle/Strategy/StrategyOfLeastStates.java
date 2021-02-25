@@ -1,7 +1,7 @@
 package com.namebattler.battle.Strategy;
 
-import com.namebattler.battle.Player.Party;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Party;
+import com.namebattler.battle.player.Player;
 
 public class StrategyOfLeastStates extends StrategyOfLeastHP{
 	/*=============

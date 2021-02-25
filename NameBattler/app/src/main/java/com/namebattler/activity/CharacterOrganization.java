@@ -13,8 +13,8 @@ import android.widget.ListView;
 import com.namebattler.adapter.BaseAdapter_CharacterOrganization;
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
-import com.namebattler.battle.Player.AllJob;
-import com.namebattler.battle.Player.Party;
+import com.namebattler.battle.player.AllJob;
+import com.namebattler.battle.player.Party;
 
 import java.util.ArrayList;
 import java.util.List;

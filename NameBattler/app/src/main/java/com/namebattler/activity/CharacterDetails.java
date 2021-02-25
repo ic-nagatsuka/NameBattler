@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
-import com.namebattler.battle.Player.AllJob;
+import com.namebattler.battle.player.AllJob;
 
 public class CharacterDetails extends AppCompatActivity {
 

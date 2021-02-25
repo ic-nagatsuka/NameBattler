@@ -3,8 +3,8 @@ package com.namebattler.battle.Strategy;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.namebattler.battle.Player.Party;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Party;
+import com.namebattler.battle.player.Player;
 import com.namebattler.battle.Skill.Skill;
 import com.namebattler.battle.Skill.SkillType;
 

@@ -3,8 +3,8 @@ package com.namebattler.battle.Strategy;
 import java.util.List;
 import java.util.Random;
 
-import com.namebattler.battle.Player.Party;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Party;
+import com.namebattler.battle.player.Player;
 
 public abstract class Strategy {
 

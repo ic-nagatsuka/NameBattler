@@ -14,7 +14,7 @@ import com.namebattler.adapter.BaseAdapter_BattleMain;
 import com.namebattler.R;
 import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.GameManager;
-import com.namebattler.battle.Player.Party;
+import com.namebattler.battle.player.Party;
 
 import static com.namebattler.battle.battlelog.BattleLog.getLogText;
 

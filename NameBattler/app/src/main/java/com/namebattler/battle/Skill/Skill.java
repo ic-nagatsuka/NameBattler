@@ -2,7 +2,7 @@ package com.namebattler.battle.Skill;
 
 import java.util.Random;
 
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Player;
 
 public class Skill
 {

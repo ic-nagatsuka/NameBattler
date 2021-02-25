@@ -1,4 +1,4 @@
-package com.namebattler.battle.Player;
+package com.namebattler.battle.player;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

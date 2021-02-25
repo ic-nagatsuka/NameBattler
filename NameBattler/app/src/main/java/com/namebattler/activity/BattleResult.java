@@ -11,8 +11,8 @@ import android.widget.ImageView;
 
 import com.namebattler.adapter.BaseAdapter_BattleMain;
 import com.namebattler.R;
-import com.namebattler.battle.Player.Party;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Party;
+import com.namebattler.battle.player.Player;
 
 import com.namebattler.battle.GameManager;
 
