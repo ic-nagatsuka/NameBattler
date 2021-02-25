@@ -12,7 +12,7 @@ import com.namebattler.R;
 import com.namebattler.battle.Player.Player;
 
 import static com.namebattler.activity.CharacterList.nowPlayerNum;
-import static com.namebattler.battle.Option.Option.makePlayerNum;
+import static com.namebattler.Option.Option.makePlayerNum;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
 

@@ -18,14 +18,12 @@ import com.namebattler.activity.CharacterOrganization;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.Player;
 
-import java.nio.MappedByteBuffer;
 import java.util.List;
 
-import com.namebattler.battle.GameManager;
 
+import static com.namebattler.Option.Option.makePlayerNum;
 import static com.namebattler.battle.GameManager.makePlayer;
 import static com.namebattler.battle.GameManager.myParty;
-import static com.namebattler.battle.Option.Option.makePlayerNum;
 
 public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 

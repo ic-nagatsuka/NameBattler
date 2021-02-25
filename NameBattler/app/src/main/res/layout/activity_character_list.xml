@@ -40,14 +40,14 @@
         android:id="@+id/listView_characterList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginHorizontal="8dp"
         android:background="@drawable/border_around"
         app:layout_constraintBottom_toTopOf="@+id/character_list_MakeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_list_title" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment2" />
 
     <Button
         android:id="@+id/character_list_MakeButton"
@@ -62,5 +62,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/fragment2"
+        android:name="com.namebattler.fragment.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

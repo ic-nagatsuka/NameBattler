@@ -1,6 +1,8 @@
 package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,8 +23,9 @@ import java.util.List;
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.Player.AllJob;
+import com.namebattler.fragment.TitleFragment;
 
-import static com.namebattler.battle.Option.Option.makePlayerNum;
+import static com.namebattler.Option.Option.makePlayerNum;
 
 public class CharacterList extends AppCompatActivity {
 
@@ -69,11 +72,12 @@ public class CharacterList extends AppCompatActivity {
                 null
                 );
 
-        TextView text = findViewById(R.id.character_list_title);
-        text.setText("キャラ一覧("+ cursor.getCount() + "人)");
-
-
         nowPlayerNum = cursor.getCount();
+        //タイトル表示
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment2, TitleFragment.newInstans("キャラ一覧(" + nowPlayerNum + "人)", false ));
+        fragmentTransaction.commit();
 
         List<HashMap<String, String>> list = new ArrayList<>();
         if(cursor.moveToFirst()){
@@ -136,13 +140,13 @@ public class CharacterList extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.character_list_back).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplication(), TopScreen.class);
-                startActivity(intent);
-            }
-        });
+//        findViewById(R.id.character_list_back).setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplication(), TopScreen.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
     }
