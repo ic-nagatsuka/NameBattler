@@ -4,12 +4,12 @@ import com.namebattler.battle.Skill.AllSkill;
 
 import com.namebattler.battle.BattleLog.BattleLog;
 
-public class P_Bouncer extends Player{
+public class Bouncer extends Player{
 
 	/*=============
 	 * コンストラクタ
 	 =============*/
-	public P_Bouncer(String name)
+	public Bouncer(String name)
 	{
 		super(name);
 		this.setJob(AllJob.Job.BOUNCER.getName());

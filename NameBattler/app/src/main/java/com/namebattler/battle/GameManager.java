@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.namebattler.battle.Player.P_Bouncer;
+import com.namebattler.battle.Player.Bouncer;
 import com.namebattler.battle.Player.P_Fighter;
 import com.namebattler.battle.Player.P_Priest;
 import com.namebattler.battle.Player.P_Wizard;
@@ -173,7 +173,7 @@ public class GameManager{
 			case "戦士"   : player = new P_Fighter(name);break;
 			case "魔法使い" :player = new P_Wizard(name); break;
 			case "僧侶"   : player = new P_Priest(name); break;
-			case "ボール"  : player = new P_Bouncer(name); break;
+			case "ボール"  : player = new Bouncer(name); break;
 		}
 
 		player.setParty(party);
