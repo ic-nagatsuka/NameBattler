@@ -6,7 +6,7 @@ import java.util.Random;
 public class Enemy{
     Random rand = new Random();
 
-    ArrayList<EnemyData> enemies = new ArrayList<>();
+    ArrayList<EnemyData> enemies = new ArrayList<>();   //名前をまとめる
 
     public Enemy(){
         resetName();
@@ -17,6 +17,7 @@ public class Enemy{
         return enemies.remove(rand.nextInt(enemies.size())).getName();
     }
 
+    //初期化する
     public void resetName(){
         enemies.clear();
 
@@ -25,6 +26,7 @@ public class Enemy{
         }
     }
 
+    //名前一覧
     public enum EnemyData {
         name1("ドリアール"),        name2("アーミュー"),
         name3("ジャスカー"),        name4("トバイモン"),

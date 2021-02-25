@@ -49,9 +49,7 @@ public class Party {
 	 */
 	public void appendPlayer(Player player)
 	{
-		System.out.println("パーティー"+ getName() + "に追加されました");
 		this.menbers.add(player);
-		
 	}
 	
 	public void removePlayer(Player player)

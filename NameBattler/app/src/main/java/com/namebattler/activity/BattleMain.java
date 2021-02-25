@@ -38,19 +38,22 @@ public class BattleMain extends AppCompatActivity {
         battleLog.setText(getLogText());
         battleLog.setMovementMethod(new ScrollingMovementMethod());
 
+        //次のターン
         findViewById(R.id.battle_main_nextTurn).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 BattleLog.clear();
 
                 gm.battle();
-                //1ターン分終了後ステータス更新
+                //ステータス更新
                 displayUpdateStates();
-
+                //バトルログ更新
                 battleLog.setText(BattleLog.getLogText());
-
+                //バトル終了確認
                 if(gm.battleEnd()){
+                    //バトルログの内容を削除
                     BattleLog.clear();
+                    //バトル結果画面に遷移
                     Intent intent = new Intent(getApplication(), BattleResult.class);
                     startActivity(intent);
                 }
@@ -61,18 +64,20 @@ public class BattleMain extends AppCompatActivity {
         findViewById(R.id.battle_main_stratygy_button).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //作戦変更画面に遷移
                 Intent intent = new Intent(getApplication(), StrategyChange.class);
                 startActivity(intent);
             }
         });
 
     }
-
+    //各パーティーデータの画面表示
     public void displayUpdateStates(){
         makeAdapter(R.id.battle_main_gridView_bottom, GameManager.myParty);
         makeAdapter(R.id.battle_main_gridView_top, GameManager.enemyParty);
     }
 
+    //アダプターをセット
     public void makeAdapter(int layout, Party party){
         BaseAdapter adapter = new BaseAdapter_BattleMain(this, party);
 

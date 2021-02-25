@@ -40,37 +40,46 @@ public class BattleStart extends AppCompatActivity {
         //敵パーティー作成
         makeEnemyParty();
 
-        makeList(R.id.battle_start_listView_bottom, myParty);
-        makeList(R.id.battle_start_listView_top, enemyParty);
+        //自パーティー情報を表示
+        displayParty(R.id.battle_start_listView_bottom, myParty);
+        //敵パーティー情報を表示
+        displayParty(R.id.battle_start_listView_top, enemyParty);
 
 
         findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //バトルメイン画面に遷移
                 Intent intent = new Intent(getApplication(), BattleMain.class);
                 startActivity(intent);
             }
         });
 
+        //敵パーティーの再作成
         findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //敵パーティーを初期化
                 enemyParty.getmenbers().clear();
-
+                //敵パーティー作成
                 makeEnemyParty();
-                makeList(R.id.battle_start_listView_top, enemyParty);
+                //敵パーティーの表示を更新
+                displayParty(R.id.battle_start_listView_top, enemyParty);
             }
         });
 
+        //戻るボタン
         findViewById(R.id.battle_start_back).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //パーティー編成画面に遷移
                 Intent intent = new Intent(getApplication(), CharacterOrganization.class);
                 startActivity(intent);
             }
         });
 
     }
+
 
     //敵パーティー作成
     private void makeEnemyParty() {
@@ -87,8 +96,7 @@ public class BattleStart extends AppCompatActivity {
         }
     }
 
-
-    public List<Map<String, String>> makeList(int listviewId, Party party){
+    public void displayParty(int listviewId, Party party){
         List<Map<String, String>> list = new ArrayList<>();
         for(Player player: party.getmenbers()){
             Map<String, String> map = new HashMap();
@@ -112,6 +120,5 @@ public class BattleStart extends AppCompatActivity {
 
         ListView listview = findViewById(listviewId);
         listview.setAdapter(adapter);
-        return list;
     }
 }

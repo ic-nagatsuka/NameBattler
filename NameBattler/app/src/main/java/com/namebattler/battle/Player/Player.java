@@ -32,14 +32,14 @@ public abstract class Player{
 	protected boolean heelSkill;				//回復スキルの使用
 	protected boolean counter;					//カウンター使用
 	
-
 	//使用スキル
 	protected List <Skill> useSkill = new ArrayList <>();
 	//かかっている状態異常
 	public List <StateEffect> turnAbnormalState = new ArrayList <>();
 
+
 	Random rand = new Random();
-	
+
 	/*=============
 	 * コンストラクタ
 	 =============*/
@@ -55,20 +55,20 @@ public abstract class Player{
 		this.maxMp = this.getMP();
 		this.beforeHp = this.getHP();
 	}
-	
+
 	/**====================================================================================
 	 * abstract
 	 ====================================================================================*/
 	protected abstract void makeCharacter();
-	
+
 	/**
 	 * スキル設定
 	 * List<Skill>.add(AllSkill.name)
 	 */
 	protected abstract void makeSkill();
-	
+
 	/*============
-	 * Getメソッド 
+	 * Getメソッド
 	 ============*/
 	public Party getParty(){
 		return this.party;
@@ -134,7 +134,7 @@ public abstract class Player{
 	}
 
 	/*============
-	 *Setメソッド 
+	 *Setメソッド
 	 ============*/
 	public void setParty(Party party){
 		this.party = party;
@@ -185,7 +185,6 @@ public abstract class Player{
 		
 		this.readyCounter(target);
 
-		System.out.println(target.getHP() + "    HP " + target.getName());
 
 		//通常のダメージ計算
 		normalDamage(target);
@@ -248,7 +247,6 @@ public abstract class Player{
 		//カウンター攻撃
 		target.checkCounter(this);
 		
-		System.out.println();
 	}
 	
 	/**
@@ -313,23 +311,6 @@ public abstract class Player{
 		return false;
 	}
 	
-	/**
-	 * MPが減少しているパーティーメンバーを探す
-	 * @param party　攻撃側パーティー
-	 * @return
-	 * true:	減少している
-	 * false: 	減少していない
-	 */
-	protected boolean checkDicreasePlayerMP(Party party){
-		for(Player player : party.getmenbers())
-		{
-			//MPが減っている場合
-			if((player.getMaxMp() - player.getMP()) > 0){
-				return true;
-			}
-		}
-		return false;
-	}
 	
 	/**
 	 * HPの割合が一番少ないプレイヤーを選ぶ
@@ -429,13 +410,10 @@ public abstract class Player{
 	  * @param party 攻撃を受けたパーティー
 	  */
 	public void deathJudge(List<Player> party){
-		System.out.println("dead　メソッド" + party);
 
 		for(int i = party.size() -1 ; 0 <= i; i--){
 
 			Player player = party.get(i);
-			System.out.println(player.getName() + "の体力　：" + player.getHP());
-
 
 			//HPが０以下
 			if(player.getHP() <= 0 && !player.getIsDeath()){
@@ -507,7 +485,10 @@ public abstract class Player{
 		}
 		return false;
 	}
-	
+
+	/**
+	 *ステータス文字列をまとめて返す
+	 */
 	public String getstatus()	{
 		return "HP:" + getHP() +
 				" MP:" + getMP() +
@@ -519,7 +500,7 @@ public abstract class Player{
 
 
 	/**
-	 * 
+	 * 能力値を返す
 	 * @param index 参照する場所
 	 * @param max 最大値
 	 * @return 参照場所の数値
