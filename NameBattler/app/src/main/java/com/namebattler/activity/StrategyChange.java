@@ -17,6 +17,7 @@ import com.namebattler.battle.GameManager;
 public class StrategyChange extends AppCompatActivity {
 
     private final int radioSize = 30;
+    private final int radioMarginVertical = 40;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class StrategyChange extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
 
-            layoutParams.setMargins(0,40,0,40);
+            layoutParams.setMargins(0, radioMarginVertical,0, radioMarginVertical);
 
             radioButton.setLayoutParams(layoutParams);
 
