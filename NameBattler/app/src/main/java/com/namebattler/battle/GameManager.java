@@ -10,7 +10,7 @@ import com.namebattler.battle.player.P_Priest;
 import com.namebattler.battle.player.P_Wizard;
 import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;
-import com.namebattler.battle.Strategy.AllStrategy;
+import com.namebattler.battle.strategy.AllStrategy;
 
 
 public class GameManager{

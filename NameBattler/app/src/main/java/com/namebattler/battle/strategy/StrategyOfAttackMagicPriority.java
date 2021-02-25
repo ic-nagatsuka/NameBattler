@@ -1,4 +1,4 @@
-package com.namebattler.battle.Strategy;
+package com.namebattler.battle.strategy;
 
 import java.util.ArrayList;
 import java.util.List;

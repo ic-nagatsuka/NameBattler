@@ -1,4 +1,4 @@
-package com.namebattler.battle.Strategy;
+package com.namebattler.battle.strategy;
 
 import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;

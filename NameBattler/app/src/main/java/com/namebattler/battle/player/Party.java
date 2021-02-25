@@ -1,6 +1,6 @@
 package com.namebattler.battle.player;
 
-import com.namebattler.battle.Strategy.Strategy;
+import com.namebattler.battle.strategy.Strategy;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,7 +9,7 @@ import java.util.Random;
 import com.namebattler.battle.skill.AllSkill;
 import com.namebattler.battle.skill.Skill;
 import com.namebattler.battle.skill.SkillOfEffectTurn.StateEffect;
-import com.namebattler.battle.Strategy.Strategy;
+import com.namebattler.battle.strategy.Strategy;
 
 import com.namebattler.battle.battlelog.BattleLog;
 
