@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.namebattler.R;
-import com.namebattler.battle.Player.Party;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Party;
+import com.namebattler.battle.player.Player;
 
 public class BaseAdapter_BattleMain extends BaseAdapter {
 

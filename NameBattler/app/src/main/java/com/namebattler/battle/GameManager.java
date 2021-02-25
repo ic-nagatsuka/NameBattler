@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.namebattler.battle.Player.P_Bouncer;
-import com.namebattler.battle.Player.P_Fighter;
-import com.namebattler.battle.Player.P_Priest;
-import com.namebattler.battle.Player.P_Wizard;
-import com.namebattler.battle.Player.Party;
-import com.namebattler.battle.Player.Player;
-import com.namebattler.battle.Strategy.AllStrategy;
+import com.namebattler.battle.player.P_Bouncer;
+import com.namebattler.battle.player.P_Fighter;
+import com.namebattler.battle.player.P_Priest;
+import com.namebattler.battle.player.P_Wizard;
+import com.namebattler.battle.player.Party;
+import com.namebattler.battle.player.Player;
+import com.namebattler.battle.strategy.AllStrategy;
 
 
 public class GameManager{

@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
-import com.namebattler.battle.Player.AllJob;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.AllJob;
+import com.namebattler.battle.player.Player;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,7 +25,7 @@ import java.util.Date;
 import com.namebattler.battle.GameManager;
 
 import static com.namebattler.activity.CharacterList.nowPlayerNum;
-import static com.namebattler.Option.Option.makePlayerNum;
+import static com.namebattler.option.Option.makePlayerNum;
 
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {

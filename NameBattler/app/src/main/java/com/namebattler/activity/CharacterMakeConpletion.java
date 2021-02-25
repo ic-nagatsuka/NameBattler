@@ -9,10 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.namebattler.R;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Player;
 
 import static com.namebattler.activity.CharacterList.nowPlayerNum;
-import static com.namebattler.Option.Option.makePlayerNum;
+import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
 
