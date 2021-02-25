@@ -25,7 +25,7 @@ import java.util.Date;
 import com.namebattler.battle.GameManager;
 
 import static com.namebattler.activity.CharacterList.nowPlayerNum;
-import static com.namebattler.Option.Option.makePlayerNum;
+import static com.namebattler.option.Option.makePlayerNum;
 
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {

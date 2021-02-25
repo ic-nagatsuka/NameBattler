@@ -21,8 +21,8 @@ import com.namebattler.battle.player.Player;
 import java.util.List;
 
 
-import static com.namebattler.Option.Option.makePlayerNum;
-import static com.namebattler.Option.Option.partyPlayerNum;
+import static com.namebattler.option.Option.makePlayerNum;
+import static com.namebattler.option.Option.partyPlayerNum;
 import static com.namebattler.battle.GameManager.makePlayer;
 import static com.namebattler.battle.GameManager.myParty;
 

@@ -1,4 +1,4 @@
-package com.namebattler.Option;
+package com.namebattler.option;
 
 public class Option {
 

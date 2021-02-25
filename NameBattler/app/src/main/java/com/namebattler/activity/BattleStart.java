@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.namebattler.Option.Option;
+import com.namebattler.option.Option;
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.battle.player.Party;

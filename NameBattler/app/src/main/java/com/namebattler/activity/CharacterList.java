@@ -25,7 +25,7 @@ import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.fragment.TitleFragment;
 
-import static com.namebattler.Option.Option.makePlayerNum;
+import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterList extends AppCompatActivity {
 
