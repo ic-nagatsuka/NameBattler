@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.namebattler.adapter.BaseAdapter_BattleMain;
+import com.namebattler.adapter.BattleStatusAdapter;
 import com.namebattler.R;
 import com.namebattler.battle.Player.Party;
 import com.namebattler.battle.Player.Player;
@@ -89,7 +89,7 @@ public class BattleResult extends AppCompatActivity {
     }
 
     public void setAdapter(int layout, Party party){
-        BaseAdapter adapter = new BaseAdapter_BattleMain(this, party);
+        BaseAdapter adapter = new BattleStatusAdapter(this, party);
 
         GridView gridView = findViewById(layout);
         gridView.setAdapter(adapter);
