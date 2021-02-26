@@ -36,11 +36,11 @@ public class AllSkill {
 	 * ========スキル一覧===========
 	 */
 	public enum Skills{
-		FIRE(new Skill(), "ファイア", 10, 10, 30,0,false),
-		THUNDER(new Skill(),"サンダー", 20, 10, 30, 0, false),
+		FIRE(new Fire(), "ファイア", 10, 10, 30,0,false),
+		THUNDER(new Fire(),"サンダー", 20, 10, 30, 0, false),
 		;
 
-		private Skill skill;
+		private SkillBase skill;
 		private String name;
 		private int useMp;
 		private int minDama;
@@ -48,7 +48,7 @@ public class AllSkill {
 		private int turnDama;
 		private boolean inaction;
 
-		Skills(Skill skill, String name, int useMp, int minDama, int maxDama, int turnDama, boolean inaction){
+		Skills(SkillBase skill, String name, int useMp, int minDama, int maxDama, int turnDama, boolean inaction){
 			this.skill = skill;
 			this.name = name;
 			this.useMp = useMp;
@@ -58,7 +58,7 @@ public class AllSkill {
 			this.inaction = inaction;
 		}
 
-		public Skill getSkill(){
+		public SkillBase getSkill(){
 			return this.skill;
 		}
 

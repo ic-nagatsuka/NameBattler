@@ -244,7 +244,7 @@ public abstract class Player{
 //			target = this.heelTargetHP(this.getParty().getmenbers());
 //		}
 		//スキルを使用する
-		skill.use(this, target);
+		skill.getSkill().use(this, target);
 		//戦闘不能判定
 		deathJudge(target.getParty().getmenbers());
 		//カウンター攻撃
@@ -544,10 +544,10 @@ public abstract class Player{
 	 * @return スキルの最小消費MP
 	 */
 	private int skillMinUseMp(){
-		int minMp = useSkill.get(0).getUseMP();
-		for(Skill skill : useSkill){
-			if(skill.getUseMP() < minMp){
-				minMp = skill.getUseMP();
+		int minMp = useSkill.get(0).getUseMp();
+		for(AllSkill.Skills skill : useSkill){
+			if(skill.getUseMp() < minMp){
+				minMp = skill.getUseMp();
 			}
 		}
 		return minMp;

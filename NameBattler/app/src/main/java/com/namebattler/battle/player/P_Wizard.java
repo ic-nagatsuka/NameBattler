@@ -27,8 +27,8 @@ public class P_Wizard extends Player{
 	//this.useSkill.add(AllSkill.);
 	@Override
 	protected void makeSkill(){
-		this.useSkill.add(AllSkill.fire);
-		this.useSkill.add(AllSkill.thunder);
+//		this.useSkill.add(AllSkill.fire);
+//		this.useSkill.add(AllSkill.thunder);
 //		this.useSkill.add(AllSkill.);
 //		this.useSkill.add(AllSkill.);
 	}

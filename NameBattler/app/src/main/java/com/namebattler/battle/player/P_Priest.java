@@ -27,9 +27,9 @@ public class P_Priest extends Player {
 
 	@Override
 	protected void makeSkill(){
-		useSkill.add(AllSkill.paralysis);
-		useSkill.add(AllSkill.poison);
-		useSkill.add(AllSkill.heel);
+//		useSkill.add(AllSkill.paralysis);
+//		useSkill.add(AllSkill.poison);
+//		useSkill.add(AllSkill.heel);
 	}
 	
 	@Override

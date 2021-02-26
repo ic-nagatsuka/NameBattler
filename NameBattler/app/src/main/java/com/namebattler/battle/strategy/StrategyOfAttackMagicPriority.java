@@ -29,17 +29,17 @@ public class StrategyOfAttackMagicPriority extends Strategy {
 		List<Skill> prioritySkill;//優先スキル
 
 		//優先スキルを探す
-		prioritySkill = checkPrioritySkill(attacker.getUseSkill());
-		//優先スキルがあり, mpがある
-		if(prioritySkill.size() != 0 && attacker.checkUseSkill()){
-			//優先スキルをランダムで選ぶ
-			skill = prioritySkill.get(rand.nextInt(prioritySkill.size()));
-			//スキルを使用する
-			attacker.useSkill(skill, target);
-		}else{
+//		prioritySkill = checkPrioritySkill(attacker.getUseSkill());
+//		//優先スキルがあり, mpがある
+//		if(prioritySkill.size() != 0 && attacker.checkUseSkill()){
+//			//優先スキルをランダムで選ぶ
+//			skill = prioritySkill.get(rand.nextInt(prioritySkill.size()));
+//			//スキルを使用する
+//			attacker.useSkill(skill, target);
+//		}else{
 			//他のスキルを使用する
 			attacker.action(target);
-		}
+//		}
 	}		
 		
 	/**

@@ -27,8 +27,8 @@ public class P_Bouncer extends Player{
 	}
 	@Override
 	protected void makeSkill(){
-		useSkill.add(AllSkill.fire);
-		useSkill.add(AllSkill.heel);
+//		useSkill.add(AllSkill.fire);
+//		useSkill.add(AllSkill.heel);
 	}
 		
 	@Override
