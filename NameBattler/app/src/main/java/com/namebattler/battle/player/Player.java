@@ -339,28 +339,6 @@ public abstract class Player{
 	}
 	
 	/**
-	 * MPの割合が一番少ないプレイヤーを選ぶ
-	 * @param party 攻撃側パーティー
-	 * @return 回復されるプレイヤー
-	 */
-	private Player heelTargetMP(List<Player> party){
-		double percent;	//MPの割合
-		double minPercent = party.get(0).getMP() * party.get(0).getMaxMp();
-		
-		Player target = party.get(0);
-		
-		//MPの割合が一番少ないプレイヤーにする
-		for(Player player : party){
-			percent=(double)player.getMP() / (double)player.getMaxHp() * 100;
-			if(percent < minPercent){
-				target = player;
-				minPercent=percent;
-			}
-		}
-		return target;
-	}
-	
-	/**
 	 * カウンター攻撃の確認
 	 * @param target 攻撃したプレイヤー
 	 */
