@@ -35,6 +35,49 @@ public class AllSkill {
 	/*
 	 * ========スキル一覧===========
 	 */
+	public enum Skills{
+		FIRE("ファイア", 10, 10, 30,0,false),
+		THUNDER("サンダー", 20, 10, 30, 0, false),
+		;
+
+		private String name;
+		private int useMp;
+		private int minDama;
+		private int maxDama;
+		private int turnDama;
+		private boolean inaction;
+
+		Skills(String name, int useMp, int minDama, int maxDama, int turnDama, boolean inaction){
+			this.name = name;
+			this.useMp = useMp;
+			this.minDama = minDama;
+			this.maxDama = maxDama;
+			this.turnDama = turnDama;
+			this.inaction = inaction;
+		}
+
+		public String getName(){
+			return this.name;
+		}
+
+		public int getUseMp(){
+			return this.useMp;
+		}
+
+		public int getminDama(){
+			return this.minDama;
+		}
+
+		public int getmaxDama(){
+			return this.maxDama;
+		}
+
+		public int getTurnDama(){
+			return this.turnDama;
+		}
+
+	}
+
 	public static SkillOfAttackMagic fire = new SkillOfAttackMagic
 			(ATTACKMAGIC, "ファイア", 10, 10, 30);
 	public static SkillOfAttackMagic thunder = new SkillOfAttackMagic
