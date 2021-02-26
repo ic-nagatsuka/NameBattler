@@ -257,7 +257,7 @@ public abstract class Player{
 	 * スキルをランダムで選ぶ
 	 * @return　使用するスキル
 	 */
-	private SkillBase randomSelectSkill(){
+	public SkillBase randomSelectSkill(){
 		SkillBase skill;
 		while(true){
 			//スキルをランダムで選ぶ
@@ -441,7 +441,7 @@ public abstract class Player{
 	public void action(Player target){
 		this.readyCounter(target);
 
-		if( (checkDicreasePlayerHp(this.getParty())) ){
+		if( checkDicreasePlayerHp(this.getParty()) ){
 			if (checkUseSkill()) {
 				//ランダムでスキルを使用する
 				useSkill(randomSelectSkill(), target);

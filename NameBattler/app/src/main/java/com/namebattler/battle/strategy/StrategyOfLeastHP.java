@@ -2,6 +2,7 @@ package com.namebattler.battle.strategy;
 
 import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;
+import com.namebattler.battle.skill.SkillBase;
 
 public class StrategyOfLeastHP extends Strategy{
 	/*=============
@@ -17,10 +18,21 @@ public class StrategyOfLeastHP extends Strategy{
 	
 	@Override
 	public void action(Player attacker, Party defenderParty){
-		Player defender ;
-		defender = selectDefender(defenderParty);
-		//通常の作戦に戻る
-		attacker.action(defender);
+		Player defender = selectDefender(defenderParty);
+
+		if(attacker.checkUseSkill()){
+			SkillBase skill = attacker.randomSelectSkill();
+
+			skill.use(attacker, defender);
+
+
+
+		}else{
+			attacker.normalAttack(defender);
+		}
+
+//		//通常の作戦に戻る
+//		attacker.action(defender);
 	}
 
 	/**
