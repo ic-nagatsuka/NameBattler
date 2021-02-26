@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.namebattler.battle.battlelog.BattleLog;
+import com.namebattler.battle.skill.AllSkill;
 
 
 public class P_Fighter extends Player{
@@ -32,7 +33,7 @@ public class P_Fighter extends Player{
 	
 	@Override
 	protected void makeSkill(){
-	//	this.useSkill.add();
+		setUseSkill(AllSkill.Skills.FIRE);
 	}
 
 	//攻撃テキスト

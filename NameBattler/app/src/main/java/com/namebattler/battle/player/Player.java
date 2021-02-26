@@ -33,7 +33,7 @@ public abstract class Player{
 	protected boolean counter;					//カウンター使用
 	
 	//使用スキル
-	protected List <Skill> useSkill = new ArrayList <>();
+	protected List <AllSkill.Skills> useSkill = new ArrayList <>();
 	//かかっている状態異常
 	public List <StateEffect> turnAbnormalState = new ArrayList <>();
 
@@ -121,7 +121,7 @@ public abstract class Player{
 	public boolean getCounter(){
 		return this.counter;
 	}
-	public List<Skill> getUseSkill(){
+	public List<AllSkill.Skills> getUseSkill(){
 		return this.useSkill;
 	}
 
@@ -174,6 +174,9 @@ public abstract class Player{
 		this.beforeHp = beforeHp;
 	}
 
+	protected void setUseSkill(AllSkill.Skills skill){
+		this.useSkill.add(skill);
+	}
 	/*
 	 * protected
 	 */
@@ -235,11 +238,11 @@ public abstract class Player{
 	 * @param skill 使用スキル
 	 * @param target 攻撃されるプレイヤー
 	 */
-	public void useSkill(Skill skill, Player target){
+	public void useSkill(AllSkill.Skills skill, Player target){
 		//回復スキルだった場合回復するプレイヤーを選択する
-		if(skill.getType() == AllSkill.HEEL){
-			target = this.heelTargetHP(this.getParty().getmenbers());
-		}
+//		if(skill.getType() == AllSkill.HEEL){
+//			target = this.heelTargetHP(this.getParty().getmenbers());
+//		}
 		//スキルを使用する
 		skill.use(this, target);
 		//戦闘不能判定
@@ -253,17 +256,17 @@ public abstract class Player{
 	 * スキルをランダムで選ぶ
 	 * @return　使用するスキル
 	 */
-	private Skill randomSelectSkill(){
-		Skill skill;
+	private AllSkill.Skills randomSelectSkill(){
+		AllSkill.Skills skill;
 		while(true){
 			//スキルをランダムで選ぶ
 			skill = useSkill.get( rand.nextInt( useSkill.size()));
 			//MPの確認
-			if(skill.getUseMP() <= this.getMP()){
-				//回復スキルが使えるか確認
-				if(skill.getType() == AllSkill.HEEL && !checkDicreasePlayerHp(this.getParty())){
-					continue;
-				}
+			if(skill.getUseMp() <= this.getMP()){
+//				//回復スキルが使えるか確認
+//				if(skill.getType() == AllSkill.HEEL && !checkDicreasePlayerHp(this.getParty())){
+//					continue;
+//				}
 				return skill;
 			}
 		}
@@ -282,7 +285,7 @@ public abstract class Player{
 					skillMinUseMp() > this.getMP() ||//スキルを使うMPがない
 					//回復スキルはあるが使えない
 						useSkill.size() == 1 && 
-						useSkill.get(0).getType() == AllSkill.HEEL &&
+//						useSkill.get(0).getType() == AllSkill.HEEL &&
 						!checkDicreasePlayerHp(this.getParty()))
 			{
 				return false;
