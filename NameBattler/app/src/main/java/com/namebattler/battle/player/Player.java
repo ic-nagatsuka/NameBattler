@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.namebattler.battle.skill.AllSkill;
+import com.namebattler.battle.skill.Heal;
 import com.namebattler.battle.skill.Skill;
 import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.SkillOfEffectTurn.StateEffect;
@@ -281,18 +282,16 @@ public abstract class Player{
 	 * false:	使えない
 	 */
 	public boolean checkUseSkill(){
-		while(true){
-			if(useSkill.size() == 0 ||//使うスキルがない
-					skillMinUseMp() > this.getMP() ||//スキルを使うMPがない
-					//回復スキルはあるが使えない
-						useSkill.size() == 1 && 
-//						useSkill.get(0).getType() == AllSkill.HEEL &&
-						!checkDicreasePlayerHp(this.getParty()))
-			{
-				return false;
-			}else{
-				return true;
-			}
+		if(useSkill.size() == 0 ||//使うスキルがない
+				skillMinUseMp() > this.getMP() ||//スキルを使うMPがない
+				//回復スキルはあるが使えない
+					useSkill.size() == 1 &&
+					useSkill.get(0) instanceof Heal &&
+					!checkDicreasePlayerHp(this.getParty()))
+		{
+			return false;
+		}else{
+			return true;
 		}
 	}
 	
