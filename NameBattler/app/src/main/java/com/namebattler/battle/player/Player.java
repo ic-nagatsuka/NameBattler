@@ -121,7 +121,7 @@ public abstract class Player{
 	public boolean getCounter(){
 		return this.counter;
 	}
-	public List<AllSkill.Skills> getUseSkill(){
+	public List<Skill> getUseSkill(){
 		return this.useSkill;
 	}
 
@@ -174,7 +174,7 @@ public abstract class Player{
 		this.beforeHp = beforeHp;
 	}
 
-	protected void setUseSkill(AllSkill.Skills skill){
+	protected void setUseSkill(Skill skill){
 		this.useSkill.add(skill);
 	}
 	/*
@@ -238,7 +238,7 @@ public abstract class Player{
 	 * @param skill 使用スキル
 	 * @param target 攻撃されるプレイヤー
 	 */
-	public void useSkill(AllSkill.Skills skill, Player target){
+	public void useSkill(Skill skill, Player target){
 		//回復スキルだった場合回復するプレイヤーを選択する
 //		if(skill.getType() == AllSkill.HEEL){
 //			target = this.heelTargetHP(this.getParty().getmenbers());
@@ -256,8 +256,8 @@ public abstract class Player{
 	 * スキルをランダムで選ぶ
 	 * @return　使用するスキル
 	 */
-	private AllSkill.Skills randomSelectSkill(){
-		AllSkill.Skills skill;
+	private Skill randomSelectSkill(){
+		Skill skill;
 		while(true){
 			//スキルをランダムで選ぶ
 			skill = useSkill.get( rand.nextInt( useSkill.size()));
@@ -545,7 +545,7 @@ public abstract class Player{
 	 */
 	private int skillMinUseMp(){
 		int minMp = useSkill.get(0).getUseMp();
-		for(AllSkill.Skills skill : useSkill){
+		for(Skill skill : useSkill){
 			if(skill.getUseMp() < minMp){
 				minMp = skill.getUseMp();
 			}
