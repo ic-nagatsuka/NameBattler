@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.namebattler.R;
-import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.player.AllJob;
+import com.namebattler.database.CharacterInformation;
 
 public class CharacterDetails extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class CharacterDetails extends AppCompatActivity {
                 text.setText(cursor.getString(0));
 
                 text = findViewById(R.id.characterDetails_job);
-                text.setText(AllJob.Job.values()[cursor.getInt(1)].getName());
+                text.setText(AllJob.values()[cursor.getInt(1)].getName());
 
                 text = findViewById(R.id.characterDetails_hp);
                 text.setText(cursor.getString(2));

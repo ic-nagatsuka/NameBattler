@@ -12,8 +12,8 @@ import android.widget.ListView;
 
 import com.namebattler.adapter.BaseAdapter_CharacterOrganization;
 import com.namebattler.R;
-import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.player.AllJob;
+import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.player.Party;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class CharacterOrganization extends AppCompatActivity {
         cursor.moveToFirst();
         for(int i = 0; i < cursor.getCount(); i++){
             String name = cursor.getString(0);
-            String job = AllJob.Job.values()[cursor.getInt(1)].getName();
+            String job = AllJob.values()[cursor.getInt(1)].getName();
             String status = makeStatusText(cursor);
             list.add(new Status(name, job, status));
             cursor.moveToNext();

@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.namebattler.battle.player.AllJob;
 import com.namebattler.option.Option;
 import com.namebattler.R;
-import com.namebattler.battle.player.AllJob;
 import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.enemydata.Enemy;
@@ -90,7 +90,7 @@ public class BattleStart extends AppCompatActivity {
             enemyParty.appendPlayer(
                     makePlayer(
                             nameData.getEnemyName(),
-                            AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
+                            AllJob.values()[rand.nextInt(AllJob.values().length)].getName(),
                             enemyParty
                     )
             );
