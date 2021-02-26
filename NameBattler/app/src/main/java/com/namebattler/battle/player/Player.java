@@ -8,6 +8,7 @@ import java.util.Random;
 
 import com.namebattler.battle.skill.AllSkill;
 import com.namebattler.battle.skill.Skill;
+import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.SkillOfEffectTurn.StateEffect;
 import com.namebattler.battle.strategy.Strategy;
 
@@ -33,7 +34,7 @@ public abstract class Player{
 	protected boolean counter;					//カウンター使用
 	
 	//使用スキル
-	protected List <AllSkill.Skills> useSkill = new ArrayList <>();
+	protected List <SkillBase> useSkill = new ArrayList <>();
 	//かかっている状態異常
 	public List <StateEffect> turnAbnormalState = new ArrayList <>();
 
@@ -121,7 +122,7 @@ public abstract class Player{
 	public boolean getCounter(){
 		return this.counter;
 	}
-	public List<Skill> getUseSkill(){
+	public List<SkillBase> getUseSkill(){
 		return this.useSkill;
 	}
 
@@ -174,7 +175,7 @@ public abstract class Player{
 		this.beforeHp = beforeHp;
 	}
 
-	protected void setUseSkill(Skill skill){
+	protected void setUseSkill(SkillBase skill){
 		this.useSkill.add(skill);
 	}
 	/*
@@ -238,13 +239,13 @@ public abstract class Player{
 	 * @param skill 使用スキル
 	 * @param target 攻撃されるプレイヤー
 	 */
-	public void useSkill(Skill skill, Player target){
+	public void useSkill(SkillBase skill, Player target){
 		//回復スキルだった場合回復するプレイヤーを選択する
 //		if(skill.getType() == AllSkill.HEEL){
 //			target = this.heelTargetHP(this.getParty().getmenbers());
 //		}
 		//スキルを使用する
-		skill.getSkill().use(this, target);
+		skill.use(this, target);
 		//戦闘不能判定
 		deathJudge(target.getParty().getmenbers());
 		//カウンター攻撃
@@ -256,8 +257,8 @@ public abstract class Player{
 	 * スキルをランダムで選ぶ
 	 * @return　使用するスキル
 	 */
-	private Skill randomSelectSkill(){
-		Skill skill;
+	private SkillBase randomSelectSkill(){
+		SkillBase skill;
 		while(true){
 			//スキルをランダムで選ぶ
 			skill = useSkill.get( rand.nextInt( useSkill.size()));
@@ -545,7 +546,7 @@ public abstract class Player{
 	 */
 	private int skillMinUseMp(){
 		int minMp = useSkill.get(0).getUseMp();
-		for(Skill skill : useSkill){
+		for(SkillBase skill : useSkill){
 			if(skill.getUseMp() < minMp){
 				minMp = skill.getUseMp();
 			}
