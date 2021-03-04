@@ -4,14 +4,13 @@ import com.namebattler.battle.player.Player;
 
 import com.namebattler.battle.battlelog.BattleLog;
 
-public class SkillOfHeelHP extends SkillOfHeel{
+public class Heal extends SkillBase{
 
 	
 	/*=============
 	 * コンストラクタ
 	 =============*/
-	SkillOfHeelHP(SkillType type, String name, int useMp, int heelPoint){
-		super(type, name, useMp, heelPoint);
+	Heal(){
 	}
 	
 	@Override
@@ -19,8 +18,13 @@ public class SkillOfHeelHP extends SkillOfHeel{
 		BattleLog.addLog(attacker.getName() + "は" + this.getName() + "を唱えた！");
 		usePlayerMp(attacker);//mpを消費する
 
-		BattleLog.addLog(target.getName() + "は" + this.heelPoint + "回復した！");
+		BattleLog.addLog(target.getName() + "は" + skill.getHealPoint() + "回復した！");
 		//スキル効果
-		target.setHP(Math.min(target.getHP() + this.heelPoint, target.getMaxHp()));
+		target.setHP(Math.min(target.getHP() + skill.getHealPoint(), target.getMaxHp()));
+	}
+
+	@Override
+	protected void initSkill() {
+		skill = AllSkill.HEAL;
 	}
 }

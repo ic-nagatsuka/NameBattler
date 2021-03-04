@@ -3,7 +3,7 @@ package com.namebattler.battle.skill;
 public enum AllSkill {
     FIRE(new Fire(), "ファイア", 10, 10, 30, 0, 0, false),
     THUNDER(new Fire(), "サンダー", 20, 10, 30, 0, 0, false),
-	HEAL(new SkillOfHeelHP(), "ヒール", 30, 0, 0, 50, 0, false)
+	HEAL(new Heal(), "ヒール", 30, 0, 0, 50, 0, false)
     ;
 
     private SkillBase skill;
