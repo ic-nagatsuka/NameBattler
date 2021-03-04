@@ -1,9 +1,10 @@
 package com.namebattler.battle.skill;
 
 public enum AllSkill {
-    FIRE(new Fire(), "ファイア", 10, 10, 30, 0, 0, false),
-    THUNDER(new Fire(), "サンダー", 20, 10, 30, 0, 0, false),
-	HEAL(new Heal(), "ヒール", 30, 0, 0, 50, 0, false)
+    FIRE(new Fire(), "ファイア", 10, 10, 30, 0, 0, 0, false),
+    THUNDER(new Fire(), "サンダー", 20, 10, 30, 0, 0, 0, false),
+    HEAL(new Heal(), "ヒール", 30, 0, 0, 50, 0, 0, false),
+    PARALYSIS(new Paralysis(), "パライズ", 20, 0, 0, 0, 0, 0, true),
     ;
 
     private SkillBase skill;
@@ -13,9 +14,10 @@ public enum AllSkill {
     private int maxDama;
     private int healPoint;
     private int turnDama;
+    private int successRate;
     private boolean inaction;
 
-    AllSkill(SkillBase skill, String name, int useMp, int minDama, int maxDama, int healPoint, int turnDama, boolean inaction) {
+    AllSkill(SkillBase skill, String name, int useMp, int minDama, int maxDama, int healPoint, int turnDama, int successRate, boolean inaction) {
         this.skill = skill;
         this.name = name;
         this.useMp = useMp;
@@ -23,6 +25,7 @@ public enum AllSkill {
         this.maxDama = maxDama;
         this.healPoint = healPoint;
         this.turnDama = turnDama;
+        this.successRate = successRate;
         this.inaction = inaction;
     }
 
@@ -46,12 +49,16 @@ public enum AllSkill {
         return this.maxDama;
     }
 
-    public int getHealPoint(){
-    	return this.healPoint;
-	}
+    public int getHealPoint() {
+        return this.healPoint;
+    }
 
     public int getTurnDama() {
         return this.turnDama;
+    }
+
+    public int getSuccessRate() {
+        return this.successRate;
     }
 
 }
