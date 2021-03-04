@@ -1,4 +1,4 @@
 package com.namebattler.battle.skill;
 
-public interface Heal {
+public interface IHeal {
 }

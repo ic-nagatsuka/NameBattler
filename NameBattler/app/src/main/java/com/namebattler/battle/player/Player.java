@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.namebattler.battle.skill.AllSkill;
-import com.namebattler.battle.skill.Heal;
+import com.namebattler.battle.skill.IHeal;
 import com.namebattler.battle.skill.Skill;
 import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.SkillOfEffectTurn.StateEffect;
@@ -286,7 +285,7 @@ public abstract class Player{
 				skillMinUseMp() > this.getMP() ||//スキルを使うMPがない
 				//回復スキルはあるが使えない
 					useSkill.size() == 1 &&
-					useSkill.get(0) instanceof Heal &&
+					useSkill.get(0) instanceof IHeal &&
 					!checkDicreasePlayerHp(this.getParty()))
 		{
 			return false;
