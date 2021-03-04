@@ -5,7 +5,6 @@ import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.AllSkill;
 import com.namebattler.battle.skill.Skill;
 import com.namebattler.battle.skill.SkillOfAttackMagic;
-import com.namebattler.battle.skill.SkillOfDamageAbnormalState;
 import com.namebattler.battle.skill.SkillOfEffectTurn;
 
 
@@ -82,7 +81,7 @@ public class StrategyOfDamagePriority extends Strategy{
 	 * @param useSkill プレイヤーが使用できるスキル
 	 * @return スキルダメージ計算値
 	 */
-	public int checkSkillDamage(AllSkill.Skills useSkill){
+	public int checkSkillDamage(AllSkill useSkill){
 		int i = 0;
 		int damage = 0;//ダメージ値
 		

@@ -17,6 +17,6 @@ public class Fire extends SkillBase{
 
     @Override
     protected void initSkill() {
-        this.skill = AllSkill.Skills.FIRE;
+        this.skill = AllSkill.FIRE;
     }
 }

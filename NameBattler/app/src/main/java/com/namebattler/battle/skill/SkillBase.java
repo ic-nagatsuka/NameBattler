@@ -6,7 +6,7 @@ import java.util.Random;
 
 public abstract class SkillBase {
 
-    AllSkill.Skills skill;
+    AllSkill skill;
 
     SkillBase() {
         initSkill();
