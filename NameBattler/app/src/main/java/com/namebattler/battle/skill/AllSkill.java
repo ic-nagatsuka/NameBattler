@@ -61,5 +61,9 @@ public enum AllSkill {
         return this.successRate;
     }
 
+    public Boolean getInaction() {
+        return this.inaction;
+    }
+
 }
 

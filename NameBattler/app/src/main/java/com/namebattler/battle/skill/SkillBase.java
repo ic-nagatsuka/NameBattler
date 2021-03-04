@@ -32,8 +32,20 @@ public abstract class SkillBase {
         return this.skill.getminDama();
     }
 
+    public int getHealPoint() {
+        return this.skill.getHealPoint();
+    }
+
     public int getTurnDama() {
         return this.skill.getmaxDama();
+    }
+
+    public int getSuccessRate() {
+        return this.skill.getSuccessRate();
+    }
+
+    public boolean getInaction() {
+        return this.skill.getInaction();
     }
 
 
@@ -44,7 +56,7 @@ public abstract class SkillBase {
         return damage;
     }
 
-    protected void usePlayerMp(Player attacker){
+    protected void usePlayerMp(Player attacker) {
         attacker.setMP(attacker.getMP() - skill.getUseMp());
     }
 
