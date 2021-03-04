@@ -44,5 +44,8 @@ public abstract class SkillBase {
         return damage;
     }
 
+    protected void usePlayerMp(Player attacker){
+        attacker.setMP(attacker.getMP() - skill.getUseMp());
+    }
 
 }

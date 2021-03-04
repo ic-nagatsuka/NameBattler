@@ -3,9 +3,6 @@ package com.namebattler.battle.strategy;
 import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.AllSkill;
-import com.namebattler.battle.skill.Skill;
-import com.namebattler.battle.skill.SkillOfAttackMagic;
-import com.namebattler.battle.skill.SkillOfEffectTurn;
 
 
 public class StrategyOfDamagePriority extends Strategy{
@@ -16,7 +13,7 @@ public class StrategyOfDamagePriority extends Strategy{
 	public StrategyOfDamagePriority(){
 		this.name = "ダメージ与えて";
 	}
-	
+
 	@Override
 	public void action(Player attacker, Party defenceParty){
 //		Player defender = randomDefender(defenceParty.getmenbers());
@@ -73,9 +70,9 @@ public class StrategyOfDamagePriority extends Strategy{
 //			//使えるスキルがなければ通常攻撃
 //			attacker.normalAttack(defender);
 //		}
-		
+
 	}
-	
+
 	/**
 	 * スキルのダメージ計算値を返す
 	 * @param useSkill プレイヤーが使用できるスキル
@@ -84,7 +81,7 @@ public class StrategyOfDamagePriority extends Strategy{
 	public int checkSkillDamage(AllSkill useSkill){
 		int i = 0;
 		int damage = 0;//ダメージ値
-		
+
 //		//スキルのクラスを見つける
 //		while(true){
 //			try{
@@ -112,6 +109,6 @@ public class StrategyOfDamagePriority extends Strategy{
 //		}
 		return damage;
 	}
-	
-	
+
+
 }
