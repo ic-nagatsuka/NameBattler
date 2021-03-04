@@ -8,13 +8,13 @@ public class SkillOfEffectTurn extends Skill{
 		/*=============
 		 * フィールド変数
 		 =============*/
-		SkillOfEffectTurn skill;
+		SkillBase skill;
 		int turn;
 		String stateChar;
 		/*=============
 		 * コンストラクタ
 		 =============*/	
-		StateEffect(SkillOfEffectTurn skill, int turn, String stateChar){
+		StateEffect(SkillBase skill, int turn, String stateChar){
 			this.skill = skill;
 			this.turn = turn;
 			this.stateChar = stateChar;
@@ -22,7 +22,7 @@ public class SkillOfEffectTurn extends Skill{
 		/*============
 		 * Get
 		 ============*/
-		public SkillOfEffectTurn getSkill(){
+		public SkillBase getSkill(){
 			return this.skill;
 		}
 		

@@ -457,7 +457,7 @@ public abstract class Player{
 	 * @param skill 使用するスキル
 	 * @return true : あり	false : なし
 	 */
-	public boolean checkSameAbnormal(Skill skill){
+	public boolean checkSameAbnormal(SkillBase skill){
 		for(StateEffect abnormal : turnAbnormalState){
 			if(abnormal.getSkill().equals(skill)){
 				return true;
