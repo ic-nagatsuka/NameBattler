@@ -35,7 +35,7 @@ public class BattleStart extends AppCompatActivity {
         setContentView(R.layout.activity_battle_start);
 
 
-        if(enemyParty.getmenbers().size() != 0){
+        if (enemyParty.getmenbers().size() != 0) {
             enemyParty = new Party("敵");
         }
         //敵パーティー作成
@@ -47,7 +47,7 @@ public class BattleStart extends AppCompatActivity {
         displayParty(R.id.battle_start_listView_top, enemyParty);
 
 
-        findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //バトルメイン画面に遷移
@@ -57,7 +57,7 @@ public class BattleStart extends AppCompatActivity {
         });
 
         //敵パーティーの再作成
-        findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //敵パーティーを初期化
@@ -70,9 +70,9 @@ public class BattleStart extends AppCompatActivity {
         });
 
         //戻るボタン
-        findViewById(R.id.battle_start_back).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.battle_start_back).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 //パーティー編成画面に遷移
                 Intent intent = new Intent(getApplication(), CharacterOrganization.class);
                 startActivity(intent);
@@ -97,9 +97,9 @@ public class BattleStart extends AppCompatActivity {
         }
     }
 
-    public void displayParty(int listviewId, Party party){
+    public void displayParty(int listviewId, Party party) {
         List<Map<String, String>> list = new ArrayList<>();
-        for(Player player: party.getmenbers()){
+        for (Player player : party.getmenbers()) {
             Map<String, String> map = new HashMap();
             map.put("name", player.getName());
             map.put("job", player.getJob());
@@ -112,7 +112,7 @@ public class BattleStart extends AppCompatActivity {
                 list,
                 R.layout.activity_battle_start_listview,
                 new String[]{"name", "job", "status"},
-                new int []{
+                new int[]{
                         R.id.character_list_name,
                         R.id.character_list_job,
                         R.id.character_list_status

@@ -19,15 +19,15 @@ public class TopScreen extends AppCompatActivity {
 
         //キャラ一覧ボタン
         Button characterList = findViewById(R.id.top_characterList);
-        characterList.setOnClickListener(new View.OnClickListener(){
-           @Override
-           public void onClick(View v){
-               //キャラクター一覧画面に遷移
-               Intent intent = new Intent(
-                       TopScreen.this, CharacterList.class);
+        characterList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //キャラクター一覧画面に遷移
+                Intent intent = new Intent(
+                        TopScreen.this, CharacterList.class);
 
-               startActivity(intent);
-           }
+                startActivity(intent);
+            }
         });
 
         //バトル開始ボタン
