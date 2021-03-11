@@ -14,10 +14,10 @@ public class GetCharacterData {
     Context context;
     public GetCharacterData(Context context){
         this.context = context;
+        helper = new CharacterInformation(context);
     }
 
     public Cursor getAllData(){
-        helper = new CharacterInformation(context);
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(sql, null);
@@ -26,9 +26,7 @@ public class GetCharacterData {
     }
 
     public Cursor getCharacter(String name){
-        helper = new CharacterInformation(context);
         db = helper.getReadableDatabase();
-
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + " WHERE name = ?;";
         Cursor cursor = db.rawQuery(sql, new String[]{name});
 
