@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-public class GetDataBase {
+public class GetCharacterData {
 
     SQLiteDatabase db;
     SQLiteOpenHelper helper;
 
     Context context;
-    public GetDataBase(Context context){
+    public GetCharacterData(Context context){
         this.context = context;
     }
 

@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,7 +22,7 @@ import java.util.List;
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.player.AllJob;
-import com.namebattler.database.GetDataBase;
+import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 
 import static com.namebattler.option.Option.makePlayerNum;
@@ -51,7 +50,7 @@ public class CharacterList extends AppCompatActivity {
             }
         });
 
-        Cursor cursor = new GetDataBase(getApplicationContext()).getAllData();
+        Cursor cursor = new GetCharacterData(getApplicationContext()).getAllData();
 
         nowPlayerNum = cursor.getCount();
         //タイトル表示
