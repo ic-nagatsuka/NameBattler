@@ -51,7 +51,7 @@ public class CharacterList extends AppCompatActivity {
             }
         });
 
-        Cursor cursor = new GetDataBase().getAllData(getApplicationContext());
+        Cursor cursor = new GetDataBase(getApplicationContext()).getAllData();
 
         nowPlayerNum = cursor.getCount();
         //タイトル表示
