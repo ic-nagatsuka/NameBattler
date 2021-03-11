@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.player.AllJob;
+import com.namebattler.database.GetCharacterData;
 
 public class CharacterDetails extends AppCompatActivity {
 
@@ -27,14 +28,11 @@ public class CharacterDetails extends AppCompatActivity {
 
         final Intent intent = getIntent();
 
-        String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
 
-        Cursor cursor = db.rawQuery(sql, null);
-        cursor.moveToFirst();
+        Cursor cursor = new GetCharacterData(getApplicationContext())
+                .getCharacter(intent.getStringExtra("name"));
 
-        for(int i = 0; i < cursor.getCount(); i++){
-
-            if(intent.getStringExtra("name").equals(cursor.getString(0))){
+        if(cursor.moveToFirst()){
                 TextView text;
 
                 text = findViewById(R.id.characterDetails_name);
@@ -63,9 +61,8 @@ public class CharacterDetails extends AppCompatActivity {
 
                 text = findViewById(R.id.characterDetails_MakeDay);
                 text.setText("作成日 : " + cursor.getString(8));
-            }
-            cursor.moveToNext();
         }
+
 
         findViewById(R.id.characterDetails_DeleteButton).setOnClickListener(new View.OnClickListener() {
             @Override
