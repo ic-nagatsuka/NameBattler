@@ -10,24 +10,17 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.namebattler.R;
-import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 
 public class CharacterDetails extends AppCompatActivity {
-
-    CharacterInformation helper = new CharacterInformation(this);
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_details);
 
-        final SQLiteDatabase db = helper.getWritableDatabase();
-
         final Intent intent = getIntent();
-
 
         Cursor cursor = new GetCharacterData(getApplicationContext())
                 .getCharacter(intent.getStringExtra("name"));
@@ -67,10 +60,8 @@ public class CharacterDetails extends AppCompatActivity {
         findViewById(R.id.characterDetails_DeleteButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.delete(
-                        CharacterInformation.TABLE_NAME,
-                        "name = ?",
-                        new String[] {intent.getStringExtra("name")});
+                String name = intent.getStringExtra("name");
+                new GetCharacterData(getApplicationContext()).deleteCharacter(name);
 
                 CharacterList.nowPlayerNum--;
 
