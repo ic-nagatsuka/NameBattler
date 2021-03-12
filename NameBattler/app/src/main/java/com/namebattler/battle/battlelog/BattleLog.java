@@ -8,22 +8,24 @@ public class BattleLog {
     public static ArrayList<String> logList = new ArrayList<>();
 
     //コンストラクタ
-    public BattleLog(){
+    public BattleLog() {
 
     }
 
     //初期化する
-    public static void clear(){
+    public static void clear() {
         logList = new ArrayList<>();
     }
+
     //テキストを追加する
-    public static void addLog(String log){
+    public static void addLog(String log) {
         logList.add(log + "\n");
     }
+
     //文字列をまとめて返す
-    public static String getLogText(){
+    public static String getLogText() {
         String logText = "";
-        for(String s: logList){
+        for (String s : logList) {
             logText += s;
         }
 
