@@ -10,7 +10,7 @@ public class GetDataBase {
 
     SQLiteDatabase db;
 
-    public Cursor getAllData(Context context){
+    public Cursor getAllData(Context context) {
         SQLiteOpenHelper helper = new CharacterInformation(context);
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
@@ -18,8 +18,6 @@ public class GetDataBase {
 
         return cursor;
     }
-
-
 
 
 }
