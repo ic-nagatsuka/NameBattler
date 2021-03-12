@@ -33,6 +33,14 @@ public class GetCharacterData {
         return cursor;
     }
 
+    public void deleteCharacter(String name){
+        db = helper.getReadableDatabase();
+
+        db.delete(
+                CharacterInformation.TABLE_NAME,
+                "name = ?",
+                new String[] {name});
+    }
 
 
 
