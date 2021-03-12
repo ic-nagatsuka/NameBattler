@@ -6,8 +6,4 @@ public class Option {
     public static final int makePlayerNum = 7;  //作成キャラクター上限数
 
 
-
-
-
-
 }

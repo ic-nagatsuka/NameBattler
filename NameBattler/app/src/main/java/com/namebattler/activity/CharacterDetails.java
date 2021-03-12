@@ -32,9 +32,9 @@ public class CharacterDetails extends AppCompatActivity {
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
 
-        for(int i = 0; i < cursor.getCount(); i++){
+        for (int i = 0; i < cursor.getCount(); i++) {
 
-            if(intent.getStringExtra("name").equals(cursor.getString(0))){
+            if (intent.getStringExtra("name").equals(cursor.getString(0))) {
                 TextView text;
 
                 text = findViewById(R.id.characterDetails_name);
@@ -73,7 +73,7 @@ public class CharacterDetails extends AppCompatActivity {
                 db.delete(
                         CharacterInformation.TABLE_NAME,
                         "name = ?",
-                        new String[] {intent.getStringExtra("name")});
+                        new String[]{intent.getStringExtra("name")});
 
                 CharacterList.nowPlayerNum--;
 
@@ -85,7 +85,7 @@ public class CharacterDetails extends AppCompatActivity {
 
         findViewById(R.id.characterDetails_back).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), CharacterList.class);
                 startActivity(intent);
             }
