@@ -2,9 +2,7 @@ package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,7 +13,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.namebattler.R;
-import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.battle.player.Player;
 
@@ -23,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.namebattler.battle.GameManager;
+import com.namebattler.database.GetCharacterData;
 
 import static com.namebattler.activity.CharacterList.nowPlayerNum;
 import static com.namebattler.option.Option.makePlayerNum;
@@ -32,7 +30,6 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
     private final int radioButtonSize = 30;
 
-    CharacterInformation helper = new CharacterInformation(this);
 
     static Player player; //作成したプレイヤー
 
@@ -68,21 +65,10 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     //キャラクター最大数エラー表示
                     Toast.makeText(CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 } else if (!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
-                    SQLiteDatabase db = helper.getWritableDatabase();
                     player = GameManager.makePlayer(name, radio.getText().toString(), GameManager.myParty);
 
-                    ContentValues values = new ContentValues();
-                    values.put("NAME", player.getName());
-                    values.put("JOB", radioGroup.getCheckedRadioButtonId());
-                    values.put("HP", player.getHP());
-                    values.put("MP", player.getMP());
-                    values.put("STR", player.getSTR());
-                    values.put("DEF", player.getDEF());
-                    values.put("LUCK", player.getLUCK());
-                    values.put("AGI", player.getAGI());
-                    values.put("CREATE_AT", getDate());
-
-                    if (db.insert(CharacterInformation.TABLE_NAME, null, values) != -1) {
+                    if (new GetCharacterData(getApplicationContext()).
+                            setCharacter(player, radio.getId(), getDate()) != -1) {
                         //キャラクターデータ追加
                         nowPlayerNum++;
                         Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);

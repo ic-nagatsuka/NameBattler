@@ -20,16 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.namebattler.battle.GameManager;
+import com.namebattler.database.GetCharacterData;
 
 public class CharacterOrganization extends AppCompatActivity {
-
-    CharacterInformation helper = new CharacterInformation(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_organization);
-        SQLiteDatabase db = helper.getReadableDatabase();
 
         View startButtonView = findViewById(R.id.character_organization_start);
 
@@ -37,8 +35,7 @@ public class CharacterOrganization extends AppCompatActivity {
             GameManager.myParty = new Party("味方");
         }
 
-        String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
-        Cursor cursor = db.rawQuery(sql, null);
+        Cursor cursor = new GetCharacterData(getApplicationContext()).getAllData();
 
         List<Status> list = new ArrayList<>();
 
