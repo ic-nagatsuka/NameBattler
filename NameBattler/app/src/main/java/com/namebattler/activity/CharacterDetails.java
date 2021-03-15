@@ -25,35 +25,35 @@ public class CharacterDetails extends AppCompatActivity {
         Cursor cursor = new GetCharacterData(getApplicationContext())
                 .getCharacter(intent.getStringExtra("name"));
 
-        if(cursor.moveToFirst()){
-                TextView text;
+        if (cursor.moveToFirst()) {
+            TextView text;
 
-                text = findViewById(R.id.characterDetails_name);
-                text.setText(cursor.getString(0));
+            text = findViewById(R.id.characterDetails_name);
+            text.setText(cursor.getString(0));
 
-                text = findViewById(R.id.characterDetails_job);
-                text.setText(AllJob.Job.values()[cursor.getInt(1)].getName());
+            text = findViewById(R.id.characterDetails_job);
+            text.setText(AllJob.Job.values()[cursor.getInt(1)].getName());
 
-                text = findViewById(R.id.characterDetails_hp);
-                text.setText(cursor.getString(2));
+            text = findViewById(R.id.characterDetails_hp);
+            text.setText(cursor.getString(2));
 
-                text = findViewById(R.id.characterDetails_mp);
-                text.setText(cursor.getString(3));
+            text = findViewById(R.id.characterDetails_mp);
+            text.setText(cursor.getString(3));
 
-                text = findViewById(R.id.characterDetails_str);
-                text.setText(cursor.getString(4));
+            text = findViewById(R.id.characterDetails_str);
+            text.setText(cursor.getString(4));
 
-                text = findViewById(R.id.characterDetails_def);
-                text.setText(cursor.getString(5));
+            text = findViewById(R.id.characterDetails_def);
+            text.setText(cursor.getString(5));
 
-                text = findViewById(R.id.characterDetails_luck);
-                text.setText(cursor.getString(6));
+            text = findViewById(R.id.characterDetails_luck);
+            text.setText(cursor.getString(6));
 
-                text = findViewById(R.id.characterDetails_agi);
-                text.setText(cursor.getString(7));
+            text = findViewById(R.id.characterDetails_agi);
+            text.setText(cursor.getString(7));
 
-                text = findViewById(R.id.characterDetails_MakeDay);
-                text.setText("作成日 : " + cursor.getString(8));
+            text = findViewById(R.id.characterDetails_MakeDay);
+            text.setText("作成日 : " + cursor.getString(8));
         }
 
 
@@ -61,7 +61,7 @@ public class CharacterDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = intent.getStringExtra("name");
-                
+
                 new GetCharacterData(getApplicationContext()).deleteCharacter(name);
 
                 CharacterList.nowPlayerNum--;
