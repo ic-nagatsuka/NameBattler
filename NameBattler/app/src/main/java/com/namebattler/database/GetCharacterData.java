@@ -1,9 +1,12 @@
 package com.namebattler.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.namebattler.battle.player.Player;
 
 
 public class GetCharacterData {
@@ -32,6 +35,25 @@ public class GetCharacterData {
 
         return cursor;
     }
+
+    public long setCharacter(Player player, int job, String dateTime ){
+        db = helper.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("NAME", player.getName());
+        values.put("JOB", job);
+        values.put("HP", player.getHP());
+        values.put("MP", player.getMP());
+        values.put("STR", player.getSTR());
+        values.put("DEF", player.getDEF());
+        values.put("LUCK", player.getAGI());
+        values.put("AGI", player.getLUCK());
+        values.put("CREATE_AT", dateTime);
+
+        return db.insert(CharacterInformation.TABLE_NAME, null, values);
+    }
+
 
     public void deleteCharacter(String name){
         db = helper.getReadableDatabase();
