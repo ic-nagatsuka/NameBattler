@@ -61,6 +61,7 @@ public class CharacterDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = intent.getStringExtra("name");
+                
                 new GetCharacterData(getApplicationContext()).deleteCharacter(name);
 
                 CharacterList.nowPlayerNum--;
@@ -73,7 +74,7 @@ public class CharacterDetails extends AppCompatActivity {
 
         findViewById(R.id.characterDetails_back).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), CharacterList.class);
                 startActivity(intent);
             }

@@ -17,7 +17,7 @@ public class BaseAdapter_BattleMain extends BaseAdapter {
     LayoutInflater inflater;
     Party party;
 
-    public BaseAdapter_BattleMain(Context context, Party party){
+    public BaseAdapter_BattleMain(Context context, Party party) {
         this.inflater = LayoutInflater.from(context);
         this.party = party;
     }
@@ -41,7 +41,7 @@ public class BaseAdapter_BattleMain extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        if(view == null){
+        if (view == null) {
             view = this.inflater.inflate(R.layout.gridview_battle_main, null);
         }
 
@@ -52,7 +52,7 @@ public class BaseAdapter_BattleMain extends BaseAdapter {
         textView = view.findViewById(R.id.gridview_name);
         textView.setText(player.getName());
         //体力が０のキャラクターは赤色文字
-        if(player.getHP() == 0){
+        if (player.getHP() == 0) {
             textView.setTextColor(Color.RED);
         }
         //HP

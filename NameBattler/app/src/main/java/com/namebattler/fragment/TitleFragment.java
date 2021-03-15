@@ -17,7 +17,7 @@ public class TitleFragment extends Fragment {
 
     static String titleKey = "title";
 
-    public static Fragment newInstans(String title, boolean visi){
+    public static Fragment newInstans(String title, boolean visi) {
         TitleFragment fragment = new TitleFragment();
 
         Bundle bundle = new Bundle();
@@ -45,10 +45,10 @@ public class TitleFragment extends Fragment {
 
         Button btn = view.findViewById(R.id.fragment_title_back);
 
-        if(getArguments().getBoolean("visi")){
+        if (getArguments().getBoolean("visi")) {
             btn.setVisibility(View.VISIBLE);
 
-        }else{
+        } else {
             btn.setVisibility(View.INVISIBLE);
 
         }

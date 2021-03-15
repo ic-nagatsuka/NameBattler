@@ -31,7 +31,7 @@ public class CharacterOrganization extends AppCompatActivity {
 
         View startButtonView = findViewById(R.id.character_organization_start);
 
-        if(GameManager.myParty.getmenbers().size() != 0){
+        if (GameManager.myParty.getmenbers().size() != 0) {
             GameManager.myParty = new Party("味方");
         }
 
@@ -40,7 +40,7 @@ public class CharacterOrganization extends AppCompatActivity {
         List<Status> list = new ArrayList<>();
 
         cursor.moveToFirst();
-        for(int i = 0; i < cursor.getCount(); i++){
+        for (int i = 0; i < cursor.getCount(); i++) {
             String name = cursor.getString(0);
             String job = AllJob.Job.values()[cursor.getInt(1)].getName();
             String status = makeStatusText(cursor);
@@ -60,10 +60,10 @@ public class CharacterOrganization extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
-        findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(GameManager.myParty.getmenbers().size() == 3){
+                if (GameManager.myParty.getmenbers().size() == 3) {
                     Intent intent = new Intent(getApplication(), BattleStart.class);
                     startActivity(intent);
                 }
@@ -73,7 +73,7 @@ public class CharacterOrganization extends AppCompatActivity {
 
         findViewById(R.id.character_organization_back).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), TopScreen.class);
                 startActivity(intent);
             }
@@ -83,7 +83,7 @@ public class CharacterOrganization extends AppCompatActivity {
 
     }
 
-    public String makeStatusText(Cursor cursor){
+    public String makeStatusText(Cursor cursor) {
 
         String statusText = "HP" + cursor.getString(2) +
                 " MP" + cursor.getString(3) +
@@ -94,31 +94,30 @@ public class CharacterOrganization extends AppCompatActivity {
         return statusText;
     }
 
-    public class Status{
+    public class Status {
 
         String name;
         String job;
         String status;
 
-        Status(String name, String job, String status){
+        Status(String name, String job, String status) {
             this.name = name;
             this.job = job;
             this.status = status;
 
         }
 
-        public String getName(){
+        public String getName() {
             return this.name;
         }
 
-        public String getJob(){
+        public String getJob() {
             return this.job;
         }
 
-        public String getStatus(){
+        public String getStatus() {
             return this.status;
         }
-
 
 
     }
