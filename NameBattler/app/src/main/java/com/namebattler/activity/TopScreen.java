@@ -17,21 +17,24 @@ public class TopScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_screen);
 
+        //キャラ一覧ボタン
         Button characterList = findViewById(R.id.top_characterList);
-        characterList.setOnClickListener(new View.OnClickListener(){
-           @Override
-           public void onClick(View v){
-               Intent intent = new Intent(
-                       TopScreen.this, CharacterList.class);
+        characterList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //キャラクター一覧画面に遷移
+                Intent intent = new Intent(
+                        TopScreen.this, CharacterList.class);
 
-               startActivity(intent);
-           }
+                startActivity(intent);
+            }
         });
 
-
+        //バトル開始ボタン
         findViewById(R.id.top_Start_Battle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //パーティー編成画面に遷移
                 Intent intent = new Intent(getApplication(), CharacterOrganization.class);
                 startActivity(intent);
             }

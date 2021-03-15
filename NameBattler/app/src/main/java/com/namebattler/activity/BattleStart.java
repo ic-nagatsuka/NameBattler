@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.namebattler.option.Option;
 import com.namebattler.R;
-import com.namebattler.battle.Player.AllJob;
-import com.namebattler.battle.Player.Party;
-import com.namebattler.battle.Player.Player;
-import com.namebattler.battle.enemyData.Enemy;
+import com.namebattler.battle.player.AllJob;
+import com.namebattler.battle.player.Party;
+import com.namebattler.battle.player.Player;
+import com.namebattler.battle.enemydata.Enemy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +21,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import com.namebattler.battle.GameManager;
+
+import static com.namebattler.battle.GameManager.enemyParty;
+import static com.namebattler.battle.GameManager.makePlayer;
+import static com.namebattler.battle.GameManager.myParty;
 
 public class BattleStart extends AppCompatActivity {
 
@@ -30,57 +34,46 @@ public class BattleStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_start);
 
-        final Random rand = new Random();
 
-        if(GameManager.enemyParty.getmenbers().size() != 0){
-            GameManager.enemyParty = new Party("敵");
+        if (enemyParty.getmenbers().size() != 0) {
+            enemyParty = new Party("敵");
         }
+        //敵パーティー作成
+        makeEnemyParty();
 
-        Enemy nameData = new Enemy();
-        for(int i = 0; i < 3; i++){
-            GameManager.enemyParty.appendPlayer(
-                    GameManager.makePlayer(
-                            nameData.getEnemyName(),
-                            AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
-                            GameManager.enemyParty
-                    )
-            );
-        }
-
-        makeList(R.id.battle_start_listView_bottom, GameManager.myParty);
-        makeList(R.id.battle_start_listView_top, GameManager.enemyParty);
+        //自パーティー情報を表示
+        displayParty(R.id.battle_start_listView_bottom, myParty);
+        //敵パーティー情報を表示
+        displayParty(R.id.battle_start_listView_top, enemyParty);
 
 
-        findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //バトルメイン画面に遷移
                 Intent intent = new Intent(getApplication(), BattleMain.class);
                 startActivity(intent);
             }
         });
 
-        findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener(){
+        //敵パーティーの再作成
+        findViewById(R.id.battle_start_reselect).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GameManager.enemyParty.getmenbers().clear();
-
-                Enemy enemyName = new Enemy();
-                for(int i = 0; i < 3; i++){
-                    GameManager.enemyParty.appendPlayer(
-                            GameManager.makePlayer(
-                                    enemyName.getEnemyName(),
-                                    AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
-                                    GameManager.enemyParty
-                            )
-                    );
-                }
-                makeList(R.id.battle_start_listView_top, GameManager.enemyParty);
+                //敵パーティーを初期化
+                enemyParty.getmenbers().clear();
+                //敵パーティー作成
+                makeEnemyParty();
+                //敵パーティーの表示を更新
+                displayParty(R.id.battle_start_listView_top, enemyParty);
             }
         });
 
-        findViewById(R.id.battle_start_back).setOnClickListener(new View.OnClickListener(){
+        //戻るボタン
+        findViewById(R.id.battle_start_back).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
+                //パーティー編成画面に遷移
                 Intent intent = new Intent(getApplication(), CharacterOrganization.class);
                 startActivity(intent);
             }
@@ -89,10 +82,24 @@ public class BattleStart extends AppCompatActivity {
     }
 
 
+    //敵パーティー作成
+    private void makeEnemyParty() {
+        Random rand = new Random();
+        Enemy nameData = new Enemy();
+        for (int i = 0; i < Option.partyPlayerNum; i++) {
+            enemyParty.appendPlayer(
+                    makePlayer(
+                            nameData.getEnemyName(),
+                            AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
+                            enemyParty
+                    )
+            );
+        }
+    }
 
-    public List<Map<String, String>> makeList(int listviewId, Party party){
+    public void displayParty(int listviewId, Party party) {
         List<Map<String, String>> list = new ArrayList<>();
-        for(Player player: party.getmenbers()){
+        for (Player player : party.getmenbers()) {
             Map<String, String> map = new HashMap();
             map.put("name", player.getName());
             map.put("job", player.getJob());
@@ -105,7 +112,7 @@ public class BattleStart extends AppCompatActivity {
                 list,
                 R.layout.activity_battle_start_listview,
                 new String[]{"name", "job", "status"},
-                new int []{
+                new int[]{
                         R.id.character_list_name,
                         R.id.character_list_job,
                         R.id.character_list_status
@@ -114,6 +121,5 @@ public class BattleStart extends AppCompatActivity {
 
         ListView listview = findViewById(listviewId);
         listview.setAdapter(adapter);
-        return list;
     }
 }

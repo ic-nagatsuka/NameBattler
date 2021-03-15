@@ -10,11 +10,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.namebattler.R;
-import com.namebattler.battle.Strategy.AllStrategy;
+import com.namebattler.battle.strategy.AllStrategy;
 
 import com.namebattler.battle.GameManager;
 
 public class StrategyChange extends AppCompatActivity {
+
+    private final int radioSize = 30;
+    private final int radioMarginVertical = 40;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,41 +25,43 @@ public class StrategyChange extends AppCompatActivity {
         setContentView(R.layout.activity_strategy_change);
 
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
-
-        for(int i = 0; i < AllStrategy.Strategies.values().length; i++){
+        //職業一覧を表示
+        for (int i = 0; i < AllStrategy.Strategies.values().length; i++) {
             AllStrategy.Strategies strategy = AllStrategy.Strategies.values()[i];
             RadioButton radioButton = new RadioButton(this);
             radioButton.setId(i);
             radioButton.setText(strategy.getStrategy().getName());
-            radioButton.setTextSize(30);
+            radioButton.setTextSize(radioSize);
 
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
 
-            layoutParams.setMargins(0,40,0,40);
+            layoutParams.setMargins(0, radioMarginVertical, 0, radioMarginVertical);
 
             radioButton.setLayoutParams(layoutParams);
 
             radioGroup.addView(radioButton);
         }
-        System.out.println(radioGroup);
 
+        //ラジオボタン
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-               //クリックしたラジオボタンのIDから作戦を選択するように変更する
+                //クリックしたラジオボタンのIDから作戦を選択するように変更する
                 GameManager.myParty.setStrategy(AllStrategy.Strategies.values()[i].getStrategy());
             }
         });
 
-        findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener(){
-           @Override
-            public void onClick(View v){
-               Intent intent = new Intent(getApplication(), BattleMain.class);
-               startActivity(intent);
-           }
+        //決定ボタン
+        findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //バトルメイン画面に遷移
+                Intent intent = new Intent(getApplication(), BattleMain.class);
+                startActivity(intent);
+            }
         });
 
     }

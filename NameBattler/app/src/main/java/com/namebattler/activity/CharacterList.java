@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,10 +19,11 @@ import java.util.List;
 
 import com.namebattler.R;
 import com.namebattler.database.CharacterInformation;
-import com.namebattler.battle.Player.AllJob;
+import com.namebattler.battle.player.AllJob;
+import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 
-import static com.namebattler.battle.Option.Option.makePlayerNum;
+import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterList extends AppCompatActivity {
 
@@ -39,36 +39,16 @@ public class CharacterList extends AppCompatActivity {
         findViewById(R.id.character_list_MakeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(nowPlayerNum < makePlayerNum){
+                if (nowPlayerNum < makePlayerNum) {
                     Intent intent = new Intent(CharacterList.this, CharacterMake.class);
                     startActivity(intent);
-                }else{
-                    Toast.makeText(CharacterList.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();;
+                } else {
+                    Toast.makeText(CharacterList.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        SQLiteDatabase db = helper.getReadableDatabase();
-
-        Cursor cursor = db.query(
-                CharacterInformation.TABLE_NAME,
-                new String[]{
-                        "NAME",
-                        "JOB",
-                        "HP",
-                        "MP",
-                        "STR",
-                        "DEF",
-                        "LUCK",
-                        "AGI",
-                        "CREATE_AT"
-                },
-                null,
-                null,
-                null,
-                null,
-                null
-                );
+        Cursor cursor = new GetCharacterData(getApplicationContext()).getAllData();
 
         nowPlayerNum = cursor.getCount();
         //タイトル表示
@@ -76,8 +56,8 @@ public class CharacterList extends AppCompatActivity {
                 getSupportFragmentManager(), "キャラ一覧(" + nowPlayerNum + ")", true, TopScreen.class);
 
         List<HashMap<String, String>> list = new ArrayList<>();
-        if(cursor.moveToFirst()){
-            for(int i = 0; i < cursor.getCount(); i++){
+        if (cursor.moveToFirst()) {
+            for (int i = 0; i < cursor.getCount(); i++) {
                 HashMap<String, String> hash = new HashMap<>();
                 hash.put("name", cursor.getString(cursor.getColumnIndex("NAME")));
                 hash.put("job", AllJob.Job.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
@@ -94,13 +74,13 @@ public class CharacterList extends AppCompatActivity {
             }
         }
 
-        if(cursor.getCount() < makePlayerNum){
-            for(int i = 0; i < makePlayerNum - cursor.getCount(); i++){
+        if (cursor.getCount() < makePlayerNum) {
+            for (int i = 0; i < makePlayerNum - cursor.getCount(); i++) {
                 HashMap<String, String> hash = new HashMap<>();
                 list.add(hash);
             }
         }
-        
+
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
                 list,
@@ -126,11 +106,11 @@ public class CharacterList extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
 
-                TextView text = view.findViewById( R.id.character_list_name);
+                TextView text = view.findViewById(R.id.character_list_name);
                 String name = text.getText().toString();
                 intent.putExtra("name", name);
 
-                if(!name.equals("")){
+                if (!name.equals("")) {
                     startActivity(intent);
                 }
             }
