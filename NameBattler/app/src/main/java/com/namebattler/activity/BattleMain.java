@@ -15,6 +15,7 @@ import com.namebattler.R;
 import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.GameManager;
 import com.namebattler.battle.player.Party;
+import com.namebattler.fragment.TitleFragment;
 
 import static com.namebattler.battle.battlelog.BattleLog.getLogText;
 
@@ -26,6 +27,8 @@ public class BattleMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_main);
+
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "バトル", false, null);
 
         displayUpdateStates();
 
