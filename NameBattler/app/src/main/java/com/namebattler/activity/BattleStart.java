@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
@@ -34,6 +35,7 @@ public class BattleStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_start);
 
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "バトル開始", true, CharacterOrganization.class);
 
         if (enemyParty.getmenbers().size() != 0) {
             enemyParty = new Party("敵");
@@ -66,16 +68,6 @@ public class BattleStart extends AppCompatActivity {
                 makeEnemyParty();
                 //敵パーティーの表示を更新
                 displayParty(R.id.battle_start_listView_top, enemyParty);
-            }
-        });
-
-        //戻るボタン
-        findViewById(R.id.battle_start_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //パーティー編成画面に遷移
-                Intent intent = new Intent(getApplication(), CharacterOrganization.class);
-                startActivity(intent);
             }
         });
 
