@@ -21,6 +21,7 @@ import java.util.List;
 
 import com.namebattler.battle.GameManager;
 import com.namebattler.database.GetCharacterData;
+import com.namebattler.fragment.TitleFragment;
 
 public class CharacterOrganization extends AppCompatActivity {
 
@@ -28,6 +29,8 @@ public class CharacterOrganization extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_organization);
+
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "パーティー編成", true, TopScreen.class);
 
         View startButtonView = findViewById(R.id.character_organization_start);
 
@@ -68,17 +71,6 @@ public class CharacterOrganization extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
-        });
-
-
-        findViewById(R.id.character_organization_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), TopScreen.class);
-                startActivity(intent);
-            }
-
-
         });
 
     }
