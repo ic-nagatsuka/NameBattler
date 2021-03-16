@@ -15,6 +15,7 @@ import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;
 
 import com.namebattler.battle.GameManager;
+import com.namebattler.fragment.TitleFragment;
 
 public class BattleResult extends AppCompatActivity {
 
@@ -22,6 +23,8 @@ public class BattleResult extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_result);
+
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "結果", false, null);
 
         setAdapter(R.id.battleResult_gridView_bottom, GameManager.myParty);
         setAdapter(R.id.battleResult_gridView_top, GameManager.enemyParty);
