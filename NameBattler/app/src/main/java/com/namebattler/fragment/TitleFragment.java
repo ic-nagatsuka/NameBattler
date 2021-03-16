@@ -68,6 +68,7 @@ public class TitleFragment extends Fragment {
                 });
             }else{
                 Log.e(getClass().toString(), "ボタンの機能がありません");
+                btn.setVisibility(View.INVISIBLE);
             }
         }else{
             //ボタンを隠す
