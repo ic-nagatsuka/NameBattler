@@ -1,8 +1,8 @@
-package com.namebattler.battle.Player;
+package com.namebattler.battle.player;
 
-import com.namebattler.battle.Skill.AllSkill;
+import com.namebattler.battle.skill.AllSkill;
 
-import com.namebattler.battle.BattleLog.BattleLog;
+import com.namebattler.battle.battlelog.BattleLog;
 
 public class Bouncer extends Player{
 

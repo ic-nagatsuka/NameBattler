@@ -11,10 +11,11 @@ import android.widget.ImageView;
 
 import com.namebattler.adapter.BattleStatusAdapter;
 import com.namebattler.R;
-import com.namebattler.battle.Player.Party;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Party;
+import com.namebattler.battle.player.Player;
 
 import com.namebattler.battle.GameManager;
+import com.namebattler.fragment.TitleFragment;
 
 public class BattleResult extends AppCompatActivity {
 
@@ -23,14 +24,16 @@ public class BattleResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_result);
 
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "結果", null);
+
         setAdapter(R.id.battleResult_gridView_bottom, GameManager.myParty);
         setAdapter(R.id.battleResult_gridView_top, GameManager.enemyParty);
 
         ImageView image = findViewById(R.id.battleResult_Image_result);
 
-        if(GameManager.win == GameManager.myParty){
+        if (GameManager.win == GameManager.myParty) {
             image.setImageResource(R.drawable.pose_win_boy);
-        }else{
+        } else {
             image.setImageResource(R.drawable.pose_lose_boy);
         }
 
@@ -57,16 +60,16 @@ public class BattleResult extends AppCompatActivity {
         });
 
         findViewById(R.id.battleResult_battleEnd).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(getApplication(), TopScreen.class);
-                        startActivity(intent);
-                    }
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), TopScreen.class);
+                startActivity(intent);
+            }
         });
 
     }
 
-    public void initializePlayer(){
+    public void initializePlayer() {
 
         remakePlayer(GameManager.myParty);
         remakePlayer(GameManager.enemyParty);
@@ -74,13 +77,13 @@ public class BattleResult extends AppCompatActivity {
 
     }
 
-    public void remakePlayer(Party party){
+    public void remakePlayer(Party party) {
         int partyNum = party.getmenbers().size();
-        for(int i = 0; i < partyNum; i++){
+        for (int i = 0; i < partyNum; i++) {
             Player player = party.getmenbers().get(0);
 
             party.appendPlayer(
-                GameManager.makePlayer(player.getName(), player.getJob(), party)
+                    GameManager.makePlayer(player.getName(), player.getJob(), party)
             );
 
             party.removePlayer(player);

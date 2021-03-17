@@ -10,9 +10,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.namebattler.R;
-import com.namebattler.battle.Strategy.AllStrategy;
+import com.namebattler.battle.strategy.AllStrategy;
 
 import com.namebattler.battle.GameManager;
+import com.namebattler.fragment.TitleFragment;
 
 public class StrategyChange extends AppCompatActivity {
 
@@ -24,9 +25,11 @@ public class StrategyChange extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_strategy_change);
 
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "作戦", null);
+
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
         //職業一覧を表示
-        for(int i = 0; i < AllStrategy.Strategies.values().length; i++){
+        for (int i = 0; i < AllStrategy.Strategies.values().length; i++) {
             AllStrategy.Strategies strategy = AllStrategy.Strategies.values()[i];
             RadioButton radioButton = new RadioButton(this);
             radioButton.setId(i);
@@ -38,7 +41,7 @@ public class StrategyChange extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
 
-            layoutParams.setMargins(0, radioMarginVertical,0, radioMarginVertical);
+            layoutParams.setMargins(0, radioMarginVertical, 0, radioMarginVertical);
 
             radioButton.setLayoutParams(layoutParams);
 
@@ -49,19 +52,19 @@ public class StrategyChange extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-               //クリックしたラジオボタンのIDから作戦を選択するように変更する
+                //クリックしたラジオボタンのIDから作戦を選択するように変更する
                 GameManager.myParty.setStrategy(AllStrategy.Strategies.values()[i].getStrategy());
             }
         });
 
         //決定ボタン
-        findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener(){
-           @Override
-            public void onClick(View v){
-               //バトルメイン画面に遷移
-               Intent intent = new Intent(getApplication(), BattleMain.class);
-               startActivity(intent);
-           }
+        findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //バトルメイン画面に遷移
+                Intent intent = new Intent(getApplication(), BattleMain.class);
+                startActivity(intent);
+            }
         });
 
     }

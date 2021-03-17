@@ -9,10 +9,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.namebattler.R;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.Player;
+import com.namebattler.fragment.TitleFragment;
 
 import static com.namebattler.activity.CharacterList.nowPlayerNum;
-import static com.namebattler.Option.Option.makePlayerNum;
+import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
 
@@ -21,10 +22,11 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make_conpletion);
 
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", null);
 
         Player player = CharacterMake.player;   //作成したキャラクター
         //キャラクターデータを表示する
-        TextView textView ;
+        TextView textView;
         //名前
         textView = findViewById(R.id.characterMakeConpletion_name);
         textView.setText(player.getName());
@@ -51,14 +53,14 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         textView.setText(Integer.toString(player.getLUCK()));
 
         //続けて作成するボタン
-        findViewById(R.id.characterMakeConpletion_continue).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.characterMakeConpletion_continue).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if(nowPlayerNum < makePlayerNum) {
+            public void onClick(View v) {
+                if (nowPlayerNum < makePlayerNum) {
                     //キャラクター作成画面に遷移
                     Intent intent = new Intent(getApplication(), CharacterMake.class);
                     startActivity(intent);
-                }else{
+                } else {
                     //キャラクター最大数エラー表示
                     Toast.makeText(CharacterMakeConpletion.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 }
@@ -74,14 +76,5 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             }
         });
 
-        //戻るボタン
-        findViewById(R.id.characterMakeConpletion_back).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                //キャラクター作成画面に遷移
-                Intent intent = new Intent(getApplication(), CharacterMake.class);
-                startActivity(intent);
-            }
-        });
     }
 }

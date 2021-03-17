@@ -2,9 +2,7 @@ package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,24 +13,24 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.namebattler.R;
-import com.namebattler.database.CharacterInformation;
-import com.namebattler.battle.Player.AllJob;
-import com.namebattler.battle.Player.Player;
+import com.namebattler.battle.player.AllJob;
+import com.namebattler.battle.player.Player;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.namebattler.battle.GameManager;
+import com.namebattler.database.GetCharacterData;
+import com.namebattler.fragment.TitleFragment;
 
 import static com.namebattler.activity.CharacterList.nowPlayerNum;
-import static com.namebattler.Option.Option.makePlayerNum;
+import static com.namebattler.option.Option.makePlayerNum;
 
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
     private final int radioButtonSize = 30;
 
-    CharacterInformation helper = new CharacterInformation(this);
 
     static Player player; //作成したプレイヤー
 
@@ -41,13 +39,15 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make);
 
-        final EditText editText= findViewById(R.id.character_make_editText_name);
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", CharacterList.class);
+
+        final EditText editText = findViewById(R.id.character_make_editText_name);
         editText.addTextChangedListener(this);
 
 
         //選択する職業を表示
-        RadioGroup radioGroup = findViewById(R.id.character_make_job_RadioGroup) ;
-        for(int i = 0; i < AllJob.Job.values().length; i++){
+        RadioGroup radioGroup = findViewById(R.id.character_make_job_RadioGroup);
+        for (int i = 0; i < AllJob.Job.values().length; i++) {
             RadioButton radioBtn = new RadioButton(this);
             radioBtn.setText(AllJob.Job.values()[i].getName());
             radioBtn.setTextSize(radioButtonSize);
@@ -56,38 +56,27 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         }
 
         //作成するボタン
-        findViewById(R.id.character_make_makeButton).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.character_make_makeButton).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 RadioGroup radioGroup = findViewById(R.id.character_make_job_RadioGroup);
                 EditText editName = findViewById(R.id.character_make_editText_name);
 
                 String name = editName.getText().toString();
                 RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
-                if(nowPlayerNum >= makePlayerNum ){
+                if (nowPlayerNum >= makePlayerNum) {
                     //キャラクター最大数エラー表示
                     Toast.makeText(CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
-                }else if(!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1){
-                    SQLiteDatabase db = helper.getWritableDatabase();
+                } else if (!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
                     player = GameManager.makePlayer(name, radio.getText().toString(), GameManager.myParty);
 
-                    ContentValues values = new ContentValues();
-                    values.put("NAME",  player.getName());
-                    values.put("JOB",   radioGroup.getCheckedRadioButtonId());
-                    values.put("HP",    player.getHP());
-                    values.put("MP",    player.getMP());
-                    values.put("STR",   player.getSTR());
-                    values.put("DEF",   player.getDEF());
-                    values.put("LUCK",  player.getLUCK());
-                    values.put("AGI",   player.getAGI());
-                    values.put("CREATE_AT", getDate());
-
-                    if(db.insert(CharacterInformation.TABLE_NAME,null, values) != -1){
+                    if (new GetCharacterData(getApplicationContext()).
+                            setCharacter(player, radio.getId(), getDate()) != -1) {
                         //キャラクターデータ追加
                         nowPlayerNum++;
                         Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
                         startActivity(intent);
-                    }else{
+                    } else {
                         //名前エラー表示
                         Toast.makeText(CharacterMake.this, "この名前はすでに存在しています", Toast.LENGTH_SHORT).show();
                     }
@@ -98,20 +87,11 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
         });
 
-        //戻るボタン
-        findViewById(R.id.character_make_backButton).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplication(), CharacterList.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     //現在時刻を取得する
-    public String getDate(){
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/M/dd hh:mm") ;
+    public String getDate() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/M/dd hh:mm");
         return format.format(new Date());
     }
 
