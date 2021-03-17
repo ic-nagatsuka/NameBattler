@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.namebattler.battle.player.Bouncer;
 import com.namebattler.battle.player.Fighter;
-import com.namebattler.battle.player.P_Priest;
+import com.namebattler.battle.player.Priest;
 import com.namebattler.battle.player.P_Wizard;
 import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;
@@ -173,7 +173,7 @@ public class GameManager {
 		switch(job){
 			case "戦士"   : player = new Fighter(name);break;
 			case "魔法使い" :player = new P_Wizard(name); break;
-			case "僧侶"   : player = new P_Priest(name); break;
+			case "僧侶"   : player = new Priest(name); break;
 			case "ボール"  : player = new Bouncer(name); break;
 		}
 

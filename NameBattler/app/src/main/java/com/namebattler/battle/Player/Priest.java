@@ -5,12 +5,12 @@ import com.namebattler.battle.skill.AllSkill;
 import com.namebattler.battle.battlelog.BattleLog;
 
 
-public class P_Priest extends Player {
+public class Priest extends Player {
 
     /*=============
      * コンストラクタ
      =============*/
-    public P_Priest(String name) {
+    public Priest(String name) {
         super(name);
         this.setJob(AllJob.Job.PRIEST.getName());
     }
