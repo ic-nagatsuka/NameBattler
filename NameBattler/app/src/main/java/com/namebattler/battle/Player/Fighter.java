@@ -6,7 +6,7 @@ import java.util.List;
 import com.namebattler.battle.battlelog.BattleLog;
 
 
-public class P_Fighter extends Player {
+public class Fighter extends Player {
 
 
     List<String> attText = new ArrayList<>();    //攻撃テキスト
@@ -14,7 +14,7 @@ public class P_Fighter extends Player {
     /*=============
      * コンストラクタ
      =============*/
-    public P_Fighter(String name) {
+    public Fighter(String name) {
         super(name);
         setJob(AllJob.Job.FIGHTER.getName());
         makeAttackText();

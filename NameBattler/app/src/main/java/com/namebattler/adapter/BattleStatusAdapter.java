@@ -12,12 +12,12 @@ import com.namebattler.R;
 import com.namebattler.battle.player.Party;
 import com.namebattler.battle.player.Player;
 
-public class BaseAdapter_BattleMain extends BaseAdapter {
+public class BattleStatusAdapter extends BaseAdapter {
 
     LayoutInflater inflater;
     Party party;
 
-    public BaseAdapter_BattleMain(Context context, Party party) {
+    public BattleStatusAdapter(Context context, Party party){
         this.inflater = LayoutInflater.from(context);
         this.party = party;
     }
