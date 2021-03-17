@@ -39,7 +39,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", true, CharacterList.class);
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", CharacterList.class);
 
         final EditText editText = findViewById(R.id.character_make_editText_name);
         editText.addTextChangedListener(this);

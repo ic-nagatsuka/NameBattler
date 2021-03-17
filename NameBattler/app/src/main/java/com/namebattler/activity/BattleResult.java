@@ -24,7 +24,7 @@ public class BattleResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_result);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "結果", false, null);
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "結果", null);
 
         setAdapter(R.id.battleResult_gridView_bottom, GameManager.myParty);
         setAdapter(R.id.battleResult_gridView_top, GameManager.enemyParty);

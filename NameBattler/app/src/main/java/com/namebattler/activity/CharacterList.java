@@ -53,7 +53,7 @@ public class CharacterList extends AppCompatActivity {
         nowPlayerNum = cursor.getCount();
         //タイトル表示
         TitleFragment.displayTitleFragment(
-                getSupportFragmentManager(), "キャラ一覧(" + nowPlayerNum + "人)", true, TopScreen.class);
+                getSupportFragmentManager(), "キャラ一覧(" + nowPlayerNum + "人)", TopScreen.class);
 
         List<HashMap<String, String>> list = new ArrayList<>();
         if (cursor.moveToFirst()) {

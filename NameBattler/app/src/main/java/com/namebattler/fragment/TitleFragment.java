@@ -20,16 +20,14 @@ import com.namebattler.R;
 public class TitleFragment extends Fragment {
 
     static String titleKey = "title";
-    static String showButtonKey = "showButton";
     static String clsKey = "class";
 
 
-    public static Fragment newInstance(String title, boolean showButton, Class cls){
+    public static Fragment newInstance(String title, Class cls) {
         TitleFragment fragment = new TitleFragment();
 
         Bundle bundle = new Bundle();
         bundle.putString(titleKey, title);
-        bundle.putBoolean(showButtonKey, showButton);
         bundle.putSerializable(clsKey, cls);
 
         fragment.setArguments(bundle);
@@ -47,30 +45,24 @@ public class TitleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle bnd = getArguments();
         String title = bnd.getString(titleKey);                 //タイトル
-        boolean showButton = bnd.getBoolean(showButtonKey);     //ボタンの表示
-        final Class cls = (Class)bnd.getSerializable(clsKey);   //遷移先のアクティビティ
+        final Class cls = (Class) bnd.getSerializable(clsKey);   //遷移先のアクティビティ
 
         TextView textview = view.findViewById(R.id.fragment_title);
         textview.setText(title);
 
         Button btn = view.findViewById(R.id.fragment_title_back);
 
-        if(showButton){
+        if (cls != null) {
             //ボタンの表示をする
             btn.setVisibility(View.VISIBLE);
-            if(cls != null) {
-                btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(getActivity(), cls);
-                        startActivity(intent);
-                    }
-                });
-            }else{
-                Log.e(getClass().toString(), "ボタンの機能がありません");
-                btn.setVisibility(View.INVISIBLE);
-            }
-        }else{
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), cls);
+                    startActivity(intent);
+                }
+            });
+        } else {
             //ボタンを隠す
             btn.setVisibility(View.INVISIBLE);
         }
@@ -79,11 +71,11 @@ public class TitleFragment extends Fragment {
     }
 
     //タイトル表示
-    public static void displayTitleFragment(FragmentManager fragmentManager, String text, boolean showButton, Class moveClass){
+    public static void displayTitleFragment(FragmentManager fragmentManager, String text, Class moveClass) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.titleFragment,
                 TitleFragment.newInstance(
-                        text, showButton , moveClass));
+                        text, moveClass));
         fragmentTransaction.commit();
     }
 

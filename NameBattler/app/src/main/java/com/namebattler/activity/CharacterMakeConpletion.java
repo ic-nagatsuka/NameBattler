@@ -22,7 +22,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make_conpletion);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", false, null);
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", null);
 
         Player player = CharacterMake.player;   //作成したキャラクター
         //キャラクターデータを表示する

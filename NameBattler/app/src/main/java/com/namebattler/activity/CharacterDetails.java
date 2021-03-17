@@ -21,7 +21,7 @@ public class CharacterDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_details);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ詳細", true, CharacterList.class);
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ詳細", CharacterList.class);
 
         final Intent intent = getIntent();
 
