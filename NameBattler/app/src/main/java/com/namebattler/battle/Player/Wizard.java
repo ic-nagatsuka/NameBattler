@@ -5,11 +5,11 @@ import com.namebattler.battle.skill.AllSkill;
 import com.namebattler.battle.battlelog.BattleLog;
 
 
-public class P_Wizard extends Player {
+public class Wizard extends Player {
     /*=============
      * コンストラクタ
      =============*/
-    public P_Wizard(String name) {
+    public Wizard(String name) {
         super(name);
         this.setJob(AllJob.Job.WIZARD.getName());
 
