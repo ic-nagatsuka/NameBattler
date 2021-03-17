@@ -21,6 +21,7 @@ import java.util.Date;
 
 import com.namebattler.battle.GameManager;
 import com.namebattler.database.GetCharacterData;
+import com.namebattler.fragment.TitleFragment;
 
 import static com.namebattler.activity.CharacterList.nowPlayerNum;
 import static com.namebattler.option.Option.makePlayerNum;
@@ -37,6 +38,8 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make);
+
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", CharacterList.class);
 
         final EditText editText = findViewById(R.id.character_make_editText_name);
         editText.addTextChangedListener(this);
@@ -82,15 +85,6 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             }
 
 
-        });
-
-        //戻るボタン
-        findViewById(R.id.character_make_backButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplication(), CharacterList.class);
-                startActivity(intent);
-            }
         });
 
     }

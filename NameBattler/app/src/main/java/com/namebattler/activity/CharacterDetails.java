@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
+import com.namebattler.fragment.TitleFragment;
 
 public class CharacterDetails extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ public class CharacterDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_details);
+
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ詳細", CharacterList.class);
 
         final Intent intent = getIntent();
 
@@ -70,16 +73,6 @@ public class CharacterDetails extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-        findViewById(R.id.characterDetails_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), CharacterList.class);
-                startActivity(intent);
-            }
-        });
-
 
     }
 

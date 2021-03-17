@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.namebattler.R;
 import com.namebattler.battle.player.Player;
+import com.namebattler.fragment.TitleFragment;
 
 import static com.namebattler.activity.CharacterList.nowPlayerNum;
 import static com.namebattler.option.Option.makePlayerNum;
@@ -21,6 +22,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make_conpletion);
 
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", null);
 
         Player player = CharacterMake.player;   //作成したキャラクター
         //キャラクターデータを表示する
@@ -74,14 +76,5 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             }
         });
 
-        //戻るボタン
-        findViewById(R.id.characterMakeConpletion_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //キャラクター作成画面に遷移
-                Intent intent = new Intent(getApplication(), CharacterMake.class);
-                startActivity(intent);
-            }
-        });
     }
 }

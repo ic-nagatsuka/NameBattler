@@ -6,33 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".activity.CharacterDetails">
 
-    <TextView
-        android:id="@+id/characterDetails_title"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:text="キャラ詳細"
-        android:textSize="30dp"
-        android:background="#ccc"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/characterDetails_back"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/blue_26c"
-        android:text="戻る"
-        android:textColor="#fff"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:id="@+id/titleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/characterDetails_name"
@@ -42,14 +19,14 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:gravity="bottom"
-        android:text="名前"
         android:maxLines="2"
-        app:autoSizeTextType="uniform"
-        app:autoSizeMinTextSize="1dp"
+        android:text="名前"
         app:autoSizeMaxTextSize="25dp"
+        app:autoSizeMinTextSize="1dp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_title" />
+        app:layout_constraintTop_toBottomOf="@id/titleFragment" />
 
     <TextView
         android:id="@+id/characterDetails_job"
