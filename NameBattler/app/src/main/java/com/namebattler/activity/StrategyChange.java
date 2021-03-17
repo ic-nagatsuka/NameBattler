@@ -13,6 +13,7 @@ import com.namebattler.R;
 import com.namebattler.battle.strategy.AllStrategy;
 
 import com.namebattler.battle.GameManager;
+import com.namebattler.fragment.TitleFragment;
 
 public class StrategyChange extends AppCompatActivity {
 
@@ -23,6 +24,8 @@ public class StrategyChange extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_strategy_change);
+
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "作戦", false, null);
 
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
         //職業一覧を表示
