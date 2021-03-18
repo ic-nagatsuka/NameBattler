@@ -3,7 +3,7 @@ package com.namebattler.battle.strategy;
 import java.util.List;
 import java.util.Random;
 
-import com.namebattler.battle.player.Party;
+import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 
 public abstract class Strategy {

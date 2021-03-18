@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.namebattler.R;
-import com.namebattler.battle.player.Party;
+import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 
 public class BattleStatusAdapter extends BaseAdapter {

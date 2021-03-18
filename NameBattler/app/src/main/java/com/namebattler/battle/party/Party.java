@@ -1,5 +1,6 @@
-package com.namebattler.battle.player;
+package com.namebattler.battle.party;
 
+import com.namebattler.battle.player.Player;
 import com.namebattler.battle.strategy.Strategy;
 
 import java.util.ArrayList;

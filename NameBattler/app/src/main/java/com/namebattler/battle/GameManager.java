@@ -8,7 +8,7 @@ import com.namebattler.battle.player.Bouncer;
 import com.namebattler.battle.player.Fighter;
 import com.namebattler.battle.player.Priest;
 import com.namebattler.battle.player.Wizard;
-import com.namebattler.battle.player.Party;
+import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.strategy.AllStrategy;
 

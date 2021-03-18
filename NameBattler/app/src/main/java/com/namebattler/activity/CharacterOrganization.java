@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -12,9 +11,8 @@ import android.widget.ListView;
 
 import com.namebattler.adapter.CharacterSelectListAdapter;
 import com.namebattler.R;
-import com.namebattler.database.CharacterInformation;
 import com.namebattler.battle.player.AllJob;
-import com.namebattler.battle.player.Party;
+import com.namebattler.battle.party.Party;
 
 import java.util.ArrayList;
 import java.util.List;

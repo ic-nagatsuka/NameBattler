@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.namebattler.adapter.BattleStatusAdapter;
 import com.namebattler.R;
-import com.namebattler.battle.player.Party;
+import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 
 import com.namebattler.battle.GameManager;
