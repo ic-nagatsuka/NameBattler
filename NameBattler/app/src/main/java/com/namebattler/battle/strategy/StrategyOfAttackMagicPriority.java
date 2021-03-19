@@ -3,30 +3,31 @@ package com.namebattler.battle.strategy;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.namebattler.battle.player.Party;
+import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.Skill;
 import com.namebattler.battle.skill.SkillType;
 
 public class StrategyOfAttackMagicPriority extends Strategy {
-	/*=============
-	 * フィールド変数
-	 =============*/
-	SkillType [] skillNum;	//優先するスキルタイプ番号
-	/*=============
-	 * コンストラクタ
-	 =============*/
+    /*=============
+     * フィールド変数
+     =============*/
+    SkillType[] skillNum;    //優先するスキルタイプ番号
+
+    /*=============
+     * コンストラクタ
+     =============*/
 //	ArrayList<Integer>
-	public StrategyOfAttackMagicPriority(String name, SkillType [] skillNum){
-		this.name = name;
-		this.skillNum = skillNum;
-	}
-	
-	@Override
-	public void action(Player attacker, Party defenceParty){
-		Skill skill;
-		Player target = randomDefender(defenceParty.getmenbers());
-		List<Skill> prioritySkill;//優先スキル
+    public StrategyOfAttackMagicPriority(String name, SkillType[] skillNum) {
+        this.name = name;
+        this.skillNum = skillNum;
+    }
+
+    @Override
+    public void action(Player attacker, Party defenceParty) {
+        Skill skill;
+        Player target = randomDefender(defenceParty.getmenbers());
+        List<Skill> prioritySkill;//優先スキル
 
 		//優先スキルを探す
 //		prioritySkill = checkPrioritySkill(attacker.getUseSkill());
@@ -40,8 +41,8 @@ public class StrategyOfAttackMagicPriority extends Strategy {
 			//他のスキルを使用する
 			attacker.action(target);
 //		}
-	}		
-		
+	}
+
 	/**
 	 * 優先スキルを探す
 	 * @param useSkill プレイヤーの使用スキル
@@ -58,13 +59,13 @@ public class StrategyOfAttackMagicPriority extends Strategy {
 //				if(prioritySkill.size() != 0){
 //					return prioritySkill;
 //				}
-			}
-			
+        }
+
 //			if(skill instanceof SkillOfAttackMagic){
 //				prioritySkill.add(skill);
 //			}
-			
-			System.out.println(prioritySkill.size());
-		return prioritySkill;
-	}
+
+        System.out.println(prioritySkill.size());
+        return prioritySkill;
+    }
 }

@@ -11,69 +11,61 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
-import com.namebattler.database.CharacterInformation;
+import com.namebattler.database.GetCharacterData;
+import com.namebattler.fragment.TitleFragment;
 
 public class CharacterDetails extends AppCompatActivity {
-
-    CharacterInformation helper = new CharacterInformation(this);
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_details);
 
-        final SQLiteDatabase db = helper.getWritableDatabase();
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ詳細", CharacterList.class);
 
         final Intent intent = getIntent();
 
-        String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
+        Cursor cursor = new GetCharacterData(getApplicationContext())
+                .getCharacter(intent.getStringExtra("name"));
 
-        Cursor cursor = db.rawQuery(sql, null);
-        cursor.moveToFirst();
+        if (cursor.moveToFirst()) {
+            TextView text;
 
-        for(int i = 0; i < cursor.getCount(); i++){
+            text = findViewById(R.id.characterDetails_name);
+            text.setText(cursor.getString(0));
 
-            if(intent.getStringExtra("name").equals(cursor.getString(0))){
-                TextView text;
+            text = findViewById(R.id.characterDetails_job);
+            text.setText(AllJob.values()[cursor.getInt(1)].getName());
 
-                text = findViewById(R.id.characterDetails_name);
-                text.setText(cursor.getString(0));
+            text = findViewById(R.id.characterDetails_hp);
+            text.setText(cursor.getString(2));
 
-                text = findViewById(R.id.characterDetails_job);
-                text.setText(AllJob.values()[cursor.getInt(1)].getName());
+            text = findViewById(R.id.characterDetails_mp);
+            text.setText(cursor.getString(3));
 
-                text = findViewById(R.id.characterDetails_hp);
-                text.setText(cursor.getString(2));
+            text = findViewById(R.id.characterDetails_str);
+            text.setText(cursor.getString(4));
 
-                text = findViewById(R.id.characterDetails_mp);
-                text.setText(cursor.getString(3));
+            text = findViewById(R.id.characterDetails_def);
+            text.setText(cursor.getString(5));
 
-                text = findViewById(R.id.characterDetails_str);
-                text.setText(cursor.getString(4));
+            text = findViewById(R.id.characterDetails_luck);
+            text.setText(cursor.getString(6));
 
-                text = findViewById(R.id.characterDetails_def);
-                text.setText(cursor.getString(5));
+            text = findViewById(R.id.characterDetails_agi);
+            text.setText(cursor.getString(7));
 
-                text = findViewById(R.id.characterDetails_luck);
-                text.setText(cursor.getString(6));
-
-                text = findViewById(R.id.characterDetails_agi);
-                text.setText(cursor.getString(7));
-
-                text = findViewById(R.id.characterDetails_MakeDay);
-                text.setText("作成日 : " + cursor.getString(8));
-            }
-            cursor.moveToNext();
+            text = findViewById(R.id.characterDetails_MakeDay);
+            text.setText("作成日 : " + cursor.getString(8));
         }
+
 
         findViewById(R.id.characterDetails_DeleteButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.delete(
-                        CharacterInformation.TABLE_NAME,
-                        "name = ?",
-                        new String[] {intent.getStringExtra("name")});
+                String name = intent.getStringExtra("name");
+
+                new GetCharacterData(getApplicationContext()).deleteCharacter(name);
 
                 CharacterList.nowPlayerNum--;
 
@@ -81,16 +73,6 @@ public class CharacterDetails extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-        findViewById(R.id.characterDetails_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplication(), CharacterList.class);
-                startActivity(intent);
-            }
-        });
-
 
     }
 

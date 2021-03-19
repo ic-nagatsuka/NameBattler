@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".activity.BattleResult">
 
+    <FrameLayout
+        android:id="@+id/titleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <GridView
         android:id="@+id/battleResult_gridView_bottom"
         android:layout_width="0dp"
@@ -24,28 +29,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/border_around"
         android:numColumns="3"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/battleResult_title2" />
-
-    <TextView
-        android:id="@+id/battleResult_title2"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="バトル結果"
-        android:textColor="#000"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/titleFragment" />
 
     <Button
         android:id="@+id/battleResult_rematch"
@@ -89,14 +80,14 @@
 
     <ImageView
         android:id="@+id/battleResult_Image_result"
-        android:scaleType="fitXY"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="12dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/battleResult_rematch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/battleResult_gridView_bottom"
-        app:srcCompat="@drawable/border_orange_background_yellow"
-        />
+        app:srcCompat="@drawable/border_orange_background_yellow" />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>

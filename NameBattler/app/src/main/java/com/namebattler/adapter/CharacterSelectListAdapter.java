@@ -26,20 +26,20 @@ import static com.namebattler.option.Option.partyPlayerNum;
 import static com.namebattler.battle.GameManager.makePlayer;
 import static com.namebattler.battle.GameManager.myParty;
 
-public class BaseAdapter_CharacterOrganization extends BaseAdapter {
+public class CharacterSelectListAdapter extends BaseAdapter {
 
     Context context;
     View startButton;
     List<CharacterOrganization.Status> status;
 
     LayoutInflater inflater;
-    SQLiteOpenHelper helper ;
+    SQLiteOpenHelper helper;
     SQLiteDatabase db;
-    Cursor cursor ;
+    Cursor cursor;
     String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
     int count = 0;
 
-    public BaseAdapter_CharacterOrganization(Context context, View v, List<CharacterOrganization.Status> status){
+    public CharacterSelectListAdapter(Context context, View v, List<CharacterOrganization.Status> status){
         this.context = context;
         this.startButton = v;
         this.status = status;
@@ -47,7 +47,7 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
         helper = new CharacterInformation(context);
         db = helper.getReadableDatabase();
-        cursor = db.rawQuery(sql,null);
+        cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
     }
 
@@ -69,10 +69,10 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
 
-        if(view == null){
+        if (view == null) {
             view = inflater.inflate(R.layout.listview_character_organization, null);
         }
-        if(status.size() -1 < i){
+        if (status.size() - 1 < i) {
             return view;
         }
 
@@ -84,8 +84,6 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
 
         text = view.findViewById(R.id.character_organization_listView_status);
         text.setText(status.get(i).getStatus());
-
-
 
 
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
@@ -102,24 +100,24 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
                 TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
                 String name = textView.getText().toString();
 
-                if(!hasName(name)){
-                    if(count < partyPlayerNum){
+                if (!hasName(name)) {
+                    if (count < partyPlayerNum) {
                         count++;
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
                         myParty.appendPlayer(
                                 makePlayer(name, job, myParty));
-                    }else{
+                    } else {
                         Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                         radioButton.setChecked(false);
                     }
-                }else{
+                } else {
                     count--;
                     radioButton.setChecked(false);
 
-                    for(int i = 0; i < myParty.getmenbers().size(); i++){
+                    for (int i = 0; i < myParty.getmenbers().size(); i++) {
                         Player player = myParty.getmenbers().get(i);
-                        if(player.getName().equals(name)){
+                        if (player.getName().equals(name)) {
                             myParty.removePlayer(player);
                         }
                     }
@@ -136,12 +134,11 @@ public class BaseAdapter_CharacterOrganization extends BaseAdapter {
     }
 
 
-
-    public boolean hasName(String name){
+    public boolean hasName(String name) {
         boolean haveName = false;
-        for(int i = 0; i < myParty.getmenbers().size() ; i++){
+        for (int i = 0; i < myParty.getmenbers().size(); i++) {
             Player player = myParty.getmenbers().get(i);
-            if(player.getName().equals(name)){
+            if (player.getName().equals(name)) {
                 haveName = true;
             }
         }

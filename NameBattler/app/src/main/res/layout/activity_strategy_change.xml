@@ -6,18 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".activity.StrategyChange">
 
-    <TextView
-        android:id="@+id/strategyChange_title"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="作戦"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:id="@+id/titleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/strategyChange_dicid"
@@ -42,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/strategyChange_title" />
+        app:layout_constraintTop_toBottomOf="@+id/titleFragment" />
 
     <RadioGroup
         android:id="@+id/strategyChange_radioGroup"

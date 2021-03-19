@@ -13,6 +13,7 @@ import com.namebattler.R;
 import com.namebattler.battle.strategy.AllStrategy;
 
 import com.namebattler.battle.GameManager;
+import com.namebattler.fragment.TitleFragment;
 
 public class StrategyChange extends AppCompatActivity {
 
@@ -23,6 +24,8 @@ public class StrategyChange extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_strategy_change);
+
+        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "作戦", null);
 
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
         //職業一覧を表示
@@ -38,7 +41,7 @@ public class StrategyChange extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
 
-            layoutParams.setMargins(0, radioMarginVertical,0, radioMarginVertical);
+            layoutParams.setMargins(0, radioMarginVertical, 0, radioMarginVertical);
 
             radioButton.setLayoutParams(layoutParams);
 
@@ -55,13 +58,13 @@ public class StrategyChange extends AppCompatActivity {
         });
 
         //決定ボタン
-        findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener(){
-           @Override
-            public void onClick(View v){
-               //バトルメイン画面に遷移
-               Intent intent = new Intent(getApplication(), BattleMain.class);
-               startActivity(intent);
-           }
+        findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //バトルメイン画面に遷移
+                Intent intent = new Intent(getApplication(), BattleMain.class);
+                startActivity(intent);
+            }
         });
 
     }

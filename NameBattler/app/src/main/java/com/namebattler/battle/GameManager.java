@@ -4,66 +4,67 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.namebattler.battle.player.P_Bouncer;
-import com.namebattler.battle.player.P_Fighter;
-import com.namebattler.battle.player.P_Priest;
-import com.namebattler.battle.player.P_Wizard;
-import com.namebattler.battle.player.Party;
+import com.namebattler.battle.player.Bouncer;
+import com.namebattler.battle.player.Fighter;
+import com.namebattler.battle.player.Priest;
+import com.namebattler.battle.player.Wizard;
+import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.strategy.AllStrategy;
 
 
-public class GameManager{
-	/*============
-	 *フィールド変数
-	 ============*/
-	public static Party myParty = new Party("味方");	//自パーティー
-	public static Party enemyParty = new Party("敵");	//敵パーティー
+public class GameManager {
+    /*============
+     *フィールド変数
+     ============*/
+    public static Party myParty = new Party("味方");    //自パーティー
+    public static Party enemyParty = new Party("敵");    //敵パーティー
 
-	//すべてのプレイヤーを入れる
-	List<Player> allPlayer = new ArrayList<>();
+    //すべてのプレイヤーを入れる
+    List<Player> allPlayer = new ArrayList<>();
 
-	//全てのパーティーを入れる
-	List<Party> allParty = new ArrayList<>();
+    //全てのパーティーを入れる
+    List<Party> allParty = new ArrayList<>();
 
-	public static Party win;	//勝利パーティー
-	int turnCount = 1;	//ターン数
+    public static Party win;    //勝利パーティー
+    int turnCount = 1;    //ターン数
 
-	Random rand = new Random();
+    Random rand = new Random();
 
-	/*=============
-	 * コンストラクタ
-	 =============*/
-	public GameManager() {
-		prepare();
+    /*=============
+     * コンストラクタ
+     =============*/
+    public GameManager() {
+        prepare();
 
-	}
+    }
 
-	/**
-	 * 戦闘準備
-	 */
-	public void prepare() {
+    /**
+     * 戦闘準備
+     */
+    public void prepare() {
 
-		allParty.add(myParty);
-		allParty.add(enemyParty);
+        allParty.add(myParty);
+        allParty.add(enemyParty);
 
 		if(myParty.getStrategy() == null || enemyParty.getStrategy() == null){
 			myParty.setStrategy(AllStrategy.values()[0].getStrategy());
 			enemyParty.setStrategy(AllStrategy.values()[0].getStrategy());
 		}
 
-		addAllPlayer();
+        addAllPlayer();
 
-		//素早さが高い順に並べる
-		highSpeedSort(allPlayer);
+        //素早さが高い順に並べる
+        highSpeedSort(allPlayer);
 
-	}
+    }
 
-	/**全てのパーティーのキャラクターをまとめる
-	 */
-	public void addAllPlayer(){
-	    for(Party party: allParty){
-	        for(Player player: party.getmenbers()){
+    /**
+     * 全てのパーティーのキャラクターをまとめる
+     */
+    public void addAllPlayer() {
+        for (Party party : allParty) {
+            for (Player player : party.getmenbers()) {
                 allPlayer.add(player);
             }
         }
@@ -170,10 +171,10 @@ public class GameManager{
 	public static Player makePlayer(String name, String job, Party party){
 		Player player = null;
 		switch(job){
-			case "戦士"   : player = new P_Fighter(name);break;
-			case "魔法使い" :player = new P_Wizard(name); break;
-			case "僧侶"   : player = new P_Priest(name); break;
-			case "ボール"  : player = new P_Bouncer(name); break;
+			case "戦士"   : player = new Fighter(name);break;
+			case "魔法使い" :player = new Wizard(name); break;
+			case "僧侶"   : player = new Priest(name); break;
+			case "ボール"  : player = new Bouncer(name); break;
 		}
 
 		player.setParty(party);
