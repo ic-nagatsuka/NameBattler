@@ -10,17 +10,24 @@ import android.widget.Toast;
 
 import com.namebattler.R;
 import com.namebattler.battle.player.Player;
+import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
+import com.namebattler.option.Option;
 
-import static com.namebattler.activity.CharacterList.nowPlayerNum;
 import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
+
+    int nowPlayerNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make_conpletion);
+
+        nowPlayerNum = new GetCharacterData(getApplicationContext())
+                .getAllData()
+                .getCount();
 
         TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", null);
 
