@@ -11,9 +11,9 @@ public class GetDataBase {
     SQLiteDatabase db;
 
     public Cursor getAllData(Context context) {
-        SQLiteOpenHelper helper = new CharacterInformation(context);
+        SQLiteOpenHelper helper = new CharacterInformationHelper(context);
         db = helper.getReadableDatabase();
-        String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
+        String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(sql, null);
 
         return cursor;
