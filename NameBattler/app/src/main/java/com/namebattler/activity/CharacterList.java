@@ -27,14 +27,16 @@ import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterList extends AppCompatActivity {
 
-    public static int nowPlayerNum;
-
-    CharacterInformation helper = new CharacterInformation(this);
+    Cursor cursor;
+    int nowPlayerNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_list);
+
+        cursor= new GetCharacterData(getApplicationContext()).getAllData();
+        nowPlayerNum = cursor.getCount();
 
         findViewById(R.id.character_list_MakeButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,16 +50,15 @@ public class CharacterList extends AppCompatActivity {
             }
         });
 
-        Cursor cursor = new GetCharacterData(getApplicationContext()).getAllData();
 
-        nowPlayerNum = cursor.getCount();
+
         //タイトル表示
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "キャラ一覧(" + nowPlayerNum + "人)", TopScreen.class);
 
         List<HashMap<String, String>> list = new ArrayList<>();
         if (cursor.moveToFirst()) {
-            for (int i = 0; i < cursor.getCount(); i++) {
+            for (int i = 0; i < nowPlayerNum; i++) {
                 HashMap<String, String> hash = new HashMap<>();
                 hash.put("name", cursor.getString(cursor.getColumnIndex("NAME")));
                 hash.put("job", AllJob.Job.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
@@ -74,8 +75,8 @@ public class CharacterList extends AppCompatActivity {
             }
         }
 
-        if (cursor.getCount() < makePlayerNum) {
-            for (int i = 0; i < makePlayerNum - cursor.getCount(); i++) {
+        if (nowPlayerNum < makePlayerNum) {
+            for (int i = 0; i < makePlayerNum - nowPlayerNum; i++) {
                 HashMap<String, String> hash = new HashMap<>();
                 list.add(hash);
             }
