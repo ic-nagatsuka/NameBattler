@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.namebattler.R;
 import com.namebattler.activity.CharacterOrganization;
-import com.namebattler.database.CharacterInformation;
+import com.namebattler.database.CharacterInformationHelper;
 import com.namebattler.battle.player.Player;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
     SQLiteOpenHelper helper;
     SQLiteDatabase db;
     Cursor cursor;
-    String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
+    String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + ";";
     int count = 0;
 
     public CharacterSelectListAdapter(Context context, View v, List<CharacterOrganization.Status> status){
@@ -45,7 +45,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         this.status = status;
         inflater = LayoutInflater.from(context);
 
-        helper = new CharacterInformation(context);
+        helper = new CharacterInformationHelper(context);
         db = helper.getReadableDatabase();
         cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
