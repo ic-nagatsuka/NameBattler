@@ -23,14 +23,13 @@ import com.namebattler.battle.GameManager;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 
-import static com.namebattler.activity.CharacterList.nowPlayerNum;
 import static com.namebattler.option.Option.makePlayerNum;
 
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
     private final int radioButtonSize = 30;
-
+    int nowPlayerNum;
 
     static Player player; //作成したプレイヤー
 
@@ -38,6 +37,10 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make);
+
+        nowPlayerNum = new GetCharacterData(getApplicationContext())
+                .getAllData()
+                .getCount();
 
         TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", CharacterList.class);
 
