@@ -13,6 +13,7 @@ import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
+import com.namebattler.option.Option;
 
 public class CharacterDetails extends AppCompatActivity {
 
@@ -66,8 +67,6 @@ public class CharacterDetails extends AppCompatActivity {
                 String name = intent.getStringExtra("name");
 
                 new GetCharacterData(getApplicationContext()).deleteCharacter(name);
-
-                CharacterList.nowPlayerNum--;
 
                 Intent intent = new Intent(getApplication(), CharacterList.class);
                 startActivity(intent);
