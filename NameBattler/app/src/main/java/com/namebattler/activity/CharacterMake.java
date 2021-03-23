@@ -31,7 +31,6 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     private final int radioButtonSize = 30;
     int nowPlayerNum;
 
-    static Player player; //作成したプレイヤー
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +70,14 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     //キャラクター最大数エラー表示
                     Toast.makeText(CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 } else if (!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
-                    player = GameManager.makePlayer(name, radio.getText().toString(), GameManager.myParty);
+                    Player player = GameManager.makePlayer(name, radio.getText().toString(), GameManager.myParty);
 
-                    if (new GetCharacterData(getApplicationContext()).
-                            setCharacter(player, radio.getId(), getDate()) != -1) {
+                    if (new GetCharacterData(getApplicationContext())
+                            .setCharacter(player, radio.getId(), getDate()) != -1) {
                         //キャラクターデータ追加
                         nowPlayerNum++;
                         Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
+                        intent.putExtra("name", name);
                         startActivity(intent);
                     } else {
                         //名前エラー表示
