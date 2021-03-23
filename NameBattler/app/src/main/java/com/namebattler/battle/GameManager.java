@@ -48,8 +48,8 @@ public class GameManager {
         allParty.add(enemyParty);
 
         if (myParty.getStrategy() == null || enemyParty.getStrategy() == null) {
-            myParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
-            enemyParty.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+            myParty.setStrategy(AllStrategy.values()[0].getStrategy());
+            enemyParty.setStrategy(AllStrategy.values()[0].getStrategy());
         }
 
         addAllPlayer();
@@ -178,7 +178,7 @@ public class GameManager {
 		}
 
 		player.setParty(party);
-		player.setStrategy(AllStrategy.Strategies.values()[0].getStrategy());
+		player.setStrategy(AllStrategy.values()[0].getStrategy());
 
 		return player;
 	}
