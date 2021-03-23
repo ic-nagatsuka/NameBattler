@@ -12,7 +12,7 @@ public class Priest extends Player {
      =============*/
     public Priest(String name) {
         super(name);
-        this.setJob(AllJob.Job.PRIEST.getName());
+        this.setJob(AllJob.PRIEST.getName());
     }
 
     @Override

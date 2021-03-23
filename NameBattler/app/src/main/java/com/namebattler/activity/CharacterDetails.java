@@ -36,7 +36,7 @@ public class CharacterDetails extends AppCompatActivity {
             text.setText(cursor.getString(0));
 
             text = findViewById(R.id.characterDetails_job);
-            text.setText(AllJob.Job.values()[cursor.getInt(1)].getName());
+            text.setText(AllJob.values()[cursor.getInt(1)].getName());
 
             text = findViewById(R.id.characterDetails_hp);
             text.setText(cursor.getString(2));
