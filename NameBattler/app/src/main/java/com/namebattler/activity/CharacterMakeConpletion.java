@@ -3,54 +3,66 @@ package com.namebattler.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.namebattler.R;
-import com.namebattler.battle.player.Player;
+import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 
-import static com.namebattler.activity.CharacterList.nowPlayerNum;
 import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
+
+    int nowPlayerNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make_conpletion);
 
+        nowPlayerNum = new GetCharacterData(getApplicationContext())
+                .getAllData()
+                .getCount();
+
         TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", null);
 
-        Player player = CharacterMake.player;   //作成したキャラクター
-        //キャラクターデータを表示する
-        TextView textView;
-        //名前
-        textView = findViewById(R.id.characterMakeConpletion_name);
-        textView.setText(player.getName());
-        //職業
-        textView = findViewById(R.id.characterMakeConpletion_job);
-        textView.setText(player.getJob());
-        //HP
-        textView = findViewById(R.id.characterMakeConpletion_set_hp);
-        textView.setText(Integer.toString(player.getHP()));
-        //MP
-        textView = findViewById(R.id.characterMakeConpletion_set_mp);
-        textView.setText(Integer.toString(player.getMP()));
-        //STR
-        textView = findViewById(R.id.characterMakeConpletion_set_str);
-        textView.setText(Integer.toString(player.getSTR()));
-        //DEF
-        textView = findViewById(R.id.characterMakeConpletion_set_def);
-        textView.setText(Integer.toString(player.getDEF()));
-        //AGI
-        textView = findViewById(R.id.characterMakeConpletion_set_agi);
-        textView.setText(Integer.toString(player.getAGI()));
-        //LUCK
-        textView = findViewById(R.id.characterMakeConpletion_set_luck);
-        textView.setText(Integer.toString(player.getLUCK()));
+        String name = getIntent().getStringExtra("name");
+
+        Cursor cursor = new GetCharacterData(getApplicationContext())
+                .getCharacter(name);
+
+        if(cursor.moveToFirst()){
+            //キャラクターデータを表示する
+            TextView textView;
+            //名前
+            textView = findViewById(R.id.characterMakeConpletion_name);
+            textView.setText(cursor.getString(cursor.getColumnIndex("NAME")));
+            //職業
+            textView = findViewById(R.id.characterMakeConpletion_job);
+            textView.setText(cursor.getString(cursor.getColumnIndex("JOB")));
+            //HP
+            textView = findViewById(R.id.characterMakeConpletion_set_hp);
+            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("HP"))));
+            //MP
+            textView = findViewById(R.id.characterMakeConpletion_set_mp);
+            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("MP"))));
+            //STR
+            textView = findViewById(R.id.characterMakeConpletion_set_str);
+            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("STR"))));
+            //DEF
+            textView = findViewById(R.id.characterMakeConpletion_set_def);
+            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("DEF"))));
+            //AGI
+            textView = findViewById(R.id.characterMakeConpletion_set_agi);
+            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("AGI"))));
+            //LUCK
+            textView = findViewById(R.id.characterMakeConpletion_set_luck);
+            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("LUCK"))));
+        }
 
         //続けて作成するボタン
         findViewById(R.id.characterMakeConpletion_continue).setOnClickListener(new View.OnClickListener() {

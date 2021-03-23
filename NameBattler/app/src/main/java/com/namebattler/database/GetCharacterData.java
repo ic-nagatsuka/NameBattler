@@ -17,12 +17,12 @@ public class GetCharacterData {
     Context context;
     public GetCharacterData(Context context){
         this.context = context;
-        helper = new CharacterInformation(context);
+        helper = new CharacterInformationHelper(context);
     }
 
     public Cursor getAllData(){
         db = helper.getReadableDatabase();
-        String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + ";";
+        String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(sql, null);
 
         return cursor;
@@ -30,7 +30,7 @@ public class GetCharacterData {
 
     public Cursor getCharacter(String name){
         db = helper.getReadableDatabase();
-        String sql = "SELECT * FROM " + CharacterInformation.TABLE_NAME + " WHERE name = ?;";
+        String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + " WHERE name = ?;";
         Cursor cursor = db.rawQuery(sql, new String[]{name});
 
         return cursor;
@@ -51,7 +51,7 @@ public class GetCharacterData {
         values.put("AGI", player.getLUCK());
         values.put("CREATE_AT", dateTime);
 
-        return db.insert(CharacterInformation.TABLE_NAME, null, values);
+        return db.insert(CharacterInformationHelper.TABLE_NAME, null, values);
     }
 
 
@@ -59,7 +59,7 @@ public class GetCharacterData {
         db = helper.getReadableDatabase();
 
         db.delete(
-                CharacterInformation.TABLE_NAME,
+                CharacterInformationHelper.TABLE_NAME,
                 "name = ?",
                 new String[] {name});
     }

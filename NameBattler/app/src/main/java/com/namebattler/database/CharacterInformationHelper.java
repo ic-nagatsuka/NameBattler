@@ -4,13 +4,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class CharacterInformation extends SQLiteOpenHelper {
+public class CharacterInformationHelper extends SQLiteOpenHelper {
 
     static final String DB_NAME = "nameBattler.character";
     public static final String TABLE_NAME = "CHARACTERS";
     static final int DB_VERSION = 1;
 
-    public CharacterInformation(Context context) {
+    public CharacterInformationHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
