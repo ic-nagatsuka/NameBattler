@@ -49,9 +49,9 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
         //選択する職業を表示
         RadioGroup radioGroup = findViewById(R.id.character_make_job_RadioGroup);
-        for (int i = 0; i < AllJob.Job.values().length; i++) {
+        for (int i = 0; i < AllJob.values().length; i++) {
             RadioButton radioBtn = new RadioButton(this);
-            radioBtn.setText(AllJob.Job.values()[i].getName());
+            radioBtn.setText(AllJob.values()[i].getName());
             radioBtn.setTextSize(radioButtonSize);
             radioBtn.setId(i);
             radioGroup.addView(radioBtn);

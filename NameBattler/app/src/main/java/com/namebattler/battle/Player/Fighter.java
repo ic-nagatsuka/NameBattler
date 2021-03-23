@@ -16,7 +16,7 @@ public class Fighter extends Player {
      =============*/
     public Fighter(String name) {
         super(name);
-        setJob(AllJob.Job.FIGHTER.getName());
+        setJob(AllJob.FIGHTER.getName());
         makeAttackText();
     }
 

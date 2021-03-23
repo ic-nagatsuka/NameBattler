@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.namebattler.R;
-import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 
@@ -36,7 +35,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         Cursor cursor = new GetCharacterData(getApplicationContext())
                 .getCharacter(name);
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             //キャラクターデータを表示する
             TextView textView;
             //名前
@@ -44,7 +43,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             textView.setText(cursor.getString(cursor.getColumnIndex("NAME")));
             //職業
             textView = findViewById(R.id.characterMakeConpletion_job);
-            textView.setText(AllJob.Job.values()[cursor.getColumnIndex("JOB")].getName());
+            textView.setText(cursor.getString(cursor.getColumnIndex("JOB")));
             //HP
             textView = findViewById(R.id.characterMakeConpletion_set_hp);
             textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("HP"))));

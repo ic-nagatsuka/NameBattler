@@ -82,7 +82,7 @@ public class BattleStart extends AppCompatActivity {
             enemyParty.appendPlayer(
                     makePlayer(
                             nameData.getEnemyName(),
-                            AllJob.Job.values()[rand.nextInt(AllJob.Job.values().length)].getName(),
+                            AllJob.values()[rand.nextInt(AllJob.values().length)].getName(),
                             enemyParty
                     )
             );
