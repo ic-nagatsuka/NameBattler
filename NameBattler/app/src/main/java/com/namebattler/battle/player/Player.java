@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.namebattler.battle.skill.AbnormalState;
 import com.namebattler.battle.skill.IHeal;
 import com.namebattler.battle.party.Party;
-import com.namebattler.battle.skill.AllSkill;
-import com.namebattler.battle.skill.Skill;
 import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.SkillOfEffectTurn.StateEffect;
 import com.namebattler.battle.strategy.Strategy;
@@ -497,9 +496,9 @@ public abstract class Player {
      * @param skill 使用するスキル
      * @return true : あり	false : なし
      */
-    public boolean checkSameAbnormal(SkillBase skill) {
+    public boolean checkSameAbnormal(AbnormalState skill) {
         for (StateEffect abnormal : turnAbnormalState) {
-            if (abnormal.getSkill().equals(skill)) {
+            if (abnormal.getSkill().getClass().equals(skill.getClass())) {
                 return true;
             }
         }

@@ -1,8 +1,7 @@
 package com.namebattler.battle.player;
 
-import com.namebattler.battle.skill.AllSkill;
-
 import com.namebattler.battle.battlelog.BattleLog;
+import com.namebattler.battle.skill.Paralysis;
 
 
 public class Priest extends Player {
@@ -27,9 +26,7 @@ public class Priest extends Player {
 
 	@Override
 	protected void makeSkill(){
-//		useSkill.add(AllSkill.paralysis);
-//		useSkill.add(AllSkill.poison);
-//		useSkill.add(AllSkill.heel);
+		useSkill.add(new Paralysis());
 	}
 	
 	@Override

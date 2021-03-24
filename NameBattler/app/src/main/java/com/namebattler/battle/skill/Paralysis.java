@@ -16,7 +16,7 @@ public class Paralysis extends SkillBase implements AbnormalState{
 	/*=============
 	 * コンストラクタ
 	 =============*/
-	Paralysis(){
+	public Paralysis(){
 	}
 
 	@Override

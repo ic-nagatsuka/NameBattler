@@ -4,7 +4,7 @@ public enum AllSkill {
     FIRE(new Fire(), "ファイア", 10, 10, 30, 0, 0, 0, false),
     THUNDER(new Fire(), "サンダー", 20, 10, 30, 0, 0, 0, false),
     HEAL(new Heal(), "ヒール", 30, 0, 0, 50, 0, 0, false),
-    PARALYSIS(new Paralysis(), "パライズ", 20, 0, 0, 0, 0, 0, true),
+    PARALYSIS(new Paralysis(), "パライズ", 20, 0, 0, 0, 0, 30, true),
     ;
 
     private SkillBase skill;
