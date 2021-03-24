@@ -5,6 +5,7 @@ public enum AllSkill {
     THUNDER(new Fire(), "サンダー", 20, 10, 30, 0, 0, 0, 0, false),
     HEAL(new Heal(), "ヒール", 30, 0, 0, 50, 0, 0, 0, false),
     PARALYSIS(new Paralysis(), "パライズ", 20, 0, 0, 0, 3, 0, 30, true),
+    POISON(new Poison(), "ポイズン", 10, 0, 0, 0, 3, 30, 100, false),
     ;
 
     private SkillBase skill;
