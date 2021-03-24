@@ -6,7 +6,7 @@ import com.namebattler.battle.player.Player;
 
 import com.namebattler.battle.battlelog.BattleLog;
 
-public class Paralysis extends SkillBase{
+public class Paralysis extends SkillBase implements AbnormalState{
 	/*=============
 	 * フィールド変数
 	 =============*/
@@ -42,6 +42,7 @@ public class Paralysis extends SkillBase{
 
 	}
 
+	@Override
 	public void effect(Player target, int turn){
 
 		if(turn < 0){
