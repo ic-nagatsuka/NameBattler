@@ -29,7 +29,7 @@ public class StrategyChange extends AppCompatActivity {
 
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
         //職業一覧を表示
-        for(int i = 0; i < AllStrategy.values().length; i++){
+        for (int i = 0; i < AllStrategy.values().length; i++) {
             AllStrategy strategy = AllStrategy.values()[i];
             RadioButton radioButton = new RadioButton(this);
             radioButton.setId(i);
@@ -52,7 +52,7 @@ public class StrategyChange extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-               //クリックしたラジオボタンのIDから作戦を選択するように変更する
+                //クリックしたラジオボタンのIDから作戦を選択するように変更する
                 GameManager.myParty.setStrategy(AllStrategy.values()[i].getStrategy());
             }
         });

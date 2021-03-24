@@ -35,7 +35,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         Cursor cursor = new GetCharacterData(getApplicationContext())
                 .getCharacter(name);
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             //キャラクターデータを表示する
             TextView textView;
             //名前

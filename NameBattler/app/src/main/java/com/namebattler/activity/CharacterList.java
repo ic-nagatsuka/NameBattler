@@ -19,7 +19,6 @@ import java.util.List;
 
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
-import com.namebattler.database.CharacterInformation;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 

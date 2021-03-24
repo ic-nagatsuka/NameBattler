@@ -47,10 +47,10 @@ public class GameManager {
         allParty.add(myParty);
         allParty.add(enemyParty);
 
-		if(myParty.getStrategy() == null || enemyParty.getStrategy() == null){
-			myParty.setStrategy(AllStrategy.values()[0].getStrategy());
-			enemyParty.setStrategy(AllStrategy.values()[0].getStrategy());
-		}
+        if (myParty.getStrategy() == null || enemyParty.getStrategy() == null) {
+            myParty.setStrategy(AllStrategy.values()[0].getStrategy());
+            enemyParty.setStrategy(AllStrategy.values()[0].getStrategy());
+        }
 
         addAllPlayer();
 

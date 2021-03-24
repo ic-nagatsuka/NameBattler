@@ -7,13 +7,13 @@ import com.namebattler.battle.battlelog.BattleLog;
 
 public class Priest extends Player {
 
-	/*=============
-	 * コンストラクタ
-	 =============*/
-	public Priest(String name) {
-		super(name);
-		this.setJob(AllJob.PRIEST.getName());
-	}
+    /*=============
+     * コンストラクタ
+     =============*/
+    public Priest(String name) {
+        super(name);
+        this.setJob(AllJob.PRIEST.getName());
+    }
 
 	@Override
 	public  void makeCharacter(){
