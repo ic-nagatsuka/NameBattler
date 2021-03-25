@@ -28,7 +28,7 @@ public class Poison extends SkillBase implements AbnormalState {
 
         } else {
             BattleLog.addLog(defender.getName() + "は毒にかかった！");
-            defender.setAbnormalState(new SkillOfEffectTurn.StateEffect(this, this.skill.getEffectTurn(), stateChar));
+            defender.setAbnormalState(new StateEffect(this, this.skill.getEffectTurn(), stateChar));
         }
 
     }

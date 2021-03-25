@@ -10,7 +10,7 @@ import com.namebattler.battle.skill.AbnormalState;
 import com.namebattler.battle.skill.IHeal;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.skill.SkillBase;
-import com.namebattler.battle.skill.SkillOfEffectTurn.StateEffect;
+import com.namebattler.battle.skill.StateEffect;
 import com.namebattler.battle.strategy.Strategy;
 
 import com.namebattler.battle.battlelog.BattleLog;
