@@ -4,15 +4,19 @@ import com.namebattler.battle.player.Player;
 
 import com.namebattler.battle.battlelog.BattleLog;
 
-public class Heal extends SkillBase{
+public class Heal extends SkillBase implements IHeal{
 
 	
 	/*=============
 	 * コンストラクタ
 	 =============*/
-	Heal(){
+	public Heal(){
 	}
-	
+
+	public boolean terms(Player target){
+		return target.checkDicreasePlayerHp(target.getParty());
+	}
+
 	@Override
 	public void use(Player attacker, Player target){
 		target = selectTarget(attacker);

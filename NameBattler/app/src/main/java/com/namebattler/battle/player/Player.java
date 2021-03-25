@@ -289,7 +289,7 @@ public abstract class Player {
      *
      * @return　使用するスキル
      */
-    public SkillBase randomSelectSkill() {
+    public SkillBase randomSelectSkill(ArrayList<SkillBase> useSkill) {
         SkillBase skill;
         while (true) {
             //スキルをランダムで選ぶ
@@ -313,16 +313,26 @@ public abstract class Player {
      * false:	使えない
      */
     public boolean checkUseSkill() {
-        if (useSkill.size() == 0 ||//使うスキルがない
-                skillMinUseMp() > this.getMP() ||//スキルを使うMPがない
-                //回復スキルはあるが使えない
-                useSkill.size() == 1 &&
-                        useSkill.get(0) instanceof IHeal &&
-                        !checkDicreasePlayerHp(this.getParty())) {
+        if (getUseSkillOnly().size() ==  0 ) {
             return false;
         } else {
             return true;
         }
+    }
+
+    public ArrayList<SkillBase> getUseSkillOnly(){
+        ArrayList<SkillBase> useSkill = new ArrayList<>();
+        for(SkillBase skill : this.getUseSkill()){
+            if(skill.getUseMp() < this.getMP()){
+                if(skill instanceof IHeal && checkDicreasePlayerHp(this.getParty())
+                        || skill instanceof IHeal == false
+                ){
+                    useSkill.add(skill);
+                }
+            }
+        }
+
+        return useSkill;
     }
 
 
@@ -333,7 +343,7 @@ public abstract class Player {
      * @return true:	減少している
      * false: 	減少していない
      */
-    protected boolean checkDicreasePlayerHp(Party party) {
+    public boolean checkDicreasePlayerHp(Party party) {
         heelSkill = false;
         for (Player player : party.getmenbers()) {
             //HPが減っている場合
@@ -457,7 +467,7 @@ public abstract class Player {
         if (checkDicreasePlayerHp(this.getParty())) {
             if (checkUseSkill()) {
                 //ランダムでスキルを使用する
-                useSkill(randomSelectSkill(), target);
+                useSkill(randomSelectSkill(this.getUseSkillOnly()), target);
             } else {
                 //通常攻撃
                 normalAttack(target);

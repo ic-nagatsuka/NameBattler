@@ -28,6 +28,8 @@ public class StrategyOfAttackMagicPriority extends Strategy {
         Player target = randomDefender(defenceParty.getmenbers());
         List<Skill> prioritySkill;//優先スキル
 
+
+
         //優先スキルを探す
 //		prioritySkill = checkPrioritySkill(attacker.getUseSkill());
 //		//優先スキルがあり, mpがある

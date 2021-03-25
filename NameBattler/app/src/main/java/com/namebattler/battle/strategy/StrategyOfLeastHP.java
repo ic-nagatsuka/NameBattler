@@ -21,11 +21,9 @@ public class StrategyOfLeastHP extends Strategy {
 		Player defender = selectDefender(defenderParty);
 
 		if(attacker.checkUseSkill()){
-			SkillBase skill = attacker.randomSelectSkill();
+			SkillBase skill = attacker.randomSelectSkill(attacker.getUseSkillOnly());
 
 			skill.use(attacker, defender);
-
-
 
 		}else{
 			attacker.normalAttack(defender);
