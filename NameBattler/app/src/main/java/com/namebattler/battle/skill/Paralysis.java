@@ -32,7 +32,7 @@ public class Paralysis extends SkillBase implements AbnormalState {
             } else {
                 BattleLog.addLog(defender.getName() + "はしびれた！");
                 //相手に状態異常をつける
-                defender.setAbnormalState(new StateEffect(this, 1, "⚡"));
+                defender.setAbnormalState(new StateEffect(this, skill.getEffectTurn(), "⚡"));
                 defender.setInaction(true);
             }
         } else {
