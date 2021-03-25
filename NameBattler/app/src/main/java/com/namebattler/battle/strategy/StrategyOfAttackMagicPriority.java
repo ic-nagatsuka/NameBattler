@@ -25,11 +25,10 @@ public class StrategyOfAttackMagicPriority extends Strategy {
 
     @Override
     public void action(Player attacker, Party defenceParty) {
-        Skill skill;
         Player target = randomDefender(defenceParty.getmenbers());
         List<Skill> prioritySkill;//優先スキル
 
-		//優先スキルを探す
+        //優先スキルを探す
 //		prioritySkill = checkPrioritySkill(attacker.getUseSkill());
 //		//優先スキルがあり, mpがある
 //		if(prioritySkill.size() != 0 && attacker.checkUseSkill()){
@@ -38,28 +37,29 @@ public class StrategyOfAttackMagicPriority extends Strategy {
 //			//スキルを使用する
 //			attacker.useSkill(skill, target);
 //		}else{
-			//他のスキルを使用する
-			attacker.action(target);
+        //他のスキルを使用する
+        attacker.action(target);
 //		}
-	}
+    }
 
-	/**
-	 * 優先スキルを探す
-	 * @param useSkill プレイヤーの使用スキル
-	 */
-	protected List<Skill> checkPrioritySkill(List<Skill> useSkill){
-		List<Skill> prioritySkill= new ArrayList<>();
-			
-			for(int i = 0; i < skillNum.length; i++){
-				for(Skill skill : useSkill){
-					if(skillNum[i] == skill.getType()){
-						prioritySkill.add(skill);
-					}
-				}
+    /**
+     * 優先スキルを探す
+     *
+     * @param useSkill プレイヤーの使用スキル
+     */
+    protected List<Skill> checkPrioritySkill(List<Skill> useSkill) {
+        List<Skill> prioritySkill = new ArrayList<>();
+
+//			for(int i = 0; i < skillNum.length; i++){
+//				for(Skill skill : useSkill){
+//					if(skillNum[i] == skill.getType()){
+//						prioritySkill.add(skill);
+//					}
+//				}
 //				if(prioritySkill.size() != 0){
 //					return prioritySkill;
 //				}
-        }
+//             }
 
 //			if(skill instanceof SkillOfAttackMagic){
 //				prioritySkill.add(skill);

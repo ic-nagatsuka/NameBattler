@@ -2,7 +2,7 @@ package com.namebattler.battle.skill;
 
 import com.namebattler.battle.player.Player;
 
-public class SkillOfEffectTurn extends Skill {
+public class SkillOfEffectTurn {
 
     public static class StateEffect {
         /*=============
@@ -54,7 +54,6 @@ public class SkillOfEffectTurn extends Skill {
     //コンストラクタ
     //===========
     SkillOfEffectTurn(SkillType type, String name, int useMp, int effectTurn) {
-        super(type, name, useMp);
         this.effectTurn = effectTurn;
     }
 
