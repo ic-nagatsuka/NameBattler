@@ -23,7 +23,9 @@ public class Heal extends SkillBase implements IHeal{
 		BattleLog.addLog(attacker.getName() + "は" + this.getName() + "を唱えた！");
 		usePlayerMp(attacker);
 
-		BattleLog.addLog(target.getName() + "は" + skill.getHealPoint() + "回復した！");
+		int calcHealPoint = Math.min(this.getHealPoint(), target.getMaxHp() - target.getHP());
+
+		BattleLog.addLog(target.getName() + "は" + calcHealPoint + "回復した！");
 		//スキル効果
 		target.setHP(Math.min(target.getHP() + skill.getHealPoint(), target.getMaxHp()));
 	}
