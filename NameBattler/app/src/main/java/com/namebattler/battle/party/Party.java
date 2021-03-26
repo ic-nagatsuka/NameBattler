@@ -37,6 +37,16 @@ public class Party {
         return menbers;
     }
 
+    public List<Player> getAliveMenbers() {
+        ArrayList<Player> aliveMenbers = new ArrayList<>();
+        for(Player player : this.menbers){
+            if(player.getHP() > 0){
+                aliveMenbers.add(player);
+            }
+        }
+
+        return aliveMenbers;
+    }
     /*============
      * setメソッド
      ============*/
