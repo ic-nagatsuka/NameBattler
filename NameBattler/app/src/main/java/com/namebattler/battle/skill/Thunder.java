@@ -23,7 +23,13 @@ public class Thunder extends SkillBase {
 
     }
 
-	@Override
+    @Override
+    public int calcDamage(Player target) {
+        int damage = this.getRandomDamage(this.getminDama(), this.getmaxDama());
+        return damage;
+    }
+
+    @Override
 	protected void initSkill() {
 		skill = AllSkill.THUNDER;
 	}

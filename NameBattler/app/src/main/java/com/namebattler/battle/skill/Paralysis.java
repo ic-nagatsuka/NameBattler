@@ -54,6 +54,11 @@ public class Paralysis extends SkillBase implements AbnormalState {
     }
 
     @Override
+    public int calcDamage(Player target) {
+        return 0;
+    }
+
+    @Override
     public void initSkill() {
         this.skill = AllSkill.PARALYSIS;
     }

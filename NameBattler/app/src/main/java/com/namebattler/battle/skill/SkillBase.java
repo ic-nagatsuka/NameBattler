@@ -14,6 +14,8 @@ public abstract class SkillBase {
 
     public abstract void use(Player attacker, Player defender);
 
+    public abstract int calcDamage(Player target);
+
     protected abstract void initSkill();
 
     public String getName() {

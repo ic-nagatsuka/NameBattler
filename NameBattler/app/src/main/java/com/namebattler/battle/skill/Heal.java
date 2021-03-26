@@ -47,6 +47,11 @@ public class Heal extends SkillBase implements IHeal{
 	}
 
 	@Override
+	public int calcDamage(Player target) {
+		return 0;
+	}
+
+	@Override
 	protected void initSkill() {
 		skill = AllSkill.HEAL;
 	}

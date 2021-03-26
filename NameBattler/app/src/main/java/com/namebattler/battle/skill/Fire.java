@@ -14,6 +14,12 @@ public class Fire extends SkillBase{
         BattleLog.addLog(defender.getName() + "に" + damage + "のダメージ！");
     }
 
+    @Override
+    public int calcDamage(Player target) {
+        int damage = this.getRandomDamage(this.getminDama(), this.getmaxDama());
+
+        return damage;
+    }
 
     @Override
     protected void initSkill() {

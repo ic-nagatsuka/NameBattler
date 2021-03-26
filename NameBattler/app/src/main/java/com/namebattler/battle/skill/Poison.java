@@ -47,6 +47,11 @@ public class Poison extends SkillBase implements AbnormalState {
     }
 
     @Override
+    public int calcDamage(Player target) {
+        return 0;
+    }
+
+    @Override
     protected void initSkill() {
         skill = AllSkill.POISON;
     }
