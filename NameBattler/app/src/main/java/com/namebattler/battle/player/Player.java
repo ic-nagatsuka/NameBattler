@@ -323,7 +323,7 @@ public abstract class Player {
     public ArrayList<SkillBase> getUseSkillOnly(){
         ArrayList<SkillBase> useSkill = new ArrayList<>();
         for(SkillBase skill : this.getUseSkill()){
-            if(skill.getUseMp() < this.getMP()){
+            if(skill.getUseMp() <= this.getMP()){
                 if(skill instanceof IHeal && checkDicreasePlayerHp(this.getParty())
                         || skill instanceof IHeal == false
                 ){
