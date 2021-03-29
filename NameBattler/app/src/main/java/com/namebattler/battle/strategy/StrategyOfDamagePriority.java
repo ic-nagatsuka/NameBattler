@@ -3,112 +3,61 @@ package com.namebattler.battle.strategy;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.AllSkill;
+import com.namebattler.battle.skill.SkillBase;
 
 
-public class StrategyOfDamagePriority extends Strategy{
+public class StrategyOfDamagePriority extends Strategy {
 
-	/*=============
-	 * コンストラクタ
-	 =============*/
-	public StrategyOfDamagePriority(){
-		this.name = "ダメージ与えて";
-	}
+    boolean normalAttack;
 
-	@Override
-	public void action(Player attacker, Party defenceParty){
-//		Player defender = randomDefender(defenceParty.getmenbers());
-//		int highDamage = 0;	//スキルの最大ダメージ計算値
-//		AllSkill.Skills useSkill;		//使用スキル
-//		int damage = 0;			//スキルのダメージ計算値
-//
-//		boolean skillAttack = false;//スキルの使用
-//
-//		//攻撃を一番与えそうな攻撃方法を選ぶ
-//		//スキルが使える場合
-//		if(attacker.checkUseSkill()){
-//			//スキルがないプレイヤーだとエラーが出るのでここで初期化
-//			useSkill = attacker.getUseSkill().get(0);
-//			//攻撃できるスキルを探す
-//			for(AllSkill.Skills skill : attacker.getUseSkill()){
-//
-//				//スキルの計算ダメージ
-//				damage = this.checkSkillDamage(skill);
-//				try{
-//					//状態異常スキルの場合
-//					AllSkill.effectTurn = (SkillOfEffectTurn)skill;
-//
-//					//同じ状態異常にかかっている場合
-//					if(defender.checkSameAbnormal(AllSkill.effectTurn)){
-//						damage = 0;
-//					}
-//				}catch(Exception e){}
-//
-//				//ダメージが高い場合
-//				if(damage > highDamage){
-//					//スキルをセットする
-//					useSkill = skill;
-//					//ダメージを更新する
-//					highDamage = damage;
-//					//スキルを使える条件に変える
-//					skillAttack = true;
-//				}
-//			}
-//
-//			//通常攻撃のダメージがスキルダメージより多ければ使う
-//			if(attacker.calcDamage(defender)*2 > highDamage || highDamage == 0)
-//			{
-//				attacker.normalAttack(defender);
-//			}else if(skillAttack){
-//				//選ばれたスキルを使う
-//				attacker.useSkill(useSkill, defender);
-//			}else{
-//				//選ばれるスキルがなければ通常の流れ
-//				attacker.action(defender);
-//			}
-//
-//		}else{
-//			//使えるスキルがなければ通常攻撃
-//			attacker.normalAttack(defender);
-//		}
+    Player target;
+    SkillBase selectSkill;
 
-	}
+    /*=============
+     * コンストラクタ
+     =============*/
+    public StrategyOfDamagePriority() {
+        this.name = "ダメージ与えて";
+    }
 
-	/**
-	 * スキルのダメージ計算値を返す
-	 * @param useSkill プレイヤーが使用できるスキル
-	 * @return スキルダメージ計算値
-	 */
-	public int checkSkillDamage(AllSkill useSkill){
-		int i = 0;
-		int damage = 0;//ダメージ値
+    @Override
+    public void action(Player attacker, Party defenceParty) {
+		normalAttack = true;
 
-//		//スキルのクラスを見つける
-//		while(true){
-//			try{
-//				switch(i){
-//				case 0 :
-//					SkillOfAttackMagic skill1 = (SkillOfAttackMagic)useSkill;
-//					damage = skill1.getCalcDamage();
-//					break;
-//
-//				case 1 :
-//					SkillOfDamageAbnormalState skill2 = (SkillOfDamageAbnormalState)useSkill;
-//					damage = skill2.getCalcDamage();
-//					break;
-//
-//				default:
-//					//当てはまらない
-//				}
-//				break;//処理を抜ける
-//
-//			}catch(Exception e){
-//				//次の番号にする
-//				i++;
-//			}
-//
-//		}
-		return damage;
-	}
+        selectAction(attacker, defenceParty);
 
+
+        if (normalAttack) {
+            attacker.normalAttack(target);
+        } else {
+            attacker.useSkill(selectSkill, target);
+        }
+
+    }
+
+    private void selectAction(Player attacker, Party defenceParty) {
+        if (attacker.getUseSkillOnly().size() != 0) {
+            selectSkill = attacker.getUseSkillOnly().get(0);
+        }
+        target = defenceParty.getAliveMenbers().get(0);
+        int calcDamage = attacker.calcDamage(target);
+
+        for (Player player : defenceParty.getAliveMenbers()) {
+
+            if (calcDamage < attacker.calcDamage(player)) {
+                target = player;
+                calcDamage = player.calcDamage(player);
+                normalAttack = true;
+            }
+            for (SkillBase skill : attacker.getUseSkillOnly()) {
+
+                if (calcDamage < skill.calcDamage(player)) {
+                    target = player;
+                    selectSkill = skill;
+                    normalAttack = false;
+                }
+            }
+        }
+    }
 
 }

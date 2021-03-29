@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
-import com.namebattler.battle.skill.Skill;
+import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.SkillType;
 
 public class StrategyOfAttackMagicPriority extends Strategy {
@@ -26,7 +26,7 @@ public class StrategyOfAttackMagicPriority extends Strategy {
     @Override
     public void action(Player attacker, Party defenceParty) {
         Player target = randomDefender(defenceParty.getmenbers());
-        List<Skill> prioritySkill;//優先スキル
+        List<SkillBase> prioritySkill;//優先スキル
 
 
 
@@ -49,8 +49,8 @@ public class StrategyOfAttackMagicPriority extends Strategy {
      *
      * @param useSkill プレイヤーの使用スキル
      */
-    protected List<Skill> checkPrioritySkill(List<Skill> useSkill) {
-        List<Skill> prioritySkill = new ArrayList<>();
+    protected List<SkillBase> checkPrioritySkill(List<SkillBase> useSkill) {
+        List<SkillBase> prioritySkill = new ArrayList<>();
 
 //			for(int i = 0; i < skillNum.length; i++){
 //				for(Skill skill : useSkill){
