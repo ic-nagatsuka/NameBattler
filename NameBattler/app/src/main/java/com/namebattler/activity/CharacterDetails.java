@@ -33,31 +33,31 @@ public class CharacterDetails extends AppCompatActivity {
             TextView text;
 
             text = findViewById(R.id.characterDetails_name);
-            text.setText(cursor.getString(0));
+            text.setText(cursor.getString(cursor.getColumnIndex("NAME")));
 
             text = findViewById(R.id.characterDetails_job);
-            text.setText(AllJob.values()[cursor.getInt(1)].getName());
+            text.setText(AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
 
             text = findViewById(R.id.characterDetails_hp);
-            text.setText(cursor.getString(2));
+            text.setText(cursor.getString(cursor.getColumnIndex("HP")));
 
             text = findViewById(R.id.characterDetails_mp);
-            text.setText(cursor.getString(3));
+            text.setText(cursor.getString(cursor.getColumnIndex("MP")));
 
             text = findViewById(R.id.characterDetails_str);
-            text.setText(cursor.getString(4));
+            text.setText(cursor.getString(cursor.getColumnIndex("STR")));
 
             text = findViewById(R.id.characterDetails_def);
-            text.setText(cursor.getString(5));
+            text.setText(cursor.getString(cursor.getColumnIndex("DEF")));
 
             text = findViewById(R.id.characterDetails_luck);
-            text.setText(cursor.getString(6));
+            text.setText(cursor.getString(cursor.getColumnIndex("LUCK")));
 
             text = findViewById(R.id.characterDetails_agi);
-            text.setText(cursor.getString(7));
+            text.setText(cursor.getString(cursor.getColumnIndex("AGI")));
 
             text = findViewById(R.id.characterDetails_MakeDay);
-            text.setText("作成日 : " + cursor.getString(8));
+            text.setText("作成日 : " + cursor.getString(cursor.getColumnIndex("CREATE_AT")));
         }
 
 
