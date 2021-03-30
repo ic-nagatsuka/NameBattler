@@ -117,7 +117,7 @@
         android:text="AGI"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="@+id/characterMakeConpletion_status"
-        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_text_def" />
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_text_luck" />
 
     <TextView
         android:id="@+id/characterMakeConpletion_text_luck"
@@ -126,7 +126,7 @@
         android:text="LUCK"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="@+id/characterMakeConpletion_status"
-        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_text_agi" />
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_text_def" />
 
     <TextView
         android:id="@+id/characterMakeConpletion_set_hp"
@@ -177,8 +177,8 @@
         android:gravity="right"
         android:text="999"
         android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/characterMakeConpletion_set_def"
-        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_set_def" />
+        app:layout_constraintEnd_toEndOf="@+id/characterMakeConpletion_set_luck"
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_set_luck" />
 
     <TextView
         android:id="@+id/characterMakeConpletion_set_luck"
@@ -187,7 +187,7 @@
         android:gravity="right"
         android:text="999"
         android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/characterMakeConpletion_set_agi"
-        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_set_agi" />
+        app:layout_constraintEnd_toEndOf="@+id/characterMakeConpletion_set_def"
+        app:layout_constraintTop_toBottomOf="@+id/characterMakeConpletion_set_def" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

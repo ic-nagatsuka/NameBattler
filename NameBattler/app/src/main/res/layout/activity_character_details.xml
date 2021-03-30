@@ -63,8 +63,8 @@
         android:layout_height="wrap_content"
         android:text="LUCK"
         android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="@+id/characterDetails_text_agi"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_agi" />
+        app:layout_constraintStart_toStartOf="@+id/characterDetails_text_def"
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_def" />
 
     <TextView
         android:id="@+id/characterDetails_text_agi"
@@ -72,8 +72,8 @@
         android:layout_height="wrap_content"
         android:text="AGI"
         android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="@+id/characterDetails_status"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_def" />
+        app:layout_constraintStart_toStartOf="@+id/characterDetails_text_luck"
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_luck" />
 
     <TextView
         android:id="@+id/characterDetails_text_mp"
@@ -147,8 +147,8 @@
         android:layout_height="wrap_content"
         android:text="999"
         android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/characterDetails_def"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_def" />
+        app:layout_constraintEnd_toEndOf="@+id/characterDetails_luck"
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_luck" />
 
     <TextView
         android:id="@+id/characterDetails_luck"
@@ -156,8 +156,8 @@
         android:layout_height="wrap_content"
         android:text="999"
         android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/characterDetails_agi"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_agi" />
+        app:layout_constraintEnd_toEndOf="@+id/characterDetails_def"
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_def" />
 
     <TextView
         android:id="@+id/characterDetails_MakeDay"
@@ -167,7 +167,7 @@
         android:text="作成日 : "
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="@+id/characterDetails_text_luck"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_luck" />
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_agi" />
 
     <Button
         android:id="@+id/characterDetails_DeleteButton"
