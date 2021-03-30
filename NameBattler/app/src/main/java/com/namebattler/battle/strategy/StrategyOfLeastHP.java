@@ -2,26 +2,36 @@ package com.namebattler.battle.strategy;
 
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
+import com.namebattler.battle.skill.SkillBase;
 
 public class StrategyOfLeastHP extends Strategy {
 	/*=============
 	 * フィールド変数
 	 =============*/
 
-    /*=============
-     * コンストラクタ
-     =============*/
-    public StrategyOfLeastHP() {
-        this.name = "体力少ない";
-    }
+	/*=============
+	 * コンストラクタ
+	 =============*/
+	public StrategyOfLeastHP() {
+		this.name = "体力少ない";
+	}
+	
+	@Override
+	public void action(Player attacker, Party defenderParty){
+		Player defender = selectDefender(defenderParty);
 
-    @Override
-    public void action(Player attacker, Party defenderParty) {
-        Player defender;
-        defender = selectDefender(defenderParty);
-        //通常の作戦に戻る
-        attacker.action(defender);
-    }
+		if(attacker.checkUseSkill()){
+			SkillBase skill = attacker.randomSelectSkill(attacker.getUseSkillOnly());
+
+			skill.use(attacker, defender);
+
+		}else{
+			attacker.normalAttack(defender);
+		}
+
+//		//通常の作戦に戻る
+//		attacker.action(defender);
+	}
 
     /**
      * 探したステータスが一番低いプレイヤーを返す

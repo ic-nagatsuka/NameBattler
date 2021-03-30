@@ -5,27 +5,16 @@ import com.namebattler.battle.player.Player;
 import com.namebattler.battle.battlelog.BattleLog;
 
 
-public class SkillOfDamageAbnormalState extends SkillOfEffectTurn {
+public class Poison extends SkillBase implements AbnormalState {
     /*=============
      * フィールド変数
      =============*/
-    int turnDama;
     String stateChar = "毒";
 
     /*=============
      * コンストラクタ
      =============*/
-    SkillOfDamageAbnormalState(SkillType type, String name, int useMp, int effectTurn, int turnDama) {
-        super(type, name, useMp, effectTurn);
-        this.turnDama = turnDama;
-    }
-
-
-    /*============
-     * Get
-     ============*/
-    public int getCalcDamage() {
-        return this.turnDama;
+    public Poison() {
     }
 
 
@@ -34,12 +23,12 @@ public class SkillOfDamageAbnormalState extends SkillOfEffectTurn {
         BattleLog.addLog(attacker.getName() + "は" + this.getName() + "を唱えた！");
         usePlayerMp(attacker);
 
-        if (defender.checkSameAbnormal(AllSkill.poison)) {
+        if (defender.checkSameAbnormal(this)) {
             BattleLog.addLog(defender.getName() + "はすでにかかっている！");
 
         } else {
             BattleLog.addLog(defender.getName() + "は毒にかかった！");
-            defender.setAbnormalState(new StateEffect(AllSkill.poison, this.effectTurn, stateChar));
+            defender.setAbnormalState(new StateEffect(this, this.skill.getEffectTurn(), stateChar));
         }
 
     }
@@ -50,11 +39,22 @@ public class SkillOfDamageAbnormalState extends SkillOfEffectTurn {
             BattleLog.addLog(target.getName() + "の毒が治った！");
         } else {
             BattleLog.addLog(target.getName() + "は毒にかかっている！");
-            BattleLog.addLog(target.getName() + "は" + this.turnDama + "のダメージを受けた！");
-            target.damage(turnDama);
+
+            int damage = this.skill.getTurnDama();
+            BattleLog.addLog(target.getName() + "は" + damage + "のダメージを受けた！");
+            target.damage(damage);
         }
     }
 
+    @Override
+    public int calcDamage(Player target) {
+        return 0;
+    }
+
+    @Override
+    protected void initSkill() {
+        skill = AllSkill.POISON;
+    }
 }
 
 

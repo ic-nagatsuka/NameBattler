@@ -8,17 +8,13 @@ public enum AllJob {
     BOUNCER("ボール"),
     ;
 
-    private String name;
+	private String name;
+	AllJob(String name){
+		this.name = name;
+	}
 
-    AllJob(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
+	public String getName(){
+		return this.name;
+	}
 }
-
-
-
 

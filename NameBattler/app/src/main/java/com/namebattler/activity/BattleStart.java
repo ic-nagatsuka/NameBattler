@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.namebattler.fragment.TitleFragment;
+import com.namebattler.battle.player.AllJob;
 import com.namebattler.option.Option;
 import com.namebattler.R;
-import com.namebattler.battle.player.AllJob;
+import com.namebattler.fragment.TitleFragment;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.enemydata.Enemy;

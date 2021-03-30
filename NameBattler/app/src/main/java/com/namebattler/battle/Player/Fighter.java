@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.namebattler.battle.battlelog.BattleLog;
+import com.namebattler.battle.skill.Fire;
 
 
-public class Fighter extends Player {
+public class Fighter extends Player{
 
 
-    List<String> attText = new ArrayList<>();    //攻撃テキスト
+    List<String> attText = new ArrayList<>();	//攻撃テキスト
 
     /*=============
      * コンストラクタ
@@ -21,7 +22,7 @@ public class Fighter extends Player {
     }
 
     @Override
-    public void makeCharacter() {
+    public  void makeCharacter(){
         this.hp = getNumber(0, 200) + 100;
         this.mp = getNumber(1, 0) + 0;
         this.str = getNumber(2, 70) + 30;
@@ -31,12 +32,12 @@ public class Fighter extends Player {
     }
 
     @Override
-    protected void makeSkill() {
-        //	this.useSkill.add();
+    protected void makeSkill(){
+        setUseSkill(new Fire());
     }
 
     //攻撃テキスト
-    protected void makeAttackText() {
+    protected void makeAttackText(){
         attText.add("パンチをした！");
         attText.add("キックをした！");
         attText.add("タックルをした！");
@@ -44,8 +45,8 @@ public class Fighter extends Player {
     }
 
     @Override
-    public void normalAttack(Player target) {
-        BattleLog.addLog(this.name + "は" + attText.get(rand.nextInt(attText.size())));
+    public void normalAttack(Player target){
+        BattleLog.addLog(this.name +"は" + attText.get( rand.nextInt(attText.size())));
 
         super.normalAttack(target);
     }

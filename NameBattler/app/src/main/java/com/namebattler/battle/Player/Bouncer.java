@@ -3,6 +3,8 @@ package com.namebattler.battle.player;
 import com.namebattler.battle.skill.AllSkill;
 
 import com.namebattler.battle.battlelog.BattleLog;
+import com.namebattler.battle.skill.Fire;
+import com.namebattler.battle.skill.Heal;
 
 public class Bouncer extends Player{
 
@@ -27,8 +29,8 @@ public class Bouncer extends Player{
 	}
 	@Override
 	protected void makeSkill(){
-		useSkill.add(AllSkill.fire);
-		useSkill.add(AllSkill.heel);
+		useSkill.add(new Fire());
+		useSkill.add(new Heal());
 	}
 		
 	@Override

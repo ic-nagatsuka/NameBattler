@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
-import com.namebattler.battle.skill.Skill;
+import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.SkillType;
 
 public class StrategyOfAttackMagicPriority extends Strategy {
@@ -25,22 +25,23 @@ public class StrategyOfAttackMagicPriority extends Strategy {
 
     @Override
     public void action(Player attacker, Party defenceParty) {
-        Skill skill;
         Player target = randomDefender(defenceParty.getmenbers());
-        List<Skill> prioritySkill;//優先スキル
+        List<SkillBase> prioritySkill;//優先スキル
+
+
 
         //優先スキルを探す
-        prioritySkill = checkPrioritySkill(attacker.getUseSkill());
-        //優先スキルがあり, mpがある
-        if (prioritySkill.size() != 0 && attacker.checkUseSkill()) {
-            //優先スキルをランダムで選ぶ
-            skill = prioritySkill.get(rand.nextInt(prioritySkill.size()));
-            //スキルを使用する
-            attacker.useSkill(skill, target);
-        } else {
-            //他のスキルを使用する
-            attacker.action(target);
-        }
+//		prioritySkill = checkPrioritySkill(attacker.getUseSkill());
+//		//優先スキルがあり, mpがある
+//		if(prioritySkill.size() != 0 && attacker.checkUseSkill()){
+//			//優先スキルをランダムで選ぶ
+//			skill = prioritySkill.get(rand.nextInt(prioritySkill.size()));
+//			//スキルを使用する
+//			attacker.useSkill(skill, target);
+//		}else{
+        //他のスキルを使用する
+        attacker.action(target);
+//		}
     }
 
     /**
@@ -48,19 +49,19 @@ public class StrategyOfAttackMagicPriority extends Strategy {
      *
      * @param useSkill プレイヤーの使用スキル
      */
-    protected List<Skill> checkPrioritySkill(List<Skill> useSkill) {
-        List<Skill> prioritySkill = new ArrayList<>();
+    protected List<SkillBase> checkPrioritySkill(List<SkillBase> useSkill) {
+        List<SkillBase> prioritySkill = new ArrayList<>();
 
-        for (int i = 0; i < skillNum.length; i++) {
-            for (Skill skill : useSkill) {
-                if (skillNum[i] == skill.getType()) {
-                    prioritySkill.add(skill);
-                }
-            }
+//			for(int i = 0; i < skillNum.length; i++){
+//				for(Skill skill : useSkill){
+//					if(skillNum[i] == skill.getType()){
+//						prioritySkill.add(skill);
+//					}
+//				}
 //				if(prioritySkill.size() != 0){
 //					return prioritySkill;
 //				}
-        }
+//             }
 
 //			if(skill instanceof SkillOfAttackMagic){
 //				prioritySkill.add(skill);

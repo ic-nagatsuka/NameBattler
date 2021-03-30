@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.namebattler.battle.skill.AbnormalState;
+import com.namebattler.battle.skill.IHeal;
 import com.namebattler.battle.party.Party;
-import com.namebattler.battle.skill.AllSkill;
-import com.namebattler.battle.skill.Skill;
-import com.namebattler.battle.skill.SkillOfEffectTurn.StateEffect;
+import com.namebattler.battle.skill.SkillBase;
+import com.namebattler.battle.skill.StateEffect;
 import com.namebattler.battle.strategy.Strategy;
 
 import com.namebattler.battle.battlelog.BattleLog;
+
 
 public abstract class Player {
 
@@ -34,7 +36,7 @@ public abstract class Player {
     protected boolean counter;                    //カウンター使用
 
     //使用スキル
-    protected List<Skill> useSkill = new ArrayList<>();
+    protected List<SkillBase> useSkill = new ArrayList<>();
     //かかっている状態異常
     public List<StateEffect> turnAbnormalState = new ArrayList<>();
 
@@ -141,7 +143,7 @@ public abstract class Player {
         return this.counter;
     }
 
-    public List<Skill> getUseSkill() {
+    public List<SkillBase> getUseSkill() {
         return this.useSkill;
     }
 
@@ -200,6 +202,9 @@ public abstract class Player {
         this.beforeHp = beforeHp;
     }
 
+    protected void setUseSkill(SkillBase skill) {
+        this.useSkill.add(skill);
+    }
     /*
      * protected
      */
@@ -265,11 +270,11 @@ public abstract class Player {
      * @param skill  使用スキル
      * @param target 攻撃されるプレイヤー
      */
-    public void useSkill(Skill skill, Player target) {
+    public void useSkill(SkillBase skill, Player target) {
         //回復スキルだった場合回復するプレイヤーを選択する
-        if (skill.getType() == AllSkill.HEEL) {
-            target = this.heelTargetHP(this.getParty().getmenbers());
-        }
+//		if(skill.getType() == AllSkill.HEEL){
+//			target = this.heelTargetHP(this.getParty().getmenbers());
+//		}
         //スキルを使用する
         skill.use(this, target);
         //戦闘不能判定
@@ -284,17 +289,17 @@ public abstract class Player {
      *
      * @return　使用するスキル
      */
-    private Skill randomSelectSkill() {
-        Skill skill;
+    public SkillBase randomSelectSkill(ArrayList<SkillBase> useSkill) {
+        SkillBase skill;
         while (true) {
             //スキルをランダムで選ぶ
             skill = useSkill.get(rand.nextInt(useSkill.size()));
             //MPの確認
-            if (skill.getUseMP() <= this.getMP()) {
-                //回復スキルが使えるか確認
-                if (skill.getType() == AllSkill.HEEL && !checkDicreasePlayerHp(this.getParty())) {
-                    continue;
-                }
+            if (skill.getUseMp() <= this.getMP()) {
+//				//回復スキルが使えるか確認
+//				if(skill.getType() == AllSkill.HEEL && !checkDicreasePlayerHp(this.getParty())){
+//					continue;
+//				}
                 return skill;
             }
         }
@@ -308,18 +313,26 @@ public abstract class Player {
      * false:	使えない
      */
     public boolean checkUseSkill() {
-        while (true) {
-            if (useSkill.size() == 0 ||//使うスキルがない
-                    skillMinUseMp() > this.getMP() ||//スキルを使うMPがない
-                    //回復スキルはあるが使えない
-                    useSkill.size() == 1 &&
-                            useSkill.get(0).getType() == AllSkill.HEEL &&
-                            !checkDicreasePlayerHp(this.getParty())) {
-                return false;
-            } else {
-                return true;
+        if (getUseSkillOnly().size() ==  0 ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public ArrayList<SkillBase> getUseSkillOnly(){
+        ArrayList<SkillBase> useSkill = new ArrayList<>();
+        for(SkillBase skill : this.getUseSkill()){
+            if(skill.getUseMp() <= this.getMP()){
+                if(skill instanceof IHeal && checkDicreasePlayerHp(this.getParty())
+                        || skill instanceof IHeal == false
+                ){
+                    useSkill.add(skill);
+                }
             }
         }
+
+        return useSkill;
     }
 
 
@@ -330,7 +343,7 @@ public abstract class Player {
      * @return true:	減少している
      * false: 	減少していない
      */
-    protected boolean checkDicreasePlayerHp(Party party) {
+    public boolean checkDicreasePlayerHp(Party party) {
         heelSkill = false;
         for (Player player : party.getmenbers()) {
             //HPが減っている場合
@@ -363,29 +376,6 @@ public abstract class Player {
             }
         }
 
-        return target;
-    }
-
-    /**
-     * MPの割合が一番少ないプレイヤーを選ぶ
-     *
-     * @param party 攻撃側パーティー
-     * @return 回復されるプレイヤー
-     */
-    private Player heelTargetMP(List<Player> party) {
-        double percent;    //MPの割合
-        double minPercent = party.get(0).getMP() * party.get(0).getMaxMp();
-
-        Player target = party.get(0);
-
-        //MPの割合が一番少ないプレイヤーにする
-        for (Player player : party) {
-            percent = (double) player.getMP() / (double) player.getMaxHp() * 100;
-            if (percent < minPercent) {
-                target = player;
-                minPercent = percent;
-            }
-        }
         return target;
     }
 
@@ -474,10 +464,10 @@ public abstract class Player {
     public void action(Player target) {
         this.readyCounter(target);
 
-        if ((checkDicreasePlayerHp(this.getParty()))) {
+        if (checkDicreasePlayerHp(this.getParty())) {
             if (checkUseSkill()) {
                 //ランダムでスキルを使用する
-                useSkill(randomSelectSkill(), target);
+                useSkill(randomSelectSkill(this.getUseSkillOnly()), target);
             } else {
                 //通常攻撃
                 normalAttack(target);
@@ -516,9 +506,9 @@ public abstract class Player {
      * @param skill 使用するスキル
      * @return true : あり	false : なし
      */
-    public boolean checkSameAbnormal(Skill skill) {
+    public boolean checkSameAbnormal(AbnormalState skill) {
         for (StateEffect abnormal : turnAbnormalState) {
-            if (abnormal.getSkill().equals(skill)) {
+            if (abnormal.getSkill().getClass().equals(skill.getClass())) {
                 return true;
             }
         }
@@ -584,10 +574,10 @@ public abstract class Player {
      * @return スキルの最小消費MP
      */
     private int skillMinUseMp() {
-        int minMp = useSkill.get(0).getUseMP();
-        for (Skill skill : useSkill) {
-            if (skill.getUseMP() < minMp) {
-                minMp = skill.getUseMP();
+        int minMp = useSkill.get(0).getUseMp();
+        for (SkillBase skill : useSkill) {
+            if (skill.getUseMp() < minMp) {
+                minMp = skill.getUseMp();
             }
         }
         return minMp;

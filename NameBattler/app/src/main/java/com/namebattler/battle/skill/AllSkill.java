@@ -1,50 +1,76 @@
 package com.namebattler.battle.skill;
 
-public class AllSkill {
-	/*=============
-	 * フィールド変数
-	 =============*/
+public enum AllSkill {
+    FIRE(new Fire(), "ファイア", 10, 10, 30, 0, 0, 0, 0, false),
+    THUNDER(new Fire(), "サンダー", 20, 10, 30, 0, 0, 0, 0, false),
+    HEAL(new Heal(), "ヒール", 30, 0, 0, 50, 0, 0, 0, false),
+    PARALYSIS(new Paralysis(), "パライズ", 20, 0, 0, 0, 3, 0, 30, true),
+    POISON(new Poison(), "ポイズン", 10, 0, 0, 0, 3, 30, 100, false),
+    ;
 
-    /*=============
-     * コンストラクタ
-     =============*/
-    public AllSkill() {
+    private SkillBase skill;
+    private String name;
+    private int useMp;
+    private int minDama;
+    private int maxDama;
+    private int healPoint;
+    private int effectTurn;
+    private int turnDama;
+    private int successRate;
+    private boolean inaction;
 
+    AllSkill(SkillBase skill, String name, int useMp, int minDama, int maxDama, int healPoint, int effectTurn, int turnDama, int successRate, boolean inaction) {
+        this.skill = skill;
+        this.name = name;
+        this.useMp = useMp;
+        this.minDama = minDama;
+        this.maxDama = maxDama;
+        this.healPoint = healPoint;
+        this.effectTurn = effectTurn;
+        this.turnDama = turnDama;
+        this.successRate = successRate;
+        this.inaction = inaction;
     }
 
-    /*
-     * =============スキルタイプ一覧=============
-     */
+    public SkillBase getSkill() {
+        return this.skill;
+    }
 
-    public static SkillType ATTACKMAGIC = new SkillType(0);
-    public static SkillType HEEL = new SkillType(1);
-    public static SkillType ABNORMALSTATE = new SkillType(2);
+    public String getName() {
+        return this.name;
+    }
 
-//	static SkillType =new SkillType();
+    public int getUseMp() {
+        return this.useMp;
+    }
 
-    /*
-     * ===========スキルインスタンス一覧===========
-     */
-    public static SkillOfAttackMagic magicSkill;
-    public static SkillOfHeel heelSkill;
-    public static SkillOfHeel heelHpSkill;
-    public static SkillOfEffectTurn effectTurn;
-    public static SkillOfDamageAbnormalState danageState;
-    public static SkillOfAbnormalState_Inaction inactionState;
+    public int getminDama() {
+        return this.minDama;
+    }
 
-    /*
-     * ========スキル一覧===========
-     */
-    public static SkillOfAttackMagic fire = new SkillOfAttackMagic
-            (ATTACKMAGIC, "ファイア", 10, 10, 30);
-    public static SkillOfAttackMagic thunder = new SkillOfAttackMagic
-            (ATTACKMAGIC, "サンダー", 20, 10, 30);
-    public static SkillOfAbnormalState_Inaction paralysis = new SkillOfAbnormalState_Inaction
-            (ABNORMALSTATE, "パライズ", 10, 3, 20);
-    public static SkillOfDamageAbnormalState poison = new SkillOfDamageAbnormalState
-            (ABNORMALSTATE, "ポイズン", 10, 3, 30);
-    public static SkillOfHeelHP heel = new SkillOfHeelHP
-            (HEEL, "ヒール", 20, 50);
+    public int getmaxDama() {
+        return this.maxDama;
+    }
+
+    public int getHealPoint() {
+        return this.healPoint;
+    }
+
+    public int getEffectTurn() {
+        return this.effectTurn;
+    }
+
+    public int getTurnDama() {
+        return this.turnDama;
+    }
+
+    public int getSuccessRate() {
+        return this.successRate;
+    }
+
+    public Boolean getInaction() {
+        return this.inaction;
+    }
 
 }
 
