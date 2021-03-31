@@ -57,12 +57,12 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             //DEF
             textView = findViewById(R.id.characterMakeConpletion_set_def);
             textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("DEF"))));
-            //AGI
-            textView = findViewById(R.id.characterMakeConpletion_set_agi);
-            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("AGI"))));
             //LUCK
             textView = findViewById(R.id.characterMakeConpletion_set_luck);
             textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("LUCK"))));
+            //AGI
+            textView = findViewById(R.id.characterMakeConpletion_set_agi);
+            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("AGI"))));
         }
 
         //続けて作成するボタン
