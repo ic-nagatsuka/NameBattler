@@ -89,6 +89,7 @@ public class CharacterOrganization extends AppCompatActivity {
         String name;
         String job;
         String status;
+        boolean isClicked;
 
         Status(String name, String job, String status) {
             this.name = name;
@@ -109,6 +110,13 @@ public class CharacterOrganization extends AppCompatActivity {
             return this.status;
         }
 
+        public boolean getIsClick(){
+            return this.isClicked;
+        }
+
+        public void setClick(boolean isClicked){
+            this.isClicked = isClicked;
+        }
 
     }
 }
