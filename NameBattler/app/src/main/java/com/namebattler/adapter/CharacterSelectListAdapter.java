@@ -76,18 +76,25 @@ public class CharacterSelectListAdapter extends BaseAdapter {
             return view;
         }
 
+        final CharacterOrganization.Status player = status.get(i);
         TextView text = view.findViewById(R.id.character_organization_listView_status_name);
-        text.setText(status.get(i).getName());
+        text.setText(player.getName());
 
         text = view.findViewById(R.id.character_organization_listView_status_job);
-        text.setText(status.get(i).getJob());
+        text.setText(player.getJob());
 
         text = view.findViewById(R.id.character_organization_listView_status);
-        text.setText(status.get(i).getStatus());
+        text.setText(player.getStatus());
 
 
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
         radioButton.setVisibility(View.VISIBLE);
+
+        if(player.getIsClick()){
+            radioButton.setChecked(true);
+        }else{
+            radioButton.setChecked(false);
+        }
 
         final View convertView = view;
         radioButton.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +109,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
 
                 if (!hasName(name)) {
                     if (count < partyPlayerNum) {
+                        player.setClick(true);
                         count++;
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
@@ -112,8 +120,10 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                         radioButton.setChecked(false);
                     }
                 } else {
+                    player.setClick(false);
                     count--;
                     radioButton.setChecked(false);
+
 
                     for (int i = 0; i < myParty.getmenbers().size(); i++) {
                         Player player = myParty.getmenbers().get(i);
