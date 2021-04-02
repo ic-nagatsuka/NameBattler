@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.namebattler.R;
 import com.namebattler.activity.CharacterOrganization;
+import com.namebattler.battle.GameManager;
 import com.namebattler.database.CharacterInformationHelper;
 import com.namebattler.battle.player.Player;
 
@@ -37,7 +38,6 @@ public class CharacterSelectListAdapter extends BaseAdapter {
     SQLiteDatabase db;
     Cursor cursor;
     String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + ";";
-    int count = 0;
 
     public CharacterSelectListAdapter(Context context, View v, List<CharacterOrganization.Status> status){
         this.context = context;
@@ -108,9 +108,8 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                 String name = textView.getText().toString();
 
                 if (!hasName(name)) {
-                    if (count < partyPlayerNum) {
+                    if (myParty.getmenbers().size() < partyPlayerNum) {
                         player.setClick(true);
-                        count++;
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
                         myParty.appendPlayer(
@@ -121,7 +120,6 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                     }
                 } else {
                     player.setClick(false);
-                    count--;
                     radioButton.setChecked(false);
 
 
@@ -135,7 +133,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
 
                 Button btn = startButton.findViewById(R.id.character_organization_start);
 
-                btn.setText("このパーティーで開始(" + count + "/3)");
+                btn.setText("このパーティーで開始(" + myParty.getmenbers().size() + "/3)");
 
             }
         });
