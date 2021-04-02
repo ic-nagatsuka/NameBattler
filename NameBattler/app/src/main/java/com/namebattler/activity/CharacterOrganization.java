@@ -20,6 +20,7 @@ import java.util.List;
 import com.namebattler.battle.GameManager;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
+import com.namebattler.option.Option;
 
 public class CharacterOrganization extends AppCompatActivity {
 
@@ -64,7 +65,7 @@ public class CharacterOrganization extends AppCompatActivity {
         findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (GameManager.myParty.getmenbers().size() == 3) {
+                if (GameManager.myParty.getmenbers().size() == Option.partyPlayerNum) {
                     Intent intent = new Intent(getApplication(), BattleStart.class);
                     startActivity(intent);
                 }
