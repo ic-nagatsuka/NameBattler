@@ -43,8 +43,8 @@ public class CharacterOrganization extends AppCompatActivity {
 
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); i++) {
-            String name = cursor.getString(0);
-            String job = AllJob.values()[cursor.getInt(1)].getName();
+            String name = cursor.getString(cursor.getColumnIndex("NAME"));
+            String job = AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName();
             String status = makeStatusText(cursor);
             list.add(new Status(name, job, status));
             cursor.moveToNext();
@@ -76,12 +76,12 @@ public class CharacterOrganization extends AppCompatActivity {
 
     public String makeStatusText(Cursor cursor) {
 
-        String statusText = "HP" + cursor.getString(2) +
-                " MP" + cursor.getString(3) +
-                " STR" + cursor.getString(4) +
-                " DEF" + cursor.getString(5) +
-                " LUCK" + cursor.getString(6) +
-                " AGI" + cursor.getString(7);
+        String statusText = "HP" + cursor.getString(cursor.getColumnIndex("HP")) +
+                " MP" + cursor.getString(cursor.getColumnIndex("MP")) +
+                " STR" + cursor.getString(cursor.getColumnIndex("STR")) +
+                " DEF" + cursor.getString(cursor.getColumnIndex("DEF")) +
+                " LUCK" + cursor.getString(cursor.getColumnIndex("LUCK")) +
+                " AGI" + cursor.getString(cursor.getColumnIndex("AGI"));
         return statusText;
     }
 
