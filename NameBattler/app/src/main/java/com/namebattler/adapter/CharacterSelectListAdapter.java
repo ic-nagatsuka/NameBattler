@@ -1,9 +1,6 @@
 package com.namebattler.adapter;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +13,6 @@ import android.widget.Toast;
 import com.namebattler.R;
 import com.namebattler.activity.CharacterOrganization;
 import com.namebattler.battle.GameManager;
-import com.namebattler.database.CharacterInformationHelper;
 import com.namebattler.battle.player.Player;
 import com.namebattler.option.Option;
 
@@ -30,21 +26,12 @@ public class CharacterSelectListAdapter extends BaseAdapter {
     List<CharacterOrganization.Status> status;
 
     LayoutInflater inflater;
-    SQLiteOpenHelper helper;
-    SQLiteDatabase db;
-    Cursor cursor;
-    String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + ";";
 
     public CharacterSelectListAdapter(Context context, View v, List<CharacterOrganization.Status> status) {
         this.context = context;
         this.startButton = v;
         this.status = status;
         inflater = LayoutInflater.from(context);
-
-        helper = new CharacterInformationHelper(context);
-        db = helper.getReadableDatabase();
-        cursor = db.rawQuery(sql, null);
-        cursor.moveToFirst();
     }
 
     @Override
@@ -99,7 +86,6 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                 boolean isChecked = radioButton.isChecked();
                 System.out.println("isChecked" + isChecked);
 
-
                 TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
                 String name = textView.getText().toString();
 
@@ -118,7 +104,6 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                     player.setClick(false);
                     radioButton.setChecked(false);
 
-
                     for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
                         Player player = GameManager.myParty.getmenbers().get(i);
                         if (player.getName().equals(name)) {
@@ -126,17 +111,13 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                         }
                     }
                 }
-
                 Button btn = startButton.findViewById(R.id.character_organization_start);
-
                 btn.setText("このパーティーで開始(" + GameManager.myParty.getmenbers().size() + "/3)");
-
             }
         });
 
         return view;
     }
-
 
     public boolean hasName(String name) {
         boolean haveName = false;
@@ -146,9 +127,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                 haveName = true;
             }
         }
-
         return haveName;
     }
-
 
 }
