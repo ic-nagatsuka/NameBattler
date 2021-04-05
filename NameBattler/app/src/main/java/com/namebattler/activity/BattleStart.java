@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.namebattler.battle.GameManager;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.option.Option;
 import com.namebattler.R;
@@ -23,9 +24,6 @@ import java.util.Map;
 import java.util.Random;
 
 
-import static com.namebattler.battle.GameManager.enemyParty;
-import static com.namebattler.battle.GameManager.makePlayer;
-import static com.namebattler.battle.GameManager.myParty;
 
 public class BattleStart extends AppCompatActivity {
 
@@ -37,16 +35,16 @@ public class BattleStart extends AppCompatActivity {
 
         TitleFragment.displayTitleFragment(getSupportFragmentManager(), "バトル開始", CharacterOrganization.class);
 
-        if (enemyParty.getmenbers().size() != 0) {
-            enemyParty = new Party("敵");
+        if (GameManager.enemyParty.getmenbers().size() != 0) {
+            GameManager.enemyParty = new Party("敵");
         }
         //敵パーティー作成
         makeEnemyParty();
 
         //自パーティー情報を表示
-        displayParty(R.id.battle_start_listView_bottom, myParty);
+        displayParty(R.id.battle_start_listView_bottom, GameManager.myParty);
         //敵パーティー情報を表示
-        displayParty(R.id.battle_start_listView_top, enemyParty);
+        displayParty(R.id.battle_start_listView_top, GameManager.enemyParty);
 
 
         findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener() {
@@ -63,11 +61,11 @@ public class BattleStart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //敵パーティーを初期化
-                enemyParty.getmenbers().clear();
+                GameManager.enemyParty.getmenbers().clear();
                 //敵パーティー作成
                 makeEnemyParty();
                 //敵パーティーの表示を更新
-                displayParty(R.id.battle_start_listView_top, enemyParty);
+                displayParty(R.id.battle_start_listView_top, GameManager.enemyParty);
             }
         });
 
@@ -79,11 +77,11 @@ public class BattleStart extends AppCompatActivity {
         Random rand = new Random();
         Enemy nameData = new Enemy();
         for (int i = 0; i < Option.partyPlayerNum; i++) {
-            enemyParty.appendPlayer(
-                    makePlayer(
+            GameManager.enemyParty.appendPlayer(
+                    GameManager.makePlayer(
                             nameData.getEnemyName(),
                             AllJob.values()[rand.nextInt(AllJob.values().length)].getName(),
-                            enemyParty
+                            GameManager.enemyParty
                     )
             );
         }

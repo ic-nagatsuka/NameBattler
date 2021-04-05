@@ -21,8 +21,8 @@ import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
+import com.namebattler.option.Option;
 
-import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterList extends AppCompatActivity {
 
@@ -34,13 +34,13 @@ public class CharacterList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_list);
 
-        cursor= new GetCharacterData(getApplicationContext()).getAllData();
+        cursor = new GetCharacterData(getApplicationContext()).getAllData();
         nowPlayerNum = cursor.getCount();
 
         findViewById(R.id.character_list_MakeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (nowPlayerNum < makePlayerNum) {
+                if (nowPlayerNum < Option.makePlayerNum) {
                     Intent intent = new Intent(CharacterList.this, CharacterMake.class);
                     startActivity(intent);
                 } else {
@@ -48,7 +48,6 @@ public class CharacterList extends AppCompatActivity {
                 }
             }
         });
-
 
 
         //タイトル表示
@@ -74,8 +73,8 @@ public class CharacterList extends AppCompatActivity {
             }
         }
 
-        if (nowPlayerNum < makePlayerNum) {
-            for (int i = 0; i < makePlayerNum - nowPlayerNum; i++) {
+        if (nowPlayerNum < Option.makePlayerNum) {
+            for (int i = 0; i < Option.makePlayerNum - nowPlayerNum; i++) {
                 HashMap<String, String> hash = new HashMap<>();
                 list.add(hash);
             }

@@ -13,8 +13,8 @@ import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
+import com.namebattler.option.Option;
 
-import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
 
@@ -57,19 +57,19 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             //DEF
             textView = findViewById(R.id.characterMakeConpletion_set_def);
             textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("DEF"))));
-            //AGI
-            textView = findViewById(R.id.characterMakeConpletion_set_agi);
-            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("AGI"))));
             //LUCK
             textView = findViewById(R.id.characterMakeConpletion_set_luck);
             textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("LUCK"))));
+            //AGI
+            textView = findViewById(R.id.characterMakeConpletion_set_agi);
+            textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("AGI"))));
         }
 
         //続けて作成するボタン
         findViewById(R.id.characterMakeConpletion_continue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nowPlayerNum < makePlayerNum) {
+                if (nowPlayerNum < Option.makePlayerNum) {
                     //キャラクター作成画面に遷移
                     Intent intent = new Intent(getApplication(), CharacterMake.class);
                     startActivity(intent);
