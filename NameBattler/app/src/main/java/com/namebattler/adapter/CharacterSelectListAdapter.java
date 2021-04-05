@@ -18,14 +18,10 @@ import com.namebattler.activity.CharacterOrganization;
 import com.namebattler.battle.GameManager;
 import com.namebattler.database.CharacterInformationHelper;
 import com.namebattler.battle.player.Player;
+import com.namebattler.option.Option;
 
 import java.util.List;
 
-
-import static com.namebattler.option.Option.makePlayerNum;
-import static com.namebattler.option.Option.partyPlayerNum;
-import static com.namebattler.battle.GameManager.makePlayer;
-import static com.namebattler.battle.GameManager.myParty;
 
 public class CharacterSelectListAdapter extends BaseAdapter {
 
@@ -39,7 +35,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
     Cursor cursor;
     String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + ";";
 
-    public CharacterSelectListAdapter(Context context, View v, List<CharacterOrganization.Status> status){
+    public CharacterSelectListAdapter(Context context, View v, List<CharacterOrganization.Status> status) {
         this.context = context;
         this.startButton = v;
         this.status = status;
@@ -53,7 +49,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return makePlayerNum;
+        return Option.makePlayerNum;
     }
 
     @Override
@@ -90,9 +86,9 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
         radioButton.setVisibility(View.VISIBLE);
 
-        if(player.getIsClick()){
+        if (player.getIsClick()) {
             radioButton.setChecked(true);
-        }else{
+        } else {
             radioButton.setChecked(false);
         }
 
@@ -108,12 +104,12 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                 String name = textView.getText().toString();
 
                 if (!hasName(name)) {
-                    if (myParty.getmenbers().size() < partyPlayerNum) {
+                    if (GameManager.myParty.getmenbers().size() < Option.partyPlayerNum) {
                         player.setClick(true);
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
-                        myParty.appendPlayer(
-                                makePlayer(name, job, myParty));
+                        GameManager.myParty.appendPlayer(
+                                GameManager.makePlayer(name, job, GameManager.myParty));
                     } else {
                         Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                         radioButton.setChecked(false);
@@ -123,17 +119,17 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                     radioButton.setChecked(false);
 
 
-                    for (int i = 0; i < myParty.getmenbers().size(); i++) {
-                        Player player = myParty.getmenbers().get(i);
+                    for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
+                        Player player = GameManager.myParty.getmenbers().get(i);
                         if (player.getName().equals(name)) {
-                            myParty.removePlayer(player);
+                            GameManager.myParty.removePlayer(player);
                         }
                     }
                 }
 
                 Button btn = startButton.findViewById(R.id.character_organization_start);
 
-                btn.setText("このパーティーで開始(" + myParty.getmenbers().size() + "/3)");
+                btn.setText("このパーティーで開始(" + GameManager.myParty.getmenbers().size() + "/3)");
 
             }
         });
@@ -144,8 +140,8 @@ public class CharacterSelectListAdapter extends BaseAdapter {
 
     public boolean hasName(String name) {
         boolean haveName = false;
-        for (int i = 0; i < myParty.getmenbers().size(); i++) {
-            Player player = myParty.getmenbers().get(i);
+        for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
+            Player player = GameManager.myParty.getmenbers().get(i);
             if (player.getName().equals(name)) {
                 haveName = true;
             }

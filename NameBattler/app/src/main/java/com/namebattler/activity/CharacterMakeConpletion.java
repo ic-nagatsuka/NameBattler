@@ -13,8 +13,8 @@ import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
+import com.namebattler.option.Option;
 
-import static com.namebattler.option.Option.makePlayerNum;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
 
@@ -69,7 +69,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         findViewById(R.id.characterMakeConpletion_continue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nowPlayerNum < makePlayerNum) {
+                if (nowPlayerNum < Option.makePlayerNum) {
                     //キャラクター作成画面に遷移
                     Intent intent = new Intent(getApplication(), CharacterMake.class);
                     startActivity(intent);

@@ -22,8 +22,7 @@ import java.util.Date;
 import com.namebattler.battle.GameManager;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
-
-import static com.namebattler.option.Option.makePlayerNum;
+import com.namebattler.option.Option;
 
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {
@@ -66,7 +65,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
                 String name = editName.getText().toString();
                 RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
-                if (nowPlayerNum >= makePlayerNum) {
+                if (nowPlayerNum >= Option.makePlayerNum) {
                     //キャラクター最大数エラー表示
                     Toast.makeText(CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 } else if (!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
