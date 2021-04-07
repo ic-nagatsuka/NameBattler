@@ -4,55 +4,55 @@ import com.namebattler.battle.player.Player;
 
 import com.namebattler.battle.battlelog.BattleLog;
 
-public class Heal extends SkillBase implements IHeal{
+public class Heal extends SkillBase implements IHeal {
 
-	
-	/*=============
-	 * コンストラクタ
-	 =============*/
-	public Heal(){
-	}
 
-	public boolean terms(Player target){
-		return target.checkDicreasePlayerHp(target.getParty());
-	}
+    /*=============
+     * コンストラクタ
+     =============*/
+    public Heal() {
+    }
 
-	@Override
-	public void use(Player attacker, Player target){
-		target = selectTarget(attacker);
-		BattleLog.addLog(attacker.getName() + "は" + this.getName() + "を唱えた！");
-		usePlayerMp(attacker);
+    public boolean terms(Player target) {
+        return target.checkDicreasePlayerHp(target.getParty());
+    }
 
-		int calcHealPoint = Math.min(this.getHealPoint(), target.getMaxHp() - target.getHP());
+    @Override
+    public void use(Player attacker, Player target) {
+        target = selectTarget(attacker);
+        BattleLog.addLog(attacker.getName() + "は" + this.getName() + "を唱えた！");
+        usePlayerMp(attacker);
 
-		BattleLog.addLog(target.getName() + "は" + calcHealPoint + "回復した！");
-		//スキル効果
-		target.setHP(Math.min(target.getHP() + skill.getHealPoint(), target.getMaxHp()));
-	}
+        int calcHealPoint = Math.min(this.getHealPoint(), target.getMaxHp() - target.getHP());
 
-	public Player selectTarget(Player attacker){
-		Player target = attacker.getParty().getmenbers().get(0);
+        BattleLog.addLog(target.getName() + "は" + calcHealPoint + "回復した！");
+        //スキル効果
+        target.setHP(Math.min(target.getHP() + skill.getHealPoint(), target.getMaxHp()));
+    }
 
-		for(Player player: attacker.getParty().getmenbers()){
-			if(playerHpPercentage(player) < playerHpPercentage(target)){
-				target = player;
-			}
-		}
+    public Player selectTarget(Player attacker) {
+        Player target = attacker.getParty().getmenbers().get(0);
 
-		return target;
-	}
+        for (Player player : attacker.getParty().getmenbers()) {
+            if (playerHpPercentage(player) < playerHpPercentage(target)) {
+                target = player;
+            }
+        }
 
-	private double playerHpPercentage(Player player){
-		return (double)player.getHP()/(double)player.getMaxHp();
-	}
+        return target;
+    }
 
-	@Override
-	public int calcDamage(Player target) {
-		return 0;
-	}
+    private double playerHpPercentage(Player player) {
+        return (double) player.getHP() / (double) player.getMaxHp();
+    }
 
-	@Override
-	protected void initSkill() {
-		skill = AllSkill.HEAL;
-	}
+    @Override
+    public int calcDamage(Player target) {
+        return 0;
+    }
+
+    @Override
+    protected void initSkill() {
+        skill = AllSkill.HEAL;
+    }
 }

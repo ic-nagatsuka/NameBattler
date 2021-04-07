@@ -22,7 +22,7 @@ public class StrategyOfDamagePriority extends Strategy {
 
     @Override
     public void action(Player attacker, Party defenceParty) {
-		normalAttack = true;
+        normalAttack = true;
 
         selectAction(attacker, defenceParty);
 

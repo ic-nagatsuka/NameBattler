@@ -313,20 +313,20 @@ public abstract class Player {
      * false:	使えない
      */
     public boolean checkUseSkill() {
-        if (getUseSkillOnly().size() ==  0 ) {
+        if (getUseSkillOnly().size() == 0) {
             return false;
         } else {
             return true;
         }
     }
 
-    public ArrayList<SkillBase> getUseSkillOnly(){
+    public ArrayList<SkillBase> getUseSkillOnly() {
         ArrayList<SkillBase> useSkill = new ArrayList<>();
-        for(SkillBase skill : this.getUseSkill()){
-            if(skill.getUseMp() <= this.getMP()){
-                if(skill instanceof IHeal && checkDicreasePlayerHp(this.getParty())
+        for (SkillBase skill : this.getUseSkill()) {
+            if (skill.getUseMp() <= this.getMP()) {
+                if (skill instanceof IHeal && checkDicreasePlayerHp(this.getParty())
                         || skill instanceof IHeal == false
-                ){
+                ) {
                     useSkill.add(skill);
                 }
             }

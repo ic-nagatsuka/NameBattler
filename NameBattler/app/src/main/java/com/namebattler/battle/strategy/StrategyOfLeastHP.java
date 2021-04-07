@@ -9,29 +9,29 @@ public class StrategyOfLeastHP extends Strategy {
 	 * フィールド変数
 	 =============*/
 
-	/*=============
-	 * コンストラクタ
-	 =============*/
-	public StrategyOfLeastHP() {
-		this.name = "体力少ない";
-	}
-	
-	@Override
-	public void action(Player attacker, Party defenderParty){
-		Player defender = selectDefender(defenderParty);
+    /*=============
+     * コンストラクタ
+     =============*/
+    public StrategyOfLeastHP() {
+        this.name = "体力少ない";
+    }
 
-		if(attacker.checkUseSkill()){
-			SkillBase skill = attacker.randomSelectSkill(attacker.getUseSkillOnly());
+    @Override
+    public void action(Player attacker, Party defenderParty) {
+        Player defender = selectDefender(defenderParty);
 
-			skill.use(attacker, defender);
+        if (attacker.checkUseSkill()) {
+            SkillBase skill = attacker.randomSelectSkill(attacker.getUseSkillOnly());
 
-		}else{
-			attacker.normalAttack(defender);
-		}
+            skill.use(attacker, defender);
+
+        } else {
+            attacker.normalAttack(defender);
+        }
 
 //		//通常の作戦に戻る
 //		attacker.action(defender);
-	}
+    }
 
     /**
      * 探したステータスが一番低いプレイヤーを返す

@@ -82,7 +82,7 @@ public class BattleMain extends AppCompatActivity {
     }
 
     //アダプターをセット
-    public void makeAdapter(int layout, Party party){
+    public void makeAdapter(int layout, Party party) {
         BaseAdapter adapter = new BattleStatusAdapter(this, party);
 
         GridView gridView = findViewById(layout);

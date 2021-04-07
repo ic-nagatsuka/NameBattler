@@ -29,7 +29,6 @@ public class StrategyOfAttackMagicPriority extends Strategy {
         List<SkillBase> prioritySkill;//優先スキル
 
 
-
         //優先スキルを探す
 //		prioritySkill = checkPrioritySkill(attacker.getUseSkill());
 //		//優先スキルがあり, mpがある
