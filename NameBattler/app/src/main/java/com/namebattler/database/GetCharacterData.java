@@ -15,12 +15,13 @@ public class GetCharacterData {
     SQLiteOpenHelper helper;
 
     Context context;
-    public GetCharacterData(Context context){
+
+    public GetCharacterData(Context context) {
         this.context = context;
         helper = new CharacterInformationHelper(context);
     }
 
-    public Cursor getAllData(){
+    public Cursor getAllData() {
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(sql, null);
@@ -28,7 +29,7 @@ public class GetCharacterData {
         return cursor;
     }
 
-    public Cursor getCharacter(String name){
+    public Cursor getCharacter(String name) {
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + " WHERE name = ?;";
         Cursor cursor = db.rawQuery(sql, new String[]{name});
@@ -36,7 +37,7 @@ public class GetCharacterData {
         return cursor;
     }
 
-    public long setCharacter(Player player, int job, String dateTime ){
+    public long setCharacter(Player player, int job, String dateTime) {
         db = helper.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -55,15 +56,14 @@ public class GetCharacterData {
     }
 
 
-    public void deleteCharacter(String name){
+    public void deleteCharacter(String name) {
         db = helper.getReadableDatabase();
 
         db.delete(
                 CharacterInformationHelper.TABLE_NAME,
                 "name = ?",
-                new String[] {name});
+                new String[]{name});
     }
-
 
 
 }

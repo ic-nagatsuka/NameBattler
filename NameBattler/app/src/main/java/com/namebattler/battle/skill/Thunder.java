@@ -30,7 +30,7 @@ public class Thunder extends SkillBase {
     }
 
     @Override
-	protected void initSkill() {
-		skill = AllSkill.THUNDER;
-	}
+    protected void initSkill() {
+        skill = AllSkill.THUNDER;
+    }
 }

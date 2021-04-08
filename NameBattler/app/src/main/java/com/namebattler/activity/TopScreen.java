@@ -18,13 +18,12 @@ public class TopScreen extends AppCompatActivity {
         setContentView(R.layout.activity_top_screen);
 
         //キャラ一覧ボタン
-        Button characterList = findViewById(R.id.top_characterList);
-        characterList.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.top_characterList).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //キャラクター一覧画面に遷移
                 Intent intent = new Intent(
-                        TopScreen.this, CharacterList.class);
+                        getApplication(), CharacterList.class);
 
                 startActivity(intent);
             }
@@ -39,7 +38,6 @@ public class TopScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
     }
 }

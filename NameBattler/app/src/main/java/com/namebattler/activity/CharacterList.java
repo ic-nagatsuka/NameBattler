@@ -2,13 +2,18 @@ package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CursorAdapter;
+import android.widget.CursorTreeAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +42,46 @@ public class CharacterList extends AppCompatActivity {
         cursor = new GetCharacterData(getApplicationContext()).getAllData();
         nowPlayerNum = cursor.getCount();
 
+        //タイトル表示
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "キャラ一覧(" + nowPlayerNum + "人)", TopScreen.class);
+
+        List<HashMap<String, String>> list = new ArrayList<>();
+        addItem(list);
+
+        addBlankItem(list);
+
+        SimpleAdapter adapter = new SimpleAdapter(
+                this,
+                list,
+                R.layout.activity_character_list_listview,
+                new String[]{
+                        "name",
+                        "job",
+                        "status"},
+                new int[]{
+                        R.id.character_list_name,
+                        R.id.character_list_job,
+                        R.id.character_list_status}
+        );
+
+        ListView listview = findViewById(R.id.listView_characterList);
+        listview.setAdapter(adapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView text = view.findViewById(R.id.character_list_name);
+                String name = text.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
+                intent.putExtra("name", name);
+
+                if (!name.equals("")) {
+                    startActivity(intent);
+                }
+            }
+        });
+
         findViewById(R.id.character_list_MakeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,12 +94,18 @@ public class CharacterList extends AppCompatActivity {
             }
         });
 
+    }
 
-        //タイトル表示
-        TitleFragment.displayTitleFragment(
-                getSupportFragmentManager(), "キャラ一覧(" + nowPlayerNum + "人)", TopScreen.class);
+    private void addBlankItem(List<HashMap<String, String>> list) {
+        if (nowPlayerNum < Option.makePlayerNum) {
+            for (int i = 0; i < Option.makePlayerNum - nowPlayerNum; i++) {
+                HashMap<String, String> hash = new HashMap<>();
+                list.add(hash);
+            }
+        }
+    }
 
-        List<HashMap<String, String>> list = new ArrayList<>();
+    private void addItem(List<HashMap<String, String>> list) {
         if (cursor.moveToFirst()) {
             for (int i = 0; i < nowPlayerNum; i++) {
                 HashMap<String, String> hash = new HashMap<>();
@@ -72,48 +123,6 @@ public class CharacterList extends AppCompatActivity {
                 cursor.moveToNext();
             }
         }
-
-        if (nowPlayerNum < Option.makePlayerNum) {
-            for (int i = 0; i < Option.makePlayerNum - nowPlayerNum; i++) {
-                HashMap<String, String> hash = new HashMap<>();
-                list.add(hash);
-            }
-        }
-
-        SimpleAdapter adapter = new SimpleAdapter(
-                this,
-                list,
-                R.layout.activity_character_list_listview,
-                new String[]{
-                        "name",
-                        "job",
-                        "status"
-                },
-                new int[]{
-                        R.id.character_list_name,
-                        R.id.character_list_job,
-                        R.id.character_list_status
-                }
-        );
-
-        ListView listview = findViewById(R.id.listView_characterList);
-        listview.setAdapter(adapter);
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
-
-                TextView text = view.findViewById(R.id.character_list_name);
-                String name = text.getText().toString();
-                intent.putExtra("name", name);
-
-                if (!name.equals("")) {
-                    startActivity(intent);
-                }
-            }
-        });
-
     }
+
 }

@@ -28,25 +28,7 @@ public class StrategyChange extends AppCompatActivity {
         TitleFragment.displayTitleFragment(getSupportFragmentManager(), "作戦", null);
 
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
-        //職業一覧を表示
-        for (int i = 0; i < AllStrategy.values().length; i++) {
-            AllStrategy strategy = AllStrategy.values()[i];
-            RadioButton radioButton = new RadioButton(this);
-            radioButton.setId(i);
-            radioButton.setText(strategy.getStrategy().getName());
-            radioButton.setTextSize(radioSize);
-
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-
-            layoutParams.setMargins(0, radioMarginVertical, 0, radioMarginVertical);
-
-            radioButton.setLayoutParams(layoutParams);
-
-            radioGroup.addView(radioButton);
-        }
+        showSelectStrategy(radioGroup);
 
         //ラジオボタン
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -67,5 +49,27 @@ public class StrategyChange extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void showSelectStrategy(RadioGroup radioGroup) {
+        //職業一覧を表示
+        for (int i = 0; i < AllStrategy.values().length; i++) {
+            AllStrategy strategy = AllStrategy.values()[i];
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setId(i);
+            radioButton.setText(strategy.getStrategy().getName());
+            radioButton.setTextSize(radioSize);
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+
+            layoutParams.setMargins(0, radioMarginVertical, 0, radioMarginVertical);
+
+            radioButton.setLayoutParams(layoutParams);
+
+            radioGroup.addView(radioButton);
+        }
     }
 }

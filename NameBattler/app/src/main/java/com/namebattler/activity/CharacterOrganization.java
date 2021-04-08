@@ -41,21 +41,21 @@ public class CharacterOrganization extends AppCompatActivity {
 
         List<Status> list = new ArrayList<>();
 
-        cursor.moveToFirst();
-        for (int i = 0; i < cursor.getCount(); i++) {
-            String name = cursor.getString(cursor.getColumnIndex("NAME"));
-            String job = AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName();
-            String status = makeStatusText(cursor);
-            list.add(new Status(name, job, status));
-            cursor.moveToNext();
-        }
+        if (cursor.moveToFirst()) {
+            for (int i = 0; i < cursor.getCount(); i++) {
+                String name = cursor.getString(cursor.getColumnIndex("NAME"));
+                String job = AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName();
+                String status = makeStatusText(cursor);
+                list.add(new Status(name, job, status));
+                cursor.moveToNext();
+            }
 
+        }
 
         BaseAdapter adapter = new CharacterSelectListAdapter(
                 this,
                 startButtonView,
                 list
-
         );
 
         ListView listView = findViewById(R.id.character_organization_ListView);
@@ -111,11 +111,11 @@ public class CharacterOrganization extends AppCompatActivity {
             return this.status;
         }
 
-        public boolean getIsClick(){
+        public boolean getIsClick() {
             return this.isClicked;
         }
 
-        public void setClick(boolean isClicked){
+        public void setClick(boolean isClicked) {
             this.isClicked = isClicked;
         }
 

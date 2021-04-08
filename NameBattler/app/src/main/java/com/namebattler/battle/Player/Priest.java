@@ -34,31 +34,7 @@ public class Priest extends Player {
     @Override
     public void normalAttack(Player target) {
         BattleLog.addLog(this.name + "は回復を唱えようとした");
-
-//		if(rand.nextInt(2) == 0){
-//			System.out.println("何も起こらなかった");
-//		}else if(rand.nextInt(2) == 0){
-//			System.out.println("");
-//		}else{
-//			super.NormalAttack(attacker, target);
-//		}
-
-        switch (rand.nextInt(3)) {
-            case 0:
-                BattleLog.addLog("何も起こらなかった");
-                break;
-            case 1:
-                BattleLog.addLog("aaaaaaaa");
-                break;
-            case 2:
-                super.normalAttack(target);
-                break;
-
-
-            default:
-                break;
-        }
-
+        super.normalAttack(target);
     }
 
 

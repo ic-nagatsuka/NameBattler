@@ -91,7 +91,7 @@ public class BattleResult extends AppCompatActivity {
         }
     }
 
-    public void setAdapter(int layout, Party party){
+    public void setAdapter(int layout, Party party) {
         BaseAdapter adapter = new BattleStatusAdapter(this, party);
 
         GridView gridView = findViewById(layout);

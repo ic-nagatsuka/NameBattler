@@ -17,7 +17,7 @@ public class BattleStatusAdapter extends BaseAdapter {
     LayoutInflater inflater;
     Party party;
 
-    public BattleStatusAdapter(Context context, Party party){
+    public BattleStatusAdapter(Context context, Party party) {
         this.inflater = LayoutInflater.from(context);
         this.party = party;
     }

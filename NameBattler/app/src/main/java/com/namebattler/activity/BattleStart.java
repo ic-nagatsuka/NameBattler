@@ -24,7 +24,6 @@ import java.util.Map;
 import java.util.Random;
 
 
-
 public class BattleStart extends AppCompatActivity {
 
 
