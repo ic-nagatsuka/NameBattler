@@ -69,7 +69,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         findViewById(R.id.characterMakeConpletion_continue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nowPlayerNum < Option.makePlayerNum) {
+                if (nowPlayerNum < Option.MAKE_PLAYER_NUM) {
                     //キャラクター作成画面に遷移
                     Intent intent = new Intent(getApplication(), CharacterMake.class);
                     startActivity(intent);

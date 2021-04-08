@@ -36,7 +36,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return Option.makePlayerNum;
+        return Option.MAKE_PLAYER_NUM;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                 String name = textView.getText().toString();
 
                 if (!hasName(name)) {
-                    if (GameManager.myParty.getmenbers().size() < Option.partyPlayerNum) {
+                    if (GameManager.myParty.getmenbers().size() < Option.PARTY_PLAYER_NUM) {
                         player.setClick(true);
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();

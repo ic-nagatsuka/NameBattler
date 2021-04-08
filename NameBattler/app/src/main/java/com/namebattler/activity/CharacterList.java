@@ -2,18 +2,13 @@ package com.namebattler.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.CursorAdapter;
-import android.widget.CursorTreeAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -85,7 +80,7 @@ public class CharacterList extends AppCompatActivity {
         findViewById(R.id.character_list_MakeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (nowPlayerNum < Option.makePlayerNum) {
+                if (nowPlayerNum < Option.MAKE_PLAYER_NUM) {
                     Intent intent = new Intent(CharacterList.this, CharacterMake.class);
                     startActivity(intent);
                 } else {
@@ -97,8 +92,8 @@ public class CharacterList extends AppCompatActivity {
     }
 
     private void addBlankItem(List<HashMap<String, String>> list) {
-        if (nowPlayerNum < Option.makePlayerNum) {
-            for (int i = 0; i < Option.makePlayerNum - nowPlayerNum; i++) {
+        if (nowPlayerNum < Option.MAKE_PLAYER_NUM) {
+            for (int i = 0; i < Option.MAKE_PLAYER_NUM - nowPlayerNum; i++) {
                 HashMap<String, String> hash = new HashMap<>();
                 list.add(hash);
             }
