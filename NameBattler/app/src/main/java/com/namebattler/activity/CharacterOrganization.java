@@ -65,7 +65,7 @@ public class CharacterOrganization extends AppCompatActivity {
         findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (GameManager.myParty.getmenbers().size() == Option.partyPlayerNum) {
+                if (GameManager.myParty.getmenbers().size() == Option.PARTY_PLAYER_NUM) {
                     Intent intent = new Intent(getApplication(), BattleStart.class);
                     startActivity(intent);
                 }

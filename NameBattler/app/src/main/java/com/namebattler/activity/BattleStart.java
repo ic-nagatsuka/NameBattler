@@ -75,7 +75,7 @@ public class BattleStart extends AppCompatActivity {
     private void makeEnemyParty() {
         Random rand = new Random();
         Enemy nameData = new Enemy();
-        for (int i = 0; i < Option.partyPlayerNum; i++) {
+        for (int i = 0; i < Option.PARTY_PLAYER_NUM; i++) {
             GameManager.enemyParty.appendPlayer(
                     GameManager.makePlayer(
                             nameData.getEnemyName(),
