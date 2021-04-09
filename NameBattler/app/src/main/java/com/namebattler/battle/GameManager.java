@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.player.Bouncer;
 import com.namebattler.battle.player.Fighter;
 import com.namebattler.battle.player.Priest;
@@ -96,7 +97,7 @@ public class GameManager {
      */
     public void battle() {
         //ターン数の表示
-        System.out.println("=====ターン" + turnCount + "=====");
+        BattleLog.addLog("=====ターン" + turnCount + "=====");
 
         //行動
         for (int i = allPlayer.size() - 1; 0 <= i; i--) {
