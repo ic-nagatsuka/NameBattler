@@ -83,9 +83,6 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         radioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean isChecked = radioButton.isChecked();
-                System.out.println("isChecked" + isChecked);
-
                 TextView textView = convertView.findViewById(R.id.character_organization_listView_status_name);
                 String name = textView.getText().toString();
 
