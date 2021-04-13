@@ -31,34 +31,34 @@ public class CharacterDetails extends AppCompatActivity {
                 .getCharacter(intent.getStringExtra("name"));
 
         if (cursor.moveToFirst()) {
-            TextView text;
+            TextView textView;
 
-            text = findViewById(R.id.characterDetails_name);
-            text.setText(cursor.getString(cursor.getColumnIndex("NAME")));
+            textView = findViewById(R.id.characterDetails_name);
+            textView.setText(cursor.getString(cursor.getColumnIndex("NAME")));
 
-            text = findViewById(R.id.characterDetails_job);
-            text.setText(AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
+            textView = findViewById(R.id.characterDetails_job);
+            textView.setText(AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
 
-            text = findViewById(R.id.characterDetails_hp);
-            text.setText(cursor.getString(cursor.getColumnIndex("HP")));
+            textView = findViewById(R.id.characterDetails_hp);
+            textView.setText(cursor.getString(cursor.getColumnIndex("HP")));
 
-            text = findViewById(R.id.characterDetails_mp);
-            text.setText(cursor.getString(cursor.getColumnIndex("MP")));
+            textView = findViewById(R.id.characterDetails_mp);
+            textView.setText(cursor.getString(cursor.getColumnIndex("MP")));
 
-            text = findViewById(R.id.characterDetails_str);
-            text.setText(cursor.getString(cursor.getColumnIndex("STR")));
+            textView = findViewById(R.id.characterDetails_str);
+            textView.setText(cursor.getString(cursor.getColumnIndex("STR")));
 
-            text = findViewById(R.id.characterDetails_def);
-            text.setText(cursor.getString(cursor.getColumnIndex("DEF")));
+            textView = findViewById(R.id.characterDetails_def);
+            textView.setText(cursor.getString(cursor.getColumnIndex("DEF")));
 
-            text = findViewById(R.id.characterDetails_luck);
-            text.setText(cursor.getString(cursor.getColumnIndex("LUCK")));
+            textView = findViewById(R.id.characterDetails_luck);
+            textView.setText(cursor.getString(cursor.getColumnIndex("LUCK")));
 
-            text = findViewById(R.id.characterDetails_agi);
-            text.setText(cursor.getString(cursor.getColumnIndex("AGI")));
+            textView = findViewById(R.id.characterDetails_agi);
+            textView.setText(cursor.getString(cursor.getColumnIndex("AGI")));
 
-            text = findViewById(R.id.characterDetails_MakeDay);
-            text.setText("作成日 : " + cursor.getString(cursor.getColumnIndex("CREATE_AT")));
+            textView = findViewById(R.id.characterDetails_MakeDay);
+            textView.setText("作成日 : " + cursor.getString(cursor.getColumnIndex("CREATE_AT")));
         }
 
 

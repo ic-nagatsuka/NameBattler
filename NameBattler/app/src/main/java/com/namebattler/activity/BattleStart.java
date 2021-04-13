@@ -1,21 +1,21 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.namebattler.battle.GameManager;
-import com.namebattler.battle.player.AllJob;
-import com.namebattler.option.Option;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.namebattler.R;
-import com.namebattler.fragment.TitleFragment;
-import com.namebattler.battle.party.Party;
-import com.namebattler.battle.player.Player;
+import com.namebattler.battle.GameManager;
 import com.namebattler.battle.enemydata.Enemy;
+import com.namebattler.battle.party.Party;
+import com.namebattler.battle.player.AllJob;
+import com.namebattler.battle.player.Player;
+import com.namebattler.fragment.TitleFragment;
+import com.namebattler.option.Option;
 
 import java.util.ArrayList;
 import java.util.HashMap;
