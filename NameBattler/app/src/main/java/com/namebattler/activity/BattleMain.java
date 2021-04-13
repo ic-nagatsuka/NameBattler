@@ -65,7 +65,7 @@ public class BattleMain extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.battle_main_stratygy_button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.battle_main_modified_strategy_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //作戦変更画面に遷移
