@@ -66,8 +66,8 @@ public class CharacterList extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView text = view.findViewById(R.id.character_list_name);
-                String name = text.getText().toString();
+                TextView textView = view.findViewById(R.id.character_list_name);
+                String name = textView.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
                 intent.putExtra("name", name);
 
