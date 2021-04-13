@@ -25,7 +25,8 @@ public class StrategyChange extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_strategy_change);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "作戦", null);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "作戦", null);
 
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
         showSelectStrategy(radioGroup);

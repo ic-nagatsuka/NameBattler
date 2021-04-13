@@ -29,7 +29,8 @@ public class CharacterOrganization extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_organization);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "パーティー編成", TopScreen.class);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "パーティー編成", TopScreen.class);
 
         View startButtonView = findViewById(R.id.character_organization_start);
 

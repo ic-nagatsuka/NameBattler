@@ -84,7 +84,8 @@ public class CharacterList extends AppCompatActivity {
                     Intent intent = new Intent(CharacterList.this, CharacterMake.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(CharacterList.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            CharacterList.this,"作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 }
             }
         });

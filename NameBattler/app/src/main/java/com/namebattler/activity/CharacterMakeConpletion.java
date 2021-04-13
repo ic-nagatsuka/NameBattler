@@ -29,7 +29,8 @@ public class CharacterMakeConpletion extends AppCompatActivity {
                 .getAllData()
                 .getCount();
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", null);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "キャラ作成", null);
 
         String name = getIntent().getStringExtra("name");
 
@@ -44,7 +45,8 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             textView.setText(cursor.getString(cursor.getColumnIndex("NAME")));
             //職業
             textView = findViewById(R.id.characterMakeConpletion_job);
-            textView.setText(AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
+            textView.setText(
+                    AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
             //HP
             textView = findViewById(R.id.characterMakeConpletion_set_hp);
             textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("HP"))));
@@ -75,7 +77,8 @@ public class CharacterMakeConpletion extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     //キャラクター最大数エラー表示
-                    Toast.makeText(CharacterMakeConpletion.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            CharacterMakeConpletion.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 }
             }
         });

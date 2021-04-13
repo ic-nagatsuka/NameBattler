@@ -40,7 +40,8 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                 .getAllData()
                 .getCount();
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", CharacterList.class);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "キャラ作成", CharacterList.class);
 
         final EditText editText = findViewById(R.id.character_make_editText_name);
         editText.addTextChangedListener(this);
@@ -58,9 +59,12 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                 RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
                 if (nowPlayerNum >= Option.MAKE_PLAYER_NUM) {
                     //キャラクター最大数エラー表示
-                    Toast.makeText(CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
-                } else if (!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
-                    Player player = GameManager.makePlayer(name, radio.getText().toString(), GameManager.myParty);
+                    Toast.makeText(
+                            CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
+                } else if (!editName.getText().toString().equals("")
+                        && radioGroup.getCheckedRadioButtonId() != -1) {
+                    Player player = GameManager.makePlayer(
+                            name, radio.getText().toString(), GameManager.myParty);
 
                     if (new GetCharacterData(getApplicationContext())
                             .setCharacter(player, radio.getId(), getDate()) != -1) {
@@ -71,7 +75,8 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                         startActivity(intent);
                     } else {
                         //名前エラー表示
-                        Toast.makeText(CharacterMake.this, "この名前はすでに存在しています", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(
+                                CharacterMake.this, "この名前はすでに存在しています", Toast.LENGTH_SHORT).show();
                     }
 
                 }

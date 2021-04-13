@@ -28,7 +28,8 @@ public class BattleMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_main);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "バトル", null);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "バトル", null);
 
         displayUpdateStates();
 

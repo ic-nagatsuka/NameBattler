@@ -32,7 +32,8 @@ public class BattleStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_start);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "バトル開始", CharacterOrganization.class);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "バトル開始", CharacterOrganization.class);
 
         if (GameManager.enemyParty.getmenbers().size() != 0) {
             GameManager.enemyParty = new Party("敵");
