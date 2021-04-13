@@ -58,17 +58,14 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                 String name = editName.getText().toString();
                 RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
                 if (nowPlayerNum >= Option.MAKE_PLAYER_NUM) {
-                    //キャラクター最大数エラー表示
                     Toast.makeText(
                             CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
-                } else if (!editName.getText().toString().equals("")
-                        && radioGroup.getCheckedRadioButtonId() != -1) {
+                } else if (!name.equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
                     Player player = GameManager.makePlayer(
                             name, radio.getText().toString(), GameManager.myParty);
-
                     if (new GetCharacterData(getApplicationContext())
                             .setCharacter(player, radio.getId(), getDate()) != -1) {
-                        //キャラクターデータ追加
+                        //キャラクター作成完了の場合
                         nowPlayerNum++;
                         Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
                         intent.putExtra("name", name);
