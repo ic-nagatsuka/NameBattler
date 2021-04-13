@@ -30,12 +30,12 @@ public class BattleResult extends AppCompatActivity {
         setAdapter(R.id.battleResult_gridView_bottom, GameManager.myParty);
         setAdapter(R.id.battleResult_gridView_top, GameManager.enemyParty);
 
-        ImageView image = findViewById(R.id.battleResult_Image_result);
+        ImageView resultImage = findViewById(R.id.battleResult_Image_result);
 
         if (GameManager.win == GameManager.myParty) {
-            image.setImageResource(R.drawable.pose_win_boy);
+            resultImage.setImageResource(R.drawable.pose_win_boy);
         } else {
-            image.setImageResource(R.drawable.pose_lose_boy);
+            resultImage.setImageResource(R.drawable.pose_lose_boy);
         }
 
 
