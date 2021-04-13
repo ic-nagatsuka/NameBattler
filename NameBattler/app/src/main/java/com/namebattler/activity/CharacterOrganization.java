@@ -32,36 +32,13 @@ public class CharacterOrganization extends AppCompatActivity {
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "パーティー編成", TopScreen.class);
 
-        View startButtonView = findViewById(R.id.character_organization_start);
+
 
         if (GameManager.myParty.getmenbers().size() != 0) {
             GameManager.myParty = new Party("味方");
         }
 
-        Cursor cursor = new GetCharacterData(getApplicationContext()).getAllData();
-
-        List<Status> list = new ArrayList<>();
-
-        if (cursor.moveToFirst()) {
-            for (int i = 0; i < cursor.getCount(); i++) {
-                String name = cursor.getString(cursor.getColumnIndex("NAME"));
-                String job = AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName();
-                String status = makeStatusText(cursor);
-                list.add(new Status(name, job, status));
-                cursor.moveToNext();
-            }
-
-        }
-
-        BaseAdapter adapter = new CharacterSelectListAdapter(
-                this,
-                startButtonView,
-                list
-        );
-
-        ListView listView = findViewById(R.id.character_organization_ListView);
-        listView.setAdapter(adapter);
-
+        displayCharacterItem();
 
         findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +50,30 @@ public class CharacterOrganization extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void displayCharacterItem() {
+        Cursor cursor = new GetCharacterData(getApplicationContext()).getAllData();
+        List<Status> list = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            for (int i = 0; i < cursor.getCount(); i++) {
+                String name = cursor.getString(cursor.getColumnIndex("NAME"));
+                String job = AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName();
+                String status = makeStatusText(cursor);
+                list.add(new Status(name, job, status));
+                cursor.moveToNext();
+            }
+        }
+
+        View startButtonView = findViewById(R.id.character_organization_start);
+        BaseAdapter adapter = new CharacterSelectListAdapter(
+                this,
+                startButtonView,
+                list
+        );
+
+        ListView listView = findViewById(R.id.character_organization_ListView);
+        listView.setAdapter(adapter);
     }
 
     public String makeStatusText(Cursor cursor) {
