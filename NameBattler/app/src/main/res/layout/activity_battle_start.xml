@@ -42,13 +42,13 @@
         android:text="VS"
         android:textSize="40dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/battle_start_battleStar"
+        app:layout_constraintBottom_toTopOf="@+id/battle_start_battleStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleFragment" />
 
     <Button
-        android:id="@+id/battle_start_battleStar"
+        android:id="@+id/battle_start_battleStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"

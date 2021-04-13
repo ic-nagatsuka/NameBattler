@@ -47,7 +47,7 @@ public class BattleStart extends AppCompatActivity {
         displayParty(R.id.battle_start_listView_top, GameManager.enemyParty);
 
 
-        findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.battle_start_battleStart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //バトルメイン画面に遷移
