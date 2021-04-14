@@ -25,7 +25,7 @@ public class StrategyOfAttackMagicPriority extends Strategy {
 
     @Override
     public void action(Player attacker, Party defenceParty) {
-        Player target = randomDefender(defenceParty.getmenbers());
+        Player target = randomSelectDefender(defenceParty);
         List<SkillBase> prioritySkill;//優先スキル
 
 

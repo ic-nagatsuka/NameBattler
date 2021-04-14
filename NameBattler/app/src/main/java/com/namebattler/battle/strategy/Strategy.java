@@ -43,16 +43,9 @@ public abstract class Strategy {
      * @param defenceParty 攻撃されるパーティー
      * @return 攻撃されるプレイヤー
      */
-    protected Player randomDefender(List<Player> defenceParty) {
-        Player defender;
-        while (true) {
-            defender = defenceParty.get(rand.nextInt(defenceParty.size()));
-            if (defender.getHP() != 0) {
-                break;
-            }
-        }
-
-        return defender;
+    protected Player randomSelectDefender(Party defenceParty) {
+        return defenceParty.getAliveMenbers()
+                .get(rand.nextInt(defenceParty.getAliveMenbers().size()));
     }
 
 }

@@ -23,7 +23,7 @@ public class StrategyOfNoSkill extends Strategy {
     public void action(Player attacker, Party defenderParty) {
         Player defender;
         //ランダムで選ぶ
-        defender = this.randomDefender(defenderParty.getmenbers());
+        defender = this.randomSelectDefender(defenderParty);
 
         attacker.normalAttack(defender);
     }
