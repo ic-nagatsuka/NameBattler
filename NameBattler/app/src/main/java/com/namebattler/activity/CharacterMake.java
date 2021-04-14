@@ -56,7 +56,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
                 String name = editName.getText().toString();
                 RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
-                if (nowPlayerNum >= Option.MAKE_PLAYER_NUM) {
+                if (nowPlayerNum >= Option.MAX_MAKE_PLAYER_NUM) {
                     Toast.makeText(
                             CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 } else if (!name.equals("") && radioGroup.getCheckedRadioButtonId() != -1) {

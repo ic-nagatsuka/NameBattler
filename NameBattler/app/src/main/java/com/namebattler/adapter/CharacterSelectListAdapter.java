@@ -36,7 +36,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return Option.MAKE_PLAYER_NUM;
+        return Option.MAX_MAKE_PLAYER_NUM;
     }
 
     @Override

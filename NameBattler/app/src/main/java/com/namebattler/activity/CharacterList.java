@@ -79,7 +79,7 @@ public class CharacterList extends AppCompatActivity {
         findViewById(R.id.character_list_MakeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (nowPlayerNum < Option.MAKE_PLAYER_NUM) {
+                if (nowPlayerNum < Option.MAX_MAKE_PLAYER_NUM) {
                     Intent intent = new Intent(CharacterList.this, CharacterMake.class);
                     startActivity(intent);
                 } else {
@@ -92,8 +92,8 @@ public class CharacterList extends AppCompatActivity {
     }
 
     private void addBlankItem(List<HashMap<String, String>> list) {
-        if (nowPlayerNum < Option.MAKE_PLAYER_NUM) {
-            for (int i = 0; i < Option.MAKE_PLAYER_NUM - nowPlayerNum; i++) {
+        if (nowPlayerNum < Option.MAX_MAKE_PLAYER_NUM) {
+            for (int i = 0; i < Option.MAX_MAKE_PLAYER_NUM - nowPlayerNum; i++) {
                 HashMap<String, String> hash = new HashMap<>();
                 list.add(hash);
             }
