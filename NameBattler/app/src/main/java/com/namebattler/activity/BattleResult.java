@@ -70,11 +70,8 @@ public class BattleResult extends AppCompatActivity {
     }
 
     public void initializePlayer() {
-
         remakePlayer(GameManager.myParty);
         remakePlayer(GameManager.enemyParty);
-
-
     }
 
     public void remakePlayer(Party party) {
@@ -85,9 +82,7 @@ public class BattleResult extends AppCompatActivity {
             party.appendPlayer(
                     GameManager.makePlayer(player.getName(), player.getJob(), party)
             );
-
             party.removePlayer(player);
-
         }
     }
 
@@ -96,7 +91,6 @@ public class BattleResult extends AppCompatActivity {
 
         GridView gridView = findViewById(layout);
         gridView.setAdapter(adapter);
-
     }
 
 }
