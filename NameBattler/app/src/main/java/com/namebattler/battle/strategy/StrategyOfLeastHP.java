@@ -22,31 +22,22 @@ public class StrategyOfLeastHP extends Strategy {
 
         if (attacker.checkUseSkill()) {
             SkillBase skill = attacker.randomSelectSkill(attacker.getUseSkillOnly());
-
             skill.use(attacker, defender);
-
         } else {
             attacker.normalAttack(defender);
         }
-
-//		//通常の作戦に戻る
-//		attacker.action(defender);
     }
 
     /**
-     * 探したステータスが一番低いプレイヤーを返す
-     * 継承したクラスは探すステータス項目を設定する
+     * HPが一番低いプレイヤーを選ぶ
      *
-     * @param defenderParty
-     * @return　探したステータス項目が一番低いプレイヤー
+     * @param defenderParty 敵パーティー
+     * @return　HPが一番低いプレイヤー
      */
     protected Player selectDefender(Party defenderParty) {
-        Player defender = defenderParty.getmenbers().get(0);
-        //目的のステータスが一番低いプレイヤーを選ぶ
-        for (Player player : defenderParty.getmenbers()) {
-
-            if (defender.getHP() > player.getHP() && !player.getIsDeath()
-                    || defender.getIsDeath()) {
+        Player defender = defenderParty.getAliveMenbers().get(0);
+        for (Player player : defenderParty.getAliveMenbers()) {
+            if (defender.getHP() > player.getHP()) {
                 defender = player;
             }
         }
