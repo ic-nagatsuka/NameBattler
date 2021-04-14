@@ -6,10 +6,6 @@ import com.namebattler.battle.player.Player;
 import java.util.Random;
 
 public class StrategyOfNoSkill extends Strategy {
-    /*=============
-     * フィールド変数
-     =============*/
-    Random rand = new Random();
 
     /*=============
      * コンストラクタ
@@ -21,9 +17,7 @@ public class StrategyOfNoSkill extends Strategy {
 
     @Override
     public void action(Player attacker, Party defenderParty) {
-        Player defender;
-        //ランダムで選ぶ
-        defender = this.randomSelectDefender(defenderParty);
+        Player defender = this.randomSelectDefender(defenderParty);
 
         attacker.normalAttack(defender);
     }
