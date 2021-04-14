@@ -60,14 +60,14 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         }
 
         final CharacterOrganization.Status player = status.get(i);
-        TextView text = view.findViewById(R.id.character_organization_listView_status_name);
-        text.setText(player.getName());
+        TextView textView = view.findViewById(R.id.character_organization_listView_status_name);
+        textView.setText(player.getName());
 
-        text = view.findViewById(R.id.character_organization_listView_status_job);
-        text.setText(player.getJob());
+        textView = view.findViewById(R.id.character_organization_listView_status_job);
+        textView.setText(player.getJob());
 
-        text = view.findViewById(R.id.character_organization_listView_status);
-        text.setText(player.getStatus());
+        textView = view.findViewById(R.id.character_organization_listView_status);
+        textView.setText(player.getStatus());
 
 
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
