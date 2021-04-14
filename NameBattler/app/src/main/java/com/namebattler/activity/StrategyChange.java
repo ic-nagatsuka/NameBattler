@@ -41,7 +41,7 @@ public class StrategyChange extends AppCompatActivity {
         });
 
         //決定ボタン
-        findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.strategyChange_dicide).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //バトルメイン画面に遷移
