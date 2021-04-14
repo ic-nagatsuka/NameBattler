@@ -117,14 +117,12 @@ public class CharacterSelectListAdapter extends BaseAdapter {
     }
 
     public boolean hasName(String name) {
-        boolean haveName = false;
-        for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
-            Player player = GameManager.myParty.getmenbers().get(i);
+        for (Player player : GameManager.myParty.getmenbers()) {
             if (player.getName().equals(name)) {
-                haveName = true;
+                return true;
             }
         }
-        return haveName;
+        return false;
     }
 
 }
