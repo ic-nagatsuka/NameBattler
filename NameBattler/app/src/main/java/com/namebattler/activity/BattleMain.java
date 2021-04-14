@@ -1,7 +1,5 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -10,10 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.namebattler.adapter.BattleStatusAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.namebattler.R;
-import com.namebattler.battle.battlelog.BattleLog;
+import com.namebattler.adapter.BattleStatusAdapter;
 import com.namebattler.battle.GameManager;
+import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.party.Party;
 import com.namebattler.fragment.TitleFragment;
 

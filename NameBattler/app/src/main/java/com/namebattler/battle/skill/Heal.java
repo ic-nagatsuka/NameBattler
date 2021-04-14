@@ -1,8 +1,7 @@
 package com.namebattler.battle.skill;
 
-import com.namebattler.battle.player.Player;
-
 import com.namebattler.battle.battlelog.BattleLog;
+import com.namebattler.battle.player.Player;
 
 public class Heal extends SkillBase implements IHeal {
 

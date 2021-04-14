@@ -1,7 +1,5 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,12 +7,13 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.namebattler.adapter.BattleStatusAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.namebattler.R;
+import com.namebattler.adapter.BattleStatusAdapter;
+import com.namebattler.battle.GameManager;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
-
-import com.namebattler.battle.GameManager;
 import com.namebattler.fragment.TitleFragment;
 
 public class BattleResult extends AppCompatActivity {

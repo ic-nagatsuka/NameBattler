@@ -1,7 +1,5 @@
 package com.namebattler.battle.player;
 
-import com.namebattler.battle.skill.AllSkill;
-
 import com.namebattler.battle.battlelog.BattleLog;
 
 

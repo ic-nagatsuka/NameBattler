@@ -1,19 +1,18 @@
 package com.namebattler.battle.player;
 
+import com.namebattler.battle.battlelog.BattleLog;
+import com.namebattler.battle.party.Party;
+import com.namebattler.battle.skill.AbnormalState;
+import com.namebattler.battle.skill.IHeal;
+import com.namebattler.battle.skill.SkillBase;
+import com.namebattler.battle.skill.StateEffect;
+import com.namebattler.battle.strategy.Strategy;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import com.namebattler.battle.skill.AbnormalState;
-import com.namebattler.battle.skill.IHeal;
-import com.namebattler.battle.party.Party;
-import com.namebattler.battle.skill.SkillBase;
-import com.namebattler.battle.skill.StateEffect;
-import com.namebattler.battle.strategy.Strategy;
-
-import com.namebattler.battle.battlelog.BattleLog;
 
 
 public abstract class Player {

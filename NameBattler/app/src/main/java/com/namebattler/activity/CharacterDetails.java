@@ -2,7 +2,6 @@ package com.namebattler.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -13,7 +12,6 @@ import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
-import com.namebattler.option.Option;
 
 public class CharacterDetails extends AppCompatActivity {
 

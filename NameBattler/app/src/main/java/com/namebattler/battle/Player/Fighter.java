@@ -1,10 +1,10 @@
 package com.namebattler.battle.player;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.skill.Fire;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Fighter extends Player {

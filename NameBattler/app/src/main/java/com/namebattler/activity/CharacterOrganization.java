@@ -1,7 +1,5 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -9,18 +7,19 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.namebattler.adapter.CharacterSelectListAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.namebattler.R;
-import com.namebattler.battle.player.AllJob;
-import com.namebattler.battle.party.Party;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.namebattler.adapter.CharacterSelectListAdapter;
 import com.namebattler.battle.GameManager;
+import com.namebattler.battle.party.Party;
+import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterOrganization extends AppCompatActivity {
 
@@ -31,7 +30,6 @@ public class CharacterOrganization extends AppCompatActivity {
 
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "パーティー編成", TopScreen.class);
-
 
 
         if (GameManager.myParty.getmenbers().size() != 0) {

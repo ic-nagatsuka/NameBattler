@@ -1,12 +1,12 @@
 package com.namebattler.battle.strategy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.SkillType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StrategyOfAttackMagicPriority extends Strategy {
     /*=============

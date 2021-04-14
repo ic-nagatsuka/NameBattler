@@ -1,9 +1,9 @@
 package com.namebattler.battle.strategy;
 
-import java.util.Random;
-
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
+
+import java.util.Random;
 
 public class StrategyOfNoSkill extends Strategy {
     /*=============

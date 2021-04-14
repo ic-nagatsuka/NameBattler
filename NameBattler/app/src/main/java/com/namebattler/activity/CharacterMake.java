@@ -1,7 +1,5 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,17 +10,18 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.namebattler.R;
+import com.namebattler.battle.GameManager;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.battle.player.Player;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import com.namebattler.battle.GameManager;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {

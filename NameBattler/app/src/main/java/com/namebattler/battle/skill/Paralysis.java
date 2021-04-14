@@ -1,10 +1,9 @@
 package com.namebattler.battle.skill;
 
-import java.util.Random;
-
+import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.player.Player;
 
-import com.namebattler.battle.battlelog.BattleLog;
+import java.util.Random;
 
 public class Paralysis extends SkillBase implements AbnormalState {
     /*=============

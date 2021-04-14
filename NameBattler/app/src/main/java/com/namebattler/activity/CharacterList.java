@@ -1,7 +1,5 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -12,16 +10,17 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class CharacterList extends AppCompatActivity {
@@ -85,7 +84,7 @@ public class CharacterList extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     Toast.makeText(
-                            CharacterList.this,"作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
+                            CharacterList.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 }
             }
         });
