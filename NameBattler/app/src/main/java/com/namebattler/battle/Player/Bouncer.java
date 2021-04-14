@@ -47,7 +47,7 @@ public class Bouncer extends Player {
     protected void counterAttack(Player defender) {
         BattleLog.addLog(this.getName() + "が跳ね返ってきた！");
         //会心でなければ
-        if (!checkLuckyHit(defender)) {
+        if (!isLuckyHit()) {
             this.normalDamage(defender);
         }
         this.beforeHp = this.getHP();

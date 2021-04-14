@@ -233,7 +233,7 @@ public abstract class Player {
      */
     protected void normalDamage(Player target) {
         int damage = calcDamage(target);
-        if (checkLuckyHit(target)) {
+        if (isLuckyHit()) {
             damage = this.getSTR();
         }
 
@@ -246,21 +246,16 @@ public abstract class Player {
     }
 
     /**
-     * 会心の一撃の判定
-     *
-     * @param target 攻撃されるプレイヤー
-     * @return true:	会心の一撃
-     * false: 	通常ダメージ
+     * 会心の一撃判定
+     * @return true 会心の一撃
+     *          false 会心の一撃ではない
      */
-    protected boolean checkLuckyHit(Player target) {
-        int luckyHit = rand.nextInt(1000);
-        //会心の一撃が出た場合
-        if (this.getLUCK() > luckyHit) {
+    protected boolean isLuckyHit() {
+        if (this.getLUCK() > rand.nextInt(1000)) {
             BattleLog.addLog("会心の一撃！！");
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
