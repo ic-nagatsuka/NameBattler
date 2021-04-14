@@ -101,18 +101,21 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                     player.setClick(false);
                     radioButton.setChecked(false);
 
-                    for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
-                        Player player = GameManager.myParty.getmenbers().get(i);
-                        if (player.getName().equals(name)) {
-                            GameManager.myParty.removePlayer(player);
-                        }
-                    }
+                    removeSelectPlayer(name);
                 }
                 Button btn = startButton.findViewById(R.id.character_organization_start);
                 btn.setText("このパーティーで開始(" + GameManager.myParty.getmenbers().size() + "/3)");
             }
-        });
 
+            private void removeSelectPlayer(String name) {
+                for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
+                    Player player = GameManager.myParty.getmenbers().get(i);
+                    if (player.getName().equals(name)) {
+                        GameManager.myParty.removePlayer(player);
+                    }
+                }
+            }
+        });
         return view;
     }
 
