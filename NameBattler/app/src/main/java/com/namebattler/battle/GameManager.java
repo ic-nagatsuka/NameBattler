@@ -82,7 +82,7 @@ public class GameManager {
 
         for (int i = 0; i < playerList.size() - 1; i++) {
             for (int j = 0; j < playerList.size() - 1; j++) {
-                if (playerList.get(j).getAGI() > playerList.get(j + 1).getAGI()) {
+                if (playerList.get(j).getAgi() > playerList.get(j + 1).getAgi()) {
                     //場所を入れ替える
                     Player saveValue = playerList.get(j);
                     playerList.set(j, playerList.get(j + 1));
@@ -107,7 +107,7 @@ public class GameManager {
             //状態異常の確認
             attacker.abnormalEffect(attacker);
             //行動不能ではなく、状態異常で倒れていない
-            if (!attacker.getInaction() && attacker.getHP() > 0) {
+            if (!attacker.getInaction() && attacker.getHp() > 0) {
                 //攻撃されるパーティー
                 defenseParty = selectDefenseParty(attacker);
                 //作戦に沿って行動をする
@@ -134,7 +134,7 @@ public class GameManager {
             isEnd = true;
 
             for (Player player : party.getmenbers()) {
-                if (player.getHP() != 0) {
+                if (player.getHp() != 0) {
                     win = party;
                     isEnd = false;
                 }

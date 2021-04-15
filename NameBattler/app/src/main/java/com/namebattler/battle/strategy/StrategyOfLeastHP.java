@@ -20,8 +20,8 @@ public class StrategyOfLeastHP extends Strategy {
     public void action(Player attacker, Party defenderParty) {
         Player defender = selectDefender(defenderParty);
 
-        if (attacker.checkUseSkill()) {
-            SkillBase skill = attacker.randomSelectSkill(attacker.getUseSkillOnly());
+        if (attacker.isUseSkill()) {
+            SkillBase skill = attacker.randomSelectSkill(attacker.getNowUseSkillOnly());
             skill.use(attacker, defender);
         } else {
             attacker.normalAttack(defender);
@@ -37,7 +37,7 @@ public class StrategyOfLeastHP extends Strategy {
     protected Player selectDefender(Party defenderParty) {
         Player defender = defenderParty.getAliveMenbers().get(0);
         for (Player player : defenderParty.getAliveMenbers()) {
-            if (defender.getHP() > player.getHP()) {
+            if (defender.getHp() > player.getHp()) {
                 defender = player;
             }
         }

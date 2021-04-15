@@ -40,7 +40,7 @@ public class Party {
     public List<Player> getAliveMenbers() {
         ArrayList<Player> aliveMenbers = new ArrayList<>();
         for (Player player : this.menbers) {
-            if (player.getHP() > 0) {
+            if (player.getHp() > 0) {
                 aliveMenbers.add(player);
             }
         }

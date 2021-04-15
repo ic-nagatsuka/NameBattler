@@ -13,7 +13,7 @@ public class Heal extends SkillBase implements IHeal {
     }
 
     public boolean terms(Player target) {
-        return target.checkDicreasePlayerHp(target.getParty());
+        return target.isDicreasePartyMenberHp(target.getParty());
     }
 
     @Override
@@ -22,11 +22,11 @@ public class Heal extends SkillBase implements IHeal {
         BattleLog.addLog(attacker.getName() + "は" + this.getName() + "を唱えた！");
         usePlayerMp(attacker);
 
-        int calcHealPoint = Math.min(this.getHealPoint(), target.getMaxHp() - target.getHP());
+        int calcHealPoint = Math.min(this.getHealPoint(), target.getMaxHp() - target.getHp());
 
         BattleLog.addLog(target.getName() + "は" + calcHealPoint + "回復した！");
         //スキル効果
-        target.setHP(Math.min(target.getHP() + skill.getHealPoint(), target.getMaxHp()));
+        target.setHp(Math.min(target.getHp() + skill.getHealPoint(), target.getMaxHp()));
     }
 
     public Player selectTarget(Player attacker) {
@@ -42,7 +42,7 @@ public class Heal extends SkillBase implements IHeal {
     }
 
     private double playerHpPercentage(Player player) {
-        return (double) player.getHP() / (double) player.getMaxHp();
+        return (double) player.getHp() / (double) player.getMaxHp();
     }
 
     @Override

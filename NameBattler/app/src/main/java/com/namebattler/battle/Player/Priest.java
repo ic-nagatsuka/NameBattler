@@ -16,7 +16,7 @@ public class Priest extends Player {
     }
 
     @Override
-    public void makeCharacter() {
+    public void makeCharacterStatus() {
         this.hp = getNumber(0, 120) + 80;
         this.mp = getNumber(1, 30) + 20;
         this.str = getNumber(2, 60) + 10;

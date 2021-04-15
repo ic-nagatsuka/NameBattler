@@ -93,7 +93,7 @@ public class BattleStart extends AppCompatActivity {
             Map<String, String> map = new HashMap();
             map.put("name", player.getName());
             map.put("job", player.getJob());
-            map.put("status", player.getstatus());
+            map.put("status", player.getStatus());
             list.add(map);
         }
 

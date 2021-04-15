@@ -22,7 +22,7 @@ public class Poison extends SkillBase implements AbnormalState {
         BattleLog.addLog(attacker.getName() + "は" + this.getName() + "を唱えた！");
         usePlayerMp(attacker);
 
-        if (defender.checkSameAbnormal(this)) {
+        if (defender.haveSameAbnormal(this)) {
             BattleLog.addLog(defender.getName() + "はすでにかかっている！");
 
         } else {

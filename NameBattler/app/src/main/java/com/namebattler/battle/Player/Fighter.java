@@ -22,7 +22,7 @@ public class Fighter extends Player {
     }
 
     @Override
-    public void makeCharacter() {
+    public void makeCharacterStatus() {
         this.hp = getNumber(0, 200) + 100;
         this.mp = getNumber(1, 0) + 0;
         this.str = getNumber(2, 70) + 30;
