@@ -3,6 +3,7 @@ package com.namebattler.battle.player;
 import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.skill.AbnormalState;
+import com.namebattler.battle.skill.AllSkill;
 import com.namebattler.battle.skill.IHeal;
 import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.StateEffect;
@@ -58,16 +59,16 @@ public abstract class Player {
         this.beforeHp = this.getHP();
     }
 
-    /**
-     * ====================================================================================
+    /*====================================================================================
      * abstract
-     * ====================================================================================
+     * ====================================================================================*/
+    /**
+     * キャラクターステータス作成
      */
     protected abstract void makeCharacter();
 
     /**
-     * スキル設定
-     * List<Skill>.add(AllSkill.name)
+     * 使用するスキルを作成
      */
     protected abstract void makeSkill();
 
@@ -204,19 +205,14 @@ public abstract class Player {
     protected void setUseSkill(SkillBase skill) {
         this.useSkill.add(skill);
     }
-    /*
-     * protected
-     */
+
 
     /**
      * 通常攻撃の流れ
-     *
-     * @param target 対象プレイヤー
+     * @param target 攻撃されるプレイヤー
      */
     public void normalAttack(Player target) {
-
         this.readyCounter(target);
-
 
         //通常のダメージ計算
         normalDamage(target);
@@ -228,7 +224,6 @@ public abstract class Player {
 
     /**
      * 通常攻撃ダメージを与える
-     *
      * @param target 攻撃されるプレイヤー
      */
     protected void normalDamage(Player target) {
@@ -260,28 +255,22 @@ public abstract class Player {
 
     /**
      * スキルを使用する
-     *
      * @param skill  使用スキル
-     * @param target 攻撃されるプレイヤー
+     * @param target ターゲットプレイヤー
      */
     public void useSkill(SkillBase skill, Player target) {
-        //回復スキルだった場合回復するプレイヤーを選択する
-//		if(skill.getType() == AllSkill.HEEL){
-//			target = this.heelTargetHP(this.getParty().getmenbers());
-//		}
         //スキルを使用する
         skill.use(this, target);
         //戦闘不能判定
         deathJudge(target.getParty().getmenbers());
         //カウンター攻撃
         target.checkCounter(this);
-
     }
 
     /**
      * スキルをランダムで選ぶ
-     *
-     * @return　使用するスキル
+     * @param useSkill 使用出来るスキル
+     * @return 使用するスキル
      */
     public SkillBase randomSelectSkill(ArrayList<SkillBase> useSkill) {
         SkillBase skill;
@@ -290,19 +279,13 @@ public abstract class Player {
             skill = useSkill.get(rand.nextInt(useSkill.size()));
             //MPの確認
             if (skill.getUseMp() <= this.getMP()) {
-//				//回復スキルが使えるか確認
-//				if(skill.getType() == AllSkill.HEEL && !checkDicreasePlayerHp(this.getParty())){
-//					continue;
-//				}
                 return skill;
             }
         }
     }
 
-
     /**
-     * スキルの使用可能を確認
-     *
+     * スキルが使用可能か
      * @return true:	使える
      * false:	使えない
      */
@@ -313,6 +296,7 @@ public abstract class Player {
             return true;
         }
     }
+
 
     public ArrayList<SkillBase> getUseSkillOnly() {
         ArrayList<SkillBase> useSkill = new ArrayList<>();
@@ -325,15 +309,13 @@ public abstract class Player {
                 }
             }
         }
-
         return useSkill;
     }
 
 
     /**
      * HPが減少しているパーティーメンバーを探す
-     *
-     * @param party 　攻撃側パーティー
+     * @param party 　調べるパーティー
      * @return true:	減少している
      * false: 	減少していない
      */
@@ -348,11 +330,9 @@ public abstract class Player {
         return false;
     }
 
-
     /**
      * HPの割合が一番少ないプレイヤーを選ぶ
-     *
-     * @param party 攻撃側パーティー
+     * @param party 調べるパーティー
      * @return 回復されるプレイヤー
      */
     protected Player heelTargetHP(List<Player> party) {
@@ -360,7 +340,6 @@ public abstract class Player {
         double minPercent = party.get(0).getHP() * party.get(0).getMaxHp();//HPの割合
 
         Player target = party.get(0);
-
         //HPの割合が一番少ないプレイヤーにする
         for (Player player : party) {
             percent = (double) player.getHP() / (double) player.getMaxHp() * 100;
@@ -369,13 +348,11 @@ public abstract class Player {
                 minPercent = percent;
             }
         }
-
         return target;
     }
 
     /**
      * カウンター攻撃の確認
-     *
      * @param target 攻撃したプレイヤー
      */
     protected void checkCounter(Player target) {
@@ -390,18 +367,15 @@ public abstract class Player {
 
     /**
      * カウンター攻撃
-     *
-     * @param target
+     * @param target　ターゲットプレイヤー
      */
     protected void counterAttack(Player target) {
         BattleLog.addLog(this.getName() + "は反撃した！！");
-
         normalDamage(target);
     }
 
     /**
      * 通常ダメージの計算
-     *
      * @param target 攻撃されるプレイヤー
      * @return 与えるダメージ
      */
@@ -415,7 +389,6 @@ public abstract class Player {
 
     /**
      * ダメージを与える
-     *
      * @param damage 与えるダメージ
      */
     public void damage(int damage) {
@@ -425,39 +398,25 @@ public abstract class Player {
 
     /**
      * 死亡判定
-     *
      * @param party 攻撃を受けたパーティー
      */
     public void deathJudge(List<Player> party) {
-
         for (int i = party.size() - 1; 0 <= i; i--) {
-
             Player player = party.get(i);
-
             //HPが０以下
             if (player.getHP() <= 0 && !player.getIsDeath()) {
-
                 BattleLog.addLog(player.getName() + "は力尽きた...\n");
                 player.setIsDeath(true);
-//				//パーティーから除く
-//				player.getParty().removePlayer(player);
-
             }
         }
     }
 
-    /*
-     * public
-     */
-
     /**
      * 行動選択
-     *
      * @param target 攻撃されるプレイヤー
      */
     public void action(Player target) {
         this.readyCounter(target);
-
         if (checkDicreasePlayerHp(this.getParty())) {
             if (checkUseSkill()) {
                 //ランダムでスキルを使用する
@@ -471,7 +430,6 @@ public abstract class Player {
 
     /**
      * 状態異常の効果
-     *
      * @param attacker 攻撃するプレイヤー
      */
     public void abnormalEffect(Player attacker) {
@@ -486,7 +444,6 @@ public abstract class Player {
             if (abnormal.getTurn() < 0) {
                 turnAbnormalState.remove(i);
             }
-
             attacker.deathJudge(attacker.getParty().getmenbers());
             if (attacker.getHP() == 0) {
                 break;
@@ -496,7 +453,6 @@ public abstract class Player {
 
     /**
      * 同じ状態効果があるか確認
-     *
      * @param skill 使用するスキル
      * @return true : あり	false : なし
      */
@@ -511,6 +467,7 @@ public abstract class Player {
 
     /**
      * ステータス文字列をまとめて返す
+     * @return ステータスをまとめてた文字列
      */
     public String getstatus() {
         return "HP:" + getHP() +
@@ -521,10 +478,8 @@ public abstract class Player {
                 " AGI:" + getAGI();
     }
 
-
     /**
      * 能力値を返す
-     *
      * @param index 参照する場所
      * @param max   最大値
      * @return 参照場所の数値
@@ -547,14 +502,11 @@ public abstract class Player {
         }
         return 0;
     }
-	/*===========
-	 * private
-	 ===========*/
+
 
     /**
      * HPを上書きする
-     *
-     * @param target
+     * @param target　プレイヤー
      */
     private void readyCounter(Player target) {
         for (Player player : target.getParty().getmenbers()) {
@@ -564,7 +516,6 @@ public abstract class Player {
 
     /**
      * スキルの最小消費MPの数値を返す
-     *
      * @return スキルの最小消費MP
      */
     private int skillMinUseMp() {
