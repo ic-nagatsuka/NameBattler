@@ -146,12 +146,55 @@ public abstract class Player {
         return this.useSkill;
     }
 
+    /**
+     * かかっているすべての状態異常の画面表示文字をまとめて返す
+     * @return かかっているすべての状態異常の画面表示文字
+     */
     public String getAllAbnormalStateChar() {
         String str = "";
         for (StateEffect abnormalState : turnAbnormalState) {
             str += abnormalState.getStateChar();
         }
         return str;
+    }
+
+    /**
+     * 現在使用できるスキルを返す
+     * @return 現在使用できるスキル
+     */
+    public ArrayList<SkillBase> getNowUseSkillOnly() {
+        ArrayList<SkillBase> useSkill = new ArrayList<>();
+        for (SkillBase skill : this.getUseSkill()) {
+            if (skill.getUseMp() <= this.getMp()) {
+                if (skill instanceof IHeal && isDicreasePartyMenberHp(this.getParty())
+                        || skill instanceof IHeal == false
+                ) {
+                    useSkill.add(skill);
+                }
+            }
+        }
+        return useSkill;
+    }
+
+    /**
+     * HPの割合が一番少ないプレイヤーを返す
+     * @param party 調べるパーティー
+     * @return HPの割合が一番少ないプレイヤー
+     */
+    protected Player getLowerHpHealTarget(List<Player> party) {
+        double percent;
+        double minPercent = party.get(0).getHp() * party.get(0).getMaxHp();//HPの割合
+
+        Player target = party.get(0);
+        //HPの割合が一番少ないプレイヤーにする
+        for (Player player : party) {
+            percent = (double) player.getHp() / (double) player.getMaxHp() * 100;
+            if (percent < minPercent) {
+                target = player;
+                minPercent = percent;
+            }
+        }
+        return target;
     }
 
     /*============
@@ -296,22 +339,6 @@ public abstract class Player {
         }
     }
 
-
-    public ArrayList<SkillBase> getNowUseSkillOnly() {
-        ArrayList<SkillBase> useSkill = new ArrayList<>();
-        for (SkillBase skill : this.getUseSkill()) {
-            if (skill.getUseMp() <= this.getMp()) {
-                if (skill instanceof IHeal && isDicreasePartyMenberHp(this.getParty())
-                        || skill instanceof IHeal == false
-                ) {
-                    useSkill.add(skill);
-                }
-            }
-        }
-        return useSkill;
-    }
-
-
     /**
      * HPが減少しているパーティーメンバーを探す
      * @param party 　調べるパーティー
@@ -327,27 +354,6 @@ public abstract class Player {
             }
         }
         return false;
-    }
-
-    /**
-     * HPの割合が一番少ないプレイヤーを選ぶ
-     * @param party 調べるパーティー
-     * @return 回復されるプレイヤー
-     */
-    protected Player getLowerHpHealTarget(List<Player> party) {
-        double percent;
-        double minPercent = party.get(0).getHp() * party.get(0).getMaxHp();//HPの割合
-
-        Player target = party.get(0);
-        //HPの割合が一番少ないプレイヤーにする
-        for (Player player : party) {
-            percent = (double) player.getHp() / (double) player.getMaxHp() * 100;
-            if (percent < minPercent) {
-                target = player;
-                minPercent = percent;
-            }
-        }
-        return target;
     }
 
     /**
@@ -374,8 +380,8 @@ public abstract class Player {
     }
 
     /**
-     * 通常ダメージの計算
-     * @param target 攻撃されるプレイヤー
+     * 通常攻撃ダメージの計算
+     * @param target ターゲットプレイヤー
      * @return 与えるダメージ
      */
     public int calcDamage(Player target) {
@@ -397,7 +403,7 @@ public abstract class Player {
 
     /**
      * 死亡判定
-     * @param party 攻撃を受けたパーティー
+     * @param party パーティー
      */
     public void checkDeath(List<Player> party) {
         for (int i = party.size() - 1; 0 <= i; i--) {
@@ -411,7 +417,7 @@ public abstract class Player {
     }
 
     /**
-     * 行動選択
+     * 行動の流れ
      * @param target 攻撃されるプレイヤー
      */
     public void action(Player target) {
@@ -428,31 +434,30 @@ public abstract class Player {
     }
 
     /**
-     * 状態異常の効果
-     * @param attacker 攻撃するプレイヤー
+     * 状態異常効果を動かす
+     * @param target 攻撃するプレイヤー
      */
-    public void abnormalEffect(Player attacker) {
-        //すべての状態異常を動かす
+    public void abnormalEffect(Player target) {
         for (int i = turnAbnormalState.size() - 1; 0 <= i; i--) {
             StateEffect abnormal = turnAbnormalState.get(i);
             //効果ターン経過
             abnormal.setTurn(abnormal.getTurn() - 1);
             //状態異常の効果
-            abnormal.getSkill().effect(attacker, abnormal.getTurn());
+            abnormal.getSkill().effect(target, abnormal.getTurn());
             //効果ターン経過すれば削除する
             if (abnormal.getTurn() < 0) {
                 turnAbnormalState.remove(i);
             }
-            attacker.checkDeath(attacker.getParty().getmenbers());
-            if (attacker.getHp() == 0) {
+            target.checkDeath(target.getParty().getmenbers());
+            if (target.getHp() == 0) {
                 break;
             }
         }
     }
 
     /**
-     * 同じ状態効果があるか確認
-     * @param skill 使用するスキル
+     * 同じ状態異常スキルを探す
+     * @param skill 比較するスキル
      * @return true : あり	false : なし
      */
     public boolean haveSameAbnormal(AbnormalState skill) {
