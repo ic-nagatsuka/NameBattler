@@ -31,7 +31,6 @@ public class CharacterOrganization extends AppCompatActivity {
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "パーティー編成", TopScreen.class);
 
-
         if (GameManager.myParty.getmenbers().size() != 0) {
             GameManager.myParty = new Party("味方");
         }
@@ -69,13 +68,11 @@ public class CharacterOrganization extends AppCompatActivity {
                 startButtonView,
                 list
         );
-
         ListView listView = findViewById(R.id.character_organization_ListView);
         listView.setAdapter(adapter);
     }
 
     public String makeStatusText(Cursor cursor) {
-
         String statusText = "HP" + cursor.getString(cursor.getColumnIndex("HP")) +
                 " MP" + cursor.getString(cursor.getColumnIndex("MP")) +
                 " STR" + cursor.getString(cursor.getColumnIndex("STR")) +
@@ -96,7 +93,6 @@ public class CharacterOrganization extends AppCompatActivity {
             this.name = name;
             this.job = job;
             this.status = status;
-
         }
 
         public String getName() {

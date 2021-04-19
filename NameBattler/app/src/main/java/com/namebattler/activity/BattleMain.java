@@ -61,7 +61,6 @@ public class BattleMain extends AppCompatActivity {
                     Intent intent = new Intent(getApplication(), BattleResult.class);
                     startActivity(intent);
                 }
-
             }
         });
 
@@ -88,7 +87,6 @@ public class BattleMain extends AppCompatActivity {
 
         GridView gridView = findViewById(layout);
         gridView.setAdapter(adapter);
-
     }
 
 }

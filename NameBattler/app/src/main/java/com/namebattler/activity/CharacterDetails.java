@@ -29,9 +29,7 @@ public class CharacterDetails extends AppCompatActivity {
                 .getCharacter(intent.getStringExtra("name"));
 
         if (cursor.moveToFirst()) {
-            TextView textView;
-
-            textView = findViewById(R.id.characterDetails_name);
+            TextView textView = findViewById(R.id.characterDetails_name);
             textView.setText(cursor.getString(cursor.getColumnIndex("NAME")));
 
             textView = findViewById(R.id.characterDetails_job);
@@ -58,7 +56,6 @@ public class CharacterDetails extends AppCompatActivity {
             textView = findViewById(R.id.characterDetails_MakeDay);
             textView.setText("作成日 : " + cursor.getString(cursor.getColumnIndex("CREATE_AT")));
         }
-
 
         findViewById(R.id.characterDetails_DeleteButton).setOnClickListener(new View.OnClickListener() {
             @Override

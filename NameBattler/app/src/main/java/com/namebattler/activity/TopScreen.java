@@ -23,7 +23,6 @@ public class TopScreen extends AppCompatActivity {
                 //キャラクター一覧画面に遷移
                 Intent intent = new Intent(
                         getApplication(), CharacterList.class);
-
                 startActivity(intent);
             }
         });

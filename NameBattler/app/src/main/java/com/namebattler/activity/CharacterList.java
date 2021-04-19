@@ -67,10 +67,9 @@ public class CharacterList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView textView = view.findViewById(R.id.character_list_name);
                 String name = textView.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
-                intent.putExtra("name", name);
-
                 if (!name.equals("")) {
+                    Intent intent = new Intent(getApplicationContext(), CharacterDetails.class);
+                    intent.putExtra("name", name);
                     startActivity(intent);
                 }
             }

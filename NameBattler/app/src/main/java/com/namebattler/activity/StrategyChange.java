@@ -64,11 +64,8 @@ public class StrategyChange extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
-
             layoutParams.setMargins(0, radioMarginVertical, 0, radioMarginVertical);
-
             radioButton.setLayoutParams(layoutParams);
-
             radioGroup.addView(radioButton);
         }
     }

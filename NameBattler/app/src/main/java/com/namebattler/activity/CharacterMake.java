@@ -44,8 +44,8 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
         final EditText editText = findViewById(R.id.character_make_editText_name);
         editText.addTextChangedListener(this);
-        showSelectjobItem();
 
+        showSelectjobItem();
 
         //作成するボタン
         findViewById(R.id.character_make_makeButton).setOnClickListener(new View.OnClickListener() {
@@ -74,7 +74,6 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                         Toast.makeText(
                                 CharacterMake.this, "この名前はすでに存在しています", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
 

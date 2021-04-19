@@ -38,10 +38,8 @@ public class CharacterMakeConpletion extends AppCompatActivity {
                 .getCharacter(name);
 
         if (cursor.moveToFirst()) {
-            //キャラクターデータを表示する
-            TextView textView;
             //名前
-            textView = findViewById(R.id.characterMakeConpletion_name);
+            TextView textView = findViewById(R.id.characterMakeConpletion_name);
             textView.setText(cursor.getString(cursor.getColumnIndex("NAME")));
             //職業
             textView = findViewById(R.id.characterMakeConpletion_job);
