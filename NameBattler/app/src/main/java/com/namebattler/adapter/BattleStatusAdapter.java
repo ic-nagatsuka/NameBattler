@@ -46,10 +46,8 @@ public class BattleStatusAdapter extends BaseAdapter {
         }
 
         Player player = party.getmenbers().get(i);
-
-        TextView textView;
         //名前
-        textView = view.findViewById(R.id.gridview_name);
+        TextView textView = view.findViewById(R.id.gridview_name);
         textView.setText(player.getName());
         //体力が０のキャラクターは赤色文字
         if (player.getHp() == 0) {
@@ -64,7 +62,6 @@ public class BattleStatusAdapter extends BaseAdapter {
         //状態異常
         textView = view.findViewById(R.id.gridview_status_abnormal);
         textView.setText(player.getAllAbnormalStateChar());
-
 
         return view;
     }
