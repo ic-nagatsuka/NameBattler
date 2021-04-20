@@ -5,7 +5,7 @@ import java.util.Random;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 
-public class StrategyOfNoSkill extends Strategy {
+public class NoSkill extends Strategy {
     /*=============
      * フィールド変数
      =============*/
@@ -14,7 +14,7 @@ public class StrategyOfNoSkill extends Strategy {
     /*=============
      * コンストラクタ
      =============*/
-    public StrategyOfNoSkill() {
+    public NoSkill() {
         this.name = "スキル使わない";
     }
 
