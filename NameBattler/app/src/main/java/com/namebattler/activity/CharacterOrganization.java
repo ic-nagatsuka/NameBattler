@@ -14,7 +14,7 @@ import com.namebattler.adapter.CharacterSelectListAdapter;
 import com.namebattler.battle.GameManager;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.AllJob;
-import com.namebattler.database.GetCharacterData;
+import com.namebattler.database.OperationCharacterData;
 import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
 
@@ -50,7 +50,7 @@ public class CharacterOrganization extends AppCompatActivity {
     }
 
     private void displayCharacterItem() {
-        Cursor cursor = new GetCharacterData(getApplicationContext()).getAllData();
+        Cursor cursor = new OperationCharacterData(getApplicationContext()).getAllData();
         List<Status> list = new ArrayList<>();
         if (cursor.moveToFirst()) {
             for (int i = 0; i < cursor.getCount(); i++) {

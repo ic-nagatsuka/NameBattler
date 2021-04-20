@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
-import com.namebattler.database.GetCharacterData;
+import com.namebattler.database.OperationCharacterData;
 import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
 
@@ -25,7 +25,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make_conpletion);
 
-        nowPlayerNum = new GetCharacterData(getApplicationContext())
+        nowPlayerNum = new OperationCharacterData(getApplicationContext())
                 .getAllData()
                 .getCount();
 
@@ -34,7 +34,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
 
         String name = getIntent().getStringExtra("name");
 
-        Cursor cursor = new GetCharacterData(getApplicationContext())
+        Cursor cursor = new OperationCharacterData(getApplicationContext())
                 .getCharacter(name);
 
         if (cursor.moveToFirst()) {

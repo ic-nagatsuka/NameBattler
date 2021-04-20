@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
-import com.namebattler.database.GetCharacterData;
+import com.namebattler.database.OperationCharacterData;
 import com.namebattler.fragment.TitleFragment;
 
 public class CharacterDetails extends AppCompatActivity {
@@ -25,7 +25,7 @@ public class CharacterDetails extends AppCompatActivity {
 
         final Intent intent = getIntent();
 
-        Cursor cursor = new GetCharacterData(getApplicationContext())
+        Cursor cursor = new OperationCharacterData(getApplicationContext())
                 .getCharacter(intent.getStringExtra("name"));
 
         if (cursor.moveToFirst()) {
@@ -62,7 +62,7 @@ public class CharacterDetails extends AppCompatActivity {
             public void onClick(View view) {
                 String name = intent.getStringExtra("name");
 
-                new GetCharacterData(getApplicationContext()).deleteCharacter(name);
+                new OperationCharacterData(getApplicationContext()).deleteCharacter(name);
 
                 Intent intent = new Intent(getApplication(), CharacterList.class);
                 startActivity(intent);

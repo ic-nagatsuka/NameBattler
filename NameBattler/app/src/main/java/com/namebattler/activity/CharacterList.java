@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
-import com.namebattler.database.GetCharacterData;
+import com.namebattler.database.OperationCharacterData;
 import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
 
@@ -33,7 +33,7 @@ public class CharacterList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_list);
 
-        cursor = new GetCharacterData(getApplicationContext()).getAllData();
+        cursor = new OperationCharacterData(getApplicationContext()).getAllData();
         nowPlayerNum = cursor.getCount();
 
         //タイトル表示

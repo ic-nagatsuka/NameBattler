@@ -9,14 +9,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.namebattler.battle.player.Player;
 
 
-public class GetCharacterData {
+public class OperationCharacterData {
 
     SQLiteDatabase db;
     SQLiteOpenHelper helper;
 
     Context context;
 
-    public GetCharacterData(Context context) {
+    public OperationCharacterData(Context context) {
         this.context = context;
         helper = new CharacterInformationHelper(context);
     }
