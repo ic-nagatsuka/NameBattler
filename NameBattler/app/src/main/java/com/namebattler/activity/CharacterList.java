@@ -48,7 +48,7 @@ public class CharacterList extends AppCompatActivity {
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
                 list,
-                R.layout.activity_character_list_listview,
+                R.layout.listview_character_list,
                 new String[]{
                         "name",
                         "job",
