@@ -31,7 +31,7 @@ public class BattleMain extends AppCompatActivity {
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "バトル", null);
 
-        displayUpdateStates();
+        displayUpdateStatus();
 
         TextView strategy = findViewById(R.id.battle_main_strategy_name);
         strategy.setText("作戦 ： " +
@@ -50,7 +50,7 @@ public class BattleMain extends AppCompatActivity {
 
                 gm.battle();
                 //ステータス更新
-                displayUpdateStates();
+                displayUpdateStatus();
                 //バトルログ更新
                 battleLog.setText(BattleLog.getLogText());
                 //バトル終了確認
@@ -76,7 +76,7 @@ public class BattleMain extends AppCompatActivity {
     }
 
     //各パーティーデータの画面表示
-    public void displayUpdateStates() {
+    public void displayUpdateStatus() {
         makeAdapter(R.id.battle_main_gridView_bottom, GameManager.myParty);
         makeAdapter(R.id.battle_main_gridView_top, GameManager.enemyParty);
     }
@@ -84,7 +84,6 @@ public class BattleMain extends AppCompatActivity {
     //アダプターをセット
     public void makeAdapter(int layout, Party party) {
         BaseAdapter adapter = new BattleStatusAdapter(this, party);
-
         GridView gridView = findViewById(layout);
         gridView.setAdapter(adapter);
     }

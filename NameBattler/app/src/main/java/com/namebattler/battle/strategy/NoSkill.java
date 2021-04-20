@@ -3,12 +3,12 @@ package com.namebattler.battle.strategy;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 
-public class StrategyOfNoSkill extends Strategy {
+public class NoSkill extends Strategy {
 
     /*=============
      * コンストラクタ
      =============*/
-    public StrategyOfNoSkill() {
+    public NoSkill() {
         this.name = "スキル使わない";
     }
 

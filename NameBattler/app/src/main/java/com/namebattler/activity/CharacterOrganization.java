@@ -107,14 +107,14 @@ public class CharacterOrganization extends AppCompatActivity {
             return this.status;
         }
 
-        public boolean getIsClick() {
+        public boolean getIsClicked() {
             return this.isClicked;
         }
 
-        public void setClick(boolean isClicked) {
+        public void setIsClicked(boolean isClicked) {
             this.isClicked = isClicked;
         }
 
     }
-}
 
+}

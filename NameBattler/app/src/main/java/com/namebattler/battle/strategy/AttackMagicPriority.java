@@ -8,7 +8,7 @@ import com.namebattler.battle.skill.SkillType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StrategyOfAttackMagicPriority extends Strategy {
+public class AttackMagicPriority extends Strategy {
     /*=============
      * フィールド変数
      =============*/
@@ -18,7 +18,7 @@ public class StrategyOfAttackMagicPriority extends Strategy {
      * コンストラクタ
      =============*/
 //	ArrayList<Integer>
-    public StrategyOfAttackMagicPriority(String name, SkillType[] skillNum) {
+    public AttackMagicPriority(String name, SkillType[] skillNum) {
         this.name = name;
         this.skillNum = skillNum;
     }

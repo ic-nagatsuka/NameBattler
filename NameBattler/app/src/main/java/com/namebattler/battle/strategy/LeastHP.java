@@ -4,7 +4,7 @@ import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
-public class StrategyOfLeastHP extends Strategy {
+public class LeastHP extends Strategy {
 	/*=============
 	 * フィールド変数
 	 =============*/
@@ -12,7 +12,7 @@ public class StrategyOfLeastHP extends Strategy {
     /*=============
      * コンストラクタ
      =============*/
-    public StrategyOfLeastHP() {
+    public LeastHP() {
         this.name = "体力少ない";
     }
 

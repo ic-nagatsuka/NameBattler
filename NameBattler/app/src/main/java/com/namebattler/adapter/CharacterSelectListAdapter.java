@@ -73,7 +73,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
         radioButton.setVisibility(View.VISIBLE);
 
-        if (player.getIsClick()) {
+        if (player.getIsClicked()) {
             radioButton.setChecked(true);
         } else {
             radioButton.setChecked(false);
@@ -88,7 +88,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
 
                 if (!hasName(name)) {
                     if (GameManager.myParty.getmenbers().size() < Option.PARTY_PLAYER_NUM) {
-                        player.setClick(true);
+                        player.setIsClicked(true);
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
                         GameManager.myParty.appendPlayer(
@@ -98,7 +98,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                         radioButton.setChecked(false);
                     }
                 } else {
-                    player.setClick(false);
+                    player.setIsClicked(false);
                     radioButton.setChecked(false);
 
                     removeSelectPlayer(name);

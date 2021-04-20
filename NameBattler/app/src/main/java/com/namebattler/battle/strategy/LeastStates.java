@@ -3,7 +3,7 @@ package com.namebattler.battle.strategy;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 
-public class StrategyOfLeastStates extends StrategyOfLeastHP {
+public class LeastStates extends LeastHP {
 	/*=============
 	 * フィールド変数
 	 =============*/
@@ -11,7 +11,7 @@ public class StrategyOfLeastStates extends StrategyOfLeastHP {
     /*=============
      * コンストラクタ
      =============*/
-    StrategyOfLeastStates() {
+    LeastStates() {
         this.name = "防御力少ない";
     }
 

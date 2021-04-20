@@ -1,9 +1,9 @@
 package com.namebattler.battle.strategy;
 
 public enum AllStrategy {
-    DAMAGE_PRIORITY(new StrategyOfDamagePriority()),
-    LEAST_HP(new StrategyOfLeastHP()),
-    NO_SKILL(new StrategyOfNoSkill()),
+    DAMAGE_PRIORITY(new DamagePriority()),
+    LEAST_HP(new LeastHP()),
+    NO_SKILL(new NoSkill()),
     ;
 
     Strategy strategy;

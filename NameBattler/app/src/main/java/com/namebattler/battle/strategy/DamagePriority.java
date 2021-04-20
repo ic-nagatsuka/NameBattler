@@ -5,7 +5,7 @@ import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
 
-public class StrategyOfDamagePriority extends Strategy {
+public class DamagePriority extends Strategy {
 
     boolean normalAttack;
 
@@ -15,7 +15,7 @@ public class StrategyOfDamagePriority extends Strategy {
     /*=============
      * コンストラクタ
      =============*/
-    public StrategyOfDamagePriority() {
+    public DamagePriority() {
         this.name = "ダメージ与えて";
     }
 
