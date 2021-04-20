@@ -21,6 +21,10 @@ public class OperationCharacterData {
         helper = new CharacterInformationHelper(context);
     }
 
+    public int getCharacterCount(){
+        return getAllData().getCount();
+    }
+
     public Cursor getAllData() {
         db = helper.getReadableDatabase();
         String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + ";";

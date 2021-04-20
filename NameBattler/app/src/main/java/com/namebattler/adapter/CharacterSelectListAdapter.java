@@ -60,15 +60,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         }
 
         final CharacterOrganization.Status player = status.get(i);
-        TextView textView = view.findViewById(R.id.character_organization_listView_status_name);
-        textView.setText(player.getName());
-
-        textView = view.findViewById(R.id.character_organization_listView_status_job);
-        textView.setText(player.getJob());
-
-        textView = view.findViewById(R.id.character_organization_listView_status);
-        textView.setText(player.getStatus());
-
+        setPlayerStatusLayout(view, player);
 
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
         radioButton.setVisibility(View.VISIBLE);
@@ -117,6 +109,17 @@ public class CharacterSelectListAdapter extends BaseAdapter {
             }
         });
         return view;
+    }
+
+    private void setPlayerStatusLayout(View view, CharacterOrganization.Status player) {
+        TextView textView = view.findViewById(R.id.character_organization_listView_status_name);
+        textView.setText(player.getName());
+
+        textView = view.findViewById(R.id.character_organization_listView_status_job);
+        textView.setText(player.getJob());
+
+        textView = view.findViewById(R.id.character_organization_listView_status);
+        textView.setText(player.getStatus());
     }
 
     public boolean hasName(String name) {
