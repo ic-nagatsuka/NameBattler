@@ -16,7 +16,7 @@ import com.namebattler.R;
 import com.namebattler.battle.GameManager;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.battle.player.Player;
-import com.namebattler.database.GetCharacterData;
+import com.namebattler.database.OperationCharacterData;
 import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
 
@@ -35,7 +35,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make);
 
-        nowPlayerNum = new GetCharacterData(getApplicationContext())
+        nowPlayerNum = new OperationCharacterData(getApplicationContext())
                 .getAllData()
                 .getCount();
 
@@ -62,7 +62,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                 } else if (!name.equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
                     Player player = GameManager.makePlayer(
                             name, radio.getText().toString(), GameManager.myParty);
-                    if (new GetCharacterData(getApplicationContext())
+                    if (new OperationCharacterData(getApplicationContext())
                             .setCharacter(player, radio.getId(), getDate()) != -1) {
                         //キャラクター作成完了の場合
                         nowPlayerNum++;
