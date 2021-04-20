@@ -1,7 +1,5 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +7,11 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.namebattler.R;
-import com.namebattler.battle.strategy.AllStrategy;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.namebattler.R;
 import com.namebattler.battle.GameManager;
+import com.namebattler.battle.strategy.AllStrategy;
 import com.namebattler.fragment.TitleFragment;
 
 public class StrategyChange extends AppCompatActivity {
@@ -25,7 +24,8 @@ public class StrategyChange extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_strategy_change);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "作戦", null);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "作戦", null);
 
         RadioGroup radioGroup = findViewById(R.id.strategyChange_radioGroup);
         showSelectStrategy(radioGroup);
@@ -40,7 +40,7 @@ public class StrategyChange extends AppCompatActivity {
         });
 
         //決定ボタン
-        findViewById(R.id.strategyChange_dicid).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.strategyChange_dicide).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //バトルメイン画面に遷移
@@ -64,11 +64,8 @@ public class StrategyChange extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
-
             layoutParams.setMargins(0, radioMarginVertical, 0, radioMarginVertical);
-
             radioButton.setLayoutParams(layoutParams);
-
             radioGroup.addView(radioButton);
         }
     }

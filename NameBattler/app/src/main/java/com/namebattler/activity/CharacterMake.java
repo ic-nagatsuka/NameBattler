@@ -1,7 +1,5 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,17 +10,18 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.namebattler.R;
+import com.namebattler.battle.GameManager;
 import com.namebattler.battle.player.AllJob;
 import com.namebattler.battle.player.Player;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import com.namebattler.battle.GameManager;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class CharacterMake extends AppCompatActivity implements TextWatcher {
@@ -40,12 +39,13 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                 .getAllData()
                 .getCount();
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", CharacterList.class);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "キャラ作成", CharacterList.class);
 
         final EditText editText = findViewById(R.id.character_make_editText_name);
         editText.addTextChangedListener(this);
-        showSelectjobItem();
 
+        showSelectjobItem();
 
         //作成するボタン
         findViewById(R.id.character_make_makeButton).setOnClickListener(new View.OnClickListener() {
@@ -56,24 +56,24 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
                 String name = editName.getText().toString();
                 RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
-                if (nowPlayerNum >= Option.MAKE_PLAYER_NUM) {
-                    //キャラクター最大数エラー表示
-                    Toast.makeText(CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
-                } else if (!editName.getText().toString().equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
-                    Player player = GameManager.makePlayer(name, radio.getText().toString(), GameManager.myParty);
-
+                if (nowPlayerNum >= Option.MAX_MAKE_PLAYER_NUM) {
+                    Toast.makeText(
+                            CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
+                } else if (!name.equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
+                    Player player = GameManager.makePlayer(
+                            name, radio.getText().toString(), GameManager.myParty);
                     if (new GetCharacterData(getApplicationContext())
                             .setCharacter(player, radio.getId(), getDate()) != -1) {
-                        //キャラクターデータ追加
+                        //キャラクター作成完了の場合
                         nowPlayerNum++;
                         Intent intent = new Intent(getApplication(), CharacterMakeConpletion.class);
                         intent.putExtra("name", name);
                         startActivity(intent);
                     } else {
                         //名前エラー表示
-                        Toast.makeText(CharacterMake.this, "この名前はすでに存在しています", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(
+                                CharacterMake.this, "この名前はすでに存在しています", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
 

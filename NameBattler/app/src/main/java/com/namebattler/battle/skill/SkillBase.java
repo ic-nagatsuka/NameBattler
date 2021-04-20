@@ -59,7 +59,7 @@ public abstract class SkillBase {
     }
 
     protected void usePlayerMp(Player attacker) {
-        attacker.setMP(attacker.getMP() - skill.getUseMp());
+        attacker.setMp(attacker.getMp() - skill.getUseMp());
     }
 
 }

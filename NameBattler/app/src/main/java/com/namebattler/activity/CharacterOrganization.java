@@ -1,7 +1,5 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -9,18 +7,19 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.namebattler.adapter.CharacterSelectListAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.namebattler.R;
-import com.namebattler.battle.player.AllJob;
-import com.namebattler.battle.party.Party;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.namebattler.adapter.CharacterSelectListAdapter;
 import com.namebattler.battle.GameManager;
+import com.namebattler.battle.party.Party;
+import com.namebattler.battle.player.AllJob;
 import com.namebattler.database.GetCharacterData;
 import com.namebattler.fragment.TitleFragment;
 import com.namebattler.option.Option;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterOrganization extends AppCompatActivity {
 
@@ -29,38 +28,14 @@ public class CharacterOrganization extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_organization);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "パーティー編成", TopScreen.class);
-
-        View startButtonView = findViewById(R.id.character_organization_start);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "パーティー編成", TopScreen.class);
 
         if (GameManager.myParty.getmenbers().size() != 0) {
             GameManager.myParty = new Party("味方");
         }
 
-        Cursor cursor = new GetCharacterData(getApplicationContext()).getAllData();
-
-        List<Status> list = new ArrayList<>();
-
-        if (cursor.moveToFirst()) {
-            for (int i = 0; i < cursor.getCount(); i++) {
-                String name = cursor.getString(cursor.getColumnIndex("NAME"));
-                String job = AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName();
-                String status = makeStatusText(cursor);
-                list.add(new Status(name, job, status));
-                cursor.moveToNext();
-            }
-
-        }
-
-        BaseAdapter adapter = new CharacterSelectListAdapter(
-                this,
-                startButtonView,
-                list
-        );
-
-        ListView listView = findViewById(R.id.character_organization_ListView);
-        listView.setAdapter(adapter);
-
+        displayCharacterItem();
 
         findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,8 +49,30 @@ public class CharacterOrganization extends AppCompatActivity {
 
     }
 
-    public String makeStatusText(Cursor cursor) {
+    private void displayCharacterItem() {
+        Cursor cursor = new GetCharacterData(getApplicationContext()).getAllData();
+        List<Status> list = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            for (int i = 0; i < cursor.getCount(); i++) {
+                String name = cursor.getString(cursor.getColumnIndex("NAME"));
+                String job = AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName();
+                String status = makeStatusText(cursor);
+                list.add(new Status(name, job, status));
+                cursor.moveToNext();
+            }
+        }
 
+        View startButtonView = findViewById(R.id.character_organization_start);
+        BaseAdapter adapter = new CharacterSelectListAdapter(
+                this,
+                startButtonView,
+                list
+        );
+        ListView listView = findViewById(R.id.character_organization_ListView);
+        listView.setAdapter(adapter);
+    }
+
+    public String makeStatusText(Cursor cursor) {
         String statusText = "HP" + cursor.getString(cursor.getColumnIndex("HP")) +
                 " MP" + cursor.getString(cursor.getColumnIndex("MP")) +
                 " STR" + cursor.getString(cursor.getColumnIndex("STR")) +
@@ -96,7 +93,6 @@ public class CharacterOrganization extends AppCompatActivity {
             this.name = name;
             this.job = job;
             this.status = status;
-
         }
 
         public String getName() {

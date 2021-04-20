@@ -2,7 +2,6 @@ package com.namebattler.battle.strategy;
 
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
-import com.namebattler.battle.skill.AllSkill;
 import com.namebattler.battle.skill.SkillBase;
 
 
@@ -36,8 +35,8 @@ public class DamagePriority extends Strategy {
     }
 
     private void selectAction(Player attacker, Party defenceParty) {
-        if (attacker.getUseSkillOnly().size() != 0) {
-            selectSkill = attacker.getUseSkillOnly().get(0);
+        if (attacker.getNowUseSkillOnly().size() != 0) {
+            selectSkill = attacker.getNowUseSkillOnly().get(0);
         }
         target = defenceParty.getAliveMenbers().get(0);
         int calcDamage = attacker.calcDamage(target);
@@ -49,7 +48,7 @@ public class DamagePriority extends Strategy {
                 calcDamage = player.calcDamage(player);
                 normalAttack = true;
             }
-            for (SkillBase skill : attacker.getUseSkillOnly()) {
+            for (SkillBase skill : attacker.getNowUseSkillOnly()) {
 
                 if (calcDamage < skill.calcDamage(player)) {
                     target = player;

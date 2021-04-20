@@ -1,12 +1,12 @@
 package com.namebattler.battle.strategy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.SkillType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AttackMagicPriority extends Strategy {
     /*=============
@@ -25,7 +25,7 @@ public class AttackMagicPriority extends Strategy {
 
     @Override
     public void action(Player attacker, Party defenceParty) {
-        Player target = randomDefender(defenceParty.getmenbers());
+        Player target = randomSelectDefender(defenceParty);
         List<SkillBase> prioritySkill;//優先スキル
 
 

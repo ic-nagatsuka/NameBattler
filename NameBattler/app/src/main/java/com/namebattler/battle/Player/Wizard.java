@@ -1,7 +1,5 @@
 package com.namebattler.battle.player;
 
-import com.namebattler.battle.skill.AllSkill;
-
 import com.namebattler.battle.battlelog.BattleLog;
 
 
@@ -16,7 +14,7 @@ public class Wizard extends Player {
     }
 
     @Override
-    public void makeCharacter() {
+    public void makeCharacterStatus() {
         this.hp = getNumber(0, 100) + 50;
         this.mp = getNumber(1, 50) + 30;
         this.str = getNumber(2, 49) + 1;

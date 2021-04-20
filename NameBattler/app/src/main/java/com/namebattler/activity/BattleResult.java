@@ -1,7 +1,5 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,12 +7,13 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.namebattler.adapter.BattleStatusAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.namebattler.R;
+import com.namebattler.adapter.BattleStatusAdapter;
+import com.namebattler.battle.GameManager;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
-
-import com.namebattler.battle.GameManager;
 import com.namebattler.fragment.TitleFragment;
 
 public class BattleResult extends AppCompatActivity {
@@ -24,17 +23,18 @@ public class BattleResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_result);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "結果", null);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "結果", null);
 
         setAdapter(R.id.battleResult_gridView_bottom, GameManager.myParty);
         setAdapter(R.id.battleResult_gridView_top, GameManager.enemyParty);
 
-        ImageView image = findViewById(R.id.battleResult_Image_result);
+        ImageView resultImage = findViewById(R.id.battleResult_Image_result);
 
         if (GameManager.win == GameManager.myParty) {
-            image.setImageResource(R.drawable.pose_win_boy);
+            resultImage.setImageResource(R.drawable.pose_win_boy);
         } else {
-            image.setImageResource(R.drawable.pose_lose_boy);
+            resultImage.setImageResource(R.drawable.pose_lose_boy);
         }
 
 
@@ -70,11 +70,8 @@ public class BattleResult extends AppCompatActivity {
     }
 
     public void initializePlayer() {
-
         remakePlayer(GameManager.myParty);
         remakePlayer(GameManager.enemyParty);
-
-
     }
 
     public void remakePlayer(Party party) {
@@ -85,9 +82,7 @@ public class BattleResult extends AppCompatActivity {
             party.appendPlayer(
                     GameManager.makePlayer(player.getName(), player.getJob(), party)
             );
-
             party.removePlayer(player);
-
         }
     }
 
@@ -96,7 +91,6 @@ public class BattleResult extends AppCompatActivity {
 
         GridView gridView = findViewById(layout);
         gridView.setAdapter(adapter);
-
     }
 
 }

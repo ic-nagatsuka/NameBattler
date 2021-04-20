@@ -36,7 +36,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return Option.MAKE_PLAYER_NUM;
+        return Option.MAX_MAKE_PLAYER_NUM;
     }
 
     @Override
@@ -60,14 +60,14 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         }
 
         final CharacterOrganization.Status player = status.get(i);
-        TextView text = view.findViewById(R.id.character_organization_listView_status_name);
-        text.setText(player.getName());
+        TextView textView = view.findViewById(R.id.character_organization_listView_status_name);
+        textView.setText(player.getName());
 
-        text = view.findViewById(R.id.character_organization_listView_status_job);
-        text.setText(player.getJob());
+        textView = view.findViewById(R.id.character_organization_listView_status_job);
+        textView.setText(player.getJob());
 
-        text = view.findViewById(R.id.character_organization_listView_status);
-        text.setText(player.getStatus());
+        textView = view.findViewById(R.id.character_organization_listView_status);
+        textView.setText(player.getStatus());
 
 
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
@@ -101,30 +101,31 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                     player.setIsClicked(false);
                     radioButton.setChecked(false);
 
-                    for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
-                        Player player = GameManager.myParty.getmenbers().get(i);
-                        if (player.getName().equals(name)) {
-                            GameManager.myParty.removePlayer(player);
-                        }
-                    }
+                    removeSelectPlayer(name);
                 }
                 Button btn = startButton.findViewById(R.id.character_organization_start);
                 btn.setText("このパーティーで開始(" + GameManager.myParty.getmenbers().size() + "/3)");
             }
-        });
 
+            private void removeSelectPlayer(String name) {
+                for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
+                    Player player = GameManager.myParty.getmenbers().get(i);
+                    if (player.getName().equals(name)) {
+                        GameManager.myParty.removePlayer(player);
+                    }
+                }
+            }
+        });
         return view;
     }
 
     public boolean hasName(String name) {
-        boolean haveName = false;
-        for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
-            Player player = GameManager.myParty.getmenbers().get(i);
+        for (Player player : GameManager.myParty.getmenbers()) {
             if (player.getName().equals(name)) {
-                haveName = true;
+                return true;
             }
         }
-        return haveName;
+        return false;
     }
 
 }

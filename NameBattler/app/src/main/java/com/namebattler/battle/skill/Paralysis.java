@@ -1,10 +1,9 @@
 package com.namebattler.battle.skill;
 
-import java.util.Random;
-
+import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.player.Player;
 
-import com.namebattler.battle.battlelog.BattleLog;
+import java.util.Random;
 
 public class Paralysis extends SkillBase implements AbnormalState {
     /*=============
@@ -27,7 +26,7 @@ public class Paralysis extends SkillBase implements AbnormalState {
         //成功
         if (this.getSuccessRate() > rand.nextInt(100)) {
             //同じ状態異常にかかっている
-            if (defender.checkSameAbnormal(this)) {
+            if (defender.haveSameAbnormal(this)) {
                 BattleLog.addLog(defender.getName() + "はすでにかかっている!");
             } else {
                 BattleLog.addLog(defender.getName() + "はしびれた！");

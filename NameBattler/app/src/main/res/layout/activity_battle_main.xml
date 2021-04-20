@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/battle_main_gridView_bottom" />
 
     <Button
-        android:id="@+id/battle_main_stratygy_button"
+        android:id="@+id/battle_main_modified_strategy_button"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"

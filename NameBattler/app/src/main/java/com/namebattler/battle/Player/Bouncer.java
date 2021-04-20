@@ -18,7 +18,7 @@ public class Bouncer extends Player {
     }
 
     @Override
-    public void makeCharacter() {
+    public void makeCharacterStatus() {
         this.hp = getNumber(0, 50) + 100;
         this.mp = getNumber(1, 50) + 60;
         this.str = getNumber(2, 29) + 1;
@@ -47,9 +47,9 @@ public class Bouncer extends Player {
     protected void counterAttack(Player defender) {
         BattleLog.addLog(this.getName() + "が跳ね返ってきた！");
         //会心でなければ
-        if (!checkLuckyHit(defender)) {
+        if (!isLuckyHit()) {
             this.normalDamage(defender);
         }
-        this.beforeHp = this.getHP();
+        this.beforeHp = this.getHp();
     }
 }

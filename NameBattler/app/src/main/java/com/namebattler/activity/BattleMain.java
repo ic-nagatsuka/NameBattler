@@ -28,7 +28,8 @@ public class BattleMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_main);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "バトル", null);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "バトル", null);
 
         displayUpdateStatus();
 
@@ -60,11 +61,10 @@ public class BattleMain extends AppCompatActivity {
                     Intent intent = new Intent(getApplication(), BattleResult.class);
                     startActivity(intent);
                 }
-
             }
         });
 
-        findViewById(R.id.battle_main_stratygy_button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.battle_main_modified_strategy_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //作戦変更画面に遷移

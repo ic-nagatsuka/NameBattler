@@ -1,21 +1,21 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.namebattler.battle.GameManager;
-import com.namebattler.battle.player.AllJob;
-import com.namebattler.option.Option;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.namebattler.R;
-import com.namebattler.fragment.TitleFragment;
-import com.namebattler.battle.party.Party;
-import com.namebattler.battle.player.Player;
+import com.namebattler.battle.GameManager;
 import com.namebattler.battle.enemydata.Enemy;
+import com.namebattler.battle.party.Party;
+import com.namebattler.battle.player.AllJob;
+import com.namebattler.battle.player.Player;
+import com.namebattler.fragment.TitleFragment;
+import com.namebattler.option.Option;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +32,8 @@ public class BattleStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_start);
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "バトル開始", CharacterOrganization.class);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "バトル開始", CharacterOrganization.class);
 
         if (GameManager.enemyParty.getmenbers().size() != 0) {
             GameManager.enemyParty = new Party("敵");
@@ -46,7 +47,7 @@ public class BattleStart extends AppCompatActivity {
         displayParty(R.id.battle_start_listView_top, GameManager.enemyParty);
 
 
-        findViewById(R.id.battle_start_battleStar).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.battle_start_battleStart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //バトルメイン画面に遷移
@@ -92,7 +93,7 @@ public class BattleStart extends AppCompatActivity {
             Map<String, String> map = new HashMap();
             map.put("name", player.getName());
             map.put("job", player.getJob());
-            map.put("status", player.getstatus());
+            map.put("status", player.getStatus());
             list.add(map);
         }
 

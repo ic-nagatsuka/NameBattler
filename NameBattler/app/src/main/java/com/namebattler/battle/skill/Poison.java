@@ -1,8 +1,7 @@
 package com.namebattler.battle.skill;
 
-import com.namebattler.battle.player.Player;
-
 import com.namebattler.battle.battlelog.BattleLog;
+import com.namebattler.battle.player.Player;
 
 
 public class Poison extends SkillBase implements AbnormalState {
@@ -23,7 +22,7 @@ public class Poison extends SkillBase implements AbnormalState {
         BattleLog.addLog(attacker.getName() + "は" + this.getName() + "を唱えた！");
         usePlayerMp(attacker);
 
-        if (defender.checkSameAbnormal(this)) {
+        if (defender.haveSameAbnormal(this)) {
             BattleLog.addLog(defender.getName() + "はすでにかかっている！");
 
         } else {

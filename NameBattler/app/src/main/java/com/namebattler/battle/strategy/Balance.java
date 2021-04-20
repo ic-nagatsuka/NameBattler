@@ -14,7 +14,7 @@ public class Balance extends Strategy {
 
     @Override
     public void action(Player attacker, Party defenceParty) {
-        Player target = randomDefender(defenceParty.getmenbers());
+        Player target = randomSelectDefender(defenceParty);
 
 
         attacker.action(target);

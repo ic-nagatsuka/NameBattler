@@ -44,12 +44,12 @@ public class GetCharacterData {
 
         values.put("NAME", player.getName());
         values.put("JOB", job);
-        values.put("HP", player.getHP());
-        values.put("MP", player.getMP());
-        values.put("STR", player.getSTR());
-        values.put("DEF", player.getDEF());
-        values.put("LUCK", player.getAGI());
-        values.put("AGI", player.getLUCK());
+        values.put("HP", player.getHp());
+        values.put("MP", player.getMp());
+        values.put("STR", player.getStr());
+        values.put("DEF", player.getDef());
+        values.put("LUCK", player.getAgi());
+        values.put("AGI", player.getLuck());
         values.put("CREATE_AT", dateTime);
 
         return db.insert(CharacterInformationHelper.TABLE_NAME, null, values);

@@ -21,7 +21,7 @@ public class LeastStates extends LeastHP {
 
         for (Player player : defenderParty.getmenbers()) {
 
-            if (defender.getDEF() > player.getDEF()) {
+            if (defender.getDef() > player.getDef()) {
                 defender = player;
             }
         }

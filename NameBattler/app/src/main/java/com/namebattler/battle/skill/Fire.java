@@ -5,9 +5,10 @@ import com.namebattler.battle.player.Player;
 
 public class Fire extends SkillBase {
 
+    @Override
     public void use(Player attacker, Player defender) {
         BattleLog.addLog(attacker.getName() + "は" + skill.getName() + "を唱えた！");
-        attacker.setMP(attacker.getMP() - skill.getUseMp());
+        usePlayerMp(attacker);
 
         int damage = getRandomDamage(skill.getminDama(), skill.getmaxDama());
         defender.damage(damage);

@@ -1,13 +1,13 @@
 package com.namebattler.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.namebattler.R;
 import com.namebattler.battle.player.AllJob;
@@ -29,7 +29,8 @@ public class CharacterMakeConpletion extends AppCompatActivity {
                 .getAllData()
                 .getCount();
 
-        TitleFragment.displayTitleFragment(getSupportFragmentManager(), "キャラ作成", null);
+        TitleFragment.displayTitleFragment(
+                getSupportFragmentManager(), "キャラ作成", null);
 
         String name = getIntent().getStringExtra("name");
 
@@ -37,14 +38,13 @@ public class CharacterMakeConpletion extends AppCompatActivity {
                 .getCharacter(name);
 
         if (cursor.moveToFirst()) {
-            //キャラクターデータを表示する
-            TextView textView;
             //名前
-            textView = findViewById(R.id.characterMakeConpletion_name);
+            TextView textView = findViewById(R.id.characterMakeConpletion_name);
             textView.setText(cursor.getString(cursor.getColumnIndex("NAME")));
             //職業
             textView = findViewById(R.id.characterMakeConpletion_job);
-            textView.setText(AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
+            textView.setText(
+                    AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
             //HP
             textView = findViewById(R.id.characterMakeConpletion_set_hp);
             textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("HP"))));
@@ -69,13 +69,14 @@ public class CharacterMakeConpletion extends AppCompatActivity {
         findViewById(R.id.characterMakeConpletion_continue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nowPlayerNum < Option.MAKE_PLAYER_NUM) {
+                if (nowPlayerNum < Option.MAX_MAKE_PLAYER_NUM) {
                     //キャラクター作成画面に遷移
                     Intent intent = new Intent(getApplication(), CharacterMake.class);
                     startActivity(intent);
                 } else {
                     //キャラクター最大数エラー表示
-                    Toast.makeText(CharacterMakeConpletion.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            CharacterMakeConpletion.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 }
             }
         });
