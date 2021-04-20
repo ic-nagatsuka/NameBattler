@@ -18,16 +18,10 @@ import com.namebattler.option.Option;
 
 public class CharacterMakeConpletion extends AppCompatActivity {
 
-    int nowPlayerNum;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make_conpletion);
-
-        nowPlayerNum = new OperationCharacterData(getApplicationContext())
-                .getAllData()
-                .getCount();
 
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "キャラ作成", null);
@@ -65,10 +59,13 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("AGI"))));
         }
 
+
         //続けて作成するボタン
         findViewById(R.id.characterMakeConpletion_continue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int nowPlayerNum = new OperationCharacterData(getApplicationContext())
+                        .getCharacterCount();
                 if (nowPlayerNum < Option.MAX_MAKE_PLAYER_NUM) {
                     //キャラクター作成画面に遷移
                     Intent intent = new Intent(getApplication(), CharacterMake.class);

@@ -36,8 +36,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         setContentView(R.layout.activity_character_make);
 
         nowPlayerNum = new OperationCharacterData(getApplicationContext())
-                .getAllData()
-                .getCount();
+                .getCharacterCount();
 
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "キャラ作成", CharacterList.class);
