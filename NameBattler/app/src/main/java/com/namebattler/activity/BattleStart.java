@@ -100,7 +100,7 @@ public class BattleStart extends AppCompatActivity {
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
                 list,
-                R.layout.activity_battle_start_listview,
+                R.layout.listview_battle_start,
                 new String[]{"name", "job", "status"},
                 new int[]{
                         R.id.character_list_name,
