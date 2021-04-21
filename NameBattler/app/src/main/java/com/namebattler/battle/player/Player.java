@@ -176,27 +176,6 @@ public abstract class Player {
         return useSkill;
     }
 
-    /**
-     * HPの割合が一番少ないプレイヤーを返す
-     * @param party 調べるパーティー
-     * @return HPの割合が一番少ないプレイヤー
-     */
-    protected Player getLowerHpHealTarget(List<Player> party) {
-        double percent;
-        double minPercent = party.get(0).getHp() * party.get(0).getMaxHp();//HPの割合
-
-        Player target = party.get(0);
-        //HPの割合が一番少ないプレイヤーにする
-        for (Player player : party) {
-            percent = (double) player.getHp() / (double) player.getMaxHp() * 100;
-            if (percent < minPercent) {
-                target = player;
-                minPercent = percent;
-            }
-        }
-        return target;
-    }
-
     /*============
      *Setメソッド
      ============*/
@@ -516,20 +495,6 @@ public abstract class Player {
         for (Player player : target.getParty().getmenbers()) {
             player.setBeforHP(player.getHp());
         }
-    }
-
-    /**
-     * スキルの最小消費MPの数値を返す
-     * @return スキルの最小消費MP
-     */
-    private int skillMinUseMp() {
-        int minMp = useSkill.get(0).getUseMp();
-        for (SkillBase skill : useSkill) {
-            if (skill.getUseMp() < minMp) {
-                minMp = skill.getUseMp();
-            }
-        }
-        return minMp;
     }
 
 }
