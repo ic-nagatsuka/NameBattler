@@ -58,6 +58,7 @@ public abstract class Player {
     /*====================================================================================
      * abstract
      * ====================================================================================*/
+
     /**
      * キャラクターステータス作成
      */
@@ -145,6 +146,7 @@ public abstract class Player {
 
     /**
      * かかっているすべての状態異常の画面表示文字をまとめて返す
+     *
      * @return かかっているすべての状態異常の画面表示文字
      */
     public String getAllAbnormalStateChar() {
@@ -157,6 +159,7 @@ public abstract class Player {
 
     /**
      * 現在使用できるスキルを返す
+     *
      * @return 現在使用できるスキル
      */
     public ArrayList<SkillBase> getNowUseSkillOnly() {
@@ -227,6 +230,7 @@ public abstract class Player {
 
     /**
      * 通常攻撃の流れ
+     *
      * @param target 攻撃されるプレイヤー
      */
     public void normalAttack(Player target) {
@@ -242,6 +246,7 @@ public abstract class Player {
 
     /**
      * 通常攻撃ダメージを与える
+     *
      * @param target 攻撃されるプレイヤー
      */
     protected void normalDamage(Player target) {
@@ -260,8 +265,9 @@ public abstract class Player {
 
     /**
      * 会心の一撃判定
+     *
      * @return true 会心の一撃
-     *          false 会心の一撃ではない
+     * false 会心の一撃ではない
      */
     protected boolean isLuckyHit() {
         Random rand = new Random();
@@ -274,6 +280,7 @@ public abstract class Player {
 
     /**
      * スキルを使用する
+     *
      * @param skill  使用スキル
      * @param target ターゲットプレイヤー
      */
@@ -288,6 +295,7 @@ public abstract class Player {
 
     /**
      * スキルをランダムで選ぶ
+     *
      * @param useSkill 使用出来るスキル
      * @return 使用するスキル
      */
@@ -298,19 +306,17 @@ public abstract class Player {
 
     /**
      * スキルが使用可能か
+     *
      * @return true:	使える
      * false:	使えない
      */
     public boolean isUseSkill() {
-        if (getNowUseSkillOnly().size() == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return getNowUseSkillOnly().size() != 0;
     }
 
     /**
      * HPが減少しているパーティーメンバーを探す
+     *
      * @param party 　調べるパーティー
      * @return true:	減少している
      * false: 	減少していない
@@ -328,6 +334,7 @@ public abstract class Player {
 
     /**
      * カウンター攻撃の確認
+     *
      * @param target 攻撃したプレイヤー
      */
     protected void canCounter(Player target) {
@@ -342,7 +349,8 @@ public abstract class Player {
 
     /**
      * カウンター攻撃
-     * @param target　ターゲットプレイヤー
+     *
+     * @param target 　ターゲットプレイヤー
      */
     protected void counterAttack(Player target) {
         BattleLog.addLog(this.getName() + "は反撃した！！");
@@ -351,6 +359,7 @@ public abstract class Player {
 
     /**
      * 通常攻撃ダメージの計算
+     *
      * @param target ターゲットプレイヤー
      * @return 与えるダメージ
      */
@@ -364,6 +373,7 @@ public abstract class Player {
 
     /**
      * ダメージを与える
+     *
      * @param damage 与えるダメージ
      */
     public void damage(int damage) {
@@ -373,6 +383,7 @@ public abstract class Player {
 
     /**
      * 死亡判定
+     *
      * @param party パーティー
      */
     public void checkDeath(List<Player> party) {
@@ -388,6 +399,7 @@ public abstract class Player {
 
     /**
      * 行動の流れ
+     *
      * @param target 攻撃されるプレイヤー
      */
     public void action(Player target) {
@@ -405,6 +417,7 @@ public abstract class Player {
 
     /**
      * 状態異常効果を動かす
+     *
      * @param target 攻撃するプレイヤー
      */
     public void abnormalEffect(Player target) {
@@ -427,6 +440,7 @@ public abstract class Player {
 
     /**
      * 同じ状態異常スキルを探す
+     *
      * @param skill 比較するスキル
      * @return true : あり	false : なし
      */
@@ -441,6 +455,7 @@ public abstract class Player {
 
     /**
      * ステータス文字列をまとめて返す
+     *
      * @return ステータスをまとめてた文字列
      */
     public String getStatus() {
@@ -454,6 +469,7 @@ public abstract class Player {
 
     /**
      * 能力値を返す
+     *
      * @param index 参照する場所
      * @param max   最大値
      * @return 参照場所の数値
@@ -480,7 +496,8 @@ public abstract class Player {
 
     /**
      * HPを上書きする
-     * @param target　プレイヤー
+     *
+     * @param target 　プレイヤー
      */
     private void readyCounter(Player target) {
         for (Player player : target.getParty().getmenbers()) {
