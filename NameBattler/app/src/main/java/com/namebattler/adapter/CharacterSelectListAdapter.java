@@ -55,15 +55,17 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         if (view == null) {
             view = inflater.inflate(R.layout.listview_character_organization, null);
         }
+
         if (status.size() - 1 < i) {
+            view = inflater.inflate(R.layout.listview_character_organization, null);
             return view;
         }
 
-        final CharacterOrganization.Status player = status.get(i);
-        setPlayerStatusLayout(view, player);
-
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
         radioButton.setVisibility(View.VISIBLE);
+
+        final CharacterOrganization.Status player = status.get(i);
+        setPlayerStatusLayout(view, player);
 
         if (player.getIsClicked()) {
             radioButton.setChecked(true);
