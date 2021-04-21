@@ -39,9 +39,6 @@ public abstract class Player {
     //かかっている状態異常
     public List<StateEffect> turnAbnormalState = new ArrayList<>();
 
-
-    Random rand = new Random();
-
     /*=============
      * コンストラクタ
      =============*/
@@ -176,27 +173,6 @@ public abstract class Player {
         return useSkill;
     }
 
-    /**
-     * HPの割合が一番少ないプレイヤーを返す
-     * @param party 調べるパーティー
-     * @return HPの割合が一番少ないプレイヤー
-     */
-    protected Player getLowerHpHealTarget(List<Player> party) {
-        double percent;
-        double minPercent = party.get(0).getHp() * party.get(0).getMaxHp();//HPの割合
-
-        Player target = party.get(0);
-        //HPの割合が一番少ないプレイヤーにする
-        for (Player player : party) {
-            percent = (double) player.getHp() / (double) player.getMaxHp() * 100;
-            if (percent < minPercent) {
-                target = player;
-                minPercent = percent;
-            }
-        }
-        return target;
-    }
-
     /*============
      *Setメソッド
      ============*/
@@ -288,6 +264,7 @@ public abstract class Player {
      *          false 会心の一撃ではない
      */
     protected boolean isLuckyHit() {
+        Random rand = new Random();
         if (this.getLuck() > rand.nextInt(1000)) {
             BattleLog.addLog("会心の一撃！！");
             return true;
@@ -315,15 +292,8 @@ public abstract class Player {
      * @return 使用するスキル
      */
     public SkillBase randomSelectSkill(ArrayList<SkillBase> useSkill) {
-        SkillBase skill;
-        while (true) {
-            //スキルをランダムで選ぶ
-            skill = useSkill.get(rand.nextInt(useSkill.size()));
-            //MPの確認
-            if (skill.getUseMp() <= this.getMp()) {
-                return skill;
-            }
-        }
+        Random rand = new Random();
+        return useSkill.get(rand.nextInt(useSkill.size()));
     }
 
     /**
@@ -516,20 +486,6 @@ public abstract class Player {
         for (Player player : target.getParty().getmenbers()) {
             player.setBeforHP(player.getHp());
         }
-    }
-
-    /**
-     * スキルの最小消費MPの数値を返す
-     * @return スキルの最小消費MP
-     */
-    private int skillMinUseMp() {
-        int minMp = useSkill.get(0).getUseMp();
-        for (SkillBase skill : useSkill) {
-            if (skill.getUseMp() < minMp) {
-                minMp = skill.getUseMp();
-            }
-        }
-        return minMp;
     }
 
 }
