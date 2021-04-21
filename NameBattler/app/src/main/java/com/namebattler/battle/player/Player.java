@@ -39,9 +39,6 @@ public abstract class Player {
     //かかっている状態異常
     public List<StateEffect> turnAbnormalState = new ArrayList<>();
 
-
-    Random rand = new Random();
-
     /*=============
      * コンストラクタ
      =============*/
@@ -267,6 +264,7 @@ public abstract class Player {
      *          false 会心の一撃ではない
      */
     protected boolean isLuckyHit() {
+        Random rand = new Random();
         if (this.getLuck() > rand.nextInt(1000)) {
             BattleLog.addLog("会心の一撃！！");
             return true;
@@ -294,15 +292,8 @@ public abstract class Player {
      * @return 使用するスキル
      */
     public SkillBase randomSelectSkill(ArrayList<SkillBase> useSkill) {
-        SkillBase skill;
-        while (true) {
-            //スキルをランダムで選ぶ
-            skill = useSkill.get(rand.nextInt(useSkill.size()));
-            //MPの確認
-            if (skill.getUseMp() <= this.getMp()) {
-                return skill;
-            }
-        }
+        Random rand = new Random();
+        return useSkill.get(rand.nextInt(useSkill.size()));
     }
 
     /**
