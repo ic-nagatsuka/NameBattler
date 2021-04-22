@@ -7,8 +7,6 @@ import com.namebattler.battle.skill.SkillBase;
 
 public class DamagePriority extends Strategy {
 
-    boolean normalAttack;
-
     Player target;
     SkillBase selectSkill;
 
@@ -21,42 +19,33 @@ public class DamagePriority extends Strategy {
 
     @Override
     public void action(Player attacker, Party defenceParty) {
-        normalAttack = true;
-
-        selectAction(attacker, defenceParty);
-
-
-        if (normalAttack) {
+        if (isNormalAttack(attacker, defenceParty)) {
             attacker.normalAttack(target);
         } else {
             attacker.useSkill(selectSkill, target);
         }
-
     }
 
-    private void selectAction(Player attacker, Party defenceParty) {
-        if (attacker.getNowUseSkillOnly().size() != 0) {
-            selectSkill = attacker.getNowUseSkillOnly().get(0);
-        }
-        target = defenceParty.getAliveMenbers().get(0);
-        int calcDamage = attacker.calcDamage(target);
-
+    private boolean isNormalAttack(Player attacker, Party defenceParty) {
+        boolean normalAttack = true;
+        target = randomSelectDefender(defenceParty);
+        int highCalcDamage = 0;
         for (Player player : defenceParty.getAliveMenbers()) {
-
-            if (calcDamage < attacker.calcDamage(player)) {
+            if (highCalcDamage < attacker.calcDamage(player)) {
                 target = player;
-                calcDamage = player.calcDamage(player);
+                highCalcDamage = player.calcDamage(player);
                 normalAttack = true;
             }
             for (SkillBase skill : attacker.getNowUseSkillOnly()) {
 
-                if (calcDamage < skill.calcDamage(player)) {
+                if (highCalcDamage < skill.calcDamage(player)) {
                     target = player;
                     selectSkill = skill;
                     normalAttack = false;
                 }
             }
         }
+        return normalAttack;
     }
 
 }
