@@ -4,6 +4,8 @@ import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.skill.Fire;
 import com.namebattler.battle.skill.Heal;
 
+import java.util.Random;
+
 public class Bouncer extends Player {
 
     int attackPercent = 50;
@@ -35,6 +37,7 @@ public class Bouncer extends Player {
 
     @Override
     public void normalAttack(Player target) {
+        Random rand = new Random();
         if (rand.nextInt(100) < attackPercent) {
             BattleLog.addLog(this.getName() + "は飛び跳ねた！");
             super.normalAttack(target);
