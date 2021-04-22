@@ -21,7 +21,7 @@ public class OperationCharacterData {
         helper = new CharacterInformationHelper(context);
     }
 
-    public int getCharacterCount(){
+    public int getCharacterCount() {
         return getAllData().getCount();
     }
 
