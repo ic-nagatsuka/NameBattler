@@ -239,7 +239,7 @@ public abstract class Player {
         //通常のダメージ計算
         normalDamage(target);
         //戦闘不能判定
-        checkDeath(target.getParty().getmenbers());
+        checkDeath(target.getParty());
         //カウンター攻撃確認
         target.canCounter(this);
     }
@@ -288,7 +288,7 @@ public abstract class Player {
         //スキルを使用する
         skill.use(this, target);
         //戦闘不能判定
-        checkDeath(target.getParty().getmenbers());
+        checkDeath(target.getParty());
         //カウンター攻撃
         target.canCounter(this);
     }
@@ -386,10 +386,8 @@ public abstract class Player {
      *
      * @param party パーティー
      */
-    public void checkDeath(List<Player> party) {
-        for (int i = party.size() - 1; 0 <= i; i--) {
-            Player player = party.get(i);
-            //HPが０以下
+    public void checkDeath(Party party) {
+        for (Player player : party.getmenbers()) {
             if (player.getHp() <= 0 && !player.getIsDeath()) {
                 BattleLog.addLog(player.getName() + "は力尽きた...\n");
                 player.setIsDeath(true);
@@ -431,7 +429,7 @@ public abstract class Player {
             if (abnormal.getTurn() < 0) {
                 turnAbnormalState.remove(i);
             }
-            target.checkDeath(target.getParty().getmenbers());
+            target.checkDeath(target.getParty());
             if (target.getHp() == 0) {
                 break;
             }
