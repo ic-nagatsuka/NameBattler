@@ -5,6 +5,7 @@ import com.namebattler.battle.skill.Fire;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class Fighter extends Player {
@@ -46,6 +47,7 @@ public class Fighter extends Player {
 
     @Override
     public void normalAttack(Player target) {
+        Random rand = new Random();
         BattleLog.addLog(this.name + "は" + attText.get(rand.nextInt(attText.size())));
 
         super.normalAttack(target);
