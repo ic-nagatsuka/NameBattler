@@ -310,7 +310,7 @@ public abstract class Player {
      * @return true:	使える
      * false:	使えない
      */
-    public boolean isUseSkill() {
+    public boolean canSkill() {
         return getNowUseSkillOnly().size() != 0;
     }
 
@@ -405,7 +405,7 @@ public abstract class Player {
     public void action(Player target) {
         this.readyCounter(target);
         if (isDicreasePartyMenberHp(this.getParty())) {
-            if (isUseSkill()) {
+            if (canSkill()) {
                 //ランダムでスキルを使用する
                 useSkill(randomSelectSkill(this.getNowUseSkillOnly()), target);
             } else {

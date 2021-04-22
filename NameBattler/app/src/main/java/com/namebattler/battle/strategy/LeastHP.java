@@ -5,9 +5,6 @@ import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
 public class LeastHP extends Strategy {
-	/*=============
-	 * フィールド変数
-	 =============*/
 
     /*=============
      * コンストラクタ
@@ -20,7 +17,7 @@ public class LeastHP extends Strategy {
     public void action(Player attacker, Party defenderParty) {
         Player defender = selectDefender(defenderParty);
 
-        if (attacker.isUseSkill()) {
+        if (attacker.canSkill()) {
             SkillBase skill = attacker.randomSelectSkill(attacker.getNowUseSkillOnly());
             skill.use(attacker, defender);
         } else {
