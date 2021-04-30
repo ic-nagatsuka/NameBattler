@@ -5,6 +5,7 @@ public enum AllStrategy {
     LEAST_HP(new LeastHP()),
     NO_SKILL(new NoSkill()),
     PLEASE_FREE(new PleaseFree()),
+    LEAST_DEF(new LeastDef()),
     ;
 
     Strategy strategy;
