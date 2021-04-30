@@ -20,11 +20,14 @@ public class PleaseFree extends Strategy {
             SkillBase skill = attacker.getNowUseSkillOnly().get(
                     rand.nextInt(attacker.getNowUseSkillOnly().size()));
             attacker.useSkill(skill, target);
+        }else{
+            attacker.normalAttack(target);
         }
     }
 
     @Override
     public void initStrategy() {
+        this.strategy = AllStrategy.PLEASE_FREE;
     }
 
 }
