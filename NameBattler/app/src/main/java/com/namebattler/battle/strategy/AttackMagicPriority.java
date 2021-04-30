@@ -69,4 +69,9 @@ public class AttackMagicPriority extends Strategy {
         System.out.println(prioritySkill.size());
         return prioritySkill;
     }
+
+    @Override
+    public void initStrategy() {
+
+    }
 }

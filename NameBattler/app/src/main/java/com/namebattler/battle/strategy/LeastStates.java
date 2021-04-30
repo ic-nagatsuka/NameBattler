@@ -3,7 +3,7 @@ package com.namebattler.battle.strategy;
 import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 
-public class LeastStates extends LeastHP {
+public class LeastStates extends Strategy {
 	/*=============
 	 * フィールド変数
 	 =============*/
@@ -16,6 +16,10 @@ public class LeastStates extends LeastHP {
     }
 
     @Override
+    public void action(Player attacker, Party defnderParty) {
+
+    }
+
     protected Player selectDefender(Party defenderParty) {
         Player defender = defenderParty.getmenbers().get(0);
 
@@ -26,5 +30,10 @@ public class LeastStates extends LeastHP {
             }
         }
         return defender;
+    }
+
+    @Override
+    public void initStrategy() {
+
     }
 }

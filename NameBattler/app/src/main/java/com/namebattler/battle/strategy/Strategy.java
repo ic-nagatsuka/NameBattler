@@ -5,13 +5,13 @@ import com.namebattler.battle.player.Player;
 
 import java.util.Random;
 
-public abstract class Strategy {
+public abstract class Strategy implements IStrategy {
 
     /*=============
      * フィールド変数
      =============*/
     protected String name;
-
+    protected AllStrategy strategy;
 
     Random rand = new Random();
 
@@ -19,6 +19,7 @@ public abstract class Strategy {
      * コンストラクタ
      =============*/
     Strategy() {
+        initStrategy();
     }
 
     /*============
@@ -26,6 +27,10 @@ public abstract class Strategy {
      ============*/
     public String getName() {
         return this.name;
+    }
+
+    public AllStrategy getStrategy() {
+        return this.strategy;
     }
 
     /**

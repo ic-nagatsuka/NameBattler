@@ -16,11 +16,15 @@ public class PleaseFree extends Strategy {
     @Override
     public void action(Player attacker, Party defenceParty) {
         Player target = randomSelectDefender(defenceParty);
-        if(attacker.canSkill()){
+        if (attacker.canSkill()) {
             SkillBase skill = attacker.getNowUseSkillOnly().get(
                     rand.nextInt(attacker.getNowUseSkillOnly().size()));
             attacker.useSkill(skill, target);
         }
+    }
+
+    @Override
+    public void initStrategy() {
     }
 
 }

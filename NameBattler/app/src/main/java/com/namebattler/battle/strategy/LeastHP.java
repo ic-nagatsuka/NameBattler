@@ -41,4 +41,8 @@ public class LeastHP extends Strategy {
         return defender;
     }
 
+    @Override
+    public void initStrategy() {
+        this.strategy = AllStrategy.LEAST_HP;
+    }
 }

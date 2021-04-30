@@ -18,4 +18,8 @@ public class NoSkill extends Strategy {
         attacker.normalAttack(defender);
     }
 
+    @Override
+    public void initStrategy() {
+        this.strategy = AllStrategy.NO_SKILL;
+    }
 }

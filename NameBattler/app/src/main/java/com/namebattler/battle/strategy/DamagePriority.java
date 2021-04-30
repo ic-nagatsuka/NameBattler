@@ -48,4 +48,8 @@ public class DamagePriority extends Strategy {
         return normalAttack;
     }
 
+    @Override
+    public void initStrategy() {
+        this.strategy = AllStrategy.DAMAGE_PRIORITY;
+    }
 }
