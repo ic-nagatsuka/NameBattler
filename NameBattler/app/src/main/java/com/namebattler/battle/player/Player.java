@@ -157,6 +157,10 @@ public abstract class Player {
         return str;
     }
 
+    public SkillBase getRandomSkill(){
+        ArrayList<SkillBase> canSkill = getNowUseSkillOnly();
+        return canSkill.get(new Random().nextInt(canSkill.size()));
+    }
     /**
      * 現在使用できるスキルを返す
      *
