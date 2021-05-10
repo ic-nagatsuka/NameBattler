@@ -8,13 +8,13 @@ public enum AllStrategy {
     LEAST_DEF(new LeastDef()),
     ;
 
-    Strategy strategy;
+    BaseStrategy strategy;
 
-    AllStrategy(Strategy strategy) {
+    AllStrategy(BaseStrategy strategy) {
         this.strategy = strategy;
     }
 
-    public Strategy getStrategy() {
+    public BaseStrategy getStrategy() {
         return this.strategy;
     }
 

@@ -5,7 +5,7 @@ import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
 
-public class DamagePriority extends Strategy {
+public class DamagePriority extends BaseStrategy {
 
     Player target;
     SkillBase selectSkill;

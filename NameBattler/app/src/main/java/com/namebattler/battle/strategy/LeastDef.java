@@ -4,7 +4,7 @@ import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
-public class LeastDef extends Strategy {
+public class LeastDef extends BaseStrategy {
 	/*=============
 	 * フィールド変数
 	 =============*/

@@ -6,7 +6,7 @@ import com.namebattler.battle.skill.AbnormalState;
 import com.namebattler.battle.skill.IHeal;
 import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.StateEffect;
-import com.namebattler.battle.strategy.Strategy;
+import com.namebattler.battle.strategy.BaseStrategy;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -22,7 +22,7 @@ public abstract class Player {
     // =====================
     protected Party party;                        //パーティー
     protected String partyName;                    //パーティー名
-    protected Strategy strategy;                //作戦
+    protected BaseStrategy strategy;                //作戦
     protected String name;                        //名前
     protected String job;                            //職業
     protected int hp, mp, str, def, luck, agi;    //能力
@@ -124,7 +124,7 @@ public abstract class Player {
         return this.beforeHp;
     }
 
-    public Strategy getStrategy() {
+    public BaseStrategy getStrategy() {
         return this.strategy;
     }
 
@@ -187,7 +187,7 @@ public abstract class Player {
         this.party = party;
     }
 
-    public void setStrategy(Strategy strategy) {
+    public void setStrategy(BaseStrategy strategy) {
         this.strategy = strategy;
     }
 

@@ -8,7 +8,7 @@ import com.namebattler.battle.skill.SkillType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AttackMagicPriority extends Strategy {
+public class AttackMagicPriority extends BaseStrategy {
     /*=============
      * フィールド変数
      =============*/

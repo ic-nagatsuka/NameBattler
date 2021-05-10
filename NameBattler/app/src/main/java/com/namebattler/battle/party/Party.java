@@ -1,7 +1,7 @@
 package com.namebattler.battle.party;
 
 import com.namebattler.battle.player.Player;
-import com.namebattler.battle.strategy.Strategy;
+import com.namebattler.battle.strategy.BaseStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class Party {
      * コンストラクタ
      =============*/
     private String name;
-    private Strategy strategy;
+    private BaseStrategy strategy;
 
     public Party(String name) {
         this.name = name;
@@ -29,7 +29,7 @@ public class Party {
         return name;
     }
 
-    public Strategy getStrategy() {
+    public BaseStrategy getStrategy() {
         return strategy;
     }
 
@@ -51,7 +51,7 @@ public class Party {
     /*============
      * setメソッド
      ============*/
-    public void setStrategy(Strategy strategy) {
+    public void setStrategy(BaseStrategy strategy) {
         this.strategy = strategy;
     }
 

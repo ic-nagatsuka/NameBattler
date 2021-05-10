@@ -4,7 +4,7 @@ import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
-public class LeastHP extends Strategy {
+public class LeastHP extends BaseStrategy {
 
     /*=============
      * コンストラクタ

@@ -5,7 +5,7 @@ import com.namebattler.battle.player.Player;
 
 import java.util.Random;
 
-public abstract class Strategy implements IStrategy {
+public abstract class BaseStrategy implements IStrategy {
 
     /*=============
      * フィールド変数
@@ -18,7 +18,7 @@ public abstract class Strategy implements IStrategy {
     /*=============
      * コンストラクタ
      =============*/
-    Strategy() {
+    BaseStrategy() {
         initStrategy();
     }
 

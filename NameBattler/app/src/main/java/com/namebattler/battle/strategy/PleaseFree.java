@@ -4,7 +4,7 @@ import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
-public class PleaseFree extends Strategy {
+public class PleaseFree extends BaseStrategy {
 
     /*=============
      * コンストラクタ
