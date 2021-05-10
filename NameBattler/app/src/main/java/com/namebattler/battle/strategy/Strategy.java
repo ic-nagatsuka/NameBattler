@@ -41,6 +41,8 @@ public abstract class Strategy implements IStrategy {
      */
     public abstract void action(Player attacker, Party defnderParty);
 
+    protected abstract void initStrategy();
+
     /**
      * ランダムにプレイヤーを選ぶ
      *
