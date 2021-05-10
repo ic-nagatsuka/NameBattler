@@ -9,6 +9,7 @@ public class DamagePriority extends Strategy {
 
     Player target;
     SkillBase selectSkill;
+    int highCalcDamage = 0;
 
     /*=============
      * コンストラクタ
@@ -20,33 +21,47 @@ public class DamagePriority extends Strategy {
     @Override
     public void action(Player attacker, Party defenceParty) {
         if (isNormalAttack(attacker, defenceParty)) {
-            attacker.normalAttack(target);
+            attacker.normalAttack(this.target);
         } else {
-            attacker.useSkill(selectSkill, target);
+            attacker.useSkill(this.selectSkill, this.target);
         }
     }
 
     private boolean isNormalAttack(Player attacker, Party defenceParty) {
         boolean normalAttack = true;
         target = randomSelectDefender(defenceParty);
-        int highCalcDamage = 0;
-        for (Player player : defenceParty.getAliveMenbers()) {
-            if (highCalcDamage < attacker.calcDamage(player)) {
-                target = player;
-                highCalcDamage = player.calcDamage(player);
-                normalAttack = true;
+
+        calcNormalAttack(attacker, defenceParty);
+
+        calcSkillAttack(attacker, defenceParty);
+
+        return normalAttack;
+    }
+
+    private void calcNormalAttack(Player attacker, Party defenseParty) {
+        for (Player player : defenseParty.getAliveMenbers()) {
+            int damage = attacker.calcDamage(player);
+            if (this.highCalcDamage < damage) {
+                this.highCalcDamage = damage;
+                this.target = player;
             }
+        }
+    }
+
+    private void calcSkillAttack(Player attacker, Party defenseParty) {
+        for (Player player : defenseParty.getAliveMenbers()) {
             for (SkillBase skill : attacker.getNowUseSkillOnly()) {
 
-                if (highCalcDamage < skill.calcDamage(player)) {
-                    target = player;
-                    selectSkill = skill;
-                    normalAttack = false;
+                int damage = skill.calcDamage(player);
+                if (this.highCalcDamage < damage) {
+                    this.highCalcDamage = damage;
+                    this.target = player;
+                    this.selectSkill = skill;
                 }
             }
         }
-        return normalAttack;
     }
+
 
     @Override
     public void initStrategy() {
