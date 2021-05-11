@@ -151,7 +151,7 @@ public abstract class Player {
      */
     public String getAllAbnormalStateChar() {
         String str = "";
-        for (StateEffect abnormalState : turnAbnormalState) {
+        for (StateEffect abnormalState : this.turnAbnormalState) {
             str += abnormalState.getStateChar();
         }
         return str;
@@ -423,17 +423,17 @@ public abstract class Player {
      * @param target 攻撃するプレイヤー
      */
     public void abnormalEffect(Player target) {
-        for (int i = turnAbnormalState.size() - 1; 0 <= i; i--) {
-            StateEffect abnormal = turnAbnormalState.get(i);
+        for (int i = this.turnAbnormalState.size() - 1; 0 <= i; i--) {
+            StateEffect abnormal = this.turnAbnormalState.get(i);
             //効果ターン経過
             abnormal.setTurn(abnormal.getTurn() - 1);
             //状態異常の効果
             abnormal.getSkill().effect(target, abnormal.getTurn());
             //効果ターン経過すれば削除する
             if (abnormal.getTurn() < 0) {
-                turnAbnormalState.remove(i);
+                this.turnAbnormalState.remove(i);
             }
-            target.checkDeath(target.getParty());
+            checkDeath(target.getParty());
             if (target.getHp() == 0) {
                 break;
             }
@@ -447,7 +447,7 @@ public abstract class Player {
      * @return true : あり	false : なし
      */
     public boolean haveSameAbnormal(AbnormalState skill) {
-        for (StateEffect abnormal : turnAbnormalState) {
+        for (StateEffect abnormal : this.turnAbnormalState) {
             if (abnormal.getSkill().getClass().equals(skill.getClass())) {
                 return true;
             }
