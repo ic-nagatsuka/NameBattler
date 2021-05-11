@@ -10,8 +10,7 @@ public abstract class BaseStrategy implements IStrategy {
     /*=============
      * フィールド変数
      =============*/
-    protected String name;
-    protected AllStrategy strategy;
+    protected AllStrategy.EStrategy strategy;
 
     Random rand = new Random();
 
@@ -26,10 +25,10 @@ public abstract class BaseStrategy implements IStrategy {
      * Getメソッド
      ============*/
     public String getName() {
-        return this.name;
+        return this.strategy.getName();
     }
 
-    public AllStrategy getStrategy() {
+    public AllStrategy.EStrategy getStrategy() {
         return this.strategy;
     }
 

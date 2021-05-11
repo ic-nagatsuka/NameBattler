@@ -19,7 +19,6 @@ public class AttackMagicPriority extends BaseStrategy {
      =============*/
 //	ArrayList<Integer>
     public AttackMagicPriority(String name, SkillType[] skillNum) {
-        this.name = name;
         this.skillNum = skillNum;
     }
 

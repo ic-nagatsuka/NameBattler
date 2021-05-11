@@ -5,25 +5,20 @@ import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
 public class LeastDef extends BaseStrategy {
-	/*=============
-	 * フィールド変数
-	 =============*/
-
     /*=============
      * コンストラクタ
      =============*/
     LeastDef() {
-        this.name = "柔らか狙い";
     }
 
     @Override
     public void action(Player attacker, Party defenderParty) {
         Player target = selectDefender(defenderParty);
 
-        if(attacker.canSkill()){
+        if (attacker.canSkill()) {
             SkillBase skill = attacker.getRandomSkill();
             attacker.useSkill(skill, target);
-        }else{
+        } else {
             attacker.normalAttack(target);
         }
     }
@@ -41,6 +36,6 @@ public class LeastDef extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.LEAST_DEF;
+        this.strategy = AllStrategy.EStrategy.LEAST_DEF;
     }
 }

@@ -15,7 +15,6 @@ public class DamagePriority extends BaseStrategy {
      * コンストラクタ
      =============*/
     public DamagePriority() {
-        this.name = "ダメージ与えて";
     }
 
     @Override
@@ -65,6 +64,6 @@ public class DamagePriority extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.DAMAGE_PRIORITY;
+        this.strategy = AllStrategy.EStrategy.DAMAGE_PRIORITY;
     }
 }

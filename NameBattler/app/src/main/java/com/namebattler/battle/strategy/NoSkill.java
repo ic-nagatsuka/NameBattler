@@ -9,7 +9,6 @@ public class NoSkill extends BaseStrategy {
      * コンストラクタ
      =============*/
     public NoSkill() {
-        this.name = "スキル使わない";
     }
 
     @Override
@@ -20,6 +19,6 @@ public class NoSkill extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.NO_SKILL;
+        this.strategy = AllStrategy.EStrategy.NO_SKILL;
     }
 }

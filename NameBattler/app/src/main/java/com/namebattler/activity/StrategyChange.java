@@ -35,7 +35,7 @@ public class StrategyChange extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 //クリックしたラジオボタンのIDから作戦を選択するように変更する
-                GameManager.myParty.setStrategy(AllStrategy.values()[i].getStrategy());
+                GameManager.myParty.setStrategyKey(i);
             }
         });
 
@@ -53,11 +53,11 @@ public class StrategyChange extends AppCompatActivity {
 
     private void showSelectStrategy(RadioGroup radioGroup) {
         //職業一覧を表示
-        for (int i = 0; i < AllStrategy.values().length; i++) {
-            AllStrategy strategy = AllStrategy.values()[i];
+        for (int i = 0; i < AllStrategy.EStrategy.values().length; i++) {
+            AllStrategy.EStrategy strategy = AllStrategy.EStrategy.values()[i];
             RadioButton radioButton = new RadioButton(this);
             radioButton.setId(i);
-            radioButton.setText(strategy.getStrategy().getName());
+            radioButton.setText(strategy.getName());
             radioButton.setTextSize(radioSize);
 
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(

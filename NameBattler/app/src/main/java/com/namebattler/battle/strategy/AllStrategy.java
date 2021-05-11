@@ -1,21 +1,41 @@
 package com.namebattler.battle.strategy;
 
-public enum AllStrategy {
-    DAMAGE_PRIORITY(new DamagePriority()),
-    LEAST_HP(new LeastHP()),
-    NO_SKILL(new NoSkill()),
-    PLEASE_FREE(new PleaseFree()),
-    LEAST_DEF(new LeastDef()),
-    ;
+public class AllStrategy {
 
-    BaseStrategy strategy;
+    public static final int NO_SKILL = 0;
+    public static final int LEAST_HP = 1;
 
-    AllStrategy(BaseStrategy strategy) {
-        this.strategy = strategy;
+    public enum EStrategy {
+        DAMAGE_PRIORITY("ダメージ優先"),
+        LEAST_HP("体力少ない"),
+        NO_SKILL("スキル使うな"),
+        PLEASE_FREE("自由にやって"),
+        LEAST_DEF("柔らか狙い"),
+        ;
+
+        private String name;
+
+        EStrategy(String name) {
+            this.name = name;
+        }
+
+        public String getName(){
+            return this.name;
+        }
     }
 
-    public BaseStrategy getStrategy() {
-        return this.strategy;
+    public static BaseStrategy getStrategyInstance(EStrategy name) {
+        switch (name) {
+            case DAMAGE_PRIORITY:
+                return new DamagePriority();
+            case LEAST_HP:
+                return new LeastHP();
+            case NO_SKILL:
+                return new NoSkill();
+            case PLEASE_FREE:
+                return new PleaseFree();
+            default:
+                return new LeastDef();
+        }
     }
-
 }

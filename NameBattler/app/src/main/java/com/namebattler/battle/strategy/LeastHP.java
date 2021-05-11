@@ -10,7 +10,6 @@ public class LeastHP extends BaseStrategy {
      * コンストラクタ
      =============*/
     public LeastHP() {
-        this.name = "体力少ない";
     }
 
     @Override
@@ -43,6 +42,6 @@ public class LeastHP extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.LEAST_HP;
+        this.strategy = AllStrategy.EStrategy.LEAST_HP;
     }
 }

@@ -48,10 +48,8 @@ public class GameManager {
         allParty.add(myParty);
         allParty.add(enemyParty);
 
-        if (myParty.getStrategy() == null || enemyParty.getStrategy() == null) {
-            myParty.setStrategy(AllStrategy.values()[0].getStrategy());
-            enemyParty.setStrategy(AllStrategy.values()[0].getStrategy());
-        }
+//        myParty.setStrategyKey(0);
+//        enemyParty.setStrategyKey(0);
 
         addAllPlayer();
 
@@ -111,7 +109,10 @@ public class GameManager {
                 //攻撃されるパーティー
                 defenseParty = selectDefenseParty(attacker);
                 //作戦に沿って行動をする
-                attacker.getParty().getStrategy().action(attacker, defenseParty);
+                AllStrategy.getStrategyInstance(
+                        AllStrategy.EStrategy.values()[attacker.getParty().getStrategyKey()])
+                        .action(attacker, defenseParty);
+
             }
 
             if (battleEnd()) {
@@ -191,7 +192,7 @@ public class GameManager {
         }
 
         player.setParty(party);
-        player.setStrategy(AllStrategy.values()[0].getStrategy());
+        player.setStrategy(AllStrategy.getStrategyInstance(AllStrategy.EStrategy.values()[0]));
 
         return player;
     }
