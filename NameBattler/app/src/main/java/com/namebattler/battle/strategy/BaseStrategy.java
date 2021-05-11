@@ -5,27 +5,31 @@ import com.namebattler.battle.player.Player;
 
 import java.util.Random;
 
-public abstract class Strategy {
+public abstract class BaseStrategy implements IStrategy {
 
     /*=============
      * フィールド変数
      =============*/
-    protected String name;
-
+    protected AllStrategy.EStrategy strategy;
 
     Random rand = new Random();
 
     /*=============
      * コンストラクタ
      =============*/
-    Strategy() {
+    BaseStrategy() {
+        initStrategy();
     }
 
     /*============
      * Getメソッド
      ============*/
     public String getName() {
-        return this.name;
+        return this.strategy.getName();
+    }
+
+    public AllStrategy.EStrategy getStrategy() {
+        return this.strategy;
     }
 
     /**
@@ -35,6 +39,8 @@ public abstract class Strategy {
      * @param defnderParty 攻撃されるパーティー
      */
     public abstract void action(Player attacker, Party defnderParty);
+
+    protected abstract void initStrategy();
 
     /**
      * ランダムにプレイヤーを選ぶ

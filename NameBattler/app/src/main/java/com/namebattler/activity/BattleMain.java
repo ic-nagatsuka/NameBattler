@@ -15,6 +15,7 @@ import com.namebattler.adapter.BattleStatusAdapter;
 import com.namebattler.battle.GameManager;
 import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.party.Party;
+import com.namebattler.battle.strategy.AllStrategy;
 import com.namebattler.fragment.TitleFragment;
 
 import static com.namebattler.battle.battlelog.BattleLog.getLogText;
@@ -35,9 +36,9 @@ public class BattleMain extends AppCompatActivity {
 
         TextView strategy = findViewById(R.id.battle_main_strategy_name);
         strategy.setText("作戦 ： " +
-                GameManager.myParty.getStrategy().getName()
+                AllStrategy.EStrategy.values()[GameManager.myParty.getStrategyKey()].getName()
         );
-
+        AllStrategy.EStrategy.valueOf(AllStrategy.EStrategy.LEAST_HP.name());
         final TextView battleLog = findViewById(R.id.battle_main_battleLog);
         battleLog.setText(getLogText());
         battleLog.setMovementMethod(new ScrollingMovementMethod());

@@ -6,7 +6,7 @@ import com.namebattler.battle.skill.AbnormalState;
 import com.namebattler.battle.skill.IHeal;
 import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.StateEffect;
-import com.namebattler.battle.strategy.Strategy;
+import com.namebattler.battle.strategy.BaseStrategy;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -22,7 +22,7 @@ public abstract class Player {
     // =====================
     protected Party party;                        //パーティー
     protected String partyName;                    //パーティー名
-    protected Strategy strategy;                //作戦
+    protected BaseStrategy strategy;                //作戦
     protected String name;                        //名前
     protected String job;                            //職業
     protected int hp, mp, str, def, luck, agi;    //能力
@@ -124,7 +124,7 @@ public abstract class Player {
         return this.beforeHp;
     }
 
-    public Strategy getStrategy() {
+    public BaseStrategy getStrategy() {
         return this.strategy;
     }
 
@@ -157,6 +157,10 @@ public abstract class Player {
         return str;
     }
 
+    public SkillBase getRandomSkill(){
+        ArrayList<SkillBase> canSkill = getNowUseSkillOnly();
+        return canSkill.get(new Random().nextInt(canSkill.size()));
+    }
     /**
      * 現在使用できるスキルを返す
      *
@@ -183,7 +187,7 @@ public abstract class Player {
         this.party = party;
     }
 
-    public void setStrategy(Strategy strategy) {
+    public void setStrategy(BaseStrategy strategy) {
         this.strategy = strategy;
     }
 
@@ -239,7 +243,7 @@ public abstract class Player {
         //通常のダメージ計算
         normalDamage(target);
         //戦闘不能判定
-        checkDeath(target.getParty().getmenbers());
+        checkDeath(target.getParty());
         //カウンター攻撃確認
         target.canCounter(this);
     }
@@ -288,7 +292,7 @@ public abstract class Player {
         //スキルを使用する
         skill.use(this, target);
         //戦闘不能判定
-        checkDeath(target.getParty().getmenbers());
+        checkDeath(target.getParty());
         //カウンター攻撃
         target.canCounter(this);
     }
@@ -310,7 +314,7 @@ public abstract class Player {
      * @return true:	使える
      * false:	使えない
      */
-    public boolean isUseSkill() {
+    public boolean canSkill() {
         return getNowUseSkillOnly().size() != 0;
     }
 
@@ -386,10 +390,8 @@ public abstract class Player {
      *
      * @param party パーティー
      */
-    public void checkDeath(List<Player> party) {
-        for (int i = party.size() - 1; 0 <= i; i--) {
-            Player player = party.get(i);
-            //HPが０以下
+    public void checkDeath(Party party) {
+        for (Player player : party.getmenbers()) {
             if (player.getHp() <= 0 && !player.getIsDeath()) {
                 BattleLog.addLog(player.getName() + "は力尽きた...\n");
                 player.setIsDeath(true);
@@ -405,7 +407,7 @@ public abstract class Player {
     public void action(Player target) {
         this.readyCounter(target);
         if (isDicreasePartyMenberHp(this.getParty())) {
-            if (isUseSkill()) {
+            if (canSkill()) {
                 //ランダムでスキルを使用する
                 useSkill(randomSelectSkill(this.getNowUseSkillOnly()), target);
             } else {
@@ -431,7 +433,7 @@ public abstract class Player {
             if (abnormal.getTurn() < 0) {
                 this.turnAbnormalState.remove(i);
             }
-            checkDeath(target.getParty().getmenbers());
+            checkDeath(target.getParty());
             if (target.getHp() == 0) {
                 break;
             }

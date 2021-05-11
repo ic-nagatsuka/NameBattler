@@ -4,36 +4,30 @@ import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
-public class LeastHP extends BaseStrategy {
-
+public class LeastDef extends BaseStrategy {
     /*=============
      * コンストラクタ
      =============*/
-    public LeastHP() {
+    LeastDef() {
     }
 
     @Override
     public void action(Player attacker, Party defenderParty) {
-        Player defender = selectDefender(defenderParty);
+        Player target = selectDefender(defenderParty);
 
         if (attacker.canSkill()) {
-            SkillBase skill = attacker.randomSelectSkill(attacker.getNowUseSkillOnly());
-            skill.use(attacker, defender);
+            SkillBase skill = attacker.getRandomSkill();
+            attacker.useSkill(skill, target);
         } else {
-            attacker.normalAttack(defender);
+            attacker.normalAttack(target);
         }
     }
 
-    /**
-     * HPが一番低いプレイヤーを選ぶ
-     *
-     * @param defenderParty 敵パーティー
-     * @return　HPが一番低いプレイヤー
-     */
     protected Player selectDefender(Party defenderParty) {
-        Player defender = defenderParty.getAliveMenbers().get(0);
+        Player defender = defenderParty.getmenbers().get(0);
+
         for (Player player : defenderParty.getAliveMenbers()) {
-            if (defender.getHp() > player.getHp()) {
+            if (defender.getDef() > player.getDef()) {
                 defender = player;
             }
         }
@@ -42,6 +36,6 @@ public class LeastHP extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.EStrategy.LEAST_HP;
+        this.strategy = AllStrategy.EStrategy.LEAST_DEF;
     }
 }

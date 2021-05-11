@@ -8,7 +8,7 @@ import com.namebattler.battle.skill.SkillType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AttackMagicPriority extends Strategy {
+public class AttackMagicPriority extends BaseStrategy {
     /*=============
      * フィールド変数
      =============*/
@@ -19,7 +19,6 @@ public class AttackMagicPriority extends Strategy {
      =============*/
 //	ArrayList<Integer>
     public AttackMagicPriority(String name, SkillType[] skillNum) {
-        this.name = name;
         this.skillNum = skillNum;
     }
 
@@ -68,5 +67,10 @@ public class AttackMagicPriority extends Strategy {
 
         System.out.println(prioritySkill.size());
         return prioritySkill;
+    }
+
+    @Override
+    public void initStrategy() {
+
     }
 }
