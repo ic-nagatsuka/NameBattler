@@ -434,7 +434,7 @@ public abstract class Player {
                 this.turnAbnormalState.remove(i);
             }
             checkDeath(target.getParty());
-            if (target.getHp() == 0) {
+            if (target.getIsDeath()) {
                 break;
             }
         }
