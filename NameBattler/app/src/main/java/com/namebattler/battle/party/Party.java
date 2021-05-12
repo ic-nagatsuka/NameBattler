@@ -19,6 +19,7 @@ public class Party {
 
     public Party(String name) {
         this.name = name;
+        this.strategyKey = 0;
     }
 
     /*============
@@ -53,7 +54,6 @@ public class Party {
         this.strategyKey = strategyKey;
     }
 
-
     /*
      * メソッド
      */
@@ -64,6 +64,5 @@ public class Party {
     public void removePlayer(Player player) {
         this.menbers.remove(player);
     }
-
 
 }
