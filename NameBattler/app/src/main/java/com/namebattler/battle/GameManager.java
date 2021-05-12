@@ -103,7 +103,7 @@ public class GameManager {
             Party defenseParty;    //攻撃を受けるパーティー
 
             //状態異常の確認
-            attacker.abnormalEffect(attacker);
+            attacker.abnormalEffect();
             //行動不能ではなく、状態異常で倒れていない
             if (!attacker.getInaction() && attacker.getHp() > 0) {
                 //攻撃されるパーティー

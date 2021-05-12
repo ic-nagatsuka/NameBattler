@@ -157,10 +157,11 @@ public abstract class Player {
         return str;
     }
 
-    public SkillBase getRandomSkill(){
+    public SkillBase getRandomSkill() {
         ArrayList<SkillBase> canSkill = getNowUseSkillOnly();
         return canSkill.get(new Random().nextInt(canSkill.size()));
     }
+
     /**
      * 現在使用できるスキルを返す
      *
@@ -391,8 +392,8 @@ public abstract class Player {
      * @param party パーティー
      */
     public void checkDeath(Party party) {
-        for (Player player : party.getmenbers()) {
-            if (player.getHp() <= 0 && !player.getIsDeath()) {
+        for (Player player : party.getAliveMenbers()) {
+            if (player.getHp() <= 0) {
                 BattleLog.addLog(player.getName() + "は力尽きた...\n");
                 player.setIsDeath(true);
             }
@@ -419,22 +420,20 @@ public abstract class Player {
 
     /**
      * 状態異常効果を動かす
-     *
-     * @param target 攻撃するプレイヤー
      */
-    public void abnormalEffect(Player target) {
+    public void abnormalEffect() {
         for (int i = this.turnAbnormalState.size() - 1; 0 <= i; i--) {
             StateEffect abnormal = this.turnAbnormalState.get(i);
             //効果ターン経過
             abnormal.setTurn(abnormal.getTurn() - 1);
             //状態異常の効果
-            abnormal.getSkill().effect(target, abnormal.getTurn());
+            abnormal.getSkill().effect(this, abnormal.getTurn());
             //効果ターン経過すれば削除する
             if (abnormal.getTurn() < 0) {
                 this.turnAbnormalState.remove(i);
             }
-            checkDeath(target.getParty());
-            if (target.getHp() == 0) {
+            checkDeath(this.getParty());
+            if (this.getIsDeath()) {
                 break;
             }
         }
