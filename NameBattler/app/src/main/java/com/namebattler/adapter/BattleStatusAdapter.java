@@ -25,7 +25,7 @@ public class BattleStatusAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return party.getmenbers().size();
+        return party.getAllMenbers().size();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class BattleStatusAdapter extends BaseAdapter {
             view = this.inflater.inflate(R.layout.gridview_battle_main, null);
         }
 
-        Player player = party.getmenbers().get(i);
+        Player player = party.getAllMenbers().get(i);
         //名前
         TextView textView = view.findViewById(R.id.gridview_name);
         textView.setText(player.getName());

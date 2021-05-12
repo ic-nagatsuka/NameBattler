@@ -81,7 +81,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                 String name = textView.getText().toString();
 
                 if (!hasName(name)) {
-                    if (GameManager.myParty.getmenbers().size() < Option.PARTY_PLAYER_NUM) {
+                    if (GameManager.myParty.getAllMenbers().size() < Option.PARTY_PLAYER_NUM) {
                         player.setIsClicked(true);
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
@@ -98,12 +98,12 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                     removeSelectPlayer(name);
                 }
                 Button btn = startButton.findViewById(R.id.character_organization_start);
-                btn.setText("このパーティーで開始(" + GameManager.myParty.getmenbers().size() + "/3)");
+                btn.setText("このパーティーで開始(" + GameManager.myParty.getAllMenbers().size() + "/3)");
             }
 
             private void removeSelectPlayer(String name) {
-                for (int i = 0; i < GameManager.myParty.getmenbers().size(); i++) {
-                    Player player = GameManager.myParty.getmenbers().get(i);
+                for (int i = 0; i < GameManager.myParty.getAllMenbers().size(); i++) {
+                    Player player = GameManager.myParty.getAllMenbers().get(i);
                     if (player.getName().equals(name)) {
                         GameManager.myParty.removePlayer(player);
                     }
@@ -125,7 +125,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
     }
 
     public boolean hasName(String name) {
-        for (Player player : GameManager.myParty.getmenbers()) {
+        for (Player player : GameManager.myParty.getAllMenbers()) {
             if (player.getName().equals(name)) {
                 return true;
             }

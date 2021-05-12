@@ -32,7 +32,7 @@ public class Party {
         return this.strategyKey;
     }
 
-    public List<Player> getmenbers() {
+    public List<Player> getAllMenbers() {
         return menbers;
     }
 

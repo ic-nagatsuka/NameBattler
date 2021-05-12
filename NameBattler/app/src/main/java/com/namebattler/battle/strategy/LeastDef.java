@@ -24,7 +24,7 @@ public class LeastDef extends BaseStrategy {
     }
 
     protected Player selectDefender(Party defenderParty) {
-        Player defender = defenderParty.getmenbers().get(0);
+        Player defender = defenderParty.getAllMenbers().get(0);
 
         for (Player player : defenderParty.getAliveMenbers()) {
             if (defender.getDef() > player.getDef()) {

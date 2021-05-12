@@ -31,7 +31,7 @@ public class CharacterOrganization extends AppCompatActivity {
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "パーティー編成", TopScreen.class);
 
-        if (GameManager.myParty.getmenbers().size() != 0) {
+        if (GameManager.myParty.getAllMenbers().size() != 0) {
             GameManager.myParty = new Party("味方");
         }
 
@@ -40,7 +40,7 @@ public class CharacterOrganization extends AppCompatActivity {
         findViewById(R.id.character_organization_start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (GameManager.myParty.getmenbers().size() == Option.PARTY_PLAYER_NUM) {
+                if (GameManager.myParty.getAllMenbers().size() == Option.PARTY_PLAYER_NUM) {
                     Intent intent = new Intent(getApplication(), BattleStart.class);
                     startActivity(intent);
                 }
