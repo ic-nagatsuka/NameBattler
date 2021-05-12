@@ -392,8 +392,8 @@ public abstract class Player {
      * @param party パーティー
      */
     public void checkDeath(Party party) {
-        for (Player player : party.getmenbers()) {
-            if (player.getHp() <= 0 && !player.getIsDeath()) {
+        for (Player player : party.getAliveMenbers()) {
+            if (player.getHp() <= 0) {
                 BattleLog.addLog(player.getName() + "は力尽きた...\n");
                 player.setIsDeath(true);
             }
