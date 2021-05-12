@@ -30,8 +30,6 @@ public class GameManager {
     public static Party win;    //勝利パーティー
     int turnCount = 1;    //ターン数
 
-    Random rand = new Random();
-
     /*=============
      * コンストラクタ
      =============*/
@@ -44,22 +42,22 @@ public class GameManager {
      * 戦闘準備
      */
     public void prepare() {
-        allParty.add(myParty);
-        allParty.add(enemyParty);
+        this.allParty.add(myParty);
+        this.allParty.add(enemyParty);
 
         addAllPlayer();
 
         //素早さが高い順に並べる
-        highSpeedSort(allPlayer);
+        highSpeedSort(this.allPlayer);
     }
 
     /**
      * 全てのパーティーのキャラクターをまとめる
      */
     public void addAllPlayer() {
-        for (Party party : allParty) {
+        for (Party party : this.allParty) {
             for (Player player : party.getAllMenbers()) {
-                allPlayer.add(player);
+                this.allPlayer.add(player);
             }
         }
 
@@ -90,11 +88,11 @@ public class GameManager {
      */
     public void battle() {
         //ターン数の表示
-        BattleLog.addLog("=====ターン" + turnCount + "=====");
+        BattleLog.addLog("=====ターン" + this.turnCount + "=====");
 
         //行動
-        for (int i = allPlayer.size() - 1; 0 <= i; i--) {
-            Player attacker = allPlayer.get(i);//攻撃するプレイヤー
+        for (int i = this.allPlayer.size() - 1; 0 <= i; i--) {
+            Player attacker = this.allPlayer.get(i);//攻撃するプレイヤー
             Party defenseParty;    //攻撃を受けるパーティー
 
             //状態異常の確認
@@ -114,7 +112,7 @@ public class GameManager {
                 break;
             }
         }
-        turnCount++;    //ターン経過
+        this.turnCount++;    //ターン経過
 
     }
 
@@ -126,7 +124,7 @@ public class GameManager {
      */
     public boolean battleEnd() {
         boolean isEnd = true;
-        for (Party party : allParty) {
+        for (Party party : this.allParty) {
             isEnd = true;
 
             for (Player player : party.getAllMenbers()) {
@@ -150,10 +148,11 @@ public class GameManager {
      * @return 防衛側パーティー
      */
     private Party selectDefenseParty(Player attacker) {
+        Random rand = new Random();
         Party defenseParty;
         while (true) {
             //パーティーをランダムで選ぶ
-            defenseParty = allParty.get(rand.nextInt(allParty.size()));
+            defenseParty = this.allParty.get(rand.nextInt(this.allParty.size()));
             //同じパーティーでなければ
             if (attacker.getParty() != defenseParty) {
                 return defenseParty;
