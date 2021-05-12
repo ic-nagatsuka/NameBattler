@@ -190,9 +190,7 @@ public class GameManager {
                 player = new Bouncer(name);
                 break;
         }
-
         player.setParty(party);
-        player.setStrategy(AllStrategy.getStrategyInstance(AllStrategy.EStrategy.values()[0]));
 
         return player;
     }
