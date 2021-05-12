@@ -39,11 +39,10 @@ public class Party {
     public List<Player> getAliveMenbers() {
         ArrayList<Player> aliveMenbers = new ArrayList<>();
         for (Player player : this.menbers) {
-            if (player.getHp() > 0) {
+            if (!player.getIsDeath()) {
                 aliveMenbers.add(player);
             }
         }
-
         return aliveMenbers;
     }
 
