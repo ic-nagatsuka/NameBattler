@@ -44,18 +44,13 @@ public class GameManager {
      * 戦闘準備
      */
     public void prepare() {
-
         allParty.add(myParty);
         allParty.add(enemyParty);
-
-//        myParty.setStrategyKey(0);
-//        enemyParty.setStrategyKey(0);
 
         addAllPlayer();
 
         //素早さが高い順に並べる
         highSpeedSort(allPlayer);
-
     }
 
     /**
