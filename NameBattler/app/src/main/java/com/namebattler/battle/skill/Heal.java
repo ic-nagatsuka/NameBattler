@@ -30,9 +30,9 @@ public class Heal extends SkillBase implements IHeal {
     }
 
     public Player selectTarget(Player attacker) {
-        Player target = attacker.getParty().getmenbers().get(0);
+        Player target = attacker.getParty().getAllMenbers().get(0);
 
-        for (Player player : attacker.getParty().getmenbers()) {
+        for (Player player : attacker.getParty().getAllMenbers()) {
             if (playerHpPercentage(player) < playerHpPercentage(target)) {
                 target = player;
             }

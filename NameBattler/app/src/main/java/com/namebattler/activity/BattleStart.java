@@ -35,7 +35,7 @@ public class BattleStart extends AppCompatActivity {
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "バトル開始", CharacterOrganization.class);
 
-        if (GameManager.enemyParty.getmenbers().size() != 0) {
+        if (GameManager.enemyParty.getAllMenbers().size() != 0) {
             GameManager.enemyParty = new Party("敵");
         }
         //敵パーティー作成
@@ -61,7 +61,7 @@ public class BattleStart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //敵パーティーを初期化
-                GameManager.enemyParty.getmenbers().clear();
+                GameManager.enemyParty.getAllMenbers().clear();
                 //敵パーティー作成
                 makeEnemyParty();
                 //敵パーティーの表示を更新
@@ -89,7 +89,7 @@ public class BattleStart extends AppCompatActivity {
 
     public void displayParty(int listviewId, Party party) {
         List<Map<String, String>> list = new ArrayList<>();
-        for (Player player : party.getmenbers()) {
+        for (Player player : party.getAllMenbers()) {
             Map<String, String> map = new HashMap();
             map.put("name", player.getName());
             map.put("job", player.getJob());

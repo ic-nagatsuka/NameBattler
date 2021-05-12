@@ -63,7 +63,7 @@ public class GameManager {
      */
     public void addAllPlayer() {
         for (Party party : allParty) {
-            for (Player player : party.getmenbers()) {
+            for (Player player : party.getAllMenbers()) {
                 allPlayer.add(player);
             }
         }
@@ -134,7 +134,7 @@ public class GameManager {
         for (Party party : allParty) {
             isEnd = true;
 
-            for (Player player : party.getmenbers()) {
+            for (Player player : party.getAllMenbers()) {
                 if (player.getHp() != 0) {
                     win = party;
                     isEnd = false;

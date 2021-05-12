@@ -328,7 +328,7 @@ public abstract class Player {
      */
     public boolean isDicreasePartyMenberHp(Party party) {
         heelSkill = false;
-        for (Player player : party.getmenbers()) {
+        for (Player player : party.getAllMenbers()) {
             //HPが減っている場合
             if (player.getMaxHp() - player.getHp() > 0) {
                 return true;
@@ -501,7 +501,7 @@ public abstract class Player {
      * @param target 　プレイヤー
      */
     private void readyCounter(Player target) {
-        for (Player player : target.getParty().getmenbers()) {
+        for (Player player : target.getParty().getAllMenbers()) {
             player.setBeforHP(player.getHp());
         }
     }

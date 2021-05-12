@@ -75,9 +75,9 @@ public class BattleResult extends AppCompatActivity {
     }
 
     public void remakePlayer(Party party) {
-        int partyNum = party.getmenbers().size();
+        int partyNum = party.getAllMenbers().size();
         for (int i = 0; i < partyNum; i++) {
-            Player player = party.getmenbers().get(0);
+            Player player = party.getAllMenbers().get(0);
 
             party.appendPlayer(
                     GameManager.makePlayer(player.getName(), player.getJob(), party)

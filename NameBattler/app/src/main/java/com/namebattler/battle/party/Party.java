@@ -10,12 +10,12 @@ public class Party {
      * フィールド変数
      =============*/
     private List<Player> menbers = new ArrayList<>();
+    private int strategyKey;
 
     /*=============
      * コンストラクタ
      =============*/
     private String name;
-    private int strategyKey;
 
     public Party(String name) {
         this.name = name;
@@ -25,15 +25,15 @@ public class Party {
      * getメソッド
      ============*/
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getStrategyKey() {
         return this.strategyKey;
     }
 
-    public List<Player> getmenbers() {
-        return menbers;
+    public List<Player> getAllMenbers() {
+        return this.menbers;
     }
 
     public List<Player> getAliveMenbers() {
