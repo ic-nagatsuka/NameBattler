@@ -22,7 +22,6 @@ public abstract class Player {
     // =====================
     protected Party party;                        //パーティー
     protected String partyName;                    //パーティー名
-    protected BaseStrategy strategy;                //作戦
     protected String name;                        //名前
     protected String job;                            //職業
     protected int hp, mp, str, def, luck, agi;    //能力
@@ -76,10 +75,6 @@ public abstract class Player {
         return this.party;
     }
 
-    public String getPartyName() {
-        return this.partyName;
-    }
-
     public String getJob() {
         return this.job;
     }
@@ -122,10 +117,6 @@ public abstract class Player {
 
     public int getBeforeHP() {
         return this.beforeHp;
-    }
-
-    public BaseStrategy getStrategy() {
-        return this.strategy;
     }
 
     public boolean getIsDeath() {
@@ -186,10 +177,6 @@ public abstract class Player {
      ============*/
     public void setParty(Party party) {
         this.party = party;
-    }
-
-    public void setStrategy(BaseStrategy strategy) {
-        this.strategy = strategy;
     }
 
     public void setJob(String job) {
