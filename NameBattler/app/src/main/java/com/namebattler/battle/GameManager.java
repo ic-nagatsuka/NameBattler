@@ -28,7 +28,7 @@ public class GameManager {
     List<Party> allParty = new ArrayList<>();
 
     public static Party win;    //勝利パーティー
-    int turnCount = 1;    //ターン数
+    private static int turnCount = 1;    //ターン数
 
     /*=============
      * コンストラクタ
@@ -102,10 +102,13 @@ public class GameManager {
             }
 
             if (battleEnd()) {
+                this.turnCount = 1;
                 break;
             }
         }
-        this.turnCount++;    //ターン経過
+        if(!battleEnd()){
+            this.turnCount++;    //ターン経過
+        }
 
     }
 
