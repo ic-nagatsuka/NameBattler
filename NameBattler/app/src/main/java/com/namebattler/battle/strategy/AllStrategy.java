@@ -2,9 +2,6 @@ package com.namebattler.battle.strategy;
 
 public class AllStrategy {
 
-    public static final int NO_SKILL = 0;
-    public static final int LEAST_HP = 1;
-
     public enum EStrategy {
         DAMAGE_PRIORITY("ダメージ優先"),
         LEAST_HP("体力少ない"),
