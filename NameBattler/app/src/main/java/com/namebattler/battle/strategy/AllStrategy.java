@@ -11,6 +11,7 @@ public class AllStrategy {
         NO_SKILL("スキル使うな"),
         PLEASE_FREE("自由にやって"),
         LEAST_DEF("柔らか狙い"),
+        PRIORITY_ABNORMAL_STATE_SKILL("状態異常優先"),
         ;
 
         private String name;
@@ -34,8 +35,10 @@ public class AllStrategy {
                 return new NoSkill();
             case PLEASE_FREE:
                 return new PleaseFree();
-            default:
+            case LEAST_DEF:
                 return new LeastDef();
+            default :
+                return new AbnormalStateSkillPriority();
         }
     }
 }
