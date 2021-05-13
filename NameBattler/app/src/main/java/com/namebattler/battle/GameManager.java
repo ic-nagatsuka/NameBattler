@@ -35,7 +35,6 @@ public class GameManager {
      =============*/
     public GameManager() {
         prepare();
-
     }
 
     /**
@@ -60,7 +59,6 @@ public class GameManager {
                 this.allPlayer.add(player);
             }
         }
-
     }
 
 
@@ -70,7 +68,6 @@ public class GameManager {
      * @param playerList すべてのプレイヤー情報
      */
     private void highSpeedSort(List<Player> playerList) {
-
         for (int i = 0; i < playerList.size() - 1; i++) {
             for (int j = 0; j < playerList.size() - 1; j++) {
                 if (playerList.get(j).getAgi() > playerList.get(j + 1).getAgi()) {
@@ -91,21 +88,17 @@ public class GameManager {
         BattleLog.addLog("=====ターン" + this.turnCount + "=====");
 
         //行動
-        for (int i = this.allPlayer.size() - 1; 0 <= i; i--) {
-            Player attacker = this.allPlayer.get(i);//攻撃するプレイヤー
-            Party defenseParty;    //攻撃を受けるパーティー
-
+        for (Player attacker : this.allPlayer) {
             //状態異常の確認
             attacker.abnormalEffect();
             //行動不能ではなく、状態異常で倒れていない
-            if (!attacker.getInaction() && attacker.getHp() > 0) {
+            if (!attacker.getInaction() && !attacker.getIsDeath()) {
                 //攻撃されるパーティー
-                defenseParty = selectDefenseParty(attacker);
+                Party defenseParty = selectDefenseParty(attacker);
                 //作戦に沿って行動をする
                 AllStrategy.getStrategyInstance(
                         AllStrategy.EStrategy.values()[attacker.getParty().getStrategyKey()])
                         .action(attacker, defenseParty);
-
             }
 
             if (battleEnd()) {
