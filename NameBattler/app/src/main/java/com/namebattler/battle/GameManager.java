@@ -70,10 +70,12 @@ public class GameManager {
     private void highSpeedSort(List<Player> playerList) {
         for (int i = 0; i < playerList.size() - 1; i++) {
             for (int j = 0; j < playerList.size() - 1; j++) {
-                if (playerList.get(j).getAgi() > playerList.get(j + 1).getAgi()) {
+                Player player1 = playerList.get(j);
+                Player player2 = playerList.get(j + 1);
+                if (player1.getAgi() > player2.getAgi()) {
                     //場所を入れ替える
-                    Player saveValue = playerList.get(j);
-                    playerList.set(j, playerList.get(j + 1));
+                    Player saveValue = player1;
+                    playerList.set(j, player2);
                     playerList.set(j + 1, saveValue);
                 }
             }
