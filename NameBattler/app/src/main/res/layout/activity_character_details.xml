@@ -14,13 +14,14 @@
     <TextView
         android:id="@+id/characterDetails_name"
         android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:gravity="bottom"
-        android:maxLines="2"
+        android:maxLines="1"
         android:text="名前"
+        android:textSize="25dp"
         app:autoSizeMaxTextSize="25dp"
         app:autoSizeMinTextSize="1dp"
         app:autoSizeTextType="uniform"
@@ -161,8 +162,8 @@
 
     <TextView
         android:id="@+id/characterDetails_MakeDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="96dp"
+        android:layout_height="30dp"
         android:layout_marginTop="32dp"
         android:text="作成日 : "
         android:textSize="25dp"
@@ -182,6 +183,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/characterDetails_MakeDay_data"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="25sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/characterDetails_MakeDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/characterDetails_MakeDay"
+        app:layout_constraintTop_toTopOf="@+id/characterDetails_MakeDay"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
