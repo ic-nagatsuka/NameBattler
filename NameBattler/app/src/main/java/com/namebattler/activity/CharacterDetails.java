@@ -53,8 +53,8 @@ public class CharacterDetails extends AppCompatActivity {
             textView = findViewById(R.id.characterDetails_agi);
             textView.setText(cursor.getString(cursor.getColumnIndex("AGI")));
 
-            textView = findViewById(R.id.characterDetails_MakeDay);
-            textView.setText("作成日 : " + cursor.getString(cursor.getColumnIndex("CREATE_AT")));
+            textView = findViewById(R.id.characterDetails_MakeDay_data);
+            textView.setText(cursor.getString(cursor.getColumnIndex("CREATE_AT")));
         }
 
         findViewById(R.id.characterDetails_DeleteButton).setOnClickListener(new View.OnClickListener() {
