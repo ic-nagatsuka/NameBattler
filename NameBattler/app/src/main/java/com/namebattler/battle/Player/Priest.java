@@ -12,17 +12,16 @@ public class Priest extends Player {
      =============*/
     public Priest(String name) {
         super(name);
-        this.setJob(AllJob.PRIEST.getName());
     }
 
     @Override
     public void makeCharacterStatus() {
-        this.hp = getNumber(0, 120) + 80;
-        this.mp = getNumber(1, 30) + 20;
-        this.str = getNumber(2, 60) + 10;
-        this.def = getNumber(3, 60) + 10;
-        this.luck = getNumber(4, 99) + 1;
-        this.agi = getNumber(5, 40) + 20;
+        this.hp = getNumber(0, jobData.getMaxHp() - jobData.getMinHp()) + jobData.getMinHp();
+        this.mp = getNumber(1, jobData.getMaxMp() - jobData.getMinMp()) + jobData.getMinMp();
+        this.str = getNumber(2, jobData.getMaxStr() - jobData.getMinStr()) + jobData.getMinStr();
+        this.def = getNumber(3, jobData.getMaxDef() - jobData.getMinDef()) + jobData.getMinDef();
+        this.luck = getNumber(4, jobData.getMaxLuck() - jobData.getMinLuck()) + jobData.getMinLuck();
+        this.agi = getNumber(5, jobData.getMaxAgi() - jobData.getMinAgi()) + jobData.getMinAgi();
     }
 
     @Override
@@ -37,5 +36,8 @@ public class Priest extends Player {
         super.normalAttack(target);
     }
 
-
+    @Override
+    protected void initJobData() {
+        jobData = AllJob.PRIEST;
+    }
 }

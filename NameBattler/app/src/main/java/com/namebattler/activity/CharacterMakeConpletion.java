@@ -38,7 +38,7 @@ public class CharacterMakeConpletion extends AppCompatActivity {
             //職業
             textView = findViewById(R.id.characterMakeConpletion_job);
             textView.setText(
-                    AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName());
+                    AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getJobName());
             //HP
             textView = findViewById(R.id.characterMakeConpletion_set_hp);
             textView.setText(Integer.toString(cursor.getInt(cursor.getColumnIndex("HP"))));

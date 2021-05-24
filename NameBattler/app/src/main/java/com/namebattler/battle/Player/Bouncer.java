@@ -15,18 +15,17 @@ public class Bouncer extends Player {
      =============*/
     public Bouncer(String name) {
         super(name);
-        this.setJob(AllJob.BOUNCER.getName());
         this.setCounter(true);
     }
 
     @Override
     public void makeCharacterStatus() {
-        this.hp = getNumber(0, 50) + 100;
-        this.mp = getNumber(1, 50) + 60;
-        this.str = getNumber(2, 29) + 1;
-        this.def = getNumber(3, 40) + 50;
-        this.luck = getNumber(4, 50) + 50;
-        this.agi = getNumber(5, 40) + 20;
+        this.hp = getNumber(0, jobData.getMaxHp() - jobData.getMinHp()) + jobData.getMinHp();
+        this.mp = getNumber(1, jobData.getMaxMp() - jobData.getMinMp()) + jobData.getMinMp();
+        this.str = getNumber(2, jobData.getMaxStr() - jobData.getMinStr()) + jobData.getMinStr();
+        this.def = getNumber(3, jobData.getMaxDef() - jobData.getMinDef()) + jobData.getMinDef();
+        this.luck = getNumber(4, jobData.getMaxLuck() - jobData.getMinLuck()) + jobData.getMinLuck();
+        this.agi = getNumber(5, jobData.getMaxAgi() - jobData.getMinAgi()) + jobData.getMinAgi();
     }
 
     @Override
@@ -54,5 +53,10 @@ public class Bouncer extends Player {
             this.normalDamage(defender);
         }
         this.beforeHp = this.getHp();
+    }
+
+    @Override
+    protected void initJobData() {
+        jobData = AllJob.BOUNCER;
     }
 }
