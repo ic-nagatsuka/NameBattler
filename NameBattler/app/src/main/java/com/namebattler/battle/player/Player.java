@@ -52,6 +52,7 @@ public abstract class Player {
         this.maxHp = this.getHp();
         this.maxMp = this.getMp();
         this.beforeHp = this.getHp();
+        this.counter = this.jobData.getCanCounter();
     }
 
     /*====================================================================================

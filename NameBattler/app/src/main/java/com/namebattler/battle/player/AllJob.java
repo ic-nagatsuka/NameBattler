@@ -2,10 +2,10 @@ package com.namebattler.battle.player;
 
 
 public enum AllJob {
-    FIGHTER("戦士", 100, 300, 0, 0, 30, 70, 30, 70, 1, 100, 1, 100),
-    WIZARD("魔法使い", 50, 150, 30, 50, 1, 50, 1, 50, 1, 100, 1, 100),
-    PRIEST("僧侶", 80, 200, 20, 50, 10, 70, 10, 70, 1, 100, 1, 100),
-    BOUNCER("ボール", 50, 150, 50, 110, 1, 30, 40, 90, 50, 100, 1, 100),
+    FIGHTER("戦士", 100, 300, 0, 0, 30, 70, 30, 70, 1, 100, 1, 100, false),
+    WIZARD("魔法使い", 50, 150, 30, 50, 1, 50, 1, 50, 1, 100, 1, 100, false),
+    PRIEST("僧侶", 80, 200, 20, 50, 10, 70, 10, 70, 1, 100, 1, 100, false),
+    BOUNCER("ボール", 50, 150, 50, 110, 1, 30, 40, 90, 50, 100, 1, 100, true),
     ;
 
     private String jobName;
@@ -15,6 +15,7 @@ public enum AllJob {
             minDef, maxDef,
             minLuck, maxLuck,
             minAgi, maxAgi;
+    private boolean canCounter;
 
     AllJob(String jobName,
            int minHp, int maxHp,
@@ -22,7 +23,8 @@ public enum AllJob {
            int minStr, int maxStr,
            int minDef, int maxDef,
            int minLuck, int maxLuck,
-           int minAgi, int maxAgi) {
+           int minAgi, int maxAgi,
+           boolean canCounter) {
         this.jobName = jobName;
         this.minHp = minHp;
         this.maxHp = maxHp;
@@ -36,6 +38,7 @@ public enum AllJob {
         this.maxLuck = maxLuck;
         this.minAgi = minAgi;
         this.maxAgi = maxAgi;
+        this.canCounter = canCounter;
     }
 
     public String getJobName() {
@@ -88,6 +91,10 @@ public enum AllJob {
 
     public int getMaxAgi() {
         return this.maxAgi;
+    }
+
+    public boolean getCanCounter() {
+        return this.canCounter;
     }
 
 }
