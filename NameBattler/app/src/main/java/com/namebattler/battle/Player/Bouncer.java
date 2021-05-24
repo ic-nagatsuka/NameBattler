@@ -15,7 +15,7 @@ public class Bouncer extends Player {
      =============*/
     public Bouncer(String name) {
         super(name);
-        this.setCounter(true);
+        this.setCanCounter(true);
     }
 
     @Override

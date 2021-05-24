@@ -20,7 +20,6 @@ public abstract class Player {
     // フィールド変数
     // =====================
     protected Party party;                        //パーティー
-    protected String partyName;                    //パーティー名
     protected String name;                        //名前
     protected int hp, mp, str, def, luck, agi;    //能力
     protected AllJob jobData;                      //職業情報
@@ -28,9 +27,8 @@ public abstract class Player {
     protected int maxMp;                        //MPの最大値
     protected int beforeHp;                        //行動前のHP
     protected boolean isDeath;                    //戦闘不能
-    protected boolean inaction;                //行動不能
-    protected boolean heelSkill;                //回復スキルの使用
-    protected boolean counter;                    //カウンター使用
+    protected boolean isInaction;                //行動不能
+    protected boolean canCounter;                    //カウンター使用
 
     //使用スキル
     protected List<SkillBase> useSkill = new ArrayList<>();
@@ -52,7 +50,7 @@ public abstract class Player {
         this.maxHp = this.getHp();
         this.maxMp = this.getMp();
         this.beforeHp = this.getHp();
-        this.counter = this.jobData.getCanCounter();
+        this.canCounter = this.jobData.getCanCounter();
     }
 
     /*====================================================================================
@@ -126,12 +124,12 @@ public abstract class Player {
         return this.isDeath;
     }
 
-    public boolean getInaction() {
-        return this.inaction;
+    public boolean getIsInaction() {
+        return this.isInaction;
     }
 
-    public boolean getCounter() {
-        return this.counter;
+    public boolean getCanCounter() {
+        return this.canCounter;
     }
 
     public List<SkillBase> getUseSkill() {
@@ -202,16 +200,16 @@ public abstract class Player {
         this.isDeath = isDeath;
     }
 
-    public void setInaction(boolean inaction) {
-        this.inaction = inaction;
+    public void setIsInaction(boolean inaction) {
+        this.isInaction = inaction;
     }
 
     public void setAbnormalState(StateEffect skill) {
         this.turnAbnormalState.add(skill);
     }
 
-    public void setCounter(boolean counter) {
-        this.counter = counter;
+    public void setCanCounter(boolean canCounter) {
+        this.canCounter = canCounter;
     }
 
     public void setBeforHP(int beforeHp) {
@@ -317,7 +315,6 @@ public abstract class Player {
      * false: 	減少していない
      */
     public boolean isDicreasePartyMenberHp(Party party) {
-        heelSkill = false;
         for (Player player : party.getAllMenbers()) {
             //HPが減っている場合
             if (player.getMaxHp() - player.getHp() > 0) {
@@ -335,7 +332,7 @@ public abstract class Player {
     protected void canCounter(Player target) {
         //HPが減っていて、カウンターができる状態で、戦闘不能ではなく、相手が同じパーティーではない場合
         if (this.getBeforeHP() != this.getHp() &&
-                this.getCounter() &&
+                this.getCanCounter() &&
                 this.getHp() != 0 && this.getParty() != target.getParty()) {
             //カウンター攻撃
             this.counterAttack(target);

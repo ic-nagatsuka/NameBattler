@@ -94,7 +94,7 @@ public class GameManager {
             //状態異常の確認
             attacker.abnormalEffect();
             //行動不能ではなく、状態異常で倒れていない
-            if (!attacker.getInaction() && !attacker.getIsDeath()) {
+            if (!attacker.getIsInaction() && !attacker.getIsDeath()) {
                 //攻撃されるパーティー
                 Party defenseParty = selectDefenseParty(attacker);
                 //作戦に沿って行動をする
