@@ -55,7 +55,7 @@ public class CharacterOrganization extends AppCompatActivity {
         if (cursor.moveToFirst()) {
             for (int i = 0; i < cursor.getCount(); i++) {
                 String name = cursor.getString(cursor.getColumnIndex("NAME"));
-                String job = AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getName();
+                String job = AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getJobName();
                 String status = makeStatusText(cursor);
                 list.add(new Status(name, job, status));
                 cursor.moveToNext();

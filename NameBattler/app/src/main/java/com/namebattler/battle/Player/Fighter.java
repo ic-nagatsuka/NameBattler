@@ -18,18 +18,17 @@ public class Fighter extends Player {
      =============*/
     public Fighter(String name) {
         super(name);
-        setJob(AllJob.FIGHTER.getName());
         makeAttackText();
     }
 
     @Override
     public void makeCharacterStatus() {
-        this.hp = getNumber(0, 200) + 100;
-        this.mp = getNumber(1, 0) + 0;
-        this.str = getNumber(2, 70) + 30;
-        this.def = getNumber(3, 70) + 30;
-        this.luck = getNumber(4, 99) + 1;
-        this.agi = getNumber(5, 49) + 1;
+        this.hp = getNumber(0, jobData.getMaxHp() - jobData.getMinHp()) + jobData.getMinHp();
+        this.mp = getNumber(1, jobData.getMaxMp() - jobData.getMinMp()) + jobData.getMinMp();
+        this.str = getNumber(2, jobData.getMaxStr() - jobData.getMinStr()) + jobData.getMinStr();
+        this.def = getNumber(3, jobData.getMaxDef() - jobData.getMinDef()) + jobData.getMinDef();
+        this.luck = getNumber(4, jobData.getMaxLuck() - jobData.getMinLuck()) + jobData.getMinLuck();
+        this.agi = getNumber(5, jobData.getMaxAgi() - jobData.getMinAgi()) + jobData.getMinAgi();
     }
 
     @Override
@@ -53,5 +52,8 @@ public class Fighter extends Player {
         super.normalAttack(target);
     }
 
-
+    @Override
+    public void initJobData() {
+        jobData = AllJob.FIGHTER;
+    }
 }

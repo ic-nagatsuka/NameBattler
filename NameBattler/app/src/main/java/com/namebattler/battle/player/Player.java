@@ -6,7 +6,6 @@ import com.namebattler.battle.skill.AbnormalState;
 import com.namebattler.battle.skill.IHeal;
 import com.namebattler.battle.skill.SkillBase;
 import com.namebattler.battle.skill.StateEffect;
-import com.namebattler.battle.strategy.BaseStrategy;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -23,8 +22,8 @@ public abstract class Player {
     protected Party party;                        //パーティー
     protected String partyName;                    //パーティー名
     protected String name;                        //名前
-    protected String job;                            //職業
     protected int hp, mp, str, def, luck, agi;    //能力
+    protected AllJob jobData;                      //職業情報
     protected int maxHp;                        //HPの最大値
     protected int maxMp;                        //MPの最大値
     protected int beforeHp;                        //行動前のHP
@@ -44,6 +43,7 @@ public abstract class Player {
     public Player(String name) {
         this.name = name;
 
+        initJobData();
         // キャラクターのパラメータ生成
         makeCharacterStatus();
         //職業のスキル作成
@@ -68,6 +68,8 @@ public abstract class Player {
      */
     protected abstract void makeSkill();
 
+    protected abstract void initJobData();
+
     /*============
      * Getメソッド
      ============*/
@@ -76,7 +78,7 @@ public abstract class Player {
     }
 
     public String getJob() {
-        return this.job;
+        return this.jobData.getJobName();
     }
 
     public String getName() {
@@ -179,8 +181,8 @@ public abstract class Player {
         this.party = party;
     }
 
-    public void setJob(String job) {
-        this.job = job;
+    public void setJob(AllJob jobData) {
+        this.jobData = jobData;
     }
 
     public void setHp(int hp) {
