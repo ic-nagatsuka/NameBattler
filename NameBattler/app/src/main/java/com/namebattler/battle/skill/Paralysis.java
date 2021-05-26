@@ -32,7 +32,7 @@ public class Paralysis extends SkillBase implements AbnormalState {
                 BattleLog.addLog(defender.getName() + "はしびれた！");
                 //相手に状態異常をつける
                 defender.setAbnormalState(new StateEffect(this, skill.getEffectTurn(), "⚡"));
-                defender.setInaction(true);
+                defender.setIsInaction(true);
             }
         } else {
             //失敗
@@ -46,7 +46,7 @@ public class Paralysis extends SkillBase implements AbnormalState {
 
         if (turn < 0) {
             BattleLog.addLog(target.getName() + "のしびれが治った！");
-            target.setInaction(false);
+            target.setIsInaction(false);
         } else {
             BattleLog.addLog(target.getName() + "はしびれていて動けない！\n");
         }
