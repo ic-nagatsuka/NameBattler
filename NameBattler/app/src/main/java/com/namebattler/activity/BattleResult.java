@@ -13,6 +13,7 @@ import com.namebattler.R;
 import com.namebattler.adapter.BattleStatusAdapter;
 import com.namebattler.battle.GameManager;
 import com.namebattler.battle.party.Party;
+import com.namebattler.battle.player.AllJob;
 import com.namebattler.battle.player.Player;
 import com.namebattler.fragment.TitleFragment;
 
@@ -80,7 +81,7 @@ public class BattleResult extends AppCompatActivity {
             Player player = party.getAllMenbers().get(0);
 
             party.appendPlayer(
-                    GameManager.makePlayer(player.getName(), player.getJob(), party)
+                    AllJob.makePlayer(player.getName(), player.getJob(), party)
             );
             party.removePlayer(player);
         }

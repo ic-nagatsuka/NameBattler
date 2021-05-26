@@ -38,6 +38,6 @@ public class Priest extends Player {
 
     @Override
     protected void initJobData() {
-        jobData = AllJob.PRIEST;
+        jobData = AllJob.JobData.PRIEST;
     }
 }

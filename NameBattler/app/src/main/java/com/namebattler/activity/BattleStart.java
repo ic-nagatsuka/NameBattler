@@ -78,9 +78,9 @@ public class BattleStart extends AppCompatActivity {
         Enemy nameData = new Enemy();
         for (int i = 0; i < Option.PARTY_PLAYER_NUM; i++) {
             GameManager.enemyParty.appendPlayer(
-                    GameManager.makePlayer(
+                    AllJob.makePlayer(
                             nameData.getEnemyName(),
-                            AllJob.values()[rand.nextInt(AllJob.values().length)].getJobName(),
+                            AllJob.JobData.values()[rand.nextInt(AllJob.JobData.values().length)].getJobName(),
                             GameManager.enemyParty
                     )
             );

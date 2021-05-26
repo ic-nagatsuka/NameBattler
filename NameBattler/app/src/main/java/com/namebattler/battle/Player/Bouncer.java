@@ -57,6 +57,6 @@ public class Bouncer extends Player {
 
     @Override
     protected void initJobData() {
-        jobData = AllJob.BOUNCER;
+        jobData = AllJob.JobData.BOUNCER;
     }
 }

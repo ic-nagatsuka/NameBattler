@@ -158,33 +158,5 @@ public class GameManager {
         }
     }
 
-    /**
-     * プレイヤーを作成する
-     *
-     * @param name  名前
-     * @param job   職業
-     * @param party 追加するパーティー
-     * @return 作成したプレイヤー
-     */
-    public static Player makePlayer(String name, String job, Party party) {
-        Player player = null;
-        switch (job) {
-            case "戦士":
-                player = new Fighter(name);
-                break;
-            case "魔法使い":
-                player = new Wizard(name);
-                break;
-            case "僧侶":
-                player = new Priest(name);
-                break;
-            case "ボール":
-                player = new Bouncer(name);
-                break;
-        }
-        player.setParty(party);
-
-        return player;
-    }
 
 }

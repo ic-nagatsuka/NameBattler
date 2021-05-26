@@ -22,7 +22,7 @@ public abstract class Player {
     protected Party party;                        //パーティー
     protected String name;                        //名前
     protected int hp, mp, str, def, luck, agi;    //能力
-    protected AllJob jobData;                      //職業情報
+    protected AllJob.JobData jobData;                      //職業情報
     protected int maxHp;                        //HPの最大値
     protected int maxMp;                        //MPの最大値
     protected int beforeHp;                        //行動前のHP
@@ -180,7 +180,7 @@ public abstract class Player {
         this.party = party;
     }
 
-    public void setJob(AllJob jobData) {
+    public void setJob(AllJob.JobData jobData) {
         this.jobData = jobData;
     }
 

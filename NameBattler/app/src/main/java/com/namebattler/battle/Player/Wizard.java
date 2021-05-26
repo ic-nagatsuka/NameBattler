@@ -45,6 +45,6 @@ public class Wizard extends Player {
 
     @Override
     protected void initJobData() {
-        jobData = AllJob.WIZARD;
+        jobData = AllJob.JobData.WIZARD;
     }
 }

@@ -33,7 +33,7 @@ public class CharacterDetails extends AppCompatActivity {
             textView.setText(cursor.getString(cursor.getColumnIndex("NAME")));
 
             textView = findViewById(R.id.characterDetails_job);
-            textView.setText(AllJob.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getJobName());
+            textView.setText(AllJob.JobData.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getJobName());
 
             textView = findViewById(R.id.characterDetails_hp);
             textView.setText(cursor.getString(cursor.getColumnIndex("HP")));
