@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.namebattler.R;
 import com.namebattler.activity.CharacterOrganization;
 import com.namebattler.battle.GameManager;
+import com.namebattler.battle.player.AllJob;
 import com.namebattler.battle.player.Player;
 import com.namebattler.option.Option;
 
@@ -86,7 +87,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                         textView = convertView.findViewById(R.id.character_organization_listView_status_job);
                         String job = textView.getText().toString();
                         GameManager.myParty.appendPlayer(
-                                GameManager.makePlayer(name, job, GameManager.myParty));
+                                AllJob.makePlayer(name, job, GameManager.myParty));
                     } else {
                         Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                         radioButton.setChecked(false);

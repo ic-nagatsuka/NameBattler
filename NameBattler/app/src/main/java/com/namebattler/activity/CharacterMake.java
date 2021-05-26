@@ -59,7 +59,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     Toast.makeText(
                             CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 } else if (!name.equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
-                    Player player = GameManager.makePlayer(
+                    Player player = AllJob.makePlayer(
                             name, radio.getText().toString(), GameManager.myParty);
                     if (new OperationCharacterData(getApplicationContext())
                             .setCharacter(player, radio.getId(), getDate()) != -1) {
@@ -82,9 +82,9 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
     private void showSelectjobItem() {
         RadioGroup radioGroup = findViewById(R.id.character_make_job_RadioGroup);
-        for (int i = 0; i < AllJob.values().length; i++) {
+        for (int i = 0; i < AllJob.JobData.values().length; i++) {
             RadioButton radioBtn = new RadioButton(this);
-            radioBtn.setText(AllJob.values()[i].getJobName());
+            radioBtn.setText(AllJob.JobData.values()[i].getJobName());
             radioBtn.setTextSize(radioButtonSize);
             radioBtn.setId(i);
             radioGroup.addView(radioBtn);

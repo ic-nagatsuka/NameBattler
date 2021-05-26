@@ -54,6 +54,6 @@ public class Fighter extends Player {
 
     @Override
     public void initJobData() {
-        jobData = AllJob.FIGHTER;
+        jobData = AllJob.JobData.FIGHTER;
     }
 }

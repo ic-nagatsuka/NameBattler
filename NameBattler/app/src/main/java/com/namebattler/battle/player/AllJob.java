@@ -1,101 +1,134 @@
 package com.namebattler.battle.player;
 
 
-public enum AllJob {
-    FIGHTER("戦士", 100, 300, 0, 0, 30, 70, 30, 70, 1, 100, 1, 100, false),
-    WIZARD("魔法使い", 50, 150, 30, 50, 1, 50, 1, 50, 1, 100, 1, 100, false),
-    PRIEST("僧侶", 80, 200, 20, 50, 10, 70, 10, 70, 1, 100, 1, 100, false),
-    BOUNCER("ボール", 50, 150, 50, 110, 1, 30, 40, 90, 50, 100, 1, 100, true),
-    ;
+import com.namebattler.battle.party.Party;
 
-    private String jobName;
-    private int minHp, maxHp,
-            minMp, maxMp,
-            minStr, maxStr,
-            minDef, maxDef,
-            minLuck, maxLuck,
-            minAgi, maxAgi;
-    private boolean canCounter;
+public class AllJob {
 
-    AllJob(String jobName,
-           int minHp, int maxHp,
-           int minMp, int maxMp,
-           int minStr, int maxStr,
-           int minDef, int maxDef,
-           int minLuck, int maxLuck,
-           int minAgi, int maxAgi,
-           boolean canCounter) {
-        this.jobName = jobName;
-        this.minHp = minHp;
-        this.maxHp = maxHp;
-        this.minMp = minMp;
-        this.maxMp = maxMp;
-        this.minStr = minStr;
-        this.maxStr = maxStr;
-        this.minDef = minDef;
-        this.maxDef = maxDef;
-        this.minLuck = minLuck;
-        this.maxLuck = maxLuck;
-        this.minAgi = minAgi;
-        this.maxAgi = maxAgi;
-        this.canCounter = canCounter;
+    /**
+     * プレイヤーを作成する
+     *
+     * @param name  名前
+     * @param job   職業
+     * @param party 追加するパーティー
+     * @return 作成したプレイヤー
+     */
+    public static Player makePlayer(String name, String job, Party party) {
+        Player player = null;
+        switch (job) {
+            case "戦士":
+                player = new Fighter(name);
+                break;
+            case "魔法使い":
+                player = new Wizard(name);
+                break;
+            case "僧侶":
+                player = new Priest(name);
+                break;
+            case "ボール":
+                player = new Bouncer(name);
+                break;
+        }
+        player.setParty(party);
+
+        return player;
     }
 
-    public String getJobName() {
-        return this.jobName;
-    }
+    public enum JobData {
+        FIGHTER("戦士", 100, 300, 0, 0, 30, 70, 30, 70, 1, 100, 1, 100, false),
+        WIZARD("魔法使い", 50, 150, 30, 50, 1, 50, 1, 50, 1, 100, 1, 100, false),
+        PRIEST("僧侶", 80, 200, 20, 50, 10, 70, 10, 70, 1, 100, 1, 100, false),
+        BOUNCER("ボール", 50, 150, 50, 110, 1, 30, 40, 90, 50, 100, 1, 100, true),
+        ;
 
-    public int getMinHp() {
-        return this.minHp;
-    }
+        private String jobName;
+        private int minHp, maxHp,
+                minMp, maxMp,
+                minStr, maxStr,
+                minDef, maxDef,
+                minLuck, maxLuck,
+                minAgi, maxAgi;
+        private boolean canCounter;
 
-    public int getMaxHp() {
-        return this.maxHp;
-    }
+        JobData(String jobName,
+                int minHp, int maxHp,
+                int minMp, int maxMp,
+                int minStr, int maxStr,
+                int minDef, int maxDef,
+                int minLuck, int maxLuck,
+                int minAgi, int maxAgi,
+                boolean canCounter) {
+            this.jobName = jobName;
+            this.minHp = minHp;
+            this.maxHp = maxHp;
+            this.minMp = minMp;
+            this.maxMp = maxMp;
+            this.minStr = minStr;
+            this.maxStr = maxStr;
+            this.minDef = minDef;
+            this.maxDef = maxDef;
+            this.minLuck = minLuck;
+            this.maxLuck = maxLuck;
+            this.minAgi = minAgi;
+            this.maxAgi = maxAgi;
+            this.canCounter = canCounter;
+        }
 
-    public int getMinMp() {
-        return this.minMp;
-    }
+        public String getJobName() {
+            return this.jobName;
+        }
 
-    public int getMaxMp() {
-        return this.maxMp;
-    }
+        public int getMinHp() {
+            return this.minHp;
+        }
 
-    public int getMinStr() {
-        return this.minStr;
-    }
+        public int getMaxHp() {
+            return this.maxHp;
+        }
 
-    public int getMaxStr() {
-        return this.maxStr;
-    }
+        public int getMinMp() {
+            return this.minMp;
+        }
 
-    public int getMinDef() {
-        return this.minDef;
-    }
+        public int getMaxMp() {
+            return this.maxMp;
+        }
 
-    public int getMaxDef() {
-        return this.maxDef;
-    }
+        public int getMinStr() {
+            return this.minStr;
+        }
 
-    public int getMinLuck() {
-        return this.minLuck;
-    }
+        public int getMaxStr() {
+            return this.maxStr;
+        }
 
-    public int getMaxLuck() {
-        return this.maxLuck;
-    }
+        public int getMinDef() {
+            return this.minDef;
+        }
 
-    public int getMinAgi() {
-        return this.minAgi;
-    }
+        public int getMaxDef() {
+            return this.maxDef;
+        }
 
-    public int getMaxAgi() {
-        return this.maxAgi;
-    }
+        public int getMinLuck() {
+            return this.minLuck;
+        }
 
-    public boolean getCanCounter() {
-        return this.canCounter;
-    }
+        public int getMaxLuck() {
+            return this.maxLuck;
+        }
 
+        public int getMinAgi() {
+            return this.minAgi;
+        }
+
+        public int getMaxAgi() {
+            return this.maxAgi;
+        }
+
+        public boolean getCanCounter() {
+            return this.canCounter;
+        }
+    }
 }
 
