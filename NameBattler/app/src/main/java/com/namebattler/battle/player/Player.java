@@ -76,7 +76,7 @@ public abstract class Player {
         return this.party;
     }
 
-    public String getJob() {
+    public String getJobName() {
         return this.jobData.getJobName();
     }
 
