@@ -81,7 +81,7 @@ public class BattleResult extends AppCompatActivity {
             Player player = party.getAllMenbers().get(0);
 
             party.appendPlayer(
-                    AllJob.makePlayer(player.getName(), player.getJob(), party)
+                    AllJob.makePlayer(player.getName(), player.getJobData(), party)
             );
             party.removePlayer(player);
         }

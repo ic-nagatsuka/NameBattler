@@ -55,7 +55,7 @@ public class CharacterOrganization extends AppCompatActivity {
         if (cursor.moveToFirst()) {
             for (int i = 0; i < cursor.getCount(); i++) {
                 String name = cursor.getString(cursor.getColumnIndex("NAME"));
-                String job = AllJob.JobData.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getJobName();
+                AllJob.JobData job = AllJob.JobData.values()[cursor.getInt(cursor.getColumnIndex("JOB"))];
                 String status = makeStatusText(cursor);
                 list.add(new Status(name, job, status));
                 cursor.moveToNext();
@@ -85,11 +85,11 @@ public class CharacterOrganization extends AppCompatActivity {
     public class Status {
 
         String name;
-        String job;
+        AllJob.JobData job;
         String status;
         boolean isClicked;
 
-        Status(String name, String job, String status) {
+        Status(String name, AllJob.JobData job, String status) {
             this.name = name;
             this.job = job;
             this.status = status;
@@ -99,7 +99,7 @@ public class CharacterOrganization extends AppCompatActivity {
             return this.name;
         }
 
-        public String getJob() {
+        public AllJob.JobData getJob() {
             return this.job;
         }
 

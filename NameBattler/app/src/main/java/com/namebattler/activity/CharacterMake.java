@@ -60,7 +60,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                             CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 } else if (!name.equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
                     Player player = AllJob.makePlayer(
-                            name, radio.getText().toString(), GameManager.myParty);
+                            name, AllJob.JobData.values()[radio.getId()], GameManager.myParty);
                     if (new OperationCharacterData(getApplicationContext())
                             .setCharacter(player, radio.getId(), getDate()) != -1) {
                         //キャラクター作成完了の場合

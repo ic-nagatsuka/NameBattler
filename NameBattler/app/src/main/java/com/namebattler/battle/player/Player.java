@@ -76,8 +76,12 @@ public abstract class Player {
         return this.party;
     }
 
-    public String getJob() {
+    public String getJobName() {
         return this.jobData.getJobName();
+    }
+
+    public AllJob.JobData getJobData() {
+        return this.jobData;
     }
 
     public String getName() {
@@ -178,10 +182,6 @@ public abstract class Player {
      ============*/
     public void setParty(Party party) {
         this.party = party;
-    }
-
-    public void setJob(AllJob.JobData jobData) {
-        this.jobData = jobData;
     }
 
     public void setHp(int hp) {

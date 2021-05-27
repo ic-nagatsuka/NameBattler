@@ -80,7 +80,7 @@ public class BattleStart extends AppCompatActivity {
             GameManager.enemyParty.appendPlayer(
                     AllJob.makePlayer(
                             nameData.getEnemyName(),
-                            AllJob.JobData.values()[rand.nextInt(AllJob.JobData.values().length)].getJobName(),
+                            AllJob.JobData.values()[rand.nextInt(AllJob.JobData.values().length)],
                             GameManager.enemyParty
                     )
             );
@@ -92,7 +92,7 @@ public class BattleStart extends AppCompatActivity {
         for (Player player : party.getAllMenbers()) {
             Map<String, String> map = new HashMap();
             map.put("name", player.getName());
-            map.put("job", player.getJob());
+            map.put("job", player.getJobName());
             map.put("status", player.getStatus());
             list.add(map);
         }
