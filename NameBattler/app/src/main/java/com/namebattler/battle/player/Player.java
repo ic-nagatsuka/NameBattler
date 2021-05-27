@@ -184,10 +184,6 @@ public abstract class Player {
         this.party = party;
     }
 
-    public void setJob(AllJob.JobData jobData) {
-        this.jobData = jobData;
-    }
-
     public void setHp(int hp) {
         this.hp = hp;
     }
