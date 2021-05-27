@@ -84,10 +84,8 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                 if (!hasName(name)) {
                     if (GameManager.myParty.getAllMenbers().size() < Option.PARTY_PLAYER_NUM) {
                         player.setIsClicked(true);
-                        textView = convertView.findViewById(R.id.character_organization_listView_status_job);
-                        String job = textView.getText().toString();
                         GameManager.myParty.appendPlayer(
-                                AllJob.makePlayer(name, job, GameManager.myParty));
+                                AllJob.makePlayer(name, player.getJob(), GameManager.myParty));
                     } else {
                         Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                         radioButton.setChecked(false);
@@ -119,7 +117,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         textView.setText(player.getName());
 
         textView = view.findViewById(R.id.character_organization_listView_status_job);
-        textView.setText(player.getJob());
+        textView.setText(player.getJob().getJobName());
 
         textView = view.findViewById(R.id.character_organization_listView_status);
         textView.setText(player.getStatus());

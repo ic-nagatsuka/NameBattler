@@ -80,6 +80,10 @@ public abstract class Player {
         return this.jobData.getJobName();
     }
 
+    public AllJob.JobData getJobData() {
+        return this.jobData;
+    }
+
     public String getName() {
         return this.name;
     }

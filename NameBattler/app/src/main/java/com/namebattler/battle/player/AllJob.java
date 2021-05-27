@@ -13,21 +13,21 @@ public class AllJob {
      * @param party 追加するパーティー
      * @return 作成したプレイヤー
      */
-    public static Player makePlayer(String name, String job, Party party) {
-        Player player = null;
+    public static Player makePlayer(String name, JobData job, Party party) {
+        Player player;
+
         switch (job) {
-            case "戦士":
+            case FIGHTER:
                 player = new Fighter(name);
                 break;
-            case "魔法使い":
+            case WIZARD:
                 player = new Wizard(name);
                 break;
-            case "僧侶":
+            case PRIEST:
                 player = new Priest(name);
                 break;
-            case "ボール":
+            default :
                 player = new Bouncer(name);
-                break;
         }
         player.setParty(party);
 
