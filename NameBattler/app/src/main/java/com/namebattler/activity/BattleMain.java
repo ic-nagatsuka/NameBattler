@@ -22,7 +22,7 @@ import static com.namebattler.battle.battlelog.BattleLog.getLogText;
 
 public class BattleMain extends AppCompatActivity {
 
-    GameManager gm = new GameManager();
+    private GameManager gm = new GameManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +77,13 @@ public class BattleMain extends AppCompatActivity {
     }
 
     //各パーティーデータの画面表示
-    public void displayUpdateStatus() {
+    private void displayUpdateStatus() {
         makeAdapter(R.id.battle_main_gridView_bottom, GameManager.myParty);
         makeAdapter(R.id.battle_main_gridView_top, GameManager.enemyParty);
     }
 
     //アダプターをセット
-    public void makeAdapter(int layout, Party party) {
+    private void makeAdapter(int layout, Party party) {
         BaseAdapter adapter = new BattleStatusAdapter(this, party);
         GridView gridView = findViewById(layout);
         gridView.setAdapter(adapter);

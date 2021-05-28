@@ -72,7 +72,7 @@ public class CharacterOrganization extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    public String makeStatusText(Cursor cursor) {
+    private String makeStatusText(Cursor cursor) {
         String statusText = "HP" + cursor.getString(cursor.getColumnIndex("HP")) +
                 " MP" + cursor.getString(cursor.getColumnIndex("MP")) +
                 " STR" + cursor.getString(cursor.getColumnIndex("STR")) +
@@ -84,12 +84,12 @@ public class CharacterOrganization extends AppCompatActivity {
 
     public class Status {
 
-        String name;
-        AllJob.JobData job;
-        String status;
-        boolean isClicked;
+        private String name;
+        private AllJob.JobData job;
+        private String status;
+        private boolean isClicked;
 
-        Status(String name, AllJob.JobData job, String status) {
+        private Status(String name, AllJob.JobData job, String status) {
             this.name = name;
             this.job = job;
             this.status = status;

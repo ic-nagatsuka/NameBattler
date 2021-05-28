@@ -46,7 +46,6 @@ public class BattleResult extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplication(), BattleMain.class);
                 startActivity(intent);
-
             }
         });
 
@@ -70,12 +69,12 @@ public class BattleResult extends AppCompatActivity {
 
     }
 
-    public void initializePlayer() {
+    private void initializePlayer() {
         remakePlayer(GameManager.myParty);
         remakePlayer(GameManager.enemyParty);
     }
 
-    public void remakePlayer(Party party) {
+    private void remakePlayer(Party party) {
         int partyNum = party.getAllMenbers().size();
         for (int i = 0; i < partyNum; i++) {
             Player player = party.getAllMenbers().get(0);
@@ -87,7 +86,7 @@ public class BattleResult extends AppCompatActivity {
         }
     }
 
-    public void setAdapter(int layout, Party party) {
+    private void setAdapter(int layout, Party party) {
         BaseAdapter adapter = new BattleStatusAdapter(this, party);
 
         GridView gridView = findViewById(layout);

@@ -27,7 +27,7 @@ import java.util.Date;
 public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
     private final int radioButtonSize = 30;
-    int nowPlayerNum;
+    private int nowPlayerNum;
 
 
     @Override
@@ -92,7 +92,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
     }
 
     //現在時刻を取得する
-    public String getDate() {
+    private String getDate() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy/M/dd hh:mm");
         return format.format(new Date());
     }
