@@ -14,8 +14,8 @@ import com.namebattler.battle.player.Player;
 
 public class BattleStatusAdapter extends BaseAdapter {
 
-    LayoutInflater inflater;
-    Party party;
+    private LayoutInflater inflater;
+    private Party party;
 
     public BattleStatusAdapter(Context context, Party party) {
         this.inflater = LayoutInflater.from(context);
