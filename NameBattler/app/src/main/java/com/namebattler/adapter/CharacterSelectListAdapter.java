@@ -32,7 +32,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         this.context = context;
         this.startButton = v;
         this.status = status;
-        inflater = LayoutInflater.from(context);
+        this.inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -54,18 +54,18 @@ public class CharacterSelectListAdapter extends BaseAdapter {
     public View getView(final int i, View view, ViewGroup viewGroup) {
 
         if (view == null) {
-            view = inflater.inflate(R.layout.listview_character_organization, null);
+            view = this.inflater.inflate(R.layout.listview_character_organization, null);
         }
 
-        if (status.size() - 1 < i) {
-            view = inflater.inflate(R.layout.listview_character_organization, null);
+        if (this.status.size() - 1 < i) {
+            view = this.inflater.inflate(R.layout.listview_character_organization, null);
             return view;
         }
 
         final RadioButton radioButton = view.findViewById(R.id.character_organization_listView_radioButton);
         radioButton.setVisibility(View.VISIBLE);
 
-        final CharacterOrganization.Status player = status.get(i);
+        final CharacterOrganization.Status player = this.status.get(i);
         setPlayerStatusLayout(view, player);
 
         if (player.getIsClicked()) {

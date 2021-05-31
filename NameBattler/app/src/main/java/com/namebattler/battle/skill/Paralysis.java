@@ -24,7 +24,7 @@ public class Paralysis extends SkillBase implements AbnormalState {
         usePlayerMp(attacker);
 
         //成功
-        if (this.getSuccessRate() > rand.nextInt(100)) {
+        if (this.getSuccessRate() > this.rand.nextInt(100)) {
             //同じ状態異常にかかっている
             if (defender.haveSameAbnormal(this)) {
                 BattleLog.addLog(defender.getName() + "はすでにかかっている!");

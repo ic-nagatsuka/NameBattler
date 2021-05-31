@@ -37,7 +37,7 @@ public class Bouncer extends Player {
     @Override
     public void normalAttack(Player target) {
         Random rand = new Random();
-        if (rand.nextInt(100) < attackPercent) {
+        if (rand.nextInt(100) < this.attackPercent) {
             BattleLog.addLog(this.getName() + "は飛び跳ねた！");
             super.normalAttack(target);
         } else {

@@ -38,16 +38,16 @@ public class Fighter extends Player {
 
     //攻撃テキスト
     protected void makeAttackText() {
-        attText.add("パンチをした！");
-        attText.add("キックをした！");
-        attText.add("タックルをした！");
-        attText.add("そこら辺の石を投げつけた!");
+        this.attText.add("パンチをした！");
+        this.attText.add("キックをした！");
+        this.attText.add("タックルをした！");
+        this.attText.add("そこら辺の石を投げつけた!");
     }
 
     @Override
     public void normalAttack(Player target) {
         Random rand = new Random();
-        BattleLog.addLog(this.name + "は" + attText.get(rand.nextInt(attText.size())));
+        BattleLog.addLog(this.name + "は" + this.attText.get(rand.nextInt(this.attText.size())));
 
         super.normalAttack(target);
     }

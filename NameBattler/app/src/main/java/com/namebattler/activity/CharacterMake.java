@@ -35,7 +35,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_make);
 
-        nowPlayerNum = new OperationCharacterData(getApplicationContext())
+        this.nowPlayerNum = new OperationCharacterData(getApplicationContext())
                 .getCharacterCount();
 
         TitleFragment.displayTitleFragment(
@@ -85,7 +85,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         for (int i = 0; i < AllJob.JobData.values().length; i++) {
             RadioButton radioBtn = new RadioButton(this);
             radioBtn.setText(AllJob.JobData.values()[i].getJobName());
-            radioBtn.setTextSize(radioButtonSize);
+            radioBtn.setTextSize(this.radioButtonSize);
             radioBtn.setId(i);
             radioGroup.addView(radioBtn);
         }

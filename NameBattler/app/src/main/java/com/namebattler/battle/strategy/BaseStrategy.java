@@ -50,7 +50,7 @@ public abstract class BaseStrategy implements IStrategy {
      */
     protected Player randomSelectDefender(Party defenceParty) {
         return defenceParty.getAliveMenbers()
-                .get(rand.nextInt(defenceParty.getAliveMenbers().size()));
+                .get(this.rand.nextInt(defenceParty.getAliveMenbers().size()));
     }
 
 }

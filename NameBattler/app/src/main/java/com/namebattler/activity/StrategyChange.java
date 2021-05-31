@@ -58,13 +58,13 @@ public class StrategyChange extends AppCompatActivity {
             RadioButton radioButton = new RadioButton(this);
             radioButton.setId(i);
             radioButton.setText(strategy.getName());
-            radioButton.setTextSize(radioSize);
+            radioButton.setTextSize(this.radioSize);
 
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
-            layoutParams.setMargins(0, radioMarginVertical, 0, radioMarginVertical);
+            layoutParams.setMargins(0, this.radioMarginVertical, 0, this.radioMarginVertical);
             radioButton.setLayoutParams(layoutParams);
             radioGroup.addView(radioButton);
         }
