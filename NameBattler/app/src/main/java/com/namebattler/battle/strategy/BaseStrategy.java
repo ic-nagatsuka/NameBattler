@@ -12,8 +12,6 @@ public abstract class BaseStrategy implements IStrategy {
      =============*/
     protected AllStrategy.EStrategy strategy;
 
-    Random rand = new Random();
-
     /*=============
      * コンストラクタ
      =============*/
@@ -49,8 +47,9 @@ public abstract class BaseStrategy implements IStrategy {
      * @return 攻撃されるプレイヤー
      */
     protected Player randomSelectDefender(Party defenceParty) {
+        Random rand = new Random();
         return defenceParty.getAliveMenbers()
-                .get(this.rand.nextInt(defenceParty.getAliveMenbers().size()));
+                .get(rand.nextInt(defenceParty.getAliveMenbers().size()));
     }
 
 }

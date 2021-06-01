@@ -4,6 +4,8 @@ import com.namebattler.battle.party.Party;
 import com.namebattler.battle.player.Player;
 import com.namebattler.battle.skill.SkillBase;
 
+import java.util.Random;
+
 public class PleaseFree extends BaseStrategy {
 
     /*=============
@@ -14,6 +16,7 @@ public class PleaseFree extends BaseStrategy {
 
     @Override
     public void action(Player attacker, Party defenceParty) {
+        Random rand = new Random();
         Player target = randomSelectDefender(defenceParty);
         if (attacker.canSkill()) {
             SkillBase skill = attacker.getNowUseSkillOnly().get(
