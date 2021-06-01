@@ -26,7 +26,7 @@ public class PleaseFree extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.EStrategy.PLEASE_FREE;
+        super.strategy = AllStrategy.EStrategy.PLEASE_FREE;
     }
 
 }

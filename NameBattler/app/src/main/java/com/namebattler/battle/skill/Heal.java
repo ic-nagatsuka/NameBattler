@@ -26,7 +26,7 @@ public class Heal extends SkillBase implements IHeal {
 
         BattleLog.addLog(target.getName() + "は" + calcHealPoint + "回復した！");
         //スキル効果
-        target.setHp(Math.min(target.getHp() + skill.getHealPoint(), target.getMaxHp()));
+        target.setHp(Math.min(target.getHp() + super.skill.getHealPoint(), target.getMaxHp()));
     }
 
     public Player selectTarget(Player attacker) {
@@ -52,6 +52,6 @@ public class Heal extends SkillBase implements IHeal {
 
     @Override
     protected void initSkill() {
-        skill = AllSkill.HEAL;
+        super.skill = AllSkill.HEAL;
     }
 }

@@ -52,7 +52,7 @@ public class Poison extends SkillBase implements AbnormalState {
 
     @Override
     protected void initSkill() {
-        skill = AllSkill.POISON;
+        super.skill = AllSkill.POISON;
     }
 }
 

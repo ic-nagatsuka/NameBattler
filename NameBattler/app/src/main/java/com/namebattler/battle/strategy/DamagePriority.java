@@ -64,6 +64,6 @@ public class DamagePriority extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.EStrategy.DAMAGE_PRIORITY;
+        super.strategy = AllStrategy.EStrategy.DAMAGE_PRIORITY;
     }
 }

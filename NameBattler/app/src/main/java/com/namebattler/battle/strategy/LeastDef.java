@@ -36,6 +36,6 @@ public class LeastDef extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.EStrategy.LEAST_DEF;
+        super.strategy = AllStrategy.EStrategy.LEAST_DEF;
     }
 }
