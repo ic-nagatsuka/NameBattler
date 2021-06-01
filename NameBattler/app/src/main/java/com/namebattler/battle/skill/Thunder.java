@@ -7,12 +7,12 @@ public class Thunder extends SkillBase {
 
     @Override
     public void use(Player attacker, Player target) {
-        BattleLog.addLog(attacker.getName() + "は" + skill.getName() + "を唱えた！");
+        BattleLog.addLog(attacker.getName() + "は" + super.skill.getName() + "を唱えた！");
         usePlayerMp(attacker);
 
         int damage;
         for (Player defender : target.getParty().getAliveMenbers()) {
-            damage = getRandomDamage(skill.getminDama(), skill.getmaxDama());
+            damage = getRandomDamage(super.skill.getminDama(), super.skill.getmaxDama());
             BattleLog.addLog(defender.getName() + "に" + damage + "のダメージ！");
             defender.damage(damage);
         }
@@ -26,6 +26,6 @@ public class Thunder extends SkillBase {
 
     @Override
     protected void initSkill() {
-        skill = AllSkill.THUNDER;
+        super.skill = AllSkill.THUNDER;
     }
 }

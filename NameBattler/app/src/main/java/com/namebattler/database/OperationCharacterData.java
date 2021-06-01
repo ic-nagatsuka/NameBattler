@@ -18,7 +18,7 @@ public class OperationCharacterData {
 
     public OperationCharacterData(Context context) {
         this.context = context;
-        helper = new CharacterInformationHelper(context);
+        this.helper = new CharacterInformationHelper(context);
     }
 
     public int getCharacterCount() {
@@ -26,23 +26,23 @@ public class OperationCharacterData {
     }
 
     public Cursor getAllData() {
-        db = helper.getReadableDatabase();
+        this.db = this.helper.getReadableDatabase();
         String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + ";";
-        Cursor cursor = db.rawQuery(sql, null);
+        Cursor cursor = this.db.rawQuery(sql, null);
 
         return cursor;
     }
 
     public Cursor getCharacter(String name) {
-        db = helper.getReadableDatabase();
+        this.db = this.helper.getReadableDatabase();
         String sql = "SELECT * FROM " + CharacterInformationHelper.TABLE_NAME + " WHERE name = ?;";
-        Cursor cursor = db.rawQuery(sql, new String[]{name});
+        Cursor cursor = this.db.rawQuery(sql, new String[]{name});
 
         return cursor;
     }
 
     public long setCharacter(Player player, int job, String dateTime) {
-        db = helper.getReadableDatabase();
+        this.db = this.helper.getReadableDatabase();
 
         ContentValues values = new ContentValues();
 
@@ -56,14 +56,14 @@ public class OperationCharacterData {
         values.put("AGI", player.getLuck());
         values.put("CREATE_AT", dateTime);
 
-        return db.insert(CharacterInformationHelper.TABLE_NAME, null, values);
+        return this.db.insert(CharacterInformationHelper.TABLE_NAME, null, values);
     }
 
 
     public void deleteCharacter(String name) {
-        db = helper.getReadableDatabase();
+        this.db = this.helper.getReadableDatabase();
 
-        db.delete(
+        this.db.delete(
                 CharacterInformationHelper.TABLE_NAME,
                 "name = ?",
                 new String[]{name});

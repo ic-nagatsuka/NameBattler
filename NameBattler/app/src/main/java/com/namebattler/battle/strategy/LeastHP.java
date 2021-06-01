@@ -42,6 +42,6 @@ public class LeastHP extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.EStrategy.LEAST_HP;
+        super.strategy = AllStrategy.EStrategy.LEAST_HP;
     }
 }

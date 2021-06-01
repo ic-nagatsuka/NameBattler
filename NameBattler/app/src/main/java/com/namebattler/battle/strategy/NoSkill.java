@@ -19,6 +19,6 @@ public class NoSkill extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        this.strategy = AllStrategy.EStrategy.NO_SKILL;
+        super.strategy = AllStrategy.EStrategy.NO_SKILL;
     }
 }

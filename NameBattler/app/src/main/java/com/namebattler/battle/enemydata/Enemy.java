@@ -14,15 +14,15 @@ public class Enemy {
 
     public String getEnemyName() {
 
-        return enemies.remove(rand.nextInt(enemies.size())).getName();
+        return this.enemies.remove(this.rand.nextInt(this.enemies.size())).getName();
     }
 
     //初期化する
     public void resetName() {
-        enemies.clear();
+        this.enemies.clear();
 
         for (EnemyData enemy : EnemyData.values()) {
-            enemies.add(enemy);
+            this.enemies.add(enemy);
         }
     }
 

@@ -20,24 +20,24 @@ public class Bouncer extends Player {
 
     @Override
     public void makeCharacterStatus() {
-        this.hp = getNumber(0, jobData.getMaxHp() - jobData.getMinHp()) + jobData.getMinHp();
-        this.mp = getNumber(1, jobData.getMaxMp() - jobData.getMinMp()) + jobData.getMinMp();
-        this.str = getNumber(2, jobData.getMaxStr() - jobData.getMinStr()) + jobData.getMinStr();
-        this.def = getNumber(3, jobData.getMaxDef() - jobData.getMinDef()) + jobData.getMinDef();
-        this.luck = getNumber(4, jobData.getMaxLuck() - jobData.getMinLuck()) + jobData.getMinLuck();
-        this.agi = getNumber(5, jobData.getMaxAgi() - jobData.getMinAgi()) + jobData.getMinAgi();
+        this.hp = getNumber(0, super.jobData.getMaxHp() - super.jobData.getMinHp()) + super.jobData.getMinHp();
+        this.mp = getNumber(1, super.jobData.getMaxMp() - super.jobData.getMinMp()) + super.jobData.getMinMp();
+        this.str = getNumber(2, super.jobData.getMaxStr() - super.jobData.getMinStr()) + super.jobData.getMinStr();
+        this.def = getNumber(3, super.jobData.getMaxDef() - super.jobData.getMinDef()) + super.jobData.getMinDef();
+        this.luck = getNumber(4, super.jobData.getMaxLuck() - super.jobData.getMinLuck()) + super.jobData.getMinLuck();
+        this.agi = getNumber(5, super.jobData.getMaxAgi() - super.jobData.getMinAgi()) + super.jobData.getMinAgi();
     }
 
     @Override
     protected void makeSkill() {
-        useSkill.add(new Fire());
-        useSkill.add(new Heal());
+        super.useSkill.add(new Fire());
+        super.useSkill.add(new Heal());
     }
 
     @Override
     public void normalAttack(Player target) {
         Random rand = new Random();
-        if (rand.nextInt(100) < attackPercent) {
+        if (rand.nextInt(100) < this.attackPercent) {
             BattleLog.addLog(this.getName() + "は飛び跳ねた！");
             super.normalAttack(target);
         } else {
@@ -57,6 +57,6 @@ public class Bouncer extends Player {
 
     @Override
     protected void initJobData() {
-        jobData = AllJob.JobData.BOUNCER;
+        super.jobData = AllJob.JobData.BOUNCER;
     }
 }

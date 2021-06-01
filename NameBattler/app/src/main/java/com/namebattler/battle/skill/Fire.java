@@ -7,10 +7,10 @@ public class Fire extends SkillBase {
 
     @Override
     public void use(Player attacker, Player defender) {
-        BattleLog.addLog(attacker.getName() + "は" + skill.getName() + "を唱えた！");
+        BattleLog.addLog(attacker.getName() + "は" + super.skill.getName() + "を唱えた！");
         usePlayerMp(attacker);
 
-        int damage = getRandomDamage(skill.getminDama(), skill.getmaxDama());
+        int damage = getRandomDamage(super.skill.getminDama(), super.skill.getmaxDama());
         defender.damage(damage);
         BattleLog.addLog(defender.getName() + "に" + damage + "のダメージ！");
     }
@@ -24,6 +24,6 @@ public class Fire extends SkillBase {
 
     @Override
     protected void initSkill() {
-        this.skill = AllSkill.FIRE;
+        super.skill = AllSkill.FIRE;
     }
 }

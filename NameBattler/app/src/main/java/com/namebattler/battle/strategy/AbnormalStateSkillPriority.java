@@ -50,6 +50,6 @@ public class AbnormalStateSkillPriority extends BaseStrategy {
 
     @Override
     public void initStrategy() {
-        strategy = AllStrategy.EStrategy.PRIORITY_ABNORMAL_STATE_SKILL;
+        super.strategy = AllStrategy.EStrategy.PRIORITY_ABNORMAL_STATE_SKILL;
     }
 }

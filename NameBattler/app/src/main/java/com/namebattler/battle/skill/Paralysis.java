@@ -24,14 +24,14 @@ public class Paralysis extends SkillBase implements AbnormalState {
         usePlayerMp(attacker);
 
         //成功
-        if (this.getSuccessRate() > rand.nextInt(100)) {
+        if (this.getSuccessRate() > this.rand.nextInt(100)) {
             //同じ状態異常にかかっている
             if (defender.haveSameAbnormal(this)) {
                 BattleLog.addLog(defender.getName() + "はすでにかかっている!");
             } else {
                 BattleLog.addLog(defender.getName() + "はしびれた！");
                 //相手に状態異常をつける
-                defender.setAbnormalState(new StateEffect(this, skill.getEffectTurn(), "⚡"));
+                defender.setAbnormalState(new StateEffect(this, super.skill.getEffectTurn(), "⚡"));
                 defender.setIsInaction(true);
             }
         } else {
@@ -59,7 +59,7 @@ public class Paralysis extends SkillBase implements AbnormalState {
 
     @Override
     public void initSkill() {
-        this.skill = AllSkill.PARALYSIS;
+        super.skill = AllSkill.PARALYSIS;
     }
 
 }

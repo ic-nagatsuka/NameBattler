@@ -23,12 +23,12 @@ public class Fighter extends Player {
 
     @Override
     public void makeCharacterStatus() {
-        this.hp = getNumber(0, jobData.getMaxHp() - jobData.getMinHp()) + jobData.getMinHp();
-        this.mp = getNumber(1, jobData.getMaxMp() - jobData.getMinMp()) + jobData.getMinMp();
-        this.str = getNumber(2, jobData.getMaxStr() - jobData.getMinStr()) + jobData.getMinStr();
-        this.def = getNumber(3, jobData.getMaxDef() - jobData.getMinDef()) + jobData.getMinDef();
-        this.luck = getNumber(4, jobData.getMaxLuck() - jobData.getMinLuck()) + jobData.getMinLuck();
-        this.agi = getNumber(5, jobData.getMaxAgi() - jobData.getMinAgi()) + jobData.getMinAgi();
+        this.hp = getNumber(0, super.jobData.getMaxHp() - super.jobData.getMinHp()) + super.jobData.getMinHp();
+        this.mp = getNumber(1, super.jobData.getMaxMp() - super.jobData.getMinMp()) + super.jobData.getMinMp();
+        this.str = getNumber(2, super.jobData.getMaxStr() - super.jobData.getMinStr()) + super.jobData.getMinStr();
+        this.def = getNumber(3, super.jobData.getMaxDef() - super.jobData.getMinDef()) + super.jobData.getMinDef();
+        this.luck = getNumber(4, super.jobData.getMaxLuck() - super.jobData.getMinLuck()) + super.jobData.getMinLuck();
+        this.agi = getNumber(5, super.jobData.getMaxAgi() - super.jobData.getMinAgi()) + super.jobData.getMinAgi();
     }
 
     @Override
@@ -38,22 +38,22 @@ public class Fighter extends Player {
 
     //攻撃テキスト
     protected void makeAttackText() {
-        attText.add("パンチをした！");
-        attText.add("キックをした！");
-        attText.add("タックルをした！");
-        attText.add("そこら辺の石を投げつけた!");
+        this.attText.add("パンチをした！");
+        this.attText.add("キックをした！");
+        this.attText.add("タックルをした！");
+        this.attText.add("そこら辺の石を投げつけた!");
     }
 
     @Override
     public void normalAttack(Player target) {
         Random rand = new Random();
-        BattleLog.addLog(this.name + "は" + attText.get(rand.nextInt(attText.size())));
+        BattleLog.addLog(this.name + "は" + this.attText.get(rand.nextInt(this.attText.size())));
 
         super.normalAttack(target);
     }
 
     @Override
     public void initJobData() {
-        jobData = AllJob.JobData.FIGHTER;
+        super.jobData = AllJob.JobData.FIGHTER;
     }
 }

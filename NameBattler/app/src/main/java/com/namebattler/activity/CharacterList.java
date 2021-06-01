@@ -33,8 +33,8 @@ public class CharacterList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_list);
 
-        cursor = new OperationCharacterData(getApplicationContext()).getAllData();
-        nowPlayerNum = cursor.getCount();
+        this.cursor = new OperationCharacterData(getApplicationContext()).getAllData();
+        this.nowPlayerNum = this.cursor.getCount();
 
         //タイトル表示
         TitleFragment.displayTitleFragment(
@@ -91,8 +91,8 @@ public class CharacterList extends AppCompatActivity {
     }
 
     private void addBlankItem(List<HashMap<String, String>> list) {
-        if (nowPlayerNum < Option.MAX_MAKE_PLAYER_NUM) {
-            for (int i = 0; i < Option.MAX_MAKE_PLAYER_NUM - nowPlayerNum; i++) {
+        if (this.nowPlayerNum < Option.MAX_MAKE_PLAYER_NUM) {
+            for (int i = 0; i < Option.MAX_MAKE_PLAYER_NUM - this.nowPlayerNum; i++) {
                 HashMap<String, String> hash = new HashMap<>();
                 list.add(hash);
             }
@@ -100,21 +100,21 @@ public class CharacterList extends AppCompatActivity {
     }
 
     private void addItem(List<HashMap<String, String>> list) {
-        if (cursor.moveToFirst()) {
-            for (int i = 0; i < nowPlayerNum; i++) {
+        if (this.cursor.moveToFirst()) {
+            for (int i = 0; i < this.nowPlayerNum; i++) {
                 HashMap<String, String> hash = new HashMap<>();
-                hash.put("name", cursor.getString(cursor.getColumnIndex("NAME")));
-                hash.put("job", AllJob.JobData.values()[cursor.getInt(cursor.getColumnIndex("JOB"))].getJobName());
+                hash.put("name", this.cursor.getString(this.cursor.getColumnIndex("NAME")));
+                hash.put("job", AllJob.JobData.values()[this.cursor.getInt(this.cursor.getColumnIndex("JOB"))].getJobName());
                 hash.put("status",
-                        "HP:" + cursor.getString(cursor.getColumnIndex("HP")) +
-                                " MP:" + cursor.getString(cursor.getColumnIndex("MP")) +
-                                " STR:" + cursor.getString(cursor.getColumnIndex("STR")) +
-                                " DEF:" + cursor.getString(cursor.getColumnIndex("DEF")) +
-                                " LUCK:" + cursor.getString(cursor.getColumnIndex("LUCK")) +
-                                " AGI:" + cursor.getString(cursor.getColumnIndex("AGI"))
+                        "HP:" + this.cursor.getString(this.cursor.getColumnIndex("HP")) +
+                                " MP:" + this.cursor.getString(this.cursor.getColumnIndex("MP")) +
+                                " STR:" + this.cursor.getString(this.cursor.getColumnIndex("STR")) +
+                                " DEF:" + this.cursor.getString(this.cursor.getColumnIndex("DEF")) +
+                                " LUCK:" + this.cursor.getString(this.cursor.getColumnIndex("LUCK")) +
+                                " AGI:" + this.cursor.getString(this.cursor.getColumnIndex("AGI"))
                 );
                 list.add(hash);
-                cursor.moveToNext();
+                this.cursor.moveToNext();
             }
         }
     }
