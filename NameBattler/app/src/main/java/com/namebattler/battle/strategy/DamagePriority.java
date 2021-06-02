@@ -7,9 +7,9 @@ import com.namebattler.battle.skill.SkillBase;
 
 public class DamagePriority extends BaseStrategy {
 
-    Player target;
-    SkillBase selectSkill;
-    int highCalcDamage = 0;
+    private Player target;
+    private SkillBase selectSkill;
+    private int highCalcDamage = 0;
 
     /*=============
      * コンストラクタ

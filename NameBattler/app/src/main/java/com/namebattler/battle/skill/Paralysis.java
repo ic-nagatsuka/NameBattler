@@ -58,13 +58,8 @@ public class Paralysis extends SkillBase implements AbnormalState {
     }
 
     @Override
-<<<<<<< Updated upstream
     public void initSkill() {
         super.skill = AllSkill.PARALYSIS;
-=======
-    protected void initSkill() {
-        this.skill = AllSkill.PARALYSIS;
->>>>>>> Stashed changes
     }
 
 }
