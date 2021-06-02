@@ -34,8 +34,8 @@ public class BattleMain extends AppCompatActivity {
 
         displayUpdateStatus();
 
-        TextView strategy = findViewById(R.id.battle_main_strategy_name);
-        strategy.setText("作戦 ： " +
+        TextView strategyView = findViewById(R.id.battle_main_strategy_name);
+        strategyView.setText("作戦 ： " +
                 AllStrategy.EStrategy.values()[GameManager.myParty.getStrategyKey()].getName()
         );
 
