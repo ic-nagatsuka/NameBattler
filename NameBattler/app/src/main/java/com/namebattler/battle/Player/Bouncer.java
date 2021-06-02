@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Bouncer extends Player {
 
-    int attackPercent = 50;
+    private int attackPercent = 50;
 
     /*=============
      * コンストラクタ
