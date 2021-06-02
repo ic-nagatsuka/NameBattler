@@ -57,10 +57,6 @@ public abstract class Player {
      * abstract
      * ====================================================================================*/
 
-    /**
-     * キャラクターステータス作成
-     */
-    protected abstract void makeCharacterStatus();
 
     /**
      * 使用するスキルを作成
@@ -138,6 +134,18 @@ public abstract class Player {
 
     public List<SkillBase> getUseSkill() {
         return this.useSkill;
+    }
+
+    /**
+     * キャラクターステータス作成
+     */
+    public void makeCharacterStatus() {
+        this.hp = getNumber(0, this.jobData.getMaxHp() - this.jobData.getMinHp()) + this.jobData.getMinHp();
+        this.mp = getNumber(1, this.jobData.getMaxMp() - this.jobData.getMinMp()) + this.jobData.getMinMp();
+        this.str = getNumber(2, this.jobData.getMaxStr() - this.jobData.getMinStr()) + this.jobData.getMinStr();
+        this.def = getNumber(3, this.jobData.getMaxDef() - this.jobData.getMinDef()) + this.jobData.getMinDef();
+        this.luck = getNumber(4, this.jobData.getMaxLuck() - this.jobData.getMinLuck()) + this.jobData.getMinLuck();
+        this.agi = getNumber(5, this.jobData.getMaxAgi() - this.jobData.getMinAgi()) + this.jobData.getMinAgi();
     }
 
     /**
