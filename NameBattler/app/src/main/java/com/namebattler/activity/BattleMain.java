@@ -38,7 +38,7 @@ public class BattleMain extends AppCompatActivity {
         strategy.setText("作戦 ： " +
                 AllStrategy.EStrategy.values()[GameManager.myParty.getStrategyKey()].getName()
         );
-        AllStrategy.EStrategy.valueOf(AllStrategy.EStrategy.LEAST_HP.name());
+
         final TextView battleLog = findViewById(R.id.battle_main_battleLog);
         battleLog.setText(getLogText());
         battleLog.setMovementMethod(new ScrollingMovementMethod());
