@@ -2,11 +2,7 @@ package com.namebattler.battle;
 
 import com.namebattler.battle.battlelog.BattleLog;
 import com.namebattler.battle.party.Party;
-import com.namebattler.battle.player.Bouncer;
-import com.namebattler.battle.player.Fighter;
 import com.namebattler.battle.player.Player;
-import com.namebattler.battle.player.Priest;
-import com.namebattler.battle.player.Wizard;
 import com.namebattler.battle.strategy.AllStrategy;
 
 import java.util.ArrayList;
@@ -22,10 +18,10 @@ public class GameManager {
     public static Party enemyParty = new Party("敵");    //敵パーティー
 
     //すべてのプレイヤーを入れる
-    List<Player> allPlayer = new ArrayList<>();
+    private List<Player> allPlayer = new ArrayList<>();
 
     //全てのパーティーを入れる
-    List<Party> allParty = new ArrayList<>();
+    private List<Party> allParty = new ArrayList<>();
 
     public static Party win;    //勝利パーティー
     private static int turnCount = 1;    //ターン数
@@ -53,7 +49,7 @@ public class GameManager {
     /**
      * 全てのパーティーのキャラクターをまとめる
      */
-    public void addAllPlayer() {
+    private void addAllPlayer() {
         for (Party party : this.allParty) {
             for (Player player : party.getAllMenbers()) {
                 this.allPlayer.add(player);
@@ -108,7 +104,7 @@ public class GameManager {
                 break;
             }
         }
-        if(!battleEnd()){
+        if (!battleEnd()) {
             this.turnCount++;    //ターン経過
         }
 
