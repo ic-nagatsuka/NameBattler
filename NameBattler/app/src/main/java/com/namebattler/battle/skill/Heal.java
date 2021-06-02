@@ -29,7 +29,7 @@ public class Heal extends SkillBase implements IHeal {
         target.setHp(Math.min(target.getHp() + super.skill.getHealPoint(), target.getMaxHp()));
     }
 
-    public Player selectTarget(Player attacker) {
+    private Player selectTarget(Player attacker) {
         Player target = attacker.getParty().getAllMenbers().get(0);
 
         for (Player player : attacker.getParty().getAllMenbers()) {

@@ -9,7 +9,7 @@ public class Paralysis extends SkillBase implements AbnormalState {
     /*=============
      * フィールド変数
      =============*/
-    Random rand = new Random();
+     private Random rand = new Random();
 
 
     /*=============
@@ -58,8 +58,13 @@ public class Paralysis extends SkillBase implements AbnormalState {
     }
 
     @Override
+<<<<<<< Updated upstream
     public void initSkill() {
         super.skill = AllSkill.PARALYSIS;
+=======
+    protected void initSkill() {
+        this.skill = AllSkill.PARALYSIS;
+>>>>>>> Stashed changes
     }
 
 }
