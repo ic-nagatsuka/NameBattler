@@ -25,8 +25,8 @@ import java.util.List;
 
 public class CharacterList extends AppCompatActivity {
 
-    Cursor cursor;
-    int nowPlayerNum;
+    private Cursor cursor;
+    private int nowPlayerNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

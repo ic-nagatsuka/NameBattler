@@ -4,21 +4,20 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Enemy {
-    Random rand = new Random();
+    private Random rand = new Random();
 
-    ArrayList<EnemyData> enemies = new ArrayList<>();   //名前をまとめる
+    private ArrayList<EnemyData> enemies = new ArrayList<>();   //名前をまとめる
 
     public Enemy() {
         resetName();
     }
 
     public String getEnemyName() {
-
         return this.enemies.remove(this.rand.nextInt(this.enemies.size())).getName();
     }
 
     //初期化する
-    public void resetName() {
+    private void resetName() {
         this.enemies.clear();
 
         for (EnemyData enemy : EnemyData.values()) {
@@ -27,7 +26,7 @@ public class Enemy {
     }
 
     //名前一覧
-    public enum EnemyData {
+    private enum EnemyData {
         name1("ドリアール"), name2("アーミュー"),
         name3("ジャスカー"), name4("トバイモン"),
         name5("ジャイシー"), name6("ベネテリー"),
@@ -70,7 +69,7 @@ public class Enemy {
         name79("ヴァレーモ"), name80("ファエーレ");
 
 
-        String name;
+        private String name;
 
         EnemyData(String name) {
             this.name = name;

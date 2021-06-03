@@ -9,7 +9,7 @@ public class Paralysis extends SkillBase implements AbnormalState {
     /*=============
      * フィールド変数
      =============*/
-    Random rand = new Random();
+     private Random rand = new Random();
 
 
     /*=============

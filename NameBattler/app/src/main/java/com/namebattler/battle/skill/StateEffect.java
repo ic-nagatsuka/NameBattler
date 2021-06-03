@@ -5,9 +5,9 @@ public class StateEffect {
     /*=============
      * フィールド変数
      =============*/
-    AbnormalState skill;
-    int turn;
-    String stateChar;
+    private AbnormalState skill;
+    private int turn;
+    private String stateChar;
 
     /*=============
      * コンストラクタ

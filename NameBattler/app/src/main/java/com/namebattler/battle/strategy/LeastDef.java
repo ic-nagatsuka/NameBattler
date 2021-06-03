@@ -23,7 +23,7 @@ public class LeastDef extends BaseStrategy {
         }
     }
 
-    protected Player selectDefender(Party defenderParty) {
+    private Player selectDefender(Party defenderParty) {
         Player defender = defenderParty.getAliveMenbers().get(0);
 
         for (Player player : defenderParty.getAliveMenbers()) {

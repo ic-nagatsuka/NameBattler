@@ -22,11 +22,11 @@ import java.util.List;
 
 public class CharacterSelectListAdapter extends BaseAdapter {
 
-    Context context;
-    View startButton;
-    List<CharacterOrganization.Status> status;
+    private Context context;
+    private View startButton;
+    private List<CharacterOrganization.Status> status;
 
-    LayoutInflater inflater;
+    private LayoutInflater inflater;
 
     public CharacterSelectListAdapter(Context context, View v, List<CharacterOrganization.Status> status) {
         this.context = context;
@@ -123,7 +123,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
         textView.setText(player.getStatus());
     }
 
-    public boolean hasName(String name) {
+    private boolean hasName(String name) {
         for (Player player : GameManager.myParty.getAllMenbers()) {
             if (player.getName().equals(name)) {
                 return true;

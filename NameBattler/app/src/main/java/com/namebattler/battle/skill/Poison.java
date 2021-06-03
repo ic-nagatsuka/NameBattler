@@ -8,7 +8,7 @@ public class Poison extends SkillBase implements AbnormalState {
     /*=============
      * フィールド変数
      =============*/
-    String stateChar = "毒";
+    private String stateChar = "毒";
 
     /*=============
      * コンストラクタ
@@ -24,12 +24,10 @@ public class Poison extends SkillBase implements AbnormalState {
 
         if (defender.haveSameAbnormal(this)) {
             BattleLog.addLog(defender.getName() + "はすでにかかっている！");
-
         } else {
             BattleLog.addLog(defender.getName() + "は毒にかかった！");
             defender.setAbnormalState(new StateEffect(this, super.skill.getEffectTurn(), this.stateChar));
         }
-
     }
 
     @Override
@@ -38,7 +36,6 @@ public class Poison extends SkillBase implements AbnormalState {
             BattleLog.addLog(target.getName() + "の毒が治った！");
         } else {
             BattleLog.addLog(target.getName() + "は毒にかかっている！");
-
             int damage = this.skill.getTurnDama();
             BattleLog.addLog(target.getName() + "は" + damage + "のダメージを受けた！");
             target.damage(damage);

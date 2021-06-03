@@ -11,7 +11,7 @@ import java.util.Random;
 public class Fighter extends Player {
 
 
-    List<String> attText = new ArrayList<>();    //攻撃テキスト
+    private List<String> attText = new ArrayList<>();    //攻撃テキスト
 
     /*=============
      * コンストラクタ

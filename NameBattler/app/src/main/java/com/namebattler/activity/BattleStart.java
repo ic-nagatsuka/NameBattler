@@ -87,7 +87,7 @@ public class BattleStart extends AppCompatActivity {
         }
     }
 
-    public void displayParty(int listviewId, Party party) {
+    private void displayParty(int listviewId, Party party) {
         List<Map<String, String>> list = new ArrayList<>();
         for (Player player : party.getAllMenbers()) {
             Map<String, String> map = new HashMap();

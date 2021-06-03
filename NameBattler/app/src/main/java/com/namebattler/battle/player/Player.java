@@ -33,7 +33,7 @@ public abstract class Player {
     //使用スキル
     protected List<SkillBase> useSkill = new ArrayList<>();
     //かかっている状態異常
-    public List<StateEffect> turnAbnormalState = new ArrayList<>();
+    protected List<StateEffect> turnAbnormalState = new ArrayList<>();
 
     /*=============
      * コンストラクタ
