@@ -154,11 +154,11 @@ public abstract class Player {
      * @return かかっているすべての状態異常の画面表示文字
      */
     public String getAllAbnormalStateChar() {
-        String str = "";
+        StringBuilder sb = new StringBuilder();
         for (StateEffect abnormalState : this.turnAbnormalState) {
-            str += abnormalState.getStateChar();
+            sb.append(abnormalState.getStateChar());
         }
-        return str;
+        return sb.toString();
     }
 
     public SkillBase getRandomSkill() {
