@@ -23,7 +23,6 @@ public class Fighter extends Player {
 
     @Override
     protected void makeSkill() {
-        setUseSkill(new Fire());
     }
 
     //攻撃テキスト
