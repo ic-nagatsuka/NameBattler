@@ -1,6 +1,7 @@
 package com.namebattler.battle.player;
 
 import com.namebattler.battle.battlelog.BattleLog;
+import com.namebattler.battle.skill.Heal;
 import com.namebattler.battle.skill.Paralysis;
 import com.namebattler.battle.skill.Poison;
 
@@ -16,8 +17,9 @@ public class Priest extends Player {
 
     @Override
     protected void makeSkill() {
-        useSkill.add(new Paralysis());
-        useSkill.add(new Poison());
+        super.useSkill.add(new Paralysis());
+        super.useSkill.add(new Poison());
+        super.useSkill.add(new Heal());
     }
 
     @Override
