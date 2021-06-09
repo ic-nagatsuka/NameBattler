@@ -12,7 +12,7 @@ public class Thunder extends SkillBase {
 
         int damage;
         for (Player defender : target.getParty().getAliveMenbers()) {
-            damage = getRandomDamage(super.skill.getminDama(), super.skill.getmaxDama());
+            damage = getRandomDamage(super.skill.getMinDama(), super.skill.getMaxDama());
             BattleLog.addLog(defender.getName() + "に" + damage + "のダメージ！");
             defender.damage(damage);
         }
@@ -20,7 +20,7 @@ public class Thunder extends SkillBase {
 
     @Override
     public int calcDamage(Player target) {
-        int damage = this.getRandomDamage(this.getminDama(), this.getmaxDama());
+        int damage = this.getRandomDamage(this.getMinDama(), this.getMaxDama());
         return damage;
     }
 
