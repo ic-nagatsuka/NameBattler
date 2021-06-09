@@ -241,8 +241,8 @@ public abstract class Player {
         normalDamage(target);
         //戦闘不能判定
         checkDeath(target.getParty());
-        //カウンター攻撃確認
-        target.canCounter(this);
+//        //カウンター攻撃確認
+//        target.canCounter(this);
     }
 
     /**
@@ -290,8 +290,8 @@ public abstract class Player {
         skill.use(this, target);
         //戦闘不能判定
         checkDeath(target.getParty());
-        //カウンター攻撃
-        target.canCounter(this);
+//        //カウンター攻撃
+//        target.canCounter(this);
     }
 
     /**
@@ -333,17 +333,17 @@ public abstract class Player {
     }
 
     /**
-     * カウンター攻撃の確認
      *
-     * @param target 攻撃したプレイヤー
+     * @param target 行動攻撃をしたプレイヤー
+     * @param attackerParty 攻撃を受けたパーティー
      */
-    protected void canCounter(Player target) {
-        //HPが減っていて、カウンターができる状態で、戦闘不能ではなく、相手が同じパーティーではない場合
-        if (this.getBeforeHP() != this.getHp() &&
-                this.getCanCounter() &&
-                this.getHp() != 0 && this.getParty() != target.getParty()) {
-            //カウンター攻撃
-            this.counterAttack(target);
+    public void canCounter(Player target, Party attackerParty) {
+        for(Player player : attackerParty.getAliveMenbers()){
+            if (player.getBeforeHP() != player.getHp()
+                    && player.getCanCounter()) {
+                //カウンター攻撃
+                player.counterAttack(target);
+            }
         }
     }
 
@@ -400,18 +400,18 @@ public abstract class Player {
      *
      * @param target 攻撃されるプレイヤー
      */
-    public void action(Player target) {
-        this.readyCounter(target);
-        if (isDicreasePartyMenberHp(this.getParty())) {
-            if (canSkill()) {
-                //ランダムでスキルを使用する
-                useSkill(randomSelectSkill(this.getNowUseSkillOnly()), target);
-            } else {
-                //通常攻撃
-                normalAttack(target);
-            }
-        }
-    }
+//    public void action(Player target) {
+//        this.readyCounter(target);
+//        if (isDicreasePartyMenberHp(this.getParty())) {
+//            if (canSkill()) {
+//                //ランダムでスキルを使用する
+//                useSkill(randomSelectSkill(this.getNowUseSkillOnly()), target);
+//            } else {
+//                //通常攻撃
+//                normalAttack(target);
+//            }
+//        }
+//    }
 
     /**
      * 状態異常効果を動かす

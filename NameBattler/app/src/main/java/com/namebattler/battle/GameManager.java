@@ -97,6 +97,9 @@ public class GameManager {
                 AllStrategy.getStrategyInstance(
                         AllStrategy.EStrategy.values()[attacker.getParty().getStrategyKey()])
                         .action(attacker, defenseParty);
+                //カウンター確認
+                attacker.canCounter(attacker, defenseParty);
+                readyCounterHp();
             }
 
             if (battleEnd()) {
@@ -154,5 +157,10 @@ public class GameManager {
         }
     }
 
+    private void readyCounterHp(){
+        for(Player player : this.allPlayer){
+            player.setBeforHP(player.getHp());
+        }
+    }
 
 }
