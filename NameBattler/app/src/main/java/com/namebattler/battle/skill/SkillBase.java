@@ -26,12 +26,12 @@ public abstract class SkillBase {
         return this.skill.getUseMp();
     }
 
-    public int getminDama() {
-        return this.skill.getminDama();
+    public int getMinDama() {
+        return this.skill.getMinDama();
     }
 
-    public int getmaxDama() {
-        return this.skill.getminDama();
+    public int getMaxDama() {
+        return this.skill.getMaxDama();
     }
 
     public int getHealPoint() {
@@ -39,7 +39,7 @@ public abstract class SkillBase {
     }
 
     public int getTurnDama() {
-        return this.skill.getmaxDama();
+        return this.skill.getTurnDama();
     }
 
     public int getSuccessRate() {

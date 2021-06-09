@@ -44,11 +44,11 @@ public enum AllSkill {
         return this.useMp;
     }
 
-    public int getminDama() {
+    public int getMinDama() {
         return this.minDama;
     }
 
-    public int getmaxDama() {
+    public int getMaxDama() {
         return this.maxDama;
     }
 
