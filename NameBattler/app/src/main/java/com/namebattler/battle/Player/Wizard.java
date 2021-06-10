@@ -25,7 +25,7 @@ public class Wizard extends Player {
     @Override
     public void normalAttack(Player target) {
         Random rand = new Random();
-        BattleLog.addLog(this.name + "魔法を唱えた");
+        BattleLog.addLog(this.name + "は魔法を唱えた");
         if (rand.nextInt(2) == 0) {
             BattleLog.addLog("が何も起こらなかった");
         } else {
