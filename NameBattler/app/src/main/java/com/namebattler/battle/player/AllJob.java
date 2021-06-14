@@ -26,7 +26,7 @@ public class AllJob {
             case PRIEST:
                 player = new Priest(name);
                 break;
-            default :
+            default:
                 player = new Bouncer(name);
         }
         player.setParty(party);

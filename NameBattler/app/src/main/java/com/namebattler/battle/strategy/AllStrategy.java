@@ -17,7 +17,7 @@ public class AllStrategy {
             this.name = name;
         }
 
-        public String getName(){
+        public String getName() {
             return this.name;
         }
     }
@@ -34,7 +34,7 @@ public class AllStrategy {
                 return new PleaseFree();
             case LEAST_DEF:
                 return new LeastDef();
-            default :
+            default:
                 return new AbnormalStateSkillPriority();
         }
     }
