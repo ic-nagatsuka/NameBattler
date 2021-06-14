@@ -1,7 +1,6 @@
 package com.namebattler.battle.player;
 
 import com.namebattler.battle.battlelog.BattleLog;
-import com.namebattler.battle.skill.AllSkill;
 import com.namebattler.battle.skill.Fire;
 import com.namebattler.battle.skill.Thunder;
 
@@ -18,8 +17,8 @@ public class Wizard extends Player {
 
     @Override
     protected void makeSkill() {
-		super.useSkill.add(new Fire());
-		super.useSkill.add(new Thunder());
+        super.useSkill.add(new Fire());
+        super.useSkill.add(new Thunder());
     }
 
     @Override
