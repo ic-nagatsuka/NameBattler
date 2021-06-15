@@ -2,8 +2,6 @@ package com.namebattler.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -24,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class CharacterMake extends AppCompatActivity implements TextWatcher {
+public class CharacterMake extends AppCompatActivity {
 
     private final int radioButtonSize = 30;
     private int nowPlayerNum;
@@ -40,9 +38,6 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
 
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "キャラ作成", CharacterList.class);
-
-        final EditText editText = findViewById(R.id.character_make_editText_name);
-        editText.addTextChangedListener(this);
 
         showSelectjobItem();
 
@@ -97,21 +92,4 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         return format.format(new Date());
     }
 
-    /*=================
-        TextWatcher
-     =================*/
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable editable) {
-
-    }
 }
