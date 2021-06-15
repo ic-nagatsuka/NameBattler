@@ -47,13 +47,12 @@ public class CharacterMake extends AppCompatActivity {
             public void onClick(View v) {
                 RadioGroup radioGroup = findViewById(R.id.character_make_job_RadioGroup);
                 EditText editName = findViewById(R.id.character_make_editText_name);
-
                 String name = editName.getText().toString();
-                RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
                 if (nowPlayerNum >= Option.MAX_MAKE_PLAYER_NUM) {
                     Toast.makeText(
                             CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
                 } else if (!name.equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
+                    RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
                     Player player = AllJob.makePlayer(
                             name, AllJob.JobData.values()[radio.getId()], GameManager.myParty);
                     if (new OperationCharacterData(getApplicationContext())
@@ -70,9 +69,7 @@ public class CharacterMake extends AppCompatActivity {
                     }
                 }
             }
-
         });
-
     }
 
     private void showSelectjobItem() {
