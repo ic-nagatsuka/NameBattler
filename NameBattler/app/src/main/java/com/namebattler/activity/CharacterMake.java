@@ -51,7 +51,7 @@ public class CharacterMake extends AppCompatActivity {
                 if (nowPlayerNum >= Option.MAX_MAKE_PLAYER_NUM) {
                     Toast.makeText(
                             CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
-                } else if (!name.equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
+                } else if (!name.isEmpty() && radioGroup.getCheckedRadioButtonId() != -1) {
                     RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
                     Player player = AllJob.makePlayer(name, AllJob.JobData.values()[radio.getId()]);
                     if (new OperationCharacterData(getApplicationContext())
