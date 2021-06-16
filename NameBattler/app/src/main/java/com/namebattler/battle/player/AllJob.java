@@ -10,28 +10,19 @@ public class AllJob {
      *
      * @param name  名前
      * @param job   職業
-     * @param party 追加するパーティー
      * @return 作成したプレイヤー
      */
-    public static Player makePlayer(String name, JobData job, Party party) {
-        Player player;
-
+    public static Player makePlayer(String name, JobData job) {
         switch (job) {
             case FIGHTER:
-                player = new Fighter(name);
-                break;
+                return new Fighter(name);
             case WIZARD:
-                player = new Wizard(name);
-                break;
+                return new Wizard(name);
             case PRIEST:
-                player = new Priest(name);
-                break;
+                return new Priest(name);
             default:
-                player = new Bouncer(name);
+                return new Bouncer(name);
         }
-        player.setParty(party);
-
-        return player;
     }
 
     public enum JobData {
