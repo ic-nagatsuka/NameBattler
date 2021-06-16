@@ -85,7 +85,7 @@ public class CharacterSelectListAdapter extends BaseAdapter {
                     if (GameManager.myParty.getAllMenbers().size() < Option.PARTY_PLAYER_NUM) {
                         player.setIsClicked(true);
                         GameManager.myParty.appendPlayer(
-                                AllJob.makePlayer(name, player.getJob(), GameManager.myParty));
+                                AllJob.makePlayer(name, player.getJob()));
                     } else {
                         Toast.makeText(context, "最大数に達しました", Toast.LENGTH_SHORT).show();
                         radioButton.setChecked(false);
