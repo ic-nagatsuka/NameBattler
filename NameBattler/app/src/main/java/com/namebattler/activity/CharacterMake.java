@@ -2,8 +2,6 @@ package com.namebattler.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -24,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class CharacterMake extends AppCompatActivity implements TextWatcher {
+public class CharacterMake extends AppCompatActivity {
 
     private final int radioButtonSize = 30;
     private int nowPlayerNum;
@@ -41,9 +39,6 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         TitleFragment.displayTitleFragment(
                 getSupportFragmentManager(), "キャラ作成", CharacterList.class);
 
-        final EditText editText = findViewById(R.id.character_make_editText_name);
-        editText.addTextChangedListener(this);
-
         showSelectjobItem();
 
         //作成するボタン
@@ -52,15 +47,13 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
             public void onClick(View v) {
                 RadioGroup radioGroup = findViewById(R.id.character_make_job_RadioGroup);
                 EditText editName = findViewById(R.id.character_make_editText_name);
-
                 String name = editName.getText().toString();
-                RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
                 if (nowPlayerNum >= Option.MAX_MAKE_PLAYER_NUM) {
                     Toast.makeText(
                             CharacterMake.this, "作成したキャラクターが最大数に達しました", Toast.LENGTH_SHORT).show();
-                } else if (!name.equals("") && radioGroup.getCheckedRadioButtonId() != -1) {
-                    Player player = AllJob.makePlayer(
-                            name, AllJob.JobData.values()[radio.getId()], GameManager.myParty);
+                } else if (!name.isEmpty() && radioGroup.getCheckedRadioButtonId() != -1) {
+                    RadioButton radio = findViewById(radioGroup.getCheckedRadioButtonId());
+                    Player player = AllJob.makePlayer(name, AllJob.JobData.values()[radio.getId()]);
                     if (new OperationCharacterData(getApplicationContext())
                             .setCharacter(player, radio.getId(), getDate()) != -1) {
                         //キャラクター作成完了の場合
@@ -75,9 +68,7 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
                     }
                 }
             }
-
         });
-
     }
 
     private void showSelectjobItem() {
@@ -97,21 +88,4 @@ public class CharacterMake extends AppCompatActivity implements TextWatcher {
         return format.format(new Date());
     }
 
-    /*=================
-        TextWatcher
-     =================*/
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable editable) {
-
-    }
 }

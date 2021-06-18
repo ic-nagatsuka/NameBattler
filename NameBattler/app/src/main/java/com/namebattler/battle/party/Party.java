@@ -58,6 +58,7 @@ public class Party {
      * メソッド
      */
     public void appendPlayer(Player player) {
+        player.setParty(this);
         this.menbers.add(player);
     }
 

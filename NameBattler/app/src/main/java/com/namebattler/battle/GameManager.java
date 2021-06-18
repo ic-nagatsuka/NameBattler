@@ -83,7 +83,7 @@ public class GameManager {
      */
     public void battle() {
         //ターン数の表示
-        BattleLog.addLog("=====ターン" + this.turnCount + "=====");
+        BattleLog.addLog("=====ターン" + turnCount + "=====");
 
         //行動
         for (Player attacker : this.allPlayer) {
@@ -103,12 +103,12 @@ public class GameManager {
             }
 
             if (battleEnd()) {
-                this.turnCount = 1;
+                turnCount = 1;
                 break;
             }
         }
         if (!battleEnd()) {
-            this.turnCount++;    //ターン経過
+            turnCount++;    //ターン経過
         }
 
     }
