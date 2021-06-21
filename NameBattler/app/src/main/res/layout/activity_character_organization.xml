@@ -4,35 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CharacterOrganization">
+    tools:context=".activity.CharacterOrganization">
 
-    <TextView
-        android:id="@+id/character_organization_title"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:background="#ccc"
-        android:gravity="center"
-        android:text="パーティー構成"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:id="@+id/titleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/character_organization_back"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/blue_26c"
-        android:text="戻る"
-        android:textColor="#fff"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/character_organization_ListView"
@@ -46,8 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_organization_title"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/titleFragment" />
 
     <Button
         android:id="@+id/character_organization_start"

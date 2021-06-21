@@ -4,53 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CharacterDetails"
-    >
+    tools:context=".activity.CharacterDetails">
 
-    <TextView
-        android:id="@+id/characterDetails_title"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:text="キャラ詳細"
-        android:textSize="30dp"
-        android:background="#ccc"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/characterDetails_back"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/blue_26c"
-        android:text="戻る"
-        android:textColor="#fff"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:id="@+id/titleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/characterDetails_name"
         android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:gravity="bottom"
+        android:maxLines="1"
         android:text="名前"
-        android:maxLines="2"
-        app:autoSizeTextType="uniform"
-        app:autoSizeMinTextSize="1dp"
+        android:textSize="25dp"
         app:autoSizeMaxTextSize="25dp"
+        app:autoSizeMinTextSize="1dp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_title" />
+        app:layout_constraintTop_toBottomOf="@id/titleFragment" />
 
     <TextView
         android:id="@+id/characterDetails_job"
@@ -87,8 +64,8 @@
         android:layout_height="wrap_content"
         android:text="LUCK"
         android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="@+id/characterDetails_text_agi"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_agi" />
+        app:layout_constraintStart_toStartOf="@+id/characterDetails_text_def"
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_def" />
 
     <TextView
         android:id="@+id/characterDetails_text_agi"
@@ -96,8 +73,8 @@
         android:layout_height="wrap_content"
         android:text="AGI"
         android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="@+id/characterDetails_status"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_def" />
+        app:layout_constraintStart_toStartOf="@+id/characterDetails_text_luck"
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_luck" />
 
     <TextView
         android:id="@+id/characterDetails_text_mp"
@@ -171,8 +148,8 @@
         android:layout_height="wrap_content"
         android:text="999"
         android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/characterDetails_def"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_def" />
+        app:layout_constraintEnd_toEndOf="@+id/characterDetails_luck"
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_luck" />
 
     <TextView
         android:id="@+id/characterDetails_luck"
@@ -180,18 +157,18 @@
         android:layout_height="wrap_content"
         android:text="999"
         android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/characterDetails_agi"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_agi" />
+        app:layout_constraintEnd_toEndOf="@+id/characterDetails_def"
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_def" />
 
     <TextView
         android:id="@+id/characterDetails_MakeDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="96dp"
+        android:layout_height="30dp"
         android:layout_marginTop="32dp"
         android:text="作成日 : "
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="@+id/characterDetails_text_luck"
-        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_luck" />
+        app:layout_constraintTop_toBottomOf="@+id/characterDetails_text_agi" />
 
     <Button
         android:id="@+id/characterDetails_DeleteButton"
@@ -206,6 +183,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/characterDetails_MakeDay_data"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="25sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/characterDetails_MakeDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/characterDetails_MakeDay"
+        app:layout_constraintTop_toTopOf="@+id/characterDetails_MakeDay"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
